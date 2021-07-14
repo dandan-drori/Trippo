@@ -8,17 +8,23 @@ header {
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  max-width: 1760px;
+  max-height: 80px;
+  // max-width: 1760px;
   padding: 0 80px;
   margin: 0 auto;
-  // color: white;
+  background-color: #fff;
+  &.scrolled {
+    background-color: #fff;
+    color: rgb(14, 14, 14);
+  }
   z-index: 2;
 }
 
 .logo {
-  display: flex;
-  gap: 5px;
-  color: #fff;
+  a {
+    display: flex;
+    gap: 5px;
+  }
   & img {
     width: 30px;
     fill: white;
@@ -28,6 +34,7 @@ header {
     height: 31px;
     line-height: 31px;
     font-size: 1.3rem;
+    color: #ff385c;
   }
 }
 
