@@ -11,7 +11,7 @@
 import stayFilter from "../cmps/stay-filter.vue";
 export default {
   name: "Home",
-  data() {},
+  
   components: {
     stayFilter,
   },
