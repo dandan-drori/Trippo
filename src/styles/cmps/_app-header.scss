@@ -1,5 +1,5 @@
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -11,7 +11,7 @@ header {
   max-width: 1760px;
   padding: 0 80px;
   margin: 0 auto;
-  color: white;
+  // color: white;
   z-index: 2;
 }
 
@@ -23,7 +23,6 @@ header {
     width: 30px;
     fill: white;
     color: white;
-    flex: 1;
   }
   & h1 {
     height: 31px;
@@ -34,11 +33,10 @@ header {
 
 .nav {
   padding: 30px;
-  color: white;
-  flex: 1;
+  // color: white;
   a {
     font-weight: bold;
-    color: white;
+    // color: white;
 
     &.router-link-exact-active {
       color: #ff385c;
@@ -49,7 +47,6 @@ header {
 .header-controls {
   display: flex;
   gap: 15px;
-  flex: 1;
   & .i18n {
     width: 16px;
     background-color: transparent;
