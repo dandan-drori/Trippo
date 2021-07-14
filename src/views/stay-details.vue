@@ -5,8 +5,10 @@
 				<section class="details">
 					<h2>details</h2>
 					<p>
-						* 5.0 (3 reviews) &middot;
-						<span>Tel Aviv-Yafo, Tel Aviv District, Israel</span>
+						* 5.0
+						<span class="details-reviews">(3 reviews)</span>
+						&middot;
+						<span class="details-location">Tel Aviv-Yafo, Tel Aviv District, Israel</span>
 					</p>
 				</section>
 				<section class="actions">
@@ -33,59 +35,57 @@
 					/>
 				</section>
 			</section>
-			<section class="stay-info">
-				<section class="info-header">
-					<div>
-						<h2>Entire apartment host by Miriam</h2>
-						<span>2 guests &middot; Studio &middot; 1 bed &middot; 1 bath</span>
-					</div>
-					<!-- <img src="hostImg.jpg" alt=""> -->
-				</section>
-				<section class="bullet-points">
-					<ul>
-						<li>Entire home to yourself</li>
-						<li>Self check-in</li>
-						<li>Committed to Enhanced Clean</li>
-					</ul>
-				</section>
-				<section class="info-about">
-					<h2>All about Miriam's place</h2>
-					<p>
-						Guests enjoy weekly maid & laundry in-residence w/ gorgeous new kitchen, granite
-						countertop workspace, floor-to-ceiling marble bathroom, and dark hardwood floors
-						throughout.
-					</p>
-					<p>
-						All in a smart-access, uber-secure building equipped with ultra high-speed fiberoptic
-						wifi (1,000 Mbps) located next to museums and Central Park.
-					</p>
-					<h4>Other things to note</h4>
-					<p>
-						Pet friendly so long as details are approved and booked as 'Guest' in the reservation.
-					</p>
-				</section>
-				<section class="amenities">
-					<article v-for="(amenity, idx) in stay.amenities" :key="idx">
-						{{ amenity }}
-					</article>
-				</section>
-			</section>
-			<section class="checkout-container">
-				<section class="checkout">
-					<p>
-						<span class="price">$50</span>
-						/ night
-					</p>
-					<p>
-						*
-						<span>5.0</span>
-					</p>
-					<section class="pickers">
-						<p>check-in</p>
-						<p>check-out</p>
-						<p>guests</p>
+			<section class="flex-container">
+				<section class="stay-info">
+					<section class="info-header">
+						<div>
+							<h2>Entire apartment host by Miriam</h2>
+							<span>2 guests &middot; Studio &middot; 1 bed &middot; 1 bath</span>
+						</div>
+						<!-- <img src="hostImg.jpg" alt=""> -->
 					</section>
-					<button>Check availabilty</button>
+					<section class="info-about">
+						<h2>All about Miriam's place</h2>
+						<p>
+							Guests enjoy weekly maid & laundry in-residence w/ gorgeous new kitchen, granite
+							countertop workspace, floor-to-ceiling marble bathroom, and dark hardwood floors
+							throughout.
+						</p>
+						<p>
+							All in a smart-access, uber-secure building equipped with ultra high-speed fiberoptic
+							wifi (1,000 Mbps) located next to museums and Central Park.
+						</p>
+						<h4>Other things to note</h4>
+						<p>
+							Pet friendly so long as details are approved and booked as 'Guest' in the reservation.
+						</p>
+					</section>
+					<section class="amenities">
+						<h2>What this place offers</h2>
+						<section>
+							<article v-for="(amenity, idx) in stay.amenities" :key="idx">
+								{{ amenity }}
+							</article>
+						</section>
+					</section>
+				</section>
+				<section class="checkout-container">
+					<section class="checkout">
+						<p>
+							<span class="price">$50</span>
+							/ night
+						</p>
+						<p>
+							*
+							<span>5.0</span>
+						</p>
+						<section class="pickers">
+							<p>check-in</p>
+							<p>check-out</p>
+							<p>guests</p>
+						</section>
+						<button>Check availabilty</button>
+					</section>
 				</section>
 			</section>
 			<section class="details-reviews">
