@@ -129,13 +129,14 @@ export default {
 	data() {
 		return {
 			stay: null,
-			url: 'logo.png',
 		}
 	},
 	async created() {
 		try {
 			const { stayId } = this.$route.params
 			const stay = await stayService.getById(stayId)
+			if (!stay) console.log('hello')
+			console.log('stay', stay)
 			this.stay = stay
 		} catch (err) {
 			console.log('Cannot get stay with id:', stayId)

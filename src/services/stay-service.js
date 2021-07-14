@@ -6,7 +6,7 @@ export const gStays = [
 		_id: '10001247',
 		name: 'Furnished Studio in Manhattan',
 		imgFolder: 1,
-		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 363.0,
 		summary: 'Fantastic studio apartment with three bedrooms, located in Manhattan',
 		propertyType: 'Apartment',

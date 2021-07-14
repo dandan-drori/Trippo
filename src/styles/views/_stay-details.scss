@@ -42,30 +42,32 @@
 
 	.images {
 		display: flex;
-		gap: 5px;
 		margin-bottom: 20px;
 
 		& > img {
 			width: calc(50% - 10px);
 			border-radius: 15px 0 0 15px;
+			margin-right: 5px;
 		}
 
-		section {
+		.secondary {
 			display: flex;
 			flex-wrap: wrap;
-			gap: 5px;
 
 			img {
 				width: calc(50% - 10px);
-				height: 50%;
+				height: calc(50% - 5px);
 			}
 
 			img:nth-of-type(2) {
 				border-top-right-radius: 15px;
+				margin-left: 5px;
+				margin-bottom: 5px;
 			}
 
 			img:nth-of-type(4) {
 				border-bottom-right-radius: 15px;
+				margin-left: 5px;
 			}
 		}
 	}
