@@ -43,6 +43,16 @@
 						"imgUrl": "/img/img2.jpg"
 					}
 				}
+			],
+			"chatMsgs": [
+				{
+					"by": {
+						"_id": "u102",
+						"fullname": "user2",
+						"imgUrl": "/img/img2.jpg"
+					},
+					"txt": "hello chat!"
+				}
 			]
 		}
 	],

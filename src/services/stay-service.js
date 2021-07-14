@@ -1,3 +1,6 @@
+import { storageService } from './async-storage-service.js'
+import { utilService } from './util-service.js'
+
 export const gStays = [
 	{
 		_id: '10001247',
@@ -486,3 +489,82 @@ export const gStays = [
 		reviews: [],
 	},
 ]
+
+export const stayService = {
+	query,
+	getById,
+	remove,
+	save,
+	getEmptyStay,
+	addReview,
+}
+
+const STAY_KEY = 'stays'
+
+function query() {
+	const staysInStorage = storageService.query(STAY_KEY)
+	if (!staysInStorage || !staysInStorage.length) {
+		utilService.saveToStorage(STAY_KEY, gStays)
+		return gStays
+	}
+	return staysInStorage
+}
+
+function getById(stayId) {
+	return storageService.get(STAY_KEY, stayId)
+}
+
+function remove(stayId) {
+	return storageService.delete(STAY_KEY, stayId)
+}
+
+function save(stay) {
+	if (stay._id) {
+		return storageService.put(STAY_KEY, stay)
+	} else {
+		return storageService.post(STAY_KEY, stay)
+	}
+}
+
+function addReview(stayId, review) {
+	if (!review) {
+		review = {
+			fullName: 'stays Reader',
+			rating: 5,
+			readAt: new Date().toLocaleString(),
+			review: 'The stay was very good!',
+		}
+	} else {
+		review = {
+			fullName: review.fullName || 'stays Reader',
+			rating: 5,
+			readAt: review.readAt || new Date().toLocaleString(),
+			review: review.review || 'The stay was very good!',
+		}
+	}
+	storageService.get(STAY_KEY, stayId).then(stay => {
+		stay.reviews.push(review)
+		storageService.put(STAY_KEY, stay)
+	})
+}
+
+function getEmptyStay() {
+	return {
+		id: '',
+		title: '',
+		subtitle: '',
+		authors: [],
+		publishedDate: 0,
+		description: '',
+		pageCount: 0,
+		categories: [],
+		thumbnail: '',
+		language: '',
+		listPrice: {
+			amount: 0,
+			currencyCode: '',
+			isOnSale: false,
+		},
+		reviews: [],
+	}
+}

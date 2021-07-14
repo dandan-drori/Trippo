@@ -41,12 +41,12 @@ const gStays = [
                     "fullname": "user2",
                     "imgUrl": "/img/img2.jpg"
                 }
-            }
+            },
         ]
     }
-],
+]
 
-const gOrder= [
+const gOrders = [
     {
         "_id": "o1225",
         "_hostId": "u102",
@@ -68,7 +68,7 @@ const gOrder= [
     }
 ],
 
-const gUsers= [
+const gUsers = [
     {
         "_id": "u101",
         "fullname": "User 1",
@@ -76,5 +76,20 @@ const gUsers= [
         "isAdmin": false,
         "username": "user1",
         "password": "secret"
+    }
+]
+
+const gTrips = [
+    {
+        "startDate": "16218293101",
+        "endDate": "16129229192",
+        "guests": 2,
+        "loc": {
+            "country": "France",
+            "countryCode": "FR",
+            "address": "Paris, France",
+            "lat": 2.61308,
+            "lng": 31.1413
+        }
     }
 ]
