@@ -39,9 +39,7 @@
 import stayFilter from "../cmps/stay-filter.vue";
 export default {
   name: "Home",
-  data() {
-    return {};
-  },
+
   components: {
     stayFilter,
   },
