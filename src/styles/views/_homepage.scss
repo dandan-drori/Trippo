@@ -1,0 +1,23 @@
+.shadow {
+  background: linear-gradient(
+    to bottom,
+    #0000006b 0%,
+    #ffffff00 100%,
+    #ffffff00 100%
+  );
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 120px;
+}
+
+.hero {
+  height: 85vh;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.categorys {
+  height: 90vh;
+}

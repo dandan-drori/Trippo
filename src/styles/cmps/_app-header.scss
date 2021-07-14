@@ -1,12 +1,57 @@
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  max-width: 1760px;
+  padding: 0 80px;
+  margin: 0 auto;
+  color: white;
+  z-index: 2;
+}
+
+.logo {
+  display: flex;
+  gap: 5px;
+  color: #fff;
+  & img {
+    width: 30px;
+    fill: white;
+    color: white;
+    flex: 1;
+  }
+  & h1 {
+    height: 31px;
+    line-height: 31px;
+    font-size: 1.3rem;
+  }
+}
+
 .nav {
-	padding: 30px;
+  padding: 30px;
+  color: white;
+  flex: 1;
+  a {
+    font-weight: bold;
+    color: white;
 
-	a {
-		font-weight: bold;
-		color: #2c3e50;
+    &.router-link-exact-active {
+      color: #ff385c;
+    }
+  }
+}
 
-		&.router-link-exact-active {
-			color: #42b983;
-		}
-	}
+.header-controls {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+  & .i18n {
+    width: 16px;
+    background-color: transparent;
+  }
 }
