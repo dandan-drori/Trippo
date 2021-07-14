@@ -13,7 +13,7 @@ function query(entityType) {
 }
 
 function get(entityType, entityId) {
-	return query(entityType).then(entities => entities.find(entity => entity.id === entityId))
+	return query(entityType).then(entities => entities.find(entity => entity._id === entityId))
 }
 
 function post(entityType, newEntity) {

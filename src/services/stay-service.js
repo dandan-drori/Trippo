@@ -5,13 +5,7 @@ export const gStays = [
 	{
 		_id: '10001247',
 		name: 'Furnished Studio in Manhattan',
-		imgUrls: [
-			'../assets/imgs/stays/new_york/1/1.jpg',
-			'../assets/imgs/stays/new_york/1/2.jpg',
-			'../assets/imgs/stays/new_york/1/3.jpg',
-			'../assets/imgs/stays/new_york/1/4.jpg',
-			'../assets/imgs/stays/new_york/1/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 363.0,
 		summary: 'Fantastic studio apartment with three bedrooms, located in Manhattan',
 		propertyType: 'Apartment',

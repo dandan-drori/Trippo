@@ -23,12 +23,12 @@ const routes = [
 		component: stayApp,
 	},
 	{
-		path: '/stay/:stayId',
-		component: stayDetails,
-	},
-	{
 		path: '/stay/edit/:stayId?',
 		component: stayEdit,
+	},
+	{
+		path: '/stay/:stayId',
+		component: stayDetails,
 	},
 	{
 		path: '/profile/:userId',
