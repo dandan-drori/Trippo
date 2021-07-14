@@ -5,7 +5,8 @@ export const gStays = [
 	{
 		_id: '10001247',
 		name: 'Furnished Studio in Manhattan',
-		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
+		imgFolder: 1,
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
 		price: 363.0,
 		summary: 'Fantastic studio apartment with three bedrooms, located in Manhattan',
 		propertyType: 'Apartment',
@@ -32,14 +33,9 @@ export const gStays = [
 	},
 	{
 		_id: '11212889',
+		imgFolder: 2,
 		name: 'Best Quiet Apartment in Manhattan',
-		imgUrls: [
-			'../assets/imgs/stays/new_york/2/1.jpg',
-			'../assets/imgs/stays/new_york/2/2.jpg',
-			'../assets/imgs/stays/new_york/2/3.jpg',
-			'../assets/imgs/stays/new_york/2/4.jpg',
-			'../assets/imgs/stays/new_york/2/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 256.0,
 		summary: 'Quiet Studio Apartment with PRIVATE KITCHEN & SHOWER ROOM with tub',
 		propertyType: 'Apartment',
@@ -69,14 +65,9 @@ export const gStays = [
 	},
 	{
 		_id: '11333552',
+		imgFolder: 3,
 		name: 'Large studio near Central Park',
-		imgUrls: [
-			'../assets/imgs/stays/new_york/3/1.jpg',
-			'../assets/imgs/stays/new_york/3/2.jpg',
-			'../assets/imgs/stays/new_york/3/3.jpg',
-			'../assets/imgs/stays/new_york/3/4.jpg',
-			'../assets/imgs/stays/new_york/3/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 295.0,
 		summary:
 			"Great, bright and clean studio in Hell's Kitchen, one of the nicest streets, near the famous Original Soup Man Store.",
@@ -107,14 +98,9 @@ export const gStays = [
 	},
 	{
 		_id: '12241141',
+		imgFolder: 4,
 		name: 'Fantastic studio in Time Square',
-		imgUrls: [
-			'../assets/imgs/stays/new_york/4/1.jpg',
-			'../assets/imgs/stays/new_york/4/2.jpg',
-			'../assets/imgs/stays/new_york/4/3.jpg',
-			'../assets/imgs/stays/new_york/4/4.jpg',
-			'../assets/imgs/stays/new_york/4/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 230.0,
 		summary: 'Entire home to yourself',
 		propertyType: 'Apartment',
@@ -132,14 +118,9 @@ export const gStays = [
 	},
 	{
 		_id: '11212131',
+		imgFolder: 5,
 		name: 'Cozy apartment in the heart of Downtown Manhattan',
-		imgUrls: [
-			'../assets/imgs/stays/new_york/5/1.jpg',
-			'../assets/imgs/stays/new_york/5/2.jpg',
-			'../assets/imgs/stays/new_york/5/3.jpg',
-			'../assets/imgs/stays/new_york/5/4.jpg',
-			'../assets/imgs/stays/new_york/5/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 213.0,
 		summary: 'Cozy two bedroom apartment in the heart of downtown',
 		propertyType: 'Apartment',
@@ -158,13 +139,8 @@ export const gStays = [
 	{
 		_id: '10',
 		name: 'ROOF TOP STUDIO',
-		imgUrls: [
-			'../assets/imgs/stays/france/1/1.jpg',
-			'../assets/imgs/stays/france/1/2.jpg',
-			'../assets/imgs/stays/france/1/3.jpg',
-			'../assets/imgs/stays/france/1/4.jpg',
-			'../assets/imgs/stays/france/1/5.jpg',
-		],
+		imgFolder: 1,
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 197,
 		summary:
 			'Rooftop studio in Paris a lot of bars and restaurants great place to discover paris kitchen',
@@ -190,14 +166,9 @@ export const gStays = [
 	},
 	{
 		_id: '11',
+		imgFolder: 1,
 		name: 'Un superbe appartement ',
-		imgUrls: [
-			'../assets/imgs/stays/france/2/1.jpg',
-			'../assets/imgs/stays/france/2/2.jpg',
-			'../assets/imgs/stays/france/2/3.jpg',
-			'../assets/imgs/stays/france/2/4.jpg',
-			'../assets/imgs/stays/france/2/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 159,
 		summary:
 			'Il est situé à 5 mn du metro Jules Joffrin, 4 mn à Porte de Clignancourt, 3 mn à rue du Poteau et 17 m au Sacré-Coeur. Tout est à pied.',
@@ -223,14 +194,9 @@ export const gStays = [
 	},
 	{
 		_id: '12',
+		imgFolder: 2,
 		name: 'Studio White + balcon - La Défense',
-		imgUrls: [
-			'../assets/imgs/stays/france/3/1.jpg',
-			'../assets/imgs/stays/france/3/2.jpg',
-			'../assets/imgs/stays/france/3/3.jpg',
-			'../assets/imgs/stays/france/3/4.jpg',
-			'../assets/imgs/stays/france/3/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 195,
 		summary:
 			'Petit studio maximum 2 personnes !! pour aller en concert à l"U Arena" ou pour travailler à la "Défense". Le trajet n\'est que 10 minutes à pied de l\'appartement.',
@@ -256,14 +222,9 @@ export const gStays = [
 	},
 	{
 		_id: '13',
+		imgFolder: 3,
 		name: 'Cool, Contemporary Duplex in Le Marais',
-		imgUrls: [
-			'../assets/imgs/stays/france/4/1.jpg',
-			'../assets/imgs/stays/france/4/2.jpg',
-			'../assets/imgs/stays/france/4/3.jpg',
-			'../assets/imgs/stays/france/4/4.jpg',
-			'../assets/imgs/stays/france/4/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 410,
 		summary:
 			'Wake up on the cozy mezzanine level, then open the windows downstairs and people-watch at this modern duplex in the heart of historic Paris. Clean, pure decor and historic elements combine on a quiet pedestrian street in the charming LeMarais district.',
@@ -289,14 +250,9 @@ export const gStays = [
 	},
 	{
 		_id: '14',
+		imgFolder: 4,
 		name: 'Unobstructed Views in the Prestigious 6th Arrondissement',
-		imgUrls: [
-			'../assets/imgs/stays/france/5/1.jpg',
-			'../assets/imgs/stays/france/5/2.jpg',
-			'../assets/imgs/stays/france/5/3.jpg',
-			'../assets/imgs/stays/france/5/4.jpg',
-			'../assets/imgs/stays/france/5/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 230,
 		summary:
 			'Gather around the Eames-style dining table for traditional pastries from the local boulangerie before a morning of browsing the stores on famous shopping street rue de Rennes. This urban oasis combines a sleek, black kitchen with smooth marble.',
@@ -322,14 +278,9 @@ export const gStays = [
 	},
 	{
 		_id: '15',
+		imgFolder: 5,
 		name: 'View the Eiffel Tower Through the Trees From a Block Away',
-		imgUrls: [
-			'../assets/imgs/stays/france/6/1.jpg',
-			'../assets/imgs/stays/france/6/2.jpg',
-			'../assets/imgs/stays/france/6/3.jpg',
-			'../assets/imgs/stays/france/6/4.jpg',
-			'../assets/imgs/stays/france/6/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 1500,
 		summary:
 			'Open the floor-to-ceiling windows to admire the iconic sights from the Juliet balcony with a cup of Nespresso in hand. The interior is air-conditioned, rare in Paris.',
@@ -355,14 +306,9 @@ export const gStays = [
 	},
 	{
 		_id: '11006546',
+		imgFolder: 1,
 		name: 'Citiez Hotel Amsterdam: Cozy Queen Room',
-		imgUrls: [
-			'../assets/imgs/stays/netherlands/house1/1.jpg',
-			'../assets/imgs/stays/netherlands/house1/2.jpg',
-			'../assets/imgs/stays/netherlands/house1/3.jpg',
-			'../assets/imgs/stays/netherlands/house1/4.jpg',
-			'../assets/imgs/stays/netherlands/house1/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 110,
 		summary: 'Fantastic duplex apartment with three bedrooms, located in...',
 		propertyType: 'House',
@@ -380,14 +326,9 @@ export const gStays = [
 	},
 	{
 		_id: '12006546',
+		imgFolder: 2,
 		name: 'Luxurious Canal House studio City center',
-		imgUrls: [
-			'../assets/imgs/stays/netherlands/house2/1.jpg',
-			'../assets/imgs/stays/netherlands/house2/2.jpg',
-			'../assets/imgs/stays/netherlands/house2/3.jpg',
-			'../assets/imgs/stays/netherlands/house2/4.jpg',
-			'../assets/imgs/stays/netherlands/house2/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 120,
 		summary:
 			'This is a luxurious private canal studio, located right in the middle of Amsterdam Jordaan.',
@@ -406,14 +347,9 @@ export const gStays = [
 	},
 	{
 		_id: '13006546',
+		imgFolder: 3,
 		name: 'Luxury ground floor apartement amsterdam',
-		imgUrls: [
-			'../assets/imgs/stays/netherlands/house3/1.jpg',
-			'../assets/imgs/stays/netherlands/house3/2.jpg',
-			'../assets/imgs/stays/netherlands/house3/3.jpg',
-			'../assets/imgs/stays/netherlands/house3/4.jpg',
-			'../assets/imgs/stays/netherlands/house3/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 150,
 		summary:
 			'Nice bright apartment on the ground floor , With one in the bathroom a bath and shower.',
@@ -432,15 +368,10 @@ export const gStays = [
 	},
 	{
 		_id: '14006546',
+		imgFolder: 4,
 		name:
 			'Lovely BNB apartment in the heart of Amsterdam just off the Prinsengracht canal and around the famous 9 streets.',
-		imgUrls: [
-			'../assets/imgs/stays/netherlands/house4/1.jpg',
-			'../assets/imgs/stays/netherlands/house4/2.jpg',
-			'../assets/imgs/stays/netherlands/house4/3.jpg',
-			'../assets/imgs/stays/netherlands/house4/4.jpg',
-			'../assets/imgs/stays/netherlands/house4/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 130,
 		summary: 'Fantastic duplex apartment with three bedrooms, located in...',
 		propertyType: 'House',
@@ -458,14 +389,9 @@ export const gStays = [
 	},
 	{
 		_id: '15006546',
+		imgFolder: 5,
 		name: 'The Weber Collection - Luxurieus Design Studio ',
-		imgUrls: [
-			'../assets/imgs/stays/netherlands/house5/1.jpg',
-			'../assets/imgs/stays/netherlands/house5/2.jpg',
-			'../assets/imgs/stays/netherlands/house5/3.jpg',
-			'../assets/imgs/stays/netherlands/house5/4.jpg',
-			'../assets/imgs/stays/netherlands/house5/5.jpg',
-		],
+		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 80,
 		summary:
 			'Serviced Studio suites in the city centre of Amsterdam. We aim to deliver a home away from home experience topped with the best service and hospitality.',

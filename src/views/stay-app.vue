@@ -1,18 +1,24 @@
 <template>
-	<h1>hello</h1>
+	
+	<stay-list :stays="stays" v-if="stays"/>
 </template>
 
 <script>
+import stayList from '@/cmps/stay-list'
 export default {
-	data() {
-		return {
-			stays: null,
+	components:{
+		stayList,
+	},
+	
+	computed:{
+	stays(){
+			return this.$store.getters.stays
 		}
 	},
 	async created() {
-		const stays = await this.$store.dispatch({ type: 'loadStays' })
-		console.log('stays', stays)
-		this.stays = stays
+	 await this.$store.dispatch({ type: 'loadStays' })
+		
+		
 	},
 }
 </script>

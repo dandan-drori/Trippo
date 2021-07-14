@@ -1,17 +1,26 @@
+<template>
+  <section class="stay-list">
+      
+          <section  v-for="stay in stays" :key="stay._id" class="stay-preveiw-container">
+              <stay-preview :stay="stay">
+
+              </stay-preview>
+         </section>
+          
+      
+  </section>
+</template>
+
+<script>
+import stayPreview from './stay-preview'
 export default {
-    components: {},
-    props: {},
-    template: `
-        <section>
-            <h2>Hello World</h2>
-        </section>
-    `,
-    data() {
-        return {
-            data: []
-        }
+    props:{
+        stays:Array,
     },
-    created() {},
-    methods: {},
-    computed: {},
+    components:{
+        stayPreview
+    }
 }
+</script>
+
+
