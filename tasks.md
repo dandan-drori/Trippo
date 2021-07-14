@@ -2,14 +2,16 @@
 
 ## Libraries
 
-- vue-moment
-- element-ui
+### Not Installed
+
 - vee-validate
 - vue-chart.js
-- vue-google-maps
 
 ### Already Installed
 
+- vue-moment
+- element-ui
+- vue-google-maps
 - node-sass
 - axios
 - express
