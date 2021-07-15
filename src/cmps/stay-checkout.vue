@@ -22,13 +22,21 @@
 				>
 				</el-date-picker>
 			</div>
+			<div class="guests">
+				<p>Guests:</p>
+				<button :class="{ show: guestsCount > 1 }" @click="decGuests">
+					-
+				</button>
+				<span class="guestsCount">{{ guestsCount }}</span>
+				<button :class="{ show: guestsCount < accommodates }" @click="incGuests">+</button>
+			</div>
 		</section>
-		<button ref="myBtn">
-			<span>Check availabilty</span>
+		<button ref="myBtn" class="checkout-btn">
+			<span>{{ checkoutBtnTxt }}</span>
 		</button>
-		<section v-if="dates">
-			<div>
-				<p>You won't be charged yet</p>
+		<section v-if="dates" class="reservation-data">
+			<div class="charges-data">
+				<small>You won't be charged yet</small>
 				<div class="charges">
 					<p>Accomodation</p>
 					<p>some price</p>
@@ -38,7 +46,7 @@
 					<p>some lower price</p>
 				</div>
 			</div>
-			<div class="charges">
+			<div class="total">
 				<p>Total</p>
 				<p>some high af price</p>
 			</div>
@@ -48,7 +56,7 @@
 
 <script>
 export default {
-	props: { reviews: Array, price: Number },
+	props: { reviews: Array, price: Number, accommodates: Number },
 	data() {
 		return {
 			shortcuts: [
@@ -81,6 +89,7 @@ export default {
 				},
 			],
 			dates: '',
+			guestsCount: 1,
 		}
 	},
 	computed: {
@@ -90,11 +99,26 @@ export default {
 			}, 0)
 			return (sum / this.reviews.length).toFixed(1)
 		},
+		checkoutBtnTxt() {
+			return this.dates ? 'Reserve' : 'Check availabilty'
+		},
+	},
+	methods: {
+		decGuests() {
+			if (this.guestsCount > 1) {
+				this.guestsCount--
+			}
+		},
+		incGuests() {
+			if (this.guestsCount < this.accommodates) {
+				this.guestsCount++
+			}
+		},
 	},
 	mounted() {
 		this.$refs.myBtn.onmousemove = e => {
-			const x = e.pageX - e.target.offsetLeft
-			const y = e.pageY - e.target.offsetTop
+			const x = e.offsetX
+			const y = e.offsetY
 
 			e.target.style.setProperty('--x', `${x}px`)
 			e.target.style.setProperty('--y', `${y}px`)
