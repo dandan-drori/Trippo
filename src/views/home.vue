@@ -3,7 +3,7 @@
     <div class="shadow"></div>
     <div class="hero-container"></div>
     <img class="hero" src="@/assets/imgs/home-page/hero1.jpeg" />
-    <stay-filter />
+    <stay-filter :class="{ scrolled: this.isScrolled }" />
     <div class="flexible">
       <p>Not sure where to go? Perfect.</p>
       <button><span>I’m flexible</span></button>
@@ -72,7 +72,9 @@
 import stayFilter from "../cmps/stay-filter.vue";
 export default {
   data() {
-    return {};
+    return {
+      isScrolled: false,
+    };
   },
   name: "Home",
   created() {
@@ -85,8 +87,10 @@ export default {
     handleScroll(event) {
       let scrollDiff = event.path[1].scrollY;
       if (scrollDiff >= 1) {
+        this.isScrolled = true;
         this.$emit("scrolled", true);
       } else if (scrollDiff < 1) {
+        this.isScrolled = false;
         this.$emit("scrolled", false);
       }
     },

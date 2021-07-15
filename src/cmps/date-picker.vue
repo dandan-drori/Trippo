@@ -1,5 +1,5 @@
 <template>
-  <div class="block">
+  <div class="block date">
     <el-date-picker
       style="color:#000;"
       @input="x"

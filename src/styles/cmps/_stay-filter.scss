@@ -11,6 +11,14 @@
   transform: translateX(-50%);
   z-index: 2;
   box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.15), 0px 3px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+
+  &.scrolled {
+    position: fixed;
+    top: 7.5px;
+    z-index: 4;
+    width: 50%;
+  }
 
   & form {
     width: 100%;
@@ -62,6 +70,7 @@
   position: relative;
   display: flex;
   flex-direction: row;
+  cursor: pointer;
   > div {
     display: flex;
     flex-direction: column;
@@ -76,6 +85,7 @@
   border-radius: 1.6rem;
   padding: 0.3rem 1.5rem;
   background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
   & .type {
     display: flex;
     gap: 40px;
@@ -137,12 +147,23 @@ input.el-input__inner {
   display: none;
 }
 
+.block.date {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1rem;
+  outline: none;
+  background-color: transparent;
+}
+
 .el-picker-panel.el-date-range-picker.el-popper {
   width: 66%;
+  max-width: 850px;
   border-radius: 1.6rem;
   left: 50% !important;
   top: 0 !important;
-  transform: translate(-50%, 36%);
+  transform: translate(-50%, 31%);
   padding: 1rem;
   & span {
     color: #000000;
@@ -162,18 +183,6 @@ input.el-input__inner {
     height: 45px;
   }
 }
-
-.date {
-  position: absolute;
-  bottom: 26px;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 1rem;
-  outline: none;
-  background-color: transparent;
-  height: 20px;
-}
-
 .el-date-editor,
 .el-range-editor,
 .el-input__inner,
@@ -198,8 +207,8 @@ input {
     height: 20px;
     font-size: 0.8rem;
     line-height: 20px;
-    text-indent: -50px;
     background-color: transparent;
+    text-align: left !important;
   }
 }
 
