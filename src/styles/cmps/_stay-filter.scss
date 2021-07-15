@@ -1,4 +1,5 @@
 .filter-container {
+<<<<<<< HEAD
   letter-spacing: 0.8px;
   width: 100%;
   max-width: 850px;
@@ -55,210 +56,144 @@
       }
     }
   }
+=======
+	letter-spacing: 0.8px;
+	width: 100%;
+	max-width: 850px;
+	background-color: #fff;
+	height: 65px;
+	border-radius: 5rem;
+	position: absolute;
+	top: 80px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 2;
+	box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.15), 0px 3px 8px rgba(0, 0, 0, 0.1);
+	transition: 0.3s;
+
+	&.scrolled {
+		position: fixed;
+		top: 7.5px;
+		z-index: 4;
+		width: 50%;
+	}
+
+	& form {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: space-between;
+
+		& small {
+			font-weight: 600;
+			font-size: 0.6rem;
+			line-height: 1rem;
+			color: #222222;
+		}
+
+		& input {
+			border: none;
+			outline: none;
+			background-color: transparent;
+		}
+
+		& > div {
+			border-radius: 2rem;
+			padding: 10px;
+			padding-inline-start: 20px;
+
+			&:hover {
+				background-color: #ebebeb;
+			}
+		}
+	}
+>>>>>>> bf452f10d69f7c82a5e9e5b26b3d514f2812d69b
 }
 
 .loc-input {
-  flex: 4;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+	flex: 4;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .checkin-input,
 .checkout-input {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+	flex: 3;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .guests-input {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  cursor: pointer;
-  > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  flex: 3;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	cursor: pointer;
+	> div {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	flex: 3;
 }
 .guests-modal {
-  position: absolute;
-  top: 75px;
-  right: 0;
-  border-radius: 1.6rem;
-  padding: 0.3rem 1.5rem;
-  background-color: #fff;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
-  & .type {
-    display: flex;
-    gap: 40px;
-    padding: 12px 0 5px;
-    border-bottom: 1px solid #ebebeb;
-  }
-  & :last-child {
-    border-bottom: none;
-  }
-  & .details {
-    min-width: 130px;
-  }
+	position: absolute;
+	top: 75px;
+	right: 0;
+	border-radius: 1.6rem;
+	padding: 0.3rem 1.5rem;
+	background-color: #fff;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+	& .type {
+		display: flex;
+		gap: 40px;
+		padding: 12px 0 5px;
+		border-bottom: 1px solid #ebebeb;
+	}
+	& :last-child {
+		border-bottom: none;
+	}
+	& .details {
+		min-width: 130px;
+	}
 
-  & p {
-    font-size: 0.8rem;
-    font-weight: 500;
-  }
-  & span {
-    font-size: 0.7rem;
-    font-weight: 300;
-  }
+	& p {
+		font-size: 0.8rem;
+		font-weight: 500;
+	}
+	& span {
+		font-size: 0.7rem;
+		font-weight: 300;
+	}
 }
 
 .el-input-number {
-  width: 110px;
-  & > span {
-    background-color: #fff;
-    border: 1px solid #b5b5b5;
-    border-radius: 50%;
-    width: 31px;
-    height: 31px;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
+	width: 110px;
+	& > span {
+		background-color: #fff;
+		border: 1px solid #b5b5b5;
+		border-radius: 50%;
+		width: 31px;
+		height: 31px;
+		display: flex;
+		align-content: center;
+		align-items: center;
+		justify-content: center;
 
-    & i {
-      font-size: 0.8rem;
-      font-weight: 900;
-    }
-  }
+		& i {
+			font-size: 0.8rem;
+			font-weight: 900;
+		}
+	}
 }
 
 .search-btn {
-  background-color: #ff385c;
-  width: 50px;
-  height: 52px;
-  border-radius: 50%;
-  & img {
-    width: 25px;
-  }
-}
-
-input.el-input__inner {
-  font-size: 0.9rem;
-}
-
-.el-input__icon {
-  display: none;
-}
-
-.homepage {
-  & .block.date.home {
-    position: absolute !important;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 2.45rem;
-    outline: none;
-    background-color: transparent;
-  }
-
-  & #date {
-    width: 66%;
-    max-width: 850px;
-    border-radius: 1.6rem;
-    left: 50% !important;
-    top: 0 !important;
-    transform: translate(-50%, 31%) !important;
-    padding: 1rem;
-    color: #000;
-    &:hover {
-      color: #000;
-    }
-    & span {
-      color: #000000;
-      height: 45px;
-      width: 45px;
-      display: flex;
-      align-items: center;
-      align-content: center;
-      justify-content: center;
-    }
-    & td div {
-      display: flex;
-      align-items: center;
-      align-content: center;
-      justify-content: center;
-      max-width: 60px;
-      height: 45px !important;
-    }
-  }
-  & .el-date-editor,
-  & .el-range-editor,
-  & .el-input__inner,
-  & .el-date-editor--daterange {
-    height: 20px;
-    justify-content: flex-start;
-    background-color: transparent;
-    border: none;
-
-    & .el-input__icon.el-range__close-icon {
-      display: none;
-    }
-  }
-
-  .el-date-editor .el-range-separator {
-    width: 68px;
-  }
-
-  & input {
-    &.el-range-input {
-      width: 100px;
-      height: 20px;
-      font-size: 0.8rem;
-      line-height: 20px;
-      background-color: transparent;
-      text-align: left !important;
-    }
-  }
-
-  & .block.date:hover {
-    background-color: transparent;
-  }
-
-  & .el-date-table td.end-date span,
-  & .el-date-table td.start-date span {
-    background-color: #222;
-    color: #fff !important;
-    font-weight: 500;
-    font-size: 0.7rem;
-  }
-
-  .el-date-table td.in-range div,
-  .el-date-table td.in-range div:hover,
-  .el-date-table.is-week-mode .el-date-table__row.current div,
-  .el-date-table.is-week-mode .el-date-table__row:hover div {
-    background-color: #eeeeee !important;
-  }
-
-  & .el-date-editor--daterange.el-input,
-  & .el-date-editor--daterange.el-input__inner,
-  & .el-date-editor--timerange.el-input,
-  & .el-date-editor--timerange.el-input__inner {
-    width: 100%;
-    border: none;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    height: 20px;
-  }
-
-  & td {
-    height: 45px !important;
-    width: 45px !important;
-  }
-
-  & .popper__arrow {
-    left: 35% !important;
-  }
+	background-color: #ff385c;
+	width: 50px;
+	height: 52px;
+	border-radius: 50%;
+	& img {
+		width: 25px;
+	}
 }

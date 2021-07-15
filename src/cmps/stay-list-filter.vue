@@ -82,6 +82,7 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
+    <el-button @click="clearFilters">Clear</el-button>
   </form>
 </template>
 
@@ -102,6 +103,15 @@ export default {
       } else {
         this.filterBy.types.push(type);
       }
+    },
+    clearFilters() {
+      this.filterBy = {
+        price: [0, 9999],
+        types: [],
+        amenities: [],
+        city: '',
+      };
+      this.setFilter();
     },
     setFilter() {
       this.$emit('filter', this.filterBy);

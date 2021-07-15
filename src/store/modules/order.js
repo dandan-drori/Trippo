@@ -1,4 +1,5 @@
 import { orderService } from '@/services/order-service.js'
+import { userService } from '@/services/user-service.js'
 
 export default {
 	state: {
@@ -34,7 +35,6 @@ export default {
 		},
 		async saveOrder({ commit, rootGetters }, { order, stay }) {
 			try {
-				console.log('order', order)
 				const type = order._id ? 'updateOrder' : 'addOrder'
 				const user = rootGetters.loggedinUser
 				const miniUser = {
@@ -53,6 +53,9 @@ export default {
 				order.host = stay.host
 				const savedOrder = await orderService.save(order)
 				commit({ type, order: savedOrder })
+				delete order.buyer
+				user.orders.push(order)
+				await userService.update(user)
 				return savedOrder
 			} catch (err) {
 				console.log('Failed to save order', err)
