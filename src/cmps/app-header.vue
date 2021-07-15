@@ -7,10 +7,6 @@
           <h1>trippo</h1>
         </router-link>
       </div>
-      <!-- <div class="nav">
-        <router-link to="/about">About</router-link> |
-        <router-link to="/stay">Explore</router-link>
-      </div> -->
       <div class="header-controls">
         <router-link to="/stay/edit">Become a host</router-link>
         <button class="i18n">
