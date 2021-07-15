@@ -1,6 +1,6 @@
 .stay-checkout {
 	position: sticky;
-	top: 0;
+	top: 100px;
 	width: 30%;
 	padding: 30px;
 	border-radius: 15px;
@@ -61,5 +61,40 @@
 		border-radius: 10px;
 		background-color: #ff385c;
 		color: #fafafa;
+		--x: 3px;
+		--y: 3px;
+
+		position: relative;
+		appearance: none;
+		border: none;
+		font-size: 1.2em;
+		cursor: pointer;
+		outline: none;
+		overflow: hidden;
+		border: 2px #ffa85c solid;
+		box-shadow: 1px 1px 9px #ffa85c;
+
+		span {
+			position: relative;
+			pointer-events: none;
+		}
+
+		&::before {
+			--size: 0;
+			content: '';
+			position: absolute;
+			left: var(--x);
+			top: var(--y);
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background-color: rgba(255, 168, 92, 0.6);
+			box-shadow: 3px 3px 40px 20px rgba(0, 0, 0, 0.2);
+			transform: translate(-50%, -50%);
+			transition: width 0.2s ease, height 0.2s ease;
+		}
+		&:hover::before {
+			--size: 400px;
+		}
 	}
 }

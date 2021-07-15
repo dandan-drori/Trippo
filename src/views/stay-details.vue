@@ -175,6 +175,7 @@ export default {
 	},
 	async created() {
 		try {
+			this.$emit('scrolled', true)
 			const { stayId } = this.$route.params
 			const stay = await stayService.getById(stayId)
 			this.stay = stay
