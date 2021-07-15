@@ -13,14 +13,17 @@ export const gStays = [
     propertyType: 'Apartment',
     accommodates: 2,
     amenities: [
-      'TV',
-      'Wifi',
-      'Kitchen',
-      'Pets allowed',
-      'Washer',
-      'Air conditioning',
-      'Dryer',
-      'Long term stays allowed',
+      { txt: 'TV', icon: 'el-icon-monitor' },
+      { txt: 'Wifi', icon: 'wifi', fa: true },
+      { txt: 'Kitchen', icon: 'el-icon-knife-fork' },
+      { txt: 'Pets allowed', icon: 'paw', fa: true },
+      { txt: 'Shower', icon: 'shower', fa: true },
+      {
+        txt: 'Air conditioning',
+        icon: 'snowflake',
+        fa: true,
+      },
+      { txt: 'Smoking allowed', icon: 'el-icon-smoking' },
     ],
     host: { _id: '51399391', fullName: 'Davit Pok', imgUrl: 'img.jpg' },
     loc: {
@@ -30,7 +33,41 @@ export const gStays = [
       lat: 40.73061,
       lng: -73.935242,
     },
-    reviews: [],
+    reviews: [
+      {
+        id: 'madeId',
+        txt: 'Very helpful hosts. Cooked traditional...',
+        rate: 4,
+        at: 1608192831,
+        by: {
+          _id: 'u102',
+          fullname: 'user2',
+          imgUrl: '/img/img2.jpg',
+        },
+      },
+      {
+        id: 'madeId1',
+        txt: 'Very helpful hosts. Cooked traditional...',
+        rate: 4,
+        at: 1608192831,
+        by: {
+          _id: 'u102',
+          fullname: 'user2',
+          imgUrl: '/img/img2.jpg',
+        },
+      },
+      {
+        id: 'madeId2',
+        txt: 'Very helpful hosts. Cooked traditional...',
+        rate: 4,
+        at: 1608192831,
+        by: {
+          _id: 'u102',
+          fullname: 'user2',
+          imgUrl: '/img/img2.jpg',
+        },
+      },
+    ],
   },
   {
     _id: '11212889',
