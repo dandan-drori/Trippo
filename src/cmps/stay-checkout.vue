@@ -14,7 +14,6 @@
 		<section class="pickers">
 			<div class="block">
 				<el-date-picker
-					class="checkout"
 					v-model="dates"
 					type="daterange"
 					range-separator="To"
@@ -161,4 +160,61 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.el-range-editor.is-active,
+.el-range-editor.is-active:hover {
+	border-color: #ccc;
+}
+
+.el-date-range-picker .el-picker-panel__body {
+	padding: 20px;
+}
+.el-date-table td.in-range div,
+.el-date-table td.in-range div:hover,
+.el-date-table.is-week-mode .el-date-table__row.current div,
+.el-date-table.is-week-mode .el-date-table__row:hover div {
+	background-color: #f3f3f3;
+}
+
+.el-date-table td.available:hover {
+	color: #222 !important;
+}
+
+.el-date-table td.available.today span {
+	color: #222 !important;
+}
+
+.el-date-editor .el-range-separator {
+	padding-top: 15px;
+	color: #222 !important;
+}
+.stay-details {
+	.el-picker-panel.el-date-range-picker.el-popper {
+		width: 50%;
+		border-radius: 20px;
+		margin-right: 70px;
+		transform: scale(1.2) !important;
+		top: 869px !important;
+		left: initial !important;
+		right: 20px !important;
+	}
+}
+
+.el-date-editor--daterange.el-input,
+.el-date-editor--daterange.el-input__inner,
+.el-date-editor--timerange.el-input,
+.el-date-editor--timerange.el-input__inner {
+	width: 100%;
+	border: 1px solid #ccc;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	height: 70px;
+}
+
+.el-date-table td.end-date span,
+.el-date-table td.start-date span {
+	background-color: #222;
+	color: #fff !important;
+	font-weight: 500;
+}
+</style>
