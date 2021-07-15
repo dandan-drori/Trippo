@@ -5,15 +5,12 @@ import router from './router'
 import store from './store'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import Element from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css';
-import '@/styles/styles.scss';
-import locale from "element-ui/lib/locale/lang/en";
-Vue.config.lang = 'en';
-Vue.use(Element, { locale });
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
+import 'element-ui/lib/theme-chalk/index.css'
+import '@/styles/styles.scss'
+import locale from 'element-ui/lib/locale/lang/en'
+Vue.config.lang = 'en'
+Vue.use(Element, { locale })
 Vue.config.productionTip = false
-Vue.use(Vuetify)
 Vue.use(Element)
 Vue.use(require('vue-moment'))
 Vue.use(VueGoogleMaps, {
