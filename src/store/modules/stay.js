@@ -8,6 +8,7 @@ export default {
       price: [0, 9999],
       types: [],
       amenities: [],
+      city: '',
     },
   },
   getters: {
@@ -46,6 +47,7 @@ export default {
   actions: {
     async loadStays({ commit, state }) {
       try {
+        console.log(state.filterBy);
         const stays = await stayService.query(state.filterBy);
 
         commit({ type: 'setStays', stays });
@@ -61,6 +63,7 @@ export default {
           price: [0, 9999],
           types: [],
           amenities: [],
+          city: '',
         });
 
         commit({ type: 'setUnfilteredStays', unfilteredStays });
