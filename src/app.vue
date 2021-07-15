@@ -1,16 +1,25 @@
 <template>
-	<div class="app main-layout">
-		<app-header />
-		<router-view />
-	</div>
+  <div class="app main-layout">
+    <app-header :class="{ scrolled: isScrolled }" />
+    <router-view @scrolled="scrolled" />
+  </div>
 </template>
 
 <script>
-import appHeader from './cmps/app-header.vue'
-
+import appHeader from "./cmps/app-header.vue";
 export default {
-	components: {
-		appHeader,
-	},
-}
+  data() {
+    return {
+      isScrolled: false,
+    };
+  },
+  methods: {
+    scrolled(value) {
+      this.isScrolled = value;
+    },
+  },
+  components: {
+    appHeader,
+  },
+};
 </script>

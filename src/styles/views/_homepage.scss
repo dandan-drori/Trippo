@@ -10,38 +10,134 @@
   top: 0;
   left: 0;
   height: 120px;
+  z-index: 2;
+}
+
+.hero-container {
+  height: 85vh;
 }
 
 .hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 85vh;
   object-fit: cover;
   object-position: bottom;
 }
-
 .categories {
-  height: 90vh;
+  height: 100vh;
   text-align: start;
-  padding: 40px;
+  margin: 40px 0;
+  & h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
 }
 
 .cards-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 300px;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  grid-template-rows: 1fr;
+  min-height: 300px;
   overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &.card {
     width: 100%;
     height: 100%;
   }
 
-  & img {
-    min-height: 200px;
-    min-width: 200px;
-    border-radius: 10px;
-    object-fit: cover;
-    object-position: center;
+  .img {
+    height: 90%;
+    width: 90%;
+    & img {
+      border-radius: 10px;
+      object-fit: cover;
+      object-position: center;
+    }
   }
+
+  & h3 {
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+}
+
+.flexible {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  & p {
+    font-weight: 500;
+    font-size: 0.8rem;
+  }
+  & button {
+    padding: 1rem 2.45rem;
+    border-radius: 3rem;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0px 6px 16px rgba($color: #000000, $alpha: 0.12);
+    & span {
+      font-weight: 600;
+      font-size: 0.8rem;
+      background: -webkit-linear-gradient(
+        0deg,
+        rgba(111, 1, 156, 1) 0%,
+        rgba(198, 1, 126, 1) 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+
+.wide-card {
+  position: relative;
+  margin-top: 3rem;
+  & .desc {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    letter-spacing: 1px;
+  }
+  & h3 {
+    font-size: 2.5rem;
+    & span {
+      display: block;
+    }
+  }
+  & p {
+    font-size: 0.9rem;
+  }
+  & img {
+    border-radius: 10px;
+    max-height: 480px;
+    object-fit: cover;
+  }
+  & button {
+    background-color: #222222;
+  }
+}
+
+footer {
+  padding: 25px 0;
+  font-size: 0.6rem;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }

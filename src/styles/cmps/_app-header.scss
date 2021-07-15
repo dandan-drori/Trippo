@@ -3,47 +3,69 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
   max-height: 80px;
-  // max-width: 1760px;
-  padding: 0 80px;
-  margin: 0 auto;
-  background-color: #fff;
+  background-color: transparent;
+  color: #fff;
+  letter-spacing: 0.1px;
   &.scrolled {
     background-color: #fff;
     color: rgb(14, 14, 14);
+    & h1 {
+      height: 31px;
+      line-height: 31px;
+      font-size: 1.3rem;
+      color: #ff385c;
+    }
+    & .icon {
+      color: #ff385c;
+      font-size: 1.8rem;
+    }
+    & .i18n {
+      color: #000;
+    }
   }
-  z-index: 2;
+  z-index: 3;
+}
+
+.heder-container {
+  max-width: 1760px;
+  min-height: 80px;
+  padding: 0 80px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
 }
 
 .logo {
   a {
     display: flex;
+    align-items: flex-end;
     gap: 5px;
   }
   & img {
     width: 30px;
+    height: 31px;
     fill: white;
     color: white;
   }
   & h1 {
-    height: 31px;
+    height: 32px;
     line-height: 31px;
-    font-size: 1.3rem;
-    color: #ff385c;
+    font-size: 1.1rem;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  & .icon {
+    font-size: 1.8rem;
   }
 }
 
 .nav {
   padding: 30px;
-  // color: white;
   a {
     font-weight: bold;
-    // color: white;
 
     &.router-link-exact-active {
       color: #ff385c;
@@ -53,9 +75,50 @@ header {
 
 .header-controls {
   display: flex;
-  gap: 15px;
+  align-items: center;
+  align-content: center;
+  gap: 20px;
   & .i18n {
-    width: 16px;
+    color: #fff;
     background-color: transparent;
+    height: 1rem;
+    & span {
+      font-size: 1rem;
+    }
+    // &:hover {
+    //   background-color: rgba(255, 255, 255, 0.18);
+    //   height: 40px;
+    //   width: 45px;
+    //   border-radius: 50%;
+    // }
+  }
+  & a {
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+  & .profile-btn {
+    background-color: #fff;
+    color: #222;
+    border: 1px solid rgba(204, 204, 204, 0.564);
+    border-radius: 2rem;
+    &:hover {
+      box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.18);
+    }
+    & span {
+      font-size: 0.9rem;
+    }
+    & a {
+      width: 75px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: space-around;
+      & img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+    }
   }
 }
