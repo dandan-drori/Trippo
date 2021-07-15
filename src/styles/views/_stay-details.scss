@@ -1,5 +1,10 @@
 .stay-details {
-	// @include main-layout;
+	padding-top: 100px;
+
+	p,
+	span {
+		font-size: 1.3rem;
+	}
 
 	.header {
 		display: flex;
@@ -10,6 +15,10 @@
 		.details {
 			h2 {
 				margin-bottom: 10px;
+			}
+
+			i {
+				color: #ff385c;
 			}
 
 			.details-reviews {
@@ -27,15 +36,27 @@
 
 		.actions {
 			display: flex;
+			align-items: center;
 
-			button {
-				color: #333;
-				text-decoration: underline;
-				border: none;
-				outline: none;
-				background: none;
-				font-size: 1.1rem;
+			div {
+				display: flex;
+				align-items: center;
 				margin-left: 2rem;
+
+				i {
+					margin-top: 0.2rem;
+					font-size: 1.3rem;
+				}
+
+				button {
+					color: #333;
+					text-decoration: underline;
+					border: none;
+					outline: none;
+					background: none;
+					font-size: 1.2rem;
+					margin-left: 0.5rem;
+				}
 			}
 		}
 	}
@@ -45,7 +66,7 @@
 		margin-bottom: 20px;
 
 		& > img {
-			width: calc(50% - 10px);
+			width: calc(50% - 3.5px);
 			border-radius: 15px 0 0 15px;
 			margin-right: 5px;
 		}
@@ -55,7 +76,7 @@
 			flex-wrap: wrap;
 
 			img {
-				width: calc(50% - 10px);
+				width: calc(50% - 3px);
 				height: calc(50% - 5px);
 			}
 
@@ -75,12 +96,17 @@
 	.flex-container {
 		display: flex;
 		justify-content: space-between;
+		position: relative;
+		border-bottom: 1px solid rgba(50, 50, 50, 0.2);
+		margin-bottom: 40px;
 	}
 
 	.stay-info {
-		max-width: 60%;
+		width: 50%;
 
 		.info-header {
+			display: flex;
+			justify-content: space-between;
 			padding: 20px 0;
 			margin-bottom: 30px;
 			border-bottom: 1px solid rgba(50, 50, 50, 0.2);
@@ -96,7 +122,10 @@
 			}
 
 			img {
-				border-radius: 999px;
+				border-radius: 50%;
+				width: 70px;
+				height: 70px;
+				object-fit: cover;
 			}
 		}
 
@@ -116,7 +145,6 @@
 		.amenities {
 			margin-bottom: 30px;
 			padding-bottom: 20px;
-			border-bottom: 1px solid rgba(50, 50, 50, 0.2);
 
 			h2 {
 				margin-bottom: 20px;
@@ -130,6 +158,94 @@
 
 			article {
 				font-size: 1.2rem;
+			}
+		}
+	}
+
+	.host-info {
+		margin-bottom: 40px;
+		padding-bottom: 40px;
+		border-bottom: 1px solid rgba(50, 50, 50, 0.2);
+
+		.host-info-header {
+			display: flex;
+			align-items: center;
+			margin-bottom: 30px;
+
+			img {
+				border-radius: 50%;
+				width: 70px;
+				height: 70px;
+				object-fit: cover;
+				margin-right: 25px;
+			}
+
+			div {
+				display: flex;
+				flex-direction: column;
+				height: 60px;
+				justify-content: space-between;
+			}
+		}
+
+		.badges {
+			display: flex;
+			margin-bottom: 50px;
+
+			p {
+				margin-right: 30px;
+			}
+
+			i,
+			svg {
+				margin-right: 10px;
+				color: #ff385c;
+			}
+
+			i {
+				font-size: 1.6rem;
+				margin-top: -2px;
+			}
+		}
+
+		.host-details {
+			p {
+				margin-bottom: 10px;
+			}
+
+			p:nth-child(2) {
+				margin-bottom: 30px;
+			}
+
+			button {
+				display: block;
+				border: 1px solid #333;
+				border-radius: 12px;
+				padding: 1rem 2rem;
+				margin-bottom: 30px;
+				font-size: 1.4rem;
+				font-weight: 500;
+				background-color: #fefefe;
+
+				&:hover {
+					background-color: #eee;
+				}
+			}
+		}
+
+		.details-alert {
+			display: flex;
+			align-items: center;
+
+			svg {
+				margin-right: 20px;
+				font-size: 1.6rem;
+			}
+
+			small {
+				max-width: 300px;
+				font-size: 1rem;
+				line-height: 1.4;
 			}
 		}
 	}

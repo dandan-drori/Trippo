@@ -3,17 +3,37 @@
 		<section v-if="stay">
 			<section class="header">
 				<section class="details">
-					<h2>details</h2>
+					<h2>{{ stay.name }}</h2>
 					<p>
-						* 5.0
-						<span class="details-reviews">(3 reviews)</span>
-						&middot;
-						<span class="details-location">Tel Aviv-Yafo, Tel Aviv District, Israel</span>
+						<span v-if="reviewsLength">
+							<i class="el-icon-star-on"></i>
+							5.0
+							<span class="details-reviews">({{ reviewsLength }} reviews)</span>
+							&middot;
+						</span>
+						<span class="details-location">{{ address }}</span>
 					</p>
 				</section>
 				<section class="actions">
-					<button>Share</button>
-					<button>Save</button>
+					<div class="share">
+						<i class="el-icon-upload2"></i>
+						<button>Share</button>
+					</div>
+					<div class="save">
+						<svg
+							viewBox="0 0 32 32"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true"
+							role="presentation"
+							focusable="false"
+							style="display: block; fill: none; height: 20px; width: 20px; stroke: currentcolor; stroke-width: 2; overflow: visible;"
+						>
+							<path
+								d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"
+							></path>
+						</svg>
+						<button>Save</button>
+					</div>
 				</section>
 			</section>
 			<section class="images">
@@ -39,82 +59,60 @@
 				<section class="stay-info">
 					<section class="info-header">
 						<div>
-							<h2>Entire apartment host by Miriam</h2>
-							<span>2 guests &middot; Studio &middot; 1 bed &middot; 1 bath</span>
+							<h2>{{ infoHeader }}</h2>
+							<span
+								>{{ stay.accommodates }} guests &middot; {{ stay.propertyType }} &middot;
+								{{ beds }} &middot; {{ baths }}</span
+							>
 						</div>
-						<!-- <img src="hostImg.jpg" alt=""> -->
+						<img src="@/assets/imgs/userImgs/host1.jpg" alt="" />
 					</section>
 					<section class="info-about">
-						<h2>All about Miriam's place</h2>
-						<p>
-							Guests enjoy weekly maid & laundry in-residence w/ gorgeous new kitchen, granite
-							countertop workspace, floor-to-ceiling marble bathroom, and dark hardwood floors
-							throughout.
-						</p>
-						<p>
-							All in a smart-access, uber-secure building equipped with ultra high-speed fiberoptic
-							wifi (1,000 Mbps) located next to museums and Central Park.
-						</p>
-						<h4>Other things to note</h4>
-						<p>
-							Pet friendly so long as details are approved and booked as 'Guest' in the reservation.
-						</p>
+						<h2>All about {{ stay.host.fullName }}'s place</h2>
+						<p>{{ stay.summary + '.' }}</p>
 					</section>
 					<section class="amenities">
 						<h2>What this place offers</h2>
 						<section>
 							<article v-for="(amenity, idx) in stay.amenities" :key="idx">
-								{{ amenity }}
+								<font-awesome-icon v-if="amenity.fa" :icon="icons[amenity.icon]" />
+								<i v-else :class="amenity.icon"></i>
+								{{ amenity.txt }}
 							</article>
 						</section>
 					</section>
 				</section>
-				<section class="checkout-container">
-					<section class="checkout">
-						<p>
-							<span class="price">$50</span>
-							/ night
-						</p>
-						<p>
-							*
-							<span>5.0</span>
-						</p>
-						<section class="pickers">
-							<p>check-in</p>
-							<p>check-out</p>
-							<p>guests</p>
-						</section>
-						<button>Check availabilty</button>
-					</section>
-				</section>
+				<stay-checkout :price="stay.price" :reviews="stay.reviews" />
 			</section>
-			<section class="details-reviews">
-				<h2>review cmp!!!</h2>
-			</section>
-			<section class="details-map">
-				<h2>map cmp!!!</h2>
-			</section>
-			<section class="city description">
-				<h2>City Description...</h2>
-			</section>
+			<review-list :reviews="stay.reviews" />
+			<stay-map :loc="stay.loc" />
 			<section class="host-info">
 				<section class="host-info-header">
-					<!-- <img src="hostImg.jpg" alt=""> -->
-					<h2>Hosted by Miriam</h2>
-					<p>Joined in December 2014</p>
+					<img src="@/assets/imgs/userImgs/host1.jpg" alt="" />
+					<div>
+						<h2>Hosted by {{ stay.host.fullName }}</h2>
+						<p>Joined in December 2014</p>
+					</div>
 				</section>
 				<section class="badges">
-					<p>* 1 Review</p>
-					<p>Identity verified</p>
+					<i class="el-icon-star-on"></i>
+					<p>23 Reviews</p>
+					<p>
+						<font-awesome-icon :icon="icons.userShield" />
+						Identity verified
+					</p>
 				</section>
 				<section class="host-details">
-					<p>Response rate: 100%</p>
+					<p>Response rate: 86%</p>
 					<p>Response time: within an hour</p>
 					<button>Contact host</button>
-					<small
-						>To protect your payment, never transfer money or communicate outside of the Airbnb
-						website or app.</small
-					>
+					<div class="details-alert">
+						<font-awesome-icon :icon="icons.shieldAlt" />
+						<small>
+							To protect your payment, never transfer money or communicate outside of the Trippo
+							website or app.</small
+						>
+					</div>
 				</section>
 			</section>
 		</section>
@@ -124,19 +122,61 @@
 
 <script>
 import { stayService } from '@/services/stay-service.js'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import {
+	faWifi,
+	faPaw,
+	faShower,
+	faSnowflake,
+	faUserShield,
+	faShieldAlt,
+} from '@fortawesome/free-solid-svg-icons'
+import reviewList from '../cmps/review-list'
+import stayMap from '../cmps/stay-map'
+import stayCheckout from '../cmps/stay-checkout'
 
 export default {
+	components: { FontAwesomeIcon, reviewList, stayMap, stayCheckout },
 	data() {
 		return {
 			stay: null,
+			icons: {
+				wifi: faWifi,
+				paw: faPaw,
+				shower: faShower,
+				snowflake: faSnowflake,
+				userShield: faUserShield,
+				shieldAlt: faShieldAlt,
+			},
 		}
+	},
+	computed: {
+		address() {
+			return this.stay.loc.countryCode === 'NY'
+				? this.stay.loc.address + ', United States'
+				: this.stay.loc.address
+		},
+		reviewsLength() {
+			return this.stay.reviews.length
+		},
+		infoHeader() {
+			return this.stay.propertyType + ' host by ' + this.stay.host.fullName
+		},
+		beds() {
+			return this.stay.accommodates === 1
+				? this.stay.accommodates + ' bed'
+				: this.stay.accommodates + ' beds'
+		},
+		baths() {
+			return this.stay.accommodates === 1
+				? this.stay.accommodates + ' bath'
+				: this.stay.accommodates + ' baths'
+		},
 	},
 	async created() {
 		try {
 			const { stayId } = this.$route.params
 			const stay = await stayService.getById(stayId)
-			if (!stay) console.log('hello')
-			console.log('stay', stay)
 			this.stay = stay
 		} catch (err) {
 			console.log('Cannot get stay with id:', stayId)
