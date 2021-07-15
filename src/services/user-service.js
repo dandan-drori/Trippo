@@ -27,7 +27,27 @@ const gUsers = [
 					name: 'House Of Uncle My',
 					price: 80.0,
 				},
-				status: 'pending',
+				status: 'rejected',
+			},
+			{
+				_id: 'o1225',
+				_hostId: 'u102',
+				createdAt: 9898989,
+				buyer: {
+					_id: 'u101',
+					fullname: 'User 1',
+					imgUrl: 'imgs/user1.jpg',
+				},
+				totalPrice: 160,
+				startDate: 162818371828,
+				endDate: 162829321938,
+				guests: 3,
+				stay: {
+					_id: '10001247',
+					name: 'New Stay',
+					price: 80.0,
+				},
+				status: 'approved',
 			},
 			{
 				_id: 'o1225',
