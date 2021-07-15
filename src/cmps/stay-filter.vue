@@ -9,7 +9,7 @@
         <small>Check in</small>
         <input type="text" />
       </div>
-      <date-picker class="date" />
+      <date-picker class="date home" />
       <div class="checkout-input">
         <small>Check out</small>
         <input type="text" />
