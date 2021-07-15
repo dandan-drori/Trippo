@@ -42,13 +42,16 @@ export default {
     },
   },
   async created() {
-    const { city } = this.$route.params;
-    var filterBy = this.$store.getters.filterBy;
-    filterBy.city = city;
-    console.log(filterBy);
-    this.$store.commit({ type: 'setFilter', filterBy });
-    await this.$store.dispatch({ type: 'loadStays' });
     await this.$store.dispatch({ type: 'loadUnfilteredStays' });
+    const { city } = this.$route.params;
+    if (city) {
+      var filterBy = this.$store.getters.filterBy;
+      filterBy.city = city;
+      console.log(filterBy);
+      this.$store.commit({ type: 'setFilter', filterBy });
+    }
+
+    await this.$store.dispatch({ type: 'loadStays' });
   },
 };
 </script>
