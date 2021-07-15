@@ -12,7 +12,8 @@
         <button class="add-stay">Add New Stay</button>
       </div>
     </section>
-    <section class="data" v-if="!isModalOpen">
+    <section class="data">
+      <add-stay />
       <section class="statistics">
         <p>Assets you own: {{ loggedInUser.stays.length }}</p>
         <p>Orders: {{ loggedInUser.orders.length }}</p>
@@ -55,15 +56,16 @@
 
 <script>
 import filterOrders from '@/cmps/filter-orders';
+import stayAdd from '@/cmps/stay-add';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 export default {
-  components: { FontAwesomeIcon, filterOrders },
+  components: { FontAwesomeIcon, filterOrders, stayAdd },
   data() {
     return {
       check: faCheck,
       times: faTimes,
-      isModalOpen: false,
+      isModalOpen: true,
     };
   },
   methods: {
