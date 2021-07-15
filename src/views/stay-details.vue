@@ -86,6 +86,7 @@
 					:price="stay.price"
 					:reviews="stay.reviews"
 					:accommodates="stay.accommodates"
+					@checkout="checkout"
 				/>
 			</section>
 			<review-list :reviews="stay.reviews" />
@@ -126,6 +127,7 @@
 
 <script>
 import { stayService } from '@/services/stay-service.js'
+import { orderService } from '@/services/order-service.js'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
 	faWifi,
@@ -177,9 +179,21 @@ export default {
 				: this.stay.accommodates + ' baths'
 		},
 	},
+	methods: {
+		checkout({ dates, total, guests }) {
+			const orderToSave = orderService.getEmptyOrder()
+			orderToSave.startDate = dates[0].getTime()
+			orderToSave.endDate = dates[1].getTime()
+			orderToSave.total = total
+			orderToSave.guests = guests
+			this.$store.dispatch({ type: 'saveOrder', order: orderToSave, stay: this.stay })
+			this.$store.dispatch({ type: 'loadOrders' })
+		},
+	},
 	async created() {
 		try {
 			this.$emit('scrolled', true)
+			this.$store.dispatch({ type: 'loadOrders' })
 			const { stayId } = this.$route.params
 			const stay = await stayService.getById(stayId)
 			this.stay = stay
