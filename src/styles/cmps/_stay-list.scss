@@ -1,69 +1,79 @@
-.stay-list{
-    padding-top:100px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap:10px;
-
-    .filters{
-        display: flex;
-        gap:4px;
-    }
+.stay-list {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
-.head-title{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-left: 67px;
+.filters {
+  display: flex;
+  gap: 4px;
+  margin-top: 100px;
+  margin-left: 63px;
 }
 
-    .el-slider__bar{
-        background-color: #b0b0b0;
-    }
-    .el-slider__button{
-        border:2px solid #dddddd;
-    }
-
-    .el-button{
-        &:hover,&:focus{
-            color:#ff385c;
-            background-color: rgb(246, 242, 242);
-        }
-    }
-
-
-.price-filter{
-    display: flex;
-    max-width: 310px;
-    
-    
-    
-
-    .el-input{
-        width: 100px;
-    }
-
-    
+.head-title {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 67px;
 }
 
-.type-list{
-    display: flex;
-    flex-direction: column;
-
-    .checkbox{
-        color:#b0b0b0;
-       
-    }
-
-    .el-checkbox__input.is-checked+.el-checkbox__label {
-        color:#b0b0b0;
-    }
-    .el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner {
-        border-color:#b0b0b0;
-        background-color:#b0b0b0 ;
-    }
+.el-slider__bar {
+  background-color: #b0b0b0;
+}
+.el-slider__button {
+  border: 2px solid #dddddd;
 }
 
+// .el-dropdown-menu__item {
+//   &:hover,
+//   &:focus {
+//     color: #000;
+//     background-color: #fff;
+//   }
+// }
 
+.el-dropdown-menu__item:focus,
+.el-dropdown-menu__item:not(.is-disabled):hover {
+  background-color: white;
+  color: white;
+}
 
+.el-button {
+  &:hover,
+  &:focus,
+  &:active {
+    color: #ff385c;
+    background-color: rgb(246, 242, 242);
+    border-color: #b0b0b0;
+  }
+}
+
+.price-filter {
+  display: flex;
+  max-width: 310px;
+
+  .el-input {
+    width: 100px;
+  }
+}
+
+.type-list {
+  display: flex;
+  flex-direction: column;
+
+  .checkbox {
+    color: #b0b0b0;
+  }
+
+  .el-checkbox__input.is-checked + .el-checkbox__label {
+    color: #b0b0b0;
+  }
+  .el-checkbox__input.is-checked .el-checkbox__inner,
+  .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+    border-color: #b0b0b0;
+    background-color: #b0b0b0;
+  }
+}
