@@ -107,7 +107,7 @@
 </template>
 
 <script>
-import stayPreview from './stay-preview';
+import stayPreview from "./stay-preview";
 export default {
   props: {
     stays: Array,

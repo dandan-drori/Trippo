@@ -65,12 +65,6 @@
         <img src="@/assets/imgs/outdoors.webp" alt="" />
       </div>
     </div>
-    <footer>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque sed
-        fugiat, quo, consectetur rerum minus eos obcaecat
-      </p>
-    </footer>
   </div>
 </template>
 

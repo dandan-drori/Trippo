@@ -113,11 +113,15 @@
   }
   & h3 {
     font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 52px;
     & span {
       display: block;
     }
   }
   & p {
+    padding-top: 10px;
+    font-weight: 300;
     font-size: 0.9rem;
   }
   & img {
@@ -128,17 +132,10 @@
   & button {
     background-color: #222222;
     color: #fff;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
   }
-}
-
-footer {
-  padding: 25px 0;
-  font-size: 0.6rem;
-  text-align: center;
-  border-top: 1px solid #ddd;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
 }
