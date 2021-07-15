@@ -1,5 +1,4 @@
 .filter-container {
-<<<<<<< HEAD
   letter-spacing: 0.8px;
   width: 100%;
   max-width: 850px;
@@ -18,13 +17,7 @@
     position: fixed;
     top: 7.5px;
     z-index: 4;
-    width: 45%;
-    & input {
-      width: 80%;
-    }
-    & form {
-      width: 100%;
-    }
+    width: 50%;
   }
 
   & form {
@@ -56,144 +49,92 @@
       }
     }
   }
-=======
-	letter-spacing: 0.8px;
-	width: 100%;
-	max-width: 850px;
-	background-color: #fff;
-	height: 65px;
-	border-radius: 5rem;
-	position: absolute;
-	top: 80px;
-	left: 50%;
-	transform: translateX(-50%);
-	z-index: 2;
-	box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.15), 0px 3px 8px rgba(0, 0, 0, 0.1);
-	transition: 0.3s;
-
-	&.scrolled {
-		position: fixed;
-		top: 7.5px;
-		z-index: 4;
-		width: 50%;
-	}
-
-	& form {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: space-between;
-
-		& small {
-			font-weight: 600;
-			font-size: 0.6rem;
-			line-height: 1rem;
-			color: #222222;
-		}
-
-		& input {
-			border: none;
-			outline: none;
-			background-color: transparent;
-		}
-
-		& > div {
-			border-radius: 2rem;
-			padding: 10px;
-			padding-inline-start: 20px;
-
-			&:hover {
-				background-color: #ebebeb;
-			}
-		}
-	}
->>>>>>> bf452f10d69f7c82a5e9e5b26b3d514f2812d69b
 }
 
 .loc-input {
-	flex: 4;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .checkin-input,
 .checkout-input {
-	flex: 3;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .guests-input {
-	position: relative;
-	display: flex;
-	flex-direction: row;
-	cursor: pointer;
-	> div {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-	flex: 3;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  flex: 3;
 }
 .guests-modal {
-	position: absolute;
-	top: 75px;
-	right: 0;
-	border-radius: 1.6rem;
-	padding: 0.3rem 1.5rem;
-	background-color: #fff;
-	box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
-	& .type {
-		display: flex;
-		gap: 40px;
-		padding: 12px 0 5px;
-		border-bottom: 1px solid #ebebeb;
-	}
-	& :last-child {
-		border-bottom: none;
-	}
-	& .details {
-		min-width: 130px;
-	}
+  position: absolute;
+  top: 75px;
+  right: 0;
+  border-radius: 1.6rem;
+  padding: 0.3rem 1.5rem;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+  & .type {
+    display: flex;
+    gap: 40px;
+    padding: 12px 0 5px;
+    border-bottom: 1px solid #ebebeb;
+  }
+  & :last-child {
+    border-bottom: none;
+  }
+  & .details {
+    min-width: 130px;
+  }
 
-	& p {
-		font-size: 0.8rem;
-		font-weight: 500;
-	}
-	& span {
-		font-size: 0.7rem;
-		font-weight: 300;
-	}
+  & p {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  & span {
+    font-size: 0.7rem;
+    font-weight: 300;
+  }
 }
 
 .el-input-number {
-	width: 110px;
-	& > span {
-		background-color: #fff;
-		border: 1px solid #b5b5b5;
-		border-radius: 50%;
-		width: 31px;
-		height: 31px;
-		display: flex;
-		align-content: center;
-		align-items: center;
-		justify-content: center;
+  width: 110px;
+  & > span {
+    background-color: #fff;
+    border: 1px solid #b5b5b5;
+    border-radius: 50%;
+    width: 31px;
+    height: 31px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
 
-		& i {
-			font-size: 0.8rem;
-			font-weight: 900;
-		}
-	}
+    & i {
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+  }
 }
 
 .search-btn {
-	background-color: #ff385c;
-	width: 50px;
-	height: 52px;
-	border-radius: 50%;
-	& img {
-		width: 25px;
-	}
+  background-color: #ff385c;
+  width: 50px;
+  height: 52px;
+  border-radius: 50%;
+  & img {
+    width: 25px;
+  }
 }
