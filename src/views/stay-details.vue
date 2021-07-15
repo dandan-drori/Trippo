@@ -82,7 +82,11 @@
 						</section>
 					</section>
 				</section>
-				<stay-checkout :price="stay.price" :reviews="stay.reviews" />
+				<stay-checkout
+					:price="stay.price"
+					:reviews="stay.reviews"
+					:accommodates="stay.accommodates"
+				/>
 			</section>
 			<review-list :reviews="stay.reviews" />
 			<stay-map :loc="stay.loc" />
