@@ -13,14 +13,14 @@
 - element-ui
 - vue-google-maps
 - node-sass
+- socket.io-client
+- jest
 - axios
 - express
 - cors
-- jest
 - express-session
 - dotenv
 - socket.io
-- socket.io-client
 - bcrypt
 - mongodb
 - vuex
@@ -33,18 +33,21 @@
 - Review JSON data - DONE
 - Build empty project - only folders and empty files - DONE
 - Initialize a git repository - DONE
-- Integrate async-storage-service.js
+- Integrate async-storage-service.js - DONE
+- SCSS - write mixins, helpers, base - DONE
+- Homepage - DONE
+- Stay-List + Stay-Preview - DONE
 
-- SCSS - write mixins, helpers, base
-- Homepage
-- Stay-List + Stay-Preview
+* add new stay
+* remove stay
+* update order status
+
 - Stay-Details + Stay-Add/Stay-Edit
 - Filtering + Sorting (Together)
 - Dashboard
 - User-Msg
 - About page
 - Login/Signup/Logout
-
 - Upload to heroku
 - Mongo in the cloud
 - Cloudinary
