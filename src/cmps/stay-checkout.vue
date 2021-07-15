@@ -14,6 +14,7 @@
 		<section class="pickers">
 			<div class="block">
 				<el-date-picker
+					class="checkout"
 					v-model="dates"
 					type="daterange"
 					range-separator="To"
@@ -39,16 +40,16 @@
 				<small>You won't be charged yet</small>
 				<div class="charges">
 					<p>Accomodation</p>
-					<p>some price</p>
+					<p>{{ computedPrice.accomodation }}</p>
 				</div>
 				<div class="charges">
 					<p>Service fee</p>
-					<p>some lower price</p>
+					<p>{{ computedPrice.service }}</p>
 				</div>
 			</div>
 			<div class="total">
 				<p>Total</p>
-				<p>some high af price</p>
+				<p>{{ computedPrice.total }}</p>
 			</div>
 		</section>
 	</section>
@@ -101,6 +102,27 @@ export default {
 		},
 		checkoutBtnTxt() {
 			return this.dates ? 'Reserve' : 'Check availabilty'
+		},
+		computedPrice() {
+			const checkin = this.dates[0].getTime()
+			const checkout = this.dates[1].getTime()
+			const days = (checkout - checkin) / 1000 / 60 / 60 / 24
+			const accomodation = this.price * days
+			const service = this.price / 10
+			const total = accomodation + service
+
+			var formatter = new Intl.NumberFormat('en-US', {
+				style: 'currency',
+				currency: 'USD',
+				minimumFractionDigits: 0,
+				maximumFractionDigits: 0,
+			})
+
+			return {
+				accomodation: formatter.format(accomodation),
+				service: formatter.format(service),
+				total: formatter.format(total),
+			}
 		},
 	},
 	methods: {

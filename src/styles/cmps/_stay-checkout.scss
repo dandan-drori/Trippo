@@ -175,41 +175,45 @@
 	}
 }
 
-.el-range-editor.is-active,
-.el-range-editor.is-active:hover {
-	border-color: #ccc;
+.stay-checkout {
+	.el-range-editor.is-active,
+	.el-range-editor.is-active:hover {
+		border-color: #ccc;
+	}
+
+	.el-date-table td.available:hover {
+		color: #222;
+	}
+
+	.el-date-table td.available.today span {
+		color: #222;
+	}
+
+	.el-date-table td.in-range div,
+	.el-date-table td.in-range div:hover,
+	.el-date-table.is-week-mode .el-date-table__row.current div,
+	.el-date-table.is-week-mode .el-date-table__row:hover div {
+		background-color: #f3f3f3;
+	}
+
+	.el-date-range-picker .el-picker-panel__body {
+		padding: 20px;
+	}
 }
 
-.el-date-table td.available:hover {
+.el-date-editor .el-range-separator {
+	padding-top: 15px;
 	color: #222;
-}
-
-.el-date-table td.available.today span {
-	color: #222;
-}
-
-.el-date-table td.in-range div,
-.el-date-table td.in-range div:hover,
-.el-date-table.is-week-mode .el-date-table__row.current div,
-.el-date-table.is-week-mode .el-date-table__row:hover div {
-	background-color: #f3f3f3;
-}
-
-.el-date-range-picker .el-picker-panel__body {
-	padding: 20px;
 }
 
 .el-picker-panel.el-date-range-picker.el-popper {
+	width: 50%;
 	border-radius: 20px;
-	transform: scale(1.2);
 	margin-right: 70px;
-}
-
-.el-date-table td.end-date span,
-.el-date-table td.start-date span {
-	background-color: #222;
-	color: #fff !important;
-	font-weight: 500;
+	transform: scale(1.2) !important;
+	top: 869px !important;
+	left: initial !important;
+	right: 20px !important;
 }
 
 .el-date-editor--daterange.el-input,
@@ -217,13 +221,15 @@
 .el-date-editor--timerange.el-input,
 .el-date-editor--timerange.el-input__inner {
 	width: 100%;
+	border: 1px solid #ccc;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
 	height: 70px;
 }
 
-.el-date-editor .el-range-separator {
-	padding-top: 18px;
-	color: #303133;
-	width: 10%;
+.el-date-table td.end-date span,
+.el-date-table td.start-date span {
+	background-color: #222;
+	color: #fff !important;
+	font-weight: 500;
 }
