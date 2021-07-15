@@ -23,7 +23,9 @@
 				</el-date-picker>
 			</div>
 		</section>
-		<button>Check availabilty</button>
+		<button ref="myBtn">
+			<span>Check availabilty</span>
+		</button>
 		<section v-if="dates">
 			<div>
 				<p>You won't be charged yet</p>
@@ -88,6 +90,15 @@ export default {
 			}, 0)
 			return (sum / this.reviews.length).toFixed(1)
 		},
+	},
+	mounted() {
+		this.$refs.myBtn.onmousemove = e => {
+			const x = e.pageX - e.target.offsetLeft
+			const y = e.pageY - e.target.offsetTop
+
+			e.target.style.setProperty('--x', `${x}px`)
+			e.target.style.setProperty('--y', `${y}px`)
+		}
 	},
 }
 </script>
