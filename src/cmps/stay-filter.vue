@@ -1,6 +1,6 @@
 <template>
   <div class="filter-container">
-    <form action="" @submit.prevent>
+    <form action="" @submit.prevent="search">
       <div class="loc-input">
         <small>Location</small>
         <input type="text" placeholder="Where are you going" />
@@ -14,7 +14,7 @@
         <small>Check out</small>
         <input type="text" />
       </div>
-      <div class="guests-input">
+      <div class="guests-input" @click="toggleGuestsModal">
         <div>
           <small>Guests</small>
           <input type="text" placeholder="Add guests" />
@@ -24,17 +24,16 @@
             <img src="../assets/imgs/search_white_24dp.svg" alt="" />
           </button>
         </div>
-        <div class="guests-modal">
+        <div class="guests-modal" v-if="isGuestsModalOpen" @click.stop>
           <div class="type">
             <div class="details">
               <p>Adults</p>
               <span>Ages 13 or above</span>
             </div>
             <el-input-number
-              v-model="num"
-              @change="handleChange"
-              :min="1"
-              :max="10"
+              v-model="adults"
+              :min="0"
+              :max="100"
             ></el-input-number>
           </div>
           <div class="type">
@@ -43,10 +42,9 @@
               <span>Ages 2-12</span>
             </div>
             <el-input-number
-              v-model="num"
-              @change="handleChange"
-              :min="1"
-              :max="10"
+              v-model="children"
+              :min="0"
+              :max="100"
             ></el-input-number>
           </div>
           <div class="type">
@@ -55,10 +53,9 @@
               <span>under 2</span>
             </div>
             <el-input-number
-              v-model="num"
-              @change="handleChange"
-              :min="1"
-              :max="10"
+              v-model="infants"
+              :min="0"
+              :max="100"
             ></el-input-number>
           </div>
         </div>
@@ -72,12 +69,22 @@ import datePicker from "../cmps/date-picker.vue";
 export default {
   data() {
     return {
-      num: 1,
+      adults: 0,
+      children: 0,
+      infants: 0,
+      isGuestsModalOpen: false,
     };
   },
   methods: {
-    handleChange(value) {
-      console.log(value);
+    toggleGuestsModal() {
+      this.isGuestsModalOpen = !this.isGuestsModalOpen;
+    },
+    search() {
+      let numOfGuests = this.adults + this.children + this.infants;
+      console.log(numOfGuests);
+      this.adults = 0;
+      this.children = 0;
+      this.infants = 0;
     },
   },
   components: {

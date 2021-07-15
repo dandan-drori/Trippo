@@ -29,7 +29,7 @@ export const gStays = [
     loc: {
       country: 'New York',
       countryCode: 'NY',
-      address: 'Manhattan, New York',
+      address: 'New York, New York',
       lat: 40.73061,
       lng: -73.935242,
     },
@@ -96,7 +96,7 @@ export const gStays = [
     loc: {
       country: 'New York',
       countryCode: 'NY',
-      address: 'Manhattan, New York',
+      address: 'New York, New York',
       lat: 40.73061,
       lng: -73.935242,
     },
@@ -129,7 +129,7 @@ export const gStays = [
     loc: {
       country: 'New York',
       countryCode: 'NY',
-      address: 'Central Park, New York',
+      address: 'New York, New York',
       lat: 40.73061,
       lng: -73.935242,
     },
@@ -149,7 +149,7 @@ export const gStays = [
     loc: {
       country: 'New York',
       countryCode: 'NY',
-      address: 'Time Square, New York',
+      address: 'New York, New York',
       lat: 40.73061,
       lng: -73.935242,
     },
@@ -181,7 +181,7 @@ export const gStays = [
     loc: {
       country: 'New York',
       countryCode: 'NY',
-      address: 'China Town, New York',
+      address: 'New York, New York',
       lat: 40.73061,
       lng: -73.935242,
     },
@@ -194,7 +194,7 @@ export const gStays = [
     imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
     price: 197,
     summary:
-      'Rooftop studio in Paris a lot of bars and restaurants great place to discover paris kitchen',
+      'Rooftop studio in Paris,, a lot of bars and restaurants great place to discover Paris,, kitchen',
     propertyType: 'Apartment',
     accommodates: 6,
     amenities: [
@@ -214,7 +214,7 @@ export const gStays = [
     loc: {
       country: 'France',
       countryCode: 'FR',
-      address: 'Paris France',
+      address: 'Paris, France',
       lat: 48.8566,
       lng: 2.3522,
     },
@@ -254,7 +254,7 @@ export const gStays = [
     loc: {
       country: 'France',
       countryCode: 'FR',
-      address: 'Paris France',
+      address: 'Paris, France',
       lat: 48.8566,
       lng: 2.3522,
     },
@@ -294,7 +294,7 @@ export const gStays = [
     loc: {
       country: 'France',
       countryCode: 'FR',
-      address: 'Paris France',
+      address: 'Paris, France',
       lat: 48.8566,
       lng: 2.3522,
     },
@@ -314,7 +314,7 @@ export const gStays = [
     imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
     price: 410,
     summary:
-      'Wake up on the cozy mezzanine level, then open the windows downstairs and people-watch at this modern duplex in the heart of historic Paris. Clean, pure decor and historic elements combine on a quiet pedestrian street in the charming LeMarais district.',
+      'Wake up on the cozy mezzanine level, then open the windows downstairs and people-watch at this modern duplex in the heart of historic Paris,. Clean, pure decor and historic elements combine on a quiet pedestrian street in the charming LeMarais district.',
     propertyType: 'House',
     accommodates: 5,
     amenities: [
@@ -334,7 +334,7 @@ export const gStays = [
     loc: {
       country: 'France',
       countryCode: 'FR',
-      address: 'Paris France',
+      address: 'Paris, France',
       lat: 48.8566,
       lng: 2.3522,
     },
@@ -374,7 +374,7 @@ export const gStays = [
     loc: {
       country: 'France',
       countryCode: 'FR',
-      address: 'Paris France',
+      address: 'Paris, , France',
       lat: 48.8566,
       lng: 2.3522,
     },
@@ -394,7 +394,7 @@ export const gStays = [
     imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
     price: 1500,
     summary:
-      'Open the floor-to-ceiling windows to admire the iconic sights from the Juliet balcony with a cup of Nespresso in hand. The interior is air-conditioned, rare in Paris.',
+      'Open the floor-to-ceiling windows to admire the iconic sights from the Juliet balcony with a cup of Nespresso in hand. The interior is air-conditioned, rare in Paris,,.',
     propertyType: 'Vila',
     accommodates: 2,
     amenities: [
@@ -414,7 +414,7 @@ export const gStays = [
     loc: {
       country: 'France',
       countryCode: 'FR',
-      address: 'Paris France',
+      address: 'Paris,, France',
       lat: 48.8566,
       lng: 2.3522,
     },
@@ -627,11 +627,14 @@ async function query(filterBy) {
           isAmenityIncluded = false;
         }
       });
+      // console.log(stay.loc.address.split(',')[0].trim(), '!!!!');
+      console.log(filterBy.city);
       return (
         stay.price >= filterBy.price[0] &&
         stay.price <= filterBy.price[1] &&
         isTypeIncluded &&
-        isAmenityIncluded
+        isAmenityIncluded &&
+        stay.loc.address.split(',')[0].trim() === filterBy.city
       );
     });
   }
