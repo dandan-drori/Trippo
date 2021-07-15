@@ -1,0 +1,65 @@
+.stay-checkout {
+	position: sticky;
+	top: 0;
+	width: 30%;
+	padding: 30px;
+	border-radius: 15px;
+	box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.2), -1px -1px 0 0 rgba(0, 0, 0, 0.2);
+	height: fit-content;
+
+	.checkout-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 20px;
+
+		p:nth-of-type(1) {
+			.price {
+				font-size: 1.8rem;
+				color: #000;
+				font-weight: bolder;
+			}
+		}
+
+		p:nth-of-type(2) {
+			i {
+				color: #ff385c;
+				font-size: 1.4rem;
+			}
+			span {
+			}
+		}
+	}
+
+	.pickers {
+		margin-bottom: 20px;
+
+		.block {
+			.el-date-table {
+				td.end-date,
+				td.start-date {
+					span {
+						background-color: red !important;
+					}
+				}
+			}
+
+			.el-date-table {
+				td.today {
+					span {
+						color: red;
+					}
+				}
+			}
+		}
+	}
+
+	button {
+		width: 100%;
+		padding: 1rem 0;
+		font-size: 1.5rem;
+		border-radius: 10px;
+		background-color: #ff385c;
+		color: #fafafa;
+	}
+}
