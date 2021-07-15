@@ -2,7 +2,7 @@ import { userService } from '@/services/user-service.js'
 
 export default {
 	state: {
-		// loggedinUser: userService.getLoggedInUser(),
+		loggedinUser: userService.getLoggedInUser(),
 		users: [],
 	},
 	getters: {

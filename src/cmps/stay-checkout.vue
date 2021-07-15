@@ -20,6 +20,7 @@
 					range-separator="To"
 					start-placeholder="Check-in"
 					end-placeholder="Checkout"
+					ref="myDatePicker"
 				>
 				</el-date-picker>
 			</div>
@@ -32,7 +33,7 @@
 				<button :class="{ show: guestsCount < accommodates }" @click="incGuests">+</button>
 			</div>
 		</section>
-		<button ref="myBtn" class="checkout-btn">
+		<button ref="myBtn" class="checkout-btn" @click="checkout">
 			<span>{{ checkoutBtnTxt }}</span>
 		</button>
 		<section v-if="dates" class="reservation-data">
@@ -135,6 +136,17 @@ export default {
 			if (this.guestsCount < this.accommodates) {
 				this.guestsCount++
 			}
+		},
+		checkout() {
+			if (!this.dates) {
+				this.$refs.myDatePicker.focus()
+				return
+			}
+			this.$emit('checkout', {
+				dates: this.dates,
+				guests: this.guestsCount,
+				total: this.computedPrice.total,
+			})
 		},
 	},
 	mounted() {
