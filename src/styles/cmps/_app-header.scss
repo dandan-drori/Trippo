@@ -8,6 +8,7 @@ header {
   color: #fff;
   letter-spacing: 0.1px;
   &.scrolled {
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
     background-color: #fff;
     color: rgb(14, 14, 14);
     & h1 {

@@ -27,7 +27,6 @@
 
     & input {
       border: none;
-
       outline: none;
       background-color: transparent;
     }
@@ -60,6 +59,7 @@
 }
 
 .guests-input {
+  position: relative;
   display: flex;
   flex-direction: row;
   > div {
@@ -68,6 +68,59 @@
     justify-content: center;
   }
   flex: 3;
+}
+.guests-modal {
+  position: absolute;
+  top: 75px;
+  right: 0;
+  border-radius: 1.6rem;
+  padding: 0.3rem 1.5rem;
+  background-color: #fff;
+  & .type {
+    display: flex;
+    gap: 40px;
+    padding: 12px 0 5px;
+    border-bottom: 1px solid #ebebeb;
+  }
+  & :last-child {
+    border-bottom: none;
+  }
+  & .details {
+    min-width: 130px;
+  }
+
+  & p {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  & span {
+    font-size: 0.7rem;
+    font-weight: 300;
+  }
+}
+
+.el-input-number {
+  width: 110px;
+  & > span {
+    background-color: #fff;
+    border: 1px solid #b5b5b5;
+    border-radius: 50%;
+    width: 31px;
+    height: 31px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+
+    & i {
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+  }
+}
+
+input.el-input__inner {
+  font-size: 0.9rem;
 }
 
 .search-btn {
@@ -82,4 +135,98 @@
 
 .el-input__icon {
   display: none;
+}
+
+.el-picker-panel.el-date-range-picker.el-popper {
+  width: 66%;
+  border-radius: 1.6rem;
+  left: 50% !important;
+  top: 0 !important;
+  transform: translate(-50%, 36%);
+  padding: 1rem;
+  & span {
+    color: #000000;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+  & td div {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    max-width: 60px;
+    height: 45px;
+  }
+}
+
+.date {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1rem;
+  outline: none;
+  background-color: transparent;
+  height: 20px;
+}
+
+.el-date-editor,
+.el-range-editor,
+.el-input__inner,
+.el-date-editor--daterange {
+  height: 20px;
+  justify-content: flex-start;
+  background-color: transparent;
+  border: none;
+
+  & .el-input__icon.el-range__close-icon {
+    display: none;
+  }
+}
+
+.el-date-editor .el-range-separator {
+  width: 68px;
+}
+
+input {
+  &.el-range-input {
+    width: 100px;
+    height: 20px;
+    font-size: 0.8rem;
+    line-height: 20px;
+    text-indent: -50px;
+    background-color: transparent;
+  }
+}
+
+.block.date:hover {
+  background-color: transparent;
+}
+
+.el-date-table td.end-date span,
+.el-date-table td.start-date span {
+  background-color: #222;
+  color: #fff !important;
+  font-weight: 500;
+  font-size: 0.7rem;
+}
+
+.el-date-table td.in-range div,
+.el-date-table td.in-range div:hover,
+.el-date-table.is-week-mode .el-date-table__row.current div,
+.el-date-table.is-week-mode .el-date-table__row:hover div {
+  background-color: #eeeeee;
+}
+
+td {
+  height: 45px !important;
+  width: 45px !important;
+}
+
+.popper__arrow {
+  left: 35% !important;
 }
