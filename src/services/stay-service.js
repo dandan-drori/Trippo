@@ -634,7 +634,10 @@ async function query(filterBy) {
         stay.price <= filterBy.price[1] &&
         isTypeIncluded &&
         isAmenityIncluded &&
-        stay.loc.address.split(',')[0].trim() === filterBy.city
+        stay.loc.address
+          .split(',')[0]
+          .trim()
+          .includes(filterBy.city)
       );
     });
   }
