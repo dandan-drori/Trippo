@@ -25,7 +25,7 @@ export default {
 	},
 	methods: {
 		setFilter() {
-			this.$emit('filter', { filterBy: this.filterBy })
+			this.$emit('filter', this.filterBy)
 		},
 	},
 }

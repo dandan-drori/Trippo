@@ -9,7 +9,8 @@
 				<button class="add-stay">Add New Stay</button>
 			</div>
 		</section>
-		<section class="data" v-if="!isModalOpen">
+		<section class="data">
+			<stay-add v-if="isModalOpen" />
 			<section class="statistics">
 				<p>Assets you own: {{ loggedInUser.stays.length }}</p>
 				<p>Orders: {{ loggedInUser.orders.length }}</p>
@@ -43,10 +44,12 @@
 
 <script>
 import filterOrders from '@/cmps/filter-orders'
+import stayAdd from '@/cmps/stay-add'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'
+
 export default {
-	components: { FontAwesomeIcon, filterOrders },
+	components: { FontAwesomeIcon, filterOrders, stayAdd },
 	data() {
 		return {
 			check: faCheck,
@@ -78,7 +81,7 @@ export default {
 			return this.$store.getters.loggedinUser
 		},
 		computedOrders() {
-			return this.loggedInUser.orders.map(order => {
+			const orders = this.loggedInUser.orders.map(order => {
 				for (let i = 0; i < this.loggedInUser.stays.length; i++) {
 					if (order.stay._id === this.loggedInUser.stays[i]._id) {
 						if (
@@ -93,6 +96,7 @@ export default {
 					}
 				}
 			})
+			return orders.filter(o => o)
 		},
 	},
 }
