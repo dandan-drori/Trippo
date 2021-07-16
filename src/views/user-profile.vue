@@ -13,44 +13,72 @@
       </div>
     </section>
     <section class="data">
+      <stay-add v-if="isModalOpen" />
       <section class="statistics">
         <p>Assets you own: {{ loggedInUser.stays.length }}</p>
         <p>Orders: {{ loggedInUser.orders.length }}</p>
       </section>
-      <section>
+      <section class="orders-table">
         <h2>Orders:</h2>
         <filter-orders :orders="loggedInUser.orders" @filter="setFilter" />
-        <article v-for="stay in loggedInUser.stays" :key="stay._id">
-          <el-table
-            :data="computedOrders"
-            style="width: 100%"
-            :row-class-name="tableRowClassName"
-          >
-            <el-table-column prop="stay.name" label="Name" width="180">
-            </el-table-column>
-            <el-table-column prop="buyer.fullname" label="Guest" width="120">
-            </el-table-column>
-            <el-table-column prop="startDate" label="Check-In" width="140">
-            </el-table-column>
-            <el-table-column prop="endDate" label="Check-Out" width="140">
-            </el-table-column>
-            <el-table-column prop="status" label="Status" width="140">
-            </el-table-column>
-            <el-table-column width="140">
-              <slot>
-                <button class="approve">
-                  <font-awesome-icon :icon="check" />
-                </button>
-                <button class="reject">
-                  <font-awesome-icon :icon="times" />
-                </button>
-              </slot>
-            </el-table-column>
-          </el-table>
-        </article>
+        <el-table
+          :data="computedOrders"
+          style="width: 100%"
+          :row-class-name="tableRowClassName"
+        >
+          <el-table-column prop="stay.name" label="Name" width="180">
+          </el-table-column>
+          <el-table-column prop="buyer.fullname" label="Guest" width="120">
+          </el-table-column>
+          <el-table-column prop="startDate" label="Check-In" width="140">
+          </el-table-column>
+          <el-table-column prop="endDate" label="Check-Out" width="140">
+          </el-table-column>
+          <el-table-column prop="status" label="Status" width="140">
+          </el-table-column>
+          <el-table-column width="120">
+            <slot scope="row">
+              <button
+                class="approve"
+                @click="changeOrderStatus(scope, 'approve')"
+              >
+                <font-awesome-icon :icon="check" />
+              </button>
+              <button class="reject" @click="changeOrderStatus(row, 'reject')">
+                <font-awesome-icon :icon="times" />
+              </button>
+            </slot>
+          </el-table-column>
+        </el-table>
       </section>
-      <stay-add v-if="isModalOpen" />
+      <section class="stays-table">
+        <h2>Stays:</h2>
+        <filter-orders :stays="loggedInUser.stays" @filter="setFilter" />
+        <el-table
+          :data="computedStays"
+          style="width: 100%"
+          :row-class-name="tableRowClassName"
+        >
+          <el-table-column prop="name" label="Name" width="280">
+          </el-table-column>
+          <el-table-column prop="country" label="Country" width="180">
+          </el-table-column>
+          <el-table-column prop="price" label="Price / Night" width="180">
+          </el-table-column>
+          <el-table-column width="120">
+            <slot>
+              <button class="approve">
+                <font-awesome-icon :icon="check" />
+              </button>
+              <button class="reject">
+                <font-awesome-icon :icon="times" />
+              </button>
+            </slot>
+          </el-table-column>
+        </el-table>
+      </section>
     </section>
+    <stay-add v-if="isModalOpen"></stay-add>
   </section>
 </template>
 
@@ -59,9 +87,10 @@ import filterOrders from '@/cmps/filter-orders';
 import stayAdd from '@/cmps/stay-add';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import StayAdd from '../cmps/stay-add.vue';
 
 export default {
-  components: { FontAwesomeIcon, filterOrders, stayAdd },
+  components: { FontAwesomeIcon, filterOrders, stayAddStayAdd },
   data() {
     return {
       check: faCheck,
@@ -74,7 +103,11 @@ export default {
     };
   },
   methods: {
-    tableRowClassName({ row }) {
+    tableRowClassName({ row, rowIndex }) {
+      switch (rowIndex) {
+        case 0:
+      }
+
       if (row.status === 'pending') {
         return 'warning-row';
       } else if (row.status === 'rejected') {
@@ -86,6 +119,9 @@ export default {
     },
     setFilter(filterBy) {
       this.filterBy = filterBy;
+    },
+    changeOrderStatus(row, newStatus) {
+      console.log('row', row);
     },
     openModal() {
       this.isModalOpen = true;
@@ -99,9 +135,10 @@ export default {
       const orders = this.loggedInUser.orders.map((order) => {
         for (let i = 0; i < this.loggedInUser.stays.length; i++) {
           if (order.stay._id === this.loggedInUser.stays[i]._id) {
+            const regex = new RegExp(this.filterBy.name, 'i');
             if (
               order.status.includes(this.filterBy.status) &&
-              order.stay.name.includes(this.filterBy.name)
+              regex.test(order.stay.name)
             ) {
               const newOrder = JSON.parse(JSON.stringify(order));
               newOrder.startDate = new Date(newOrder.startDate)
@@ -117,6 +154,16 @@ export default {
       });
       return orders.filter((o) => o);
     },
+    computedStays() {
+      const stays = this.loggedInUser.stays.map((stay) => {
+        console.log('stay', stay);
+        return stay;
+      });
+      return stays;
+    },
+  },
+  created() {
+    this.$emit('scrolled', true);
   },
 };
 </script>
