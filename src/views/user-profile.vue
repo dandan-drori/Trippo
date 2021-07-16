@@ -9,11 +9,13 @@
         <p>update photo</p>
       </div>
       <div>
-        <button class="add-stay" @click="openModal">Add New Stay</button>
+        <button class="add-stay" @click="openModal">
+          Add New Stay
+        </button>
       </div>
     </section>
-    <section class="data">
-      <stay-add v-if="isModalOpen" />
+    <stay-add v-if="isModalOpen" @close="closeModal" />
+    <section class="data" v-if="!isModalOpen">
       <section class="statistics">
         <p>Assets you own: {{ loggedInUser.stays.length }}</p>
         <p>Orders: {{ loggedInUser.orders.length }}</p>
@@ -78,7 +80,6 @@
         </el-table>
       </section>
     </section>
-    <stay-add v-if="isModalOpen"></stay-add>
   </section>
 </template>
 
@@ -87,10 +88,9 @@ import filterOrders from '@/cmps/filter-orders';
 import stayAdd from '@/cmps/stay-add';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import StayAdd from '../cmps/stay-add.vue';
 
 export default {
-  components: { FontAwesomeIcon, filterOrders, stayAddStayAdd },
+  components: { FontAwesomeIcon, filterOrders, stayAdd },
   data() {
     return {
       check: faCheck,
@@ -125,6 +125,9 @@ export default {
     },
     openModal() {
       this.isModalOpen = true;
+    },
+    closeModal(val) {
+      this.isModalOpen = val;
     },
   },
   computed: {
