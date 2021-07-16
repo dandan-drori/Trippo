@@ -82,7 +82,51 @@ export default {
         throw err;
       }
     },
-    async saveStay({ commit }, { stay }) {
+    async saveStay({ dispatch, commit, rootGetters }, { stay }) {
+      switch (stay.loc.country) {
+        case 'New York':
+          stay.loc.countryCode = 'NY';
+          break;
+        case 'Netherlands':
+          stay.loc.countryCode = 'NL';
+          break;
+        case 'France':
+          stay.loc.countryCode = 'FR';
+          break;
+      }
+      stay.amenities = stay.amenities.map((amenity) => {
+        switch (amenity) {
+          case 'TV':
+            return {
+              txt: 'TV',
+              icon: 'el-icon-monitor',
+            };
+          case 'Wifi':
+            return {
+              txt: 'Wifi',
+              icon: 'wifi',
+              fa: true,
+            };
+          case 'Kitchen':
+            return { txt: 'Kitchen', icon: 'el-icon-knife-fork' };
+
+          case 'Pets allowed':
+            return { txt: 'Pets allowed', icon: 'paw', fa: true };
+
+          case 'Shower':
+            return { txt: 'Shower', icon: 'shower', fa: true };
+          case 'Air conditioning':
+            return {
+              txt: 'Air conditioning',
+              icon: 'snowflake',
+              fa: true,
+            };
+          case 'Smoking allowed':
+            return { txt: 'Smoking allowed', icon: 'el-icon-smoking' };
+        }
+      });
+
+      console.log(stay);
       const type = stay._id ? 'updateStay' : 'addStay';
       try {
         const savedStay = await stayService.save(stay);
