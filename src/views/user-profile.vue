@@ -83,22 +83,20 @@
 </template>
 
 <script>
-import filterOrders from '@/cmps/filter-orders';
-import stayAdd from '@/cmps/stay-add';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import StayAdd from '../cmps/stay-add.vue';
+import filterOrders from "@/cmps/filter-orders";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default {
-  components: { FontAwesomeIcon, filterOrders, stayAddStayAdd },
+  components: { FontAwesomeIcon, filterOrders },
   data() {
     return {
       check: faCheck,
       times: faTimes,
       isModalOpen: false,
       filterBy: {
-        name: '',
-        status: '',
+        name: "",
+        status: "",
       },
     };
   },
@@ -108,20 +106,20 @@ export default {
         case 0:
       }
 
-      if (row.status === 'pending') {
-        return 'warning-row';
-      } else if (row.status === 'rejected') {
-        return 'error-row';
-      } else if (row.status === 'approved') {
-        return 'success-row';
+      if (row.status === "pending") {
+        return "warning-row";
+      } else if (row.status === "rejected") {
+        return "error-row";
+      } else if (row.status === "approved") {
+        return "success-row";
       }
-      return '';
+      return "";
     },
     setFilter(filterBy) {
       this.filterBy = filterBy;
     },
     changeOrderStatus(row, newStatus) {
-      console.log('row', row);
+      console.log("row", row);
     },
     openModal() {
       this.isModalOpen = true;
@@ -135,7 +133,7 @@ export default {
       const orders = this.loggedInUser.orders.map((order) => {
         for (let i = 0; i < this.loggedInUser.stays.length; i++) {
           if (order.stay._id === this.loggedInUser.stays[i]._id) {
-            const regex = new RegExp(this.filterBy.name, 'i');
+            const regex = new RegExp(this.filterBy.name, "i");
             if (
               order.status.includes(this.filterBy.status) &&
               regex.test(order.stay.name)
@@ -143,10 +141,10 @@ export default {
               const newOrder = JSON.parse(JSON.stringify(order));
               newOrder.startDate = new Date(newOrder.startDate)
                 .toLocaleString()
-                .split(',')[0];
+                .split(",")[0];
               newOrder.endDate = new Date(newOrder.endDate)
                 .toLocaleString()
-                .split(',')[0];
+                .split(",")[0];
               return newOrder;
             }
           }
@@ -156,14 +154,14 @@ export default {
     },
     computedStays() {
       const stays = this.loggedInUser.stays.map((stay) => {
-        console.log('stay', stay);
+        console.log("stay", stay);
         return stay;
       });
       return stays;
     },
   },
   created() {
-    this.$emit('scrolled', true);
+    this.$emit("scrolled", true);
   },
 };
 </script>
