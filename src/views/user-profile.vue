@@ -9,8 +9,8 @@
 				<button class="add-stay" @click="openModal">Add New Stay</button>
 			</div>
 		</section>
-		<section class="data">
-			<stay-add v-if="isModalOpen" />
+		<stay-add v-if="isModalOpen" @close="closeModal" />
+		<section class="data" v-else>
 			<section class="statistics">
 				<p>Assets you own: {{ loggedInUser.stays.length }}</p>
 				<p>Orders: {{ loggedInUser.orders.length }}</p>
@@ -26,7 +26,6 @@
 				<profile-stay-table :stays="computedStays" />
 			</section>
 		</section>
-		<stay-add v-if="isModalOpen"></stay-add>
 	</section>
 </template>
 
@@ -74,6 +73,9 @@ export default {
 		},
 		openModal() {
 			this.isModalOpen = true
+		},
+		closeModal(val) {
+			this.isModalOpen = val
 		},
 	},
 	computed: {
