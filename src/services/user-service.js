@@ -30,7 +30,7 @@ const gUsers = [
 				status: 'rejected',
 			},
 			{
-				_id: 'o1225',
+				_id: 'o1227',
 				_hostId: 'u102',
 				createdAt: 9898989,
 				buyer: {
@@ -50,7 +50,7 @@ const gUsers = [
 				status: 'approved',
 			},
 			{
-				_id: 'o1225',
+				_id: 'o1226',
 				_hostId: 'u102',
 				createdAt: 9898989,
 				buyer: {
@@ -89,8 +89,8 @@ export const userService = {
 	getById,
 	remove,
 	update,
+	removeStay,
 	getLoggedInUser,
-	increaseScore,
 }
 
 async function getUsers() {
@@ -132,9 +132,10 @@ async function logout() {
 	return await storageService.post('auth/logout')
 }
 
-function _saveLocalUser(user) {
-	sessionStorage.setItem('loggedinUser', JSON.stringify(user))
-	return user
+function removeStay(stayId, user) {
+	const idx = user.stays.findIndex(stay => stay._id === stayId)
+	user.stays.splice(idx, 1)
+	_saveLocalUser(user)
 }
 
 function getLoggedInUser() {
@@ -145,4 +146,9 @@ function getLoggedInUser() {
 		return gUsers[0]
 	}
 	return userInStorage
+}
+
+function _saveLocalUser(user) {
+	sessionStorage.setItem('loggedinUser', JSON.stringify(user))
+	return user
 }
