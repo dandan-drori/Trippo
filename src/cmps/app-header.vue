@@ -9,7 +9,7 @@
       </div>
       <div class="header-controls">
         <router-link to="/stay/edit">Become a host</router-link>
-        <button class="i18n">
+        <button class="i18n" @click="login">
           <span class="material-icons">
             language
           </span>
@@ -34,6 +34,11 @@ export default {
     return {
       airbnb: faAirbnb,
     };
+  },
+  methods: {
+    login() {
+      this.$emit("login", true);
+    },
   },
   components: { FontAwesomeIcon },
 };

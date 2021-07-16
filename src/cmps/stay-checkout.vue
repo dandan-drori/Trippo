@@ -194,7 +194,8 @@ export default {
   padding-top: 15px;
   color: #222 !important;
 }
-.stay-details {
+
+/* .stay-details {
   .el-picker-panel.el-date-range-picker.el-popper {
     width: 50%;
     border-radius: 20px;
@@ -204,7 +205,7 @@ export default {
     left: initial !important;
     right: 20px !important;
   }
-}
+} */
 
 .el-date-editor--daterange.el-input,
 .el-date-editor--daterange.el-input__inner,
