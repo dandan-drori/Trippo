@@ -1,0 +1,63 @@
+.add-container {
+	border: 1px solid black;
+	position: relative;
+	padding: 15px;
+	margin: 108px 0 25px 0;
+
+	.err {
+		display: flex;
+		flex-direction: column;
+		color: red;
+	}
+	.error {
+		color: red;
+	}
+	.el-button {
+		background-color: #fff;
+		color: #606266;
+		border: 1px solid #b0b0b0;
+		&:active,
+		&:focus,
+		&:hover {
+			color: #ff385c !important;
+			background-color: #f6f2f2;
+			border-color: #b0b0b0;
+		}
+	}
+	.el-input.error .el-input__inner {
+		border-color: red;
+	}
+	.el-input {
+		max-width: 500px;
+	}
+
+	.el-input.add-price {
+		max-width: 150px;
+	}
+	.house-input {
+		outline: none;
+	}
+	.checkbox {
+		color: #b0b0b0;
+	}
+
+	.el-checkbox__input.is-checked + .el-checkbox__label {
+		color: #b0b0b0;
+	}
+	.el-checkbox__input.is-checked .el-checkbox__inner,
+	.el-checkbox__input.is-indeterminate .el-checkbox__inner {
+		border-color: #b0b0b0;
+		background-color: #b0b0b0;
+	}
+	.el-textarea__inner:focus {
+		border-color: #b0b0b0;
+	}
+	.imgs {
+		position: absolute;
+		border: 1px solid black;
+		width: 400px;
+		height: 250px;
+		top: 70px;
+		right: 20px;
+	}
+}

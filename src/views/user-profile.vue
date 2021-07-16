@@ -12,91 +12,44 @@
         <button class="add-stay" @click="openModal">Add New Stay</button>
       </div>
     </section>
-    <section class="data">
-      <stay-add v-if="isModalOpen" />
+    <stay-add v-if="isModalOpen" @close="closeModal" />
+    <section class="data" v-else>
       <section class="statistics">
         <p>Assets you own: {{ loggedInUser.stays.length }}</p>
         <p>Orders: {{ loggedInUser.orders.length }}</p>
       </section>
       <section class="orders-table">
         <h2>Orders:</h2>
-        <filter-orders :orders="loggedInUser.orders" @filter="setFilter" />
-        <el-table
-          :data="computedOrders"
-          style="width: 100%"
-          :row-class-name="tableRowClassName"
-        >
-          <el-table-column prop="stay.name" label="Name" width="180">
-          </el-table-column>
-          <el-table-column prop="buyer.fullname" label="Guest" width="120">
-          </el-table-column>
-          <el-table-column prop="startDate" label="Check-In" width="140">
-          </el-table-column>
-          <el-table-column prop="endDate" label="Check-Out" width="140">
-          </el-table-column>
-          <el-table-column prop="status" label="Status" width="140">
-          </el-table-column>
-          <el-table-column width="120">
-            <slot scope="row">
-              <button
-                class="approve"
-                @click="changeOrderStatus(scope, 'approve')"
-              >
-                <font-awesome-icon :icon="check" />
-              </button>
-              <button class="reject" @click="changeOrderStatus(row, 'reject')">
-                <font-awesome-icon :icon="times" />
-              </button>
-            </slot>
-          </el-table-column>
-        </el-table>
+        <profile-filter :isStaysFilter="false" @filter="setFilter" />
+        <profile-table :orders="computedOrders" />
       </section>
       <section class="stays-table">
         <h2>Stays:</h2>
-        <filter-orders :stays="loggedInUser.stays" @filter="setFilter" />
-        <el-table
-          :data="computedStays"
-          style="width: 100%"
-          :row-class-name="tableRowClassName"
-        >
-          <el-table-column prop="name" label="Name" width="280">
-          </el-table-column>
-          <el-table-column prop="country" label="Country" width="180">
-          </el-table-column>
-          <el-table-column prop="price" label="Price / Night" width="180">
-          </el-table-column>
-          <el-table-column width="120">
-            <slot>
-              <button class="approve">
-                <font-awesome-icon :icon="check" />
-              </button>
-              <button class="reject">
-                <font-awesome-icon :icon="times" />
-              </button>
-            </slot>
-          </el-table-column>
-        </el-table>
+        <profile-filter :isStaysFilter="true" @filter="setStaysFilter" />
+        <profile-stay-table :stays="computedStays" />
       </section>
     </section>
-    <stay-add v-if="isModalOpen"></stay-add>
   </section>
 </template>
 
 <script>
-import filterOrders from "@/cmps/filter-orders";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import profileFilter from "@/cmps/profile-filter";
+import stayAdd from "@/cmps/stay-add";
+import profileTable from "@/cmps/profile-table";
+import ProfileStayTable from "../cmps/profile-stay-table.vue";
 
 export default {
-  components: { FontAwesomeIcon, filterOrders },
+  components: { profileFilter, stayAdd, profileTable, ProfileStayTable },
   data() {
     return {
-      check: faCheck,
-      times: faTimes,
       isModalOpen: false,
       filterBy: {
         name: "",
         status: "",
+      },
+      staysFilterBy: {
+        name: "",
+        country: "",
       },
     };
   },
@@ -118,11 +71,14 @@ export default {
     setFilter(filterBy) {
       this.filterBy = filterBy;
     },
-    changeOrderStatus(row, newStatus) {
-      console.log("row", row);
+    setStaysFilter(filterBy) {
+      this.staysFilterBy = filterBy;
     },
     openModal() {
       this.isModalOpen = true;
+    },
+    closeModal(val) {
+      this.isModalOpen = val;
     },
   },
   computed: {
@@ -153,11 +109,10 @@ export default {
       return orders.filter((o) => o);
     },
     computedStays() {
-      const stays = this.loggedInUser.stays.map((stay) => {
-        console.log("stay", stay);
-        return stay;
+      return this.loggedInUser.stays.filter((stay) => {
+        const regex = new RegExp(this.staysFilterBy.name, "i");
+        return regex.test(stay.name) || regex.test(stay.country);
       });
-      return stays;
     },
   },
   created() {

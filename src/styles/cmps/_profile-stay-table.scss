@@ -1,0 +1,22 @@
+.profile-stay-table {
+	li {
+		div:first-of-type {
+			width: 220px;
+		}
+		div:nth-of-type(2) {
+			width: 100px;
+		}
+
+		button {
+			margin-top: 10px;
+		}
+
+		.edit-btn:hover {
+			background-color: rgba(48, 184, 202, 0.63);
+		}
+
+		.delete-btn:hover {
+			background-color: rgba(255, 0, 0, 0.555);
+		}
+	}
+}

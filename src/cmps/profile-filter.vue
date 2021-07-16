@@ -7,11 +7,13 @@
 			class="name-input"
 			@input="setFilter"
 		></el-input>
+
 		<el-select
 			v-model="filterBy.status"
 			placeholder="Order Status"
 			@change="setFilter"
 			class="status-input"
+			v-if="!isStaysFilter"
 		>
 			<el-option
 				v-for="status in statusList"
@@ -26,6 +28,7 @@
 
 <script>
 export default {
+	props: { isStaysFilter: Boolean },
 	data() {
 		return {
 			filterBy: { status: '', name: '' },
@@ -39,7 +42,6 @@ export default {
 	},
 	methods: {
 		setFilter() {
-			console.log('this.filterBy', this.filterBy)
 			this.$emit('filter', this.filterBy)
 		},
 	},
