@@ -7,14 +7,7 @@
 - vee-validate
 - vue-chart.js
 
-### Already Installed
-
-- vue-moment
-- element-ui
-- vue-google-maps
-- node-sass
 - socket.io-client
-- jest
 - axios
 - express
 - cors
@@ -23,8 +16,6 @@
 - socket.io
 - bcrypt
 - mongodb
-- vuex
-- vue-router
 
 ## Tasks
 
@@ -37,17 +28,23 @@
 - SCSS - write mixins, helpers, base - DONE
 - Homepage - DONE
 - Stay-List + Stay-Preview - DONE
+- Stay-Details - DONE
+- User-Msg - DONE
 
-* add new stay
-* remove stay
-* update order status
+* add new stay - DANIEL
+* remove stay - DANDAN
+* update order status - DANDAN
+* user-profile - stays table - DANDAN
+* Dashboard - DANDAN + GUY
+* Stay-Add/Stay-Edit - DANIEL
 
-- Stay-Details + Stay-Add/Stay-Edit
 - Filtering + Sorting (Together)
-- Dashboard
-- User-Msg
 - About page
 - Login/Signup/Logout
-- Upload to heroku
+
+#### BACKEND
+
+- Sockets - connect to chat, watch-review, watch-stay, user-msg
 - Mongo in the cloud
+- Upload to heroku
 - Cloudinary

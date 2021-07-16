@@ -637,7 +637,6 @@ async function query(filterBy) {
 			)
 		})
 	}
-	console.log('staysToShow', staysToShow)
 	return staysToShow
 }
 

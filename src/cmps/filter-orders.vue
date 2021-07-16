@@ -1,13 +1,27 @@
 <template>
-	<el-select v-model="filterBy.status" placeholder="Order Status" @change="setFilter">
-		<el-option
-			v-for="status in statusList"
-			:key="status.label"
-			:label="status.label"
-			:value="status.value"
+	<section class="filter-orders">
+		<el-input
+			placeholder="Search"
+			v-model="filterBy.name"
+			clearable
+			class="name-input"
+			@input="setFilter"
+		></el-input>
+		<el-select
+			v-model="filterBy.status"
+			placeholder="Order Status"
+			@change="setFilter"
+			class="status-input"
 		>
-		</el-option>
-	</el-select>
+			<el-option
+				v-for="status in statusList"
+				:key="status.label"
+				:label="status.label"
+				:value="status.value"
+			>
+			</el-option>
+		</el-select>
+	</section>
 </template>
 
 <script>
@@ -25,6 +39,7 @@ export default {
 	},
 	methods: {
 		setFilter() {
+			console.log('this.filterBy', this.filterBy)
 			this.$emit('filter', this.filterBy)
 		},
 	},
