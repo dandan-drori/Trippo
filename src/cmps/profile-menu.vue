@@ -1,12 +1,12 @@
 <template>
-  <div v-if="isProfileModalOpen" class="profile-menu" @click="closeModal">
+  <div v-if="isProfileModalOpen" class="profile-menu" @click.stop="closeModal">
     <router-link :to="'/profile/' + userId">
       <span>Profile</span>
     </router-link>
-    <button @click="login">Login</button>
-    <button @click="toggleSignUp">Signup</button>
-    <button @click="addStay">Host your home</button>
-    <button @click="logout">Logout</button>
+    <button @click.stop="login">Login</button>
+    <button @click.stop="toggleSignUp">Signup</button>
+    <button @click.stop="addStay">Host your home</button>
+    <button @click.stop="logout">Logout</button>
   </div>
 </template>
 
@@ -21,15 +21,19 @@ export default {
     },
     login() {
       this.$emit("login", true);
+      this.$emit("closeModal", false);
     },
     toggleSignUp() {
       this.$emit("toggleSignUp", true);
+      this.$emit("closeModal", false);
     },
     addStay() {
       this.$emit("addStay");
+      this.$emit("closeModal", false);
     },
     logout() {
       this.$emit("logout");
+      this.$emit("closeModal", false);
     },
   },
   computed: {

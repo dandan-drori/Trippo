@@ -1,5 +1,5 @@
 <template>
-  <section class="login-modal">
+  <section class="login-modal" @click.stop>
     <div class="login-header">
       <button @click="close">
         <span class="material-icons">

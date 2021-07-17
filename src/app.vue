@@ -13,6 +13,7 @@
       @login="login"
       @toggleSignUp="toggleSignUp"
       @logout="logout"
+      @closeModal="closeModal"
       :isProfileModalOpen="isProfileModalOpen"
     />
     <!-- <user-msg /> -->
@@ -35,6 +36,9 @@ export default {
       isProfileModalOpen: false,
     };
   },
+  created() {
+    window.addEventListener("click", this.bodyClick);
+  },
   methods: {
     scrolled(value) {
       this.isScrolled = value;
@@ -46,7 +50,6 @@ export default {
       console.log(userCred, "userCred");
       this.$store.dispatch({ type: "signup", userCred });
     },
-
     toggleSignUp(val) {
       this.isSignupOpen = val;
     },
@@ -58,6 +61,11 @@ export default {
     },
     closeModal(val) {
       this.isProfileModalOpen = val;
+    },
+    bodyClick() {
+      this.isLoginOpen = false;
+      this.isSignupOpen = false;
+      this.isProfileModalOpen = false;
     },
   },
   components: {

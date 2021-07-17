@@ -41,7 +41,7 @@
 					</el-select>
 				</el-form-item>
 
-				<el-form-item label="Amenities">
+				<el-form-item class="Amenities" label="Amenities">
 					<el-checkbox-group v-model="stayToAdd.amenities">
 						<el-checkbox label="TV" name="TV" value="TV,el-icon-monitor"></el-checkbox>
 						<el-checkbox
@@ -87,7 +87,6 @@
 					<el-button @click="saveStay" :disabled="invalid">Create</el-button>
 					<el-button @click="closeAdd">Cancel</el-button>
 				</el-form-item>
-				<!-- <div class="imgs"></div> -->
 			</el-form>
 		</ValidationObserver>
 	</section>
@@ -95,9 +94,11 @@
 
 <script>
 import { stayService } from '../services/stay-service.js'
+import { uploadImg } from '../services/img-upload.service.js'
 import { ValidationObserver } from 'vee-validate'
 import { ValidationProvider, extend } from 'vee-validate'
 import * as rules from 'vee-validate/dist/rules'
+import imgUpload from '@/cmps/stay-img-upload'
 Object.keys(rules).forEach(rule => {
 	extend(rule, rules[rule])
 })
@@ -106,15 +107,23 @@ export default {
 	components: {
 		ValidationProvider,
 		ValidationObserver,
+		imgUpload,
 	},
 	data() {
 		return {
 			stayToAdd: null,
 			isAddOpen: true,
 			errors: [],
+			isLoading: false,
+			stayUrls: [],
 		}
 	},
 	methods: {
+		saveStaysImg(imgUrl) {
+			console.log('onSaveImg -> imgUrl', imgUrl)
+			this.stayUrls.push(imgUrl)
+			console.log(stayUrls)
+		},
 		saveStay() {
 			this.stayToAdd.host = {
 				_id: this.loggedInUser._id,
@@ -123,6 +132,7 @@ export default {
 			}
 
 			if (this.errors.length) return
+			this.stayToAdd.imgUrls = this.stayUrls
 			this.$store.dispatch({ type: 'saveStay', stay: this.stayToAdd })
 			this.$emit('close', false)
 		},

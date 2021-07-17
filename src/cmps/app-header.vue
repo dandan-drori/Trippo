@@ -20,7 +20,7 @@
 						language
 					</span>
 				</button>
-				<div @click="toggleProfile" class="profile-btn">
+				<div @click.stop="toggleProfile" class="profile-btn">
 					<span class="material-icons">
 						menu
 					</span>
