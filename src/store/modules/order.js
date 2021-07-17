@@ -37,23 +37,17 @@ export default {
 			try {
 				const type = order._id ? 'updateOrder' : 'addOrder'
 				const user = rootGetters.loggedinUser
-				const miniUser = {
-					_id: user._id,
-					fullname: user.fullname,
-					imgUrl: user.imgUrl,
-				}
 				const miniStay = {
 					_id: stay._id,
 					name: stay.name,
 					price: stay.price,
 					country: stay.loc.address,
 				}
-				order.buyer = miniUser
 				order.stay = miniStay
 				order.host = stay.host
 				const savedOrder = await orderService.save(order)
 				commit({ type, order: savedOrder })
-				delete order.buyer
+				// delete order.buyer
 				user.orders.push(order)
 				await userService.update(user)
 				return savedOrder

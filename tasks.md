@@ -9,13 +9,7 @@
 
 - socket.io-client
 - axios
-- express
-- cors
-- express-session
 - dotenv
-- socket.io
-- bcrypt
-- mongodb
 
 ## Tasks
 
@@ -30,13 +24,13 @@
 - Stay-List + Stay-Preview - DONE
 - Stay-Details - DONE
 - User-Msg - DONE
+- add new stay - DONE
+- remove stay - DONE
+- user-profile - stays table - DONE
+- Stay-Add/Stay-Edit - DONE
 
-* add new stay - DANIEL
-* remove stay - DANDAN
 * update order status - DANDAN
-* user-profile - stays table - DANDAN
 * Dashboard - DANDAN + GUY
-* Stay-Add/Stay-Edit - DANIEL
 
 - Filtering + Sorting (Together)
 - About page
@@ -44,12 +38,25 @@
 
 #### BACKEND
 
+- Cloudinary - DONE
 - Sockets - connect to chat, watch-review, watch-stay, user-msg
 - Mongo in the cloud
 - Upload to heroku
-- Cloudinary
 
-### stay desc
+# 17.07.21
+
+- test order and user backend with postman - DONE
+- connect frontend and backend - DONE
+- cloudinary - DONE
+
+- add reviews to stay-details - add - DANDAN
+- fix stay-list-filter - GUY
+- connect order backend to frontend - TOGETHER
+- use google maps api to convert address to latlng - TOGETHER
+- connect sockets - watch-order watch-stay - DANIEL
+- when updating stay - initialize amenities as checked if they are checked
+- dates in stay-details are colored blue - DANDAN + GUY
+- display nice user-msgs for _every_ error in response from the backend
 
 More than 290,000 guests have stayed in San Francisco.On average they rated their stays 4.8 out of 5 stars.
 

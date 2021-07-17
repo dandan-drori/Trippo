@@ -12,9 +12,17 @@
       <div class="input-txt">
         <h2>Welcome to Trippo</h2>
       </div>
-      <form action="" @submit.prevent>
-        <input type="text" placeholder="Enter email or username" />
-        <input type="password" placeholder="Enter password" />
+      <form action="" @submit.prevent="login">
+        <input
+          type="text"
+          placeholder="Enter email or username"
+          v-model="userCred.username"
+        />
+        <input
+          type="password"
+          placeholder="Enter password"
+          v-model="userCred.password"
+        />
         <button class="checkout-btn" ref="myBtn"><span>Continue</span></button>
       </form>
     </div>
@@ -45,7 +53,24 @@
 
 <script>
 export default {
+  data() {
+    return {
+      userCred: {
+        username: "",
+        password: "",
+      },
+    };
+  },
   methods: {
+    async login() {
+      try {
+        await this.$store.dispatch({ type: "login", userCred: this.userCred });
+        this.close();
+      } catch (err) {
+        console.log("err", err);
+        // TODO: alert user that his credentials are incorrect
+      }
+    },
     close() {
       this.$emit("login", false);
     },

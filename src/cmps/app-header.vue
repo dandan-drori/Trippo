@@ -24,15 +24,10 @@
           <span class="material-icons">
             menu
           </span>
-          <!-- <img src="../assets/imgs/user_pic-50x50.png" alt="" /> -->
-          <img
-            class="user-img"
-            src="../assets/imgs/userImgs/host4.jpg"
-            alt=""
-          />
+          <img :src="loggedInUser.imgUrl" alt="" />
         </div>
         <div v-if="isProfileModalOpen" class="profile-menu" @click="closeModal">
-          <router-link to="/profile/u101">
+          <router-link :to="'/profile/' + loggedInUser._id">
             <span>Profile</span>
           </router-link>
           <button @click="login">Login</button>
@@ -68,10 +63,15 @@ export default {
       this.isProfileModalOpen = !this.isProfileModalOpen;
     },
     logout() {
-      console.log("need to add this function");
+      this.$emit("logout");
     },
     addStay() {
       console.log("need to add this function");
+    },
+  },
+  computed: {
+    loggedInUser() {
+      return this.$store.getters.loggedinUser;
     },
   },
   components: { FontAwesomeIcon },

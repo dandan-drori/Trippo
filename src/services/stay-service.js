@@ -1,5 +1,6 @@
 import { storageService } from './async-storage-service.js'
 import { utilService } from './util-service.js'
+import { httpService } from './http.service.js'
 
 export const gStays = [
 	{
@@ -600,82 +601,94 @@ export const stayService = {
 	addReview,
 }
 
-const STAY_KEY = 'stays'
+const BASE_URL = 'stay/'
 
 async function query(filterBy) {
-	var staysInStorage = await storageService.query(STAY_KEY)
+	return await httpService.get(BASE_URL, { params: filterBy })
+	// var staysInStorage = await storageService.query(STAY_KEY)
 
-	if (!staysInStorage || !staysInStorage.length) {
-		utilService.saveToStorage(STAY_KEY, gStays)
-		return gStays
-	}
+	// if (!staysInStorage || !staysInStorage.length) {
+	// 	utilService.saveToStorage(STAY_KEY, gStays)
+	// 	return gStays
+	// }
 
-	if (filterBy) {
-		var staysToShow = staysInStorage.filter(stay => {
-			var isTypeIncluded = false
-			var isAmenityIncluded = true
-			if (!filterBy.types.length) isTypeIncluded = true
-			filterBy.types.forEach(type => {
-				if (stay.propertyType === type) {
-					isTypeIncluded = true
-				}
-			})
-			filterBy.amenities.forEach(amenity => {
-				if (!stay.amenities.includes(amenity)) {
-					isAmenityIncluded = false
-				}
-			})
-			return (
-				stay.price >= filterBy.price[0] &&
-				stay.price <= filterBy.price[1] &&
-				isTypeIncluded &&
-				isAmenityIncluded &&
-				stay.loc.address
-					.split(',')[0]
-					.trim()
-					.includes(filterBy.city)
-			)
-		})
-	}
-	return staysToShow
+	// if (filterBy) {
+	// 	var staysToShow = staysInStorage.filter(stay => {
+	// 		var isTypeIncluded = false
+	// 		var isAmenityIncluded = true
+	// 		if (!filterBy.types.length) isTypeIncluded = true
+	// 		filterBy.types.forEach(type => {
+	// 			if (stay.propertyType === type) {
+	// 				isTypeIncluded = true
+	// 			}
+	// 		})
+	// 		filterBy.amenities.forEach(amenity => {
+	// 			if (!stay.amenities.includes(amenity)) {
+	// 				isAmenityIncluded = false
+	// 			}
+	// 		})
+	// 		return (
+	// 			stay.price >= filterBy.price[0] &&
+	// 			stay.price <= filterBy.price[1] &&
+	// 			isTypeIncluded &&
+	// 			isAmenityIncluded &&
+	// 			stay.loc.address
+	// 				.split(',')[0]
+	// 				.trim()
+	// 				.includes(filterBy.city)
+	// 		)
+	// 	})
+	// }
+	// return staysToShow
 }
 
-function getById(stayId) {
-	return storageService.get(STAY_KEY, stayId)
+async function getById(stayId) {
+	return await httpService.get(`${BASE_URL}${stayId}`)
+	// return storageService.get(STAY_KEY, stayId)
 }
 
-function remove(stayId) {
-	return storageService.remove(STAY_KEY, stayId)
+async function remove(stayId) {
+	return await httpService.delete(`${BASE_URL}${stayId}`)
+	// return storageService.remove(STAY_KEY, stayId)
 }
 
-function save(stay) {
-	if (stay._id) {
-		return storageService.put(STAY_KEY, stay)
-	} else {
-		return storageService.post(STAY_KEY, stay)
-	}
+// function save(stay) {
+// 	if (stay._id) {
+// 		// return storageService.put(STAY_KEY, stay)
+// 	} else {
+// 		return storageService.post(STAY_KEY, stay)
+// 	}
+// }
+
+async function save(stay) {
+	return stay._id
+		? await httpService.put(BASE_URL + stay._id, stay)
+		: await httpService.post(BASE_URL, stay)
 }
 
-function addReview(stayId, review) {
-	if (!review) {
-		review = {
-			fullName: 'stays Reader',
-			rating: 5,
-			readAt: new Date().toLocaleString(),
-			review: 'The stay was very good!',
-		}
-	} else {
-		review = {
-			fullName: review.fullName || 'stays Reader',
-			rating: 5,
-			readAt: review.readAt || new Date().toLocaleString(),
-			review: review.review || 'The stay was very good!',
-		}
-	}
-	storageService.get(STAY_KEY, stayId).then(stay => {
-		stay.reviews.push(review)
-		storageService.put(STAY_KEY, stay)
-	})
+async function addReview(stayId, review) {
+	// if (!review) {
+	// 	review = {
+	// 		fullName: 'stays Reader',
+	// 		rating: 5,
+	// 		readAt: new Date().toLocaleString(),
+	// 		review: 'The stay was very good!',
+	// 	}
+	// } else {
+	// 	review = {
+	// 		fullName: review.fullName || 'stays Reader',
+	// 		rating: 5,
+	// 		readAt: review.readAt || new Date().toLocaleString(),
+	// 		review: review.review || 'The stay was very good!',
+	// 	}
+	// }
+	// storageService.get(STAY_KEY, stayId).then(stay => {
+	// 	stay.reviews.push(review)
+	// 	storageService.put(STAY_KEY, stay)
+	// })
+	const stay = await getById(stayId)
+	stay.reviews.push(review)
+	return await httpService.put(`${BASE_URL}${stayId}`, stay)
 }
 
 function getEmptyStay() {

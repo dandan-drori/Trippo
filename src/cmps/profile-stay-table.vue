@@ -11,7 +11,7 @@
 			<div>{{ stay.country }}</div>
 			<div>{{ formattedPrice(stay.price) }}</div>
 			<div>
-				<button class="edit-btn">
+				<button class="edit-btn" @click="onEditStay(stay)">
 					<font-awesome-icon :icon="pencil" />
 				</button>
 				<button class="delete-btn" @click="onRemoveStay(stay)">
@@ -46,6 +46,9 @@ export default {
 		},
 		onRemoveStay(stay) {
 			this.$store.dispatch({ type: 'removeStay', stayId: stay._id })
+		},
+		onEditStay(stay) {
+			this.$emit('edit-stay', stay)
 		},
 	},
 }

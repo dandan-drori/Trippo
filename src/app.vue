@@ -3,6 +3,7 @@
     <app-header
       @login="login"
       @signup="signup"
+      @logout="logout"
       :class="{ scrolled: isScrolled }"
     />
     <router-view @login="login" @scrolled="scrolled" />
@@ -37,6 +38,9 @@ export default {
     },
     signup(value) {
       this.isSignupOpen = value;
+    },
+    logout() {
+      this.$store.dispatch({ type: "logout" });
     },
   },
   components: {

@@ -1,11 +1,10 @@
-import { storageService } from './async-storage-service.js'
+import { httpService } from './http.service.js'
 
 const gUsers = [
 	{
 		_id: 'u101',
 		fullname: 'User 1',
 		imgUrl: 'host4.jpg',
-		// isHost: false,
 		username: 'user1',
 		password: 'secret',
 		orders: [
@@ -13,60 +12,27 @@ const gUsers = [
 				_id: 'o1225',
 				_hostId: 'u102',
 				createdAt: 9898989,
-				buyer: {
-					_id: 'u101',
-					fullname: 'User 1',
-					imgUrl: 'imgs/user1.jpg',
-				},
 				totalPrice: 160,
 				startDate: 162818371828,
 				endDate: 162829321938,
-				guests: 3,
-				stay: {
-					_id: '10001247',
-					name: 'House Of Uncle My',
-					price: 80.0,
-				},
 				status: 'rejected',
 			},
 			{
 				_id: 'o1227',
 				_hostId: 'u102',
 				createdAt: 9898989,
-				buyer: {
-					_id: 'u101',
-					fullname: 'User 1',
-					imgUrl: 'imgs/user1.jpg',
-				},
 				totalPrice: 160,
 				startDate: 162818371828,
 				endDate: 162829321938,
-				guests: 3,
-				stay: {
-					_id: '10001247',
-					name: 'New Stay',
-					price: 80.0,
-				},
 				status: 'approved',
 			},
 			{
 				_id: 'o1226',
 				_hostId: 'u102',
 				createdAt: 9898989,
-				buyer: {
-					_id: 'u101',
-					fullname: 'User 1',
-					imgUrl: 'imgs/user1.jpg',
-				},
 				totalPrice: 160,
 				startDate: 162818371828,
 				endDate: 162829321938,
-				guests: 3,
-				stay: {
-					_id: '10001247',
-					name: 'New Stay',
-					price: 80.0,
-				},
 				status: 'pending',
 			},
 		],
@@ -93,59 +59,49 @@ export const userService = {
 	getLoggedInUser,
 }
 
+window.userService = userService
+
+// userService.signup({ fullname: 'guest', username: 'guest', password: '123' })
+
+const BASE_URL = 'user/'
+
 async function getUsers() {
-	return await storageService.query('user')
+	return await httpService.get(BASE_URL)
 }
-
 async function getById(userId) {
-	return await storageService.get(`user/${userId}`)
+	return await httpService.get(`${BASE_URL}${userId}`)
 }
-
 async function remove(userId) {
-	return await storageService.delete(`user/${userId}`)
+	return await httpService.delete(`${BASE_URL}${userId}`)
 }
-
 async function update(user) {
-	// user = await storageService.put(`user/${user._id}`, user)
-	_saveLocalUser(user)
-}
-
-async function increaseScore(by = SCORE_FOR_REVIEW) {
-	const user = getLoggedinUser()
-	user.score = user.score + by || by
-	await update(user)
-	return user.score
+	if (user) _saveLocalUser(user)
+	return await httpService.put(`${BASE_URL}${user._id}`, user)
 }
 
 async function login(userCred) {
-	const user = await storageService.post('auth/login', userCred)
+	const user = await httpService.post('auth/login', userCred)
 	if (user) return _saveLocalUser(user)
 }
 
 async function signup(userCred) {
-	const user = await storageService.post('auth/signup', userCred)
+	const user = await httpService.post('auth/signup', userCred)
 	return _saveLocalUser(user)
 }
 
 async function logout() {
 	sessionStorage.clear()
-	return await storageService.post('auth/logout')
+	return await httpService.post('auth/logout')
 }
 
-function removeStay(stayId, user) {
+async function removeStay(stayId, user) {
 	const idx = user.stays.findIndex(stay => stay._id === stayId)
 	user.stays.splice(idx, 1)
-	_saveLocalUser(user)
+	return await httpService.put(`${BASE_URL}${user._id}`, user)
 }
 
 function getLoggedInUser() {
-	const userInStorage = JSON.parse(sessionStorage.getItem('loggedinUser') || 'null')
-	console.log('userInStorage', userInStorage)
-	if (!userInStorage || !Object.keys(userInStorage).length) {
-		_saveLocalUser(gUsers[0])
-		return gUsers[0]
-	}
-	return userInStorage
+	return JSON.parse(sessionStorage.getItem('loggedinUser') || 'null')
 }
 
 function _saveLocalUser(user) {
