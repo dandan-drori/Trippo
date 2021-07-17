@@ -3,7 +3,11 @@
 		<ValidationObserver v-slot="{ invalid }">
 			<el-form ref="form" :model="stayToAdd">
 				<el-form-item label="Property name">
-					<ValidationProvider name="Property type" rules="required|alpha" v-slot="{ errors }">
+					<ValidationProvider
+						name="Property type"
+						rules="required|alpha_spaces"
+						v-slot="{ errors }"
+					>
 						<el-input v-model="stayToAdd.name" :class="nameError"></el-input>
 						<span class="err">{{ errors[0] }}</span>
 					</ValidationProvider>
@@ -15,7 +19,7 @@
 					</ValidationProvider>
 				</el-form-item>
 				<el-form-item label="Max guests">
-					<ValidationProvider rules="between:1,5000" name="Guests amount" v-slot="{ errors }">
+					<ValidationProvider rules="between:1,1000" name="Guests amount" v-slot="{ errors }">
 						<el-input v-model.number="stayToAdd.accommodates" :class="accError"></el-input>
 						<span class="err">{{ errors[0] }}</span>
 					</ValidationProvider>

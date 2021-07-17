@@ -10,7 +10,7 @@
 		</li>
 		<li v-for="order in orders" :key="order._id" class="table-row">
 			<div>{{ order.stay.name }}</div>
-			<div>{{ order.buyer.fullname }}</div>
+			<div>{{ buyer(order) }}</div>
 			<div>{{ order.startDate }}</div>
 			<div>{{ order.endDate }}</div>
 			<div
@@ -22,7 +22,7 @@
 			>
 				{{ order.status }}
 			</div>
-			<div>
+			<div v-if="actionsVisible(order)">
 				<button
 					:class="{
 						approve: true,
@@ -30,7 +30,7 @@
 						error: order.status === 'rejected',
 						success: order.status === 'approved',
 					}"
-					@click="changeOrderStatus(order, 'approve')"
+					@click="changeOrderStatus(order, 'approved')"
 				>
 					<font-awesome-icon :icon="check" />
 				</button>
@@ -41,7 +41,7 @@
 						error: order.status === 'rejected',
 						success: order.status === 'approved',
 					}"
-					@click="changeOrderStatus(order, 'reject')"
+					@click="changeOrderStatus(order, 'rejected')"
 				>
 					<font-awesome-icon :icon="times" />
 				</button>
@@ -64,10 +64,25 @@ export default {
 			trash: faTrash,
 		}
 	},
+	computed: {
+		loggedInUser() {
+			return this.$store.getters.loggedinUser
+		},
+	},
 	methods: {
 		async changeOrderStatus(order, newStatus) {
-			const newOrder = await this.$store.dispatch({ type: 'updateOrderStatus', order, newStatus })
-			console.log('newStatus', newOrder.status)
+			return await this.$store.dispatch({ type: 'updateOrderStatus', order, newStatus })
+		},
+
+		buyer(order) {
+			if (order?.buyer) {
+				return order.buyer.fullname
+			}
+			return this.loggedInUser.fullname
+		},
+
+		actionsVisible(order) {
+			return order?.buyer
 		},
 	},
 }

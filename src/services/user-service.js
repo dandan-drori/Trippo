@@ -74,8 +74,8 @@ async function getById(userId) {
 async function remove(userId) {
 	return await httpService.delete(`${BASE_URL}${userId}`)
 }
-async function update(user) {
-	if (user) _saveLocalUser(user)
+async function update(user, isHost) {
+	if (user && !isHost) _saveLocalUser(user)
 	return await httpService.put(`${BASE_URL}${user._id}`, user)
 }
 

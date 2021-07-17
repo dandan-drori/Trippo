@@ -1,5 +1,5 @@
 import { stayService } from '@/services/stay-service.js'
-import { userService } from '@/services/user-service.js'
+import { geocodeService } from '@/services/geocode-service.js'
 
 export default {
 	state: {
@@ -92,12 +92,18 @@ export default {
 			switch (stay.loc.country) {
 				case 'New York':
 					stay.loc.countryCode = 'NY'
+					stay.loc.lat = 40.73061
+					stay.loc.lng = -73.935242
 					break
 				case 'Netherlands':
 					stay.loc.countryCode = 'NL'
+					stay.loc.lat = 48.8566
+					stay.loc.lng = 2.3522
 					break
 				case 'France':
 					stay.loc.countryCode = 'FR'
+					stay.loc.lat = 52.377956
+					stay.loc.lng = 4.739298
 					break
 			}
 			stay.amenities = stay.amenities.map(amenity => {
@@ -134,6 +140,9 @@ export default {
 
 			try {
 				const type = stay._id ? 'updateStay' : 'addStay'
+
+				// const latlng = await geocodeService.getGeocode(encodeURI(stay.loc.country))
+
 				const savedStay = await stayService.save(stay)
 				commit({ type, stay: savedStay })
 				const user = rootGetters.loggedinUser

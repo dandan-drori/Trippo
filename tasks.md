@@ -48,16 +48,19 @@
 - test order and user backend with postman - DONE
 - connect frontend and backend - DONE
 - cloudinary - DONE
+- user is unable to add spaces in new stay (use alpha_spaces instead of alpha) - DONE
 
 - add reviews to stay-details - add - DANDAN
+- handle case where there are no reviews and it displays "NaN"
 - fix stay-list-filter - GUY
 - connect order backend to frontend - TOGETHER
-- use google maps api to convert address to latlng - TOGETHER
 - connect sockets - watch-order watch-stay - DANIEL
 - when updating stay - initialize amenities as checked if they are checked
 - dates in stay-details are colored blue - DANDAN + GUY
 - display nice user-msgs for _every_ error in response from the backend
 - add earnings graphs to user-profile
+
+- use google maps api to convert address to latlng - ITP
 
 More than 290,000 guests have stayed in San Francisco.On average they rated their stays 4.8 out of 5 stars.
 

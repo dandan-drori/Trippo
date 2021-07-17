@@ -117,17 +117,18 @@ export default {
 		},
 		computedOrders() {
 			const orders = this.loggedInUser.orders.map(order => {
-				for (let i = 0; i < this.loggedInUser.stays.length; i++) {
-					if (order.stay._id === this.loggedInUser.stays[i]._id) {
-						const regex = new RegExp(this.filterBy.name, 'i')
-						if (order.status.includes(this.filterBy.status) && regex.test(order.stay.name)) {
-							const newOrder = JSON.parse(JSON.stringify(order))
-							newOrder.startDate = new Date(newOrder.startDate).toLocaleString().split(',')[0]
-							newOrder.endDate = new Date(newOrder.endDate).toLocaleString().split(',')[0]
-							return newOrder
-						}
-					}
+				console.log('order', order)
+				// for (let i = 0; i < this.loggedInUser.stays.length; i++) {
+				// if (order.stay._id === this.loggedInUser.stays[i]._id) {
+				const regex = new RegExp(this.filterBy.name, 'i')
+				if (order.status.includes(this.filterBy.status) && regex.test(order.stay.name)) {
+					const newOrder = JSON.parse(JSON.stringify(order))
+					newOrder.startDate = new Date(newOrder.startDate).toLocaleString().split(',')[0]
+					newOrder.endDate = new Date(newOrder.endDate).toLocaleString().split(',')[0]
+					return newOrder
 				}
+				// }
+				// }
 			})
 			return orders.filter(o => o)
 		},
