@@ -74,17 +74,21 @@ export default {
 				throw err
 			}
 		},
-		async removeStay({ commit, rootGetters }, payload) {
+		async removeStay({ commit, dispatch, rootGetters }, payload) {
 			try {
 				await stayService.remove(payload.stayId)
 				commit(payload)
-				await userService.removeStay(payload.stayId, rootGetters.loggedinUser)
+				const user = rootGetters.loggedinUser
+				const idx = user.stays.findIndex(s => s._id === payload.stayId)
+				user.stays.splice(idx, 1)
+				console.log('index', idx)
+				dispatch({ type: 'updateUser', user })
 			} catch (err) {
 				console.log('Cannot remove stay:', payload.stayId)
 				throw err
 			}
 		},
-		async saveStay({ commit }, { stay }) {
+		async saveStay({ commit, dispatch, rootGetters }, { stay }) {
 			switch (stay.loc.country) {
 				case 'New York':
 					stay.loc.countryCode = 'NY'
@@ -128,11 +132,28 @@ export default {
 				}
 			})
 
-			console.log(stay)
-			const type = stay._id ? 'updateStay' : 'addStay'
 			try {
+				const type = stay._id ? 'updateStay' : 'addStay'
 				const savedStay = await stayService.save(stay)
 				commit({ type, stay: savedStay })
+				const user = rootGetters.loggedinUser
+				if (stay._id) {
+					const idx = user.stays.findIndex(s => s._id === stay._id)
+					user.stays.splice(idx, 1, {
+						_id: stay._id,
+						name: stay.name,
+						price: stay.price,
+						country: stay.loc.country,
+					})
+				} else {
+					user.stays.push({
+						_id: savedStay._id,
+						name: stay.name,
+						price: stay.price,
+						country: stay.loc.country,
+					})
+				}
+				dispatch({ type: 'updateUser', user })
 				return savedStay
 			} catch (err) {
 				console.log('Prefix', Prefix)

@@ -51,5 +51,20 @@ export default {
 				throw err
 			}
 		},
+		async updateUser({ commit, dispatch }, { user }) {
+			try {
+				await userService.update(user)
+				if (loggedinUser.imgUrl !== user.imgUrl) {
+					user.stays.forEach(stay => {
+						stay.host.imgUrl = user.imgUrl
+						dispatch({ type: 'saveStay', stay })
+					})
+				}
+				commit({ type: 'setLoggedinUser', user })
+			} catch (err) {
+				console.log('userStore: Error updating user', err)
+				throw err
+			}
+		},
 	},
 }

@@ -1,4 +1,4 @@
-import { storageService } from './async-storage-service.js'
+import { httpService } from './http.service.js'
 
 const gOrders = [
 	{
@@ -31,36 +31,28 @@ export const orderService = {
 	getEmptyOrder,
 }
 
-const ORDER_KEY = 'orders'
+const BASE_URL = 'order/'
 
 async function query() {
-	const ordersInStorage = await storageService.query(ORDER_KEY)
-	if (!ordersInStorage || !ordersInStorage.length) {
-		localStorage.setItem(ORDER_KEY, JSON.stringify(gOrders))
-		return gOrders
-	}
-	return ordersInStorage
+	return await httpService.get(BASE_URL)
 }
 
 function getById(orderId) {
-	return storageService.get(ORDER_KEY, orderId)
+	return httpService.get(`${BASE_URL}${orderId}`)
 }
 
 function remove(orderId) {
-	return storageService.delete(ORDER_KEY, orderId)
+	return httpService.delete(`${BASE_URL}${orderId}`)
 }
 
 function save(order) {
-	return storageService.post(ORDER_KEY, order)
 	if (order._id) {
-		return storageService.put(ORDER_KEY, order)
+		return httpService.put(`${BASE_URL}${order._id}`, order)
 	} else {
+		return httpService.post(BASE_URL, order)
 	}
 }
 
 function getEmptyOrder() {
-	return {
-		createdAt: Date.now(),
-		status: 'pending',
-	}
+	return {}
 }
