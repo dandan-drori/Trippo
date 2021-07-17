@@ -7,7 +7,7 @@ header {
   background-color: transparent;
   color: #fff;
   letter-spacing: 0.1px;
-  z-index: 4;
+  z-index: 5;
   &.scrolled {
     box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
     background-color: #fff;
@@ -28,7 +28,6 @@ header {
     .header-search {
       top: 5px;
       width: 300px;
-      z-index: 8;
     }
   }
 }
@@ -126,21 +125,19 @@ header {
 
 .profile-menu {
   background-color: white;
-  z-index: 5;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
   top: 70px;
   right: 80px;
   width: 220px;
   border-radius: 15px;
-  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   a,
   button {
     padding: 12px 15px;
-    // font-size: 0.7rem;
     text-align: left;
     background-color: white;
     font-weight: 500;
@@ -151,6 +148,7 @@ header {
   span {
     color: #222;
   }
+  z-index: 10;
 }
 
 // search on header

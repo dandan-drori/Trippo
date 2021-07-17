@@ -1,7 +1,7 @@
 <template>
   <section class="signup-modal">
     <div class="signup-header">
-      <button @click="close">
+      <button @click="toggleSignUp">
         <span class="material-icons">
           close
         </span>
@@ -12,10 +12,22 @@
       <div class="input-txt">
         <h2>Welcome to Trippo</h2>
       </div>
-      <form action="" @submit.prevent>
-        <input type="text" placeholder="Enter email or username" />
-        <input type="text" placeholder="enter full name" />
-        <input type="password" placeholder="Enter password" />
+      <form @submit.prevent="signUp">
+        <input
+          type="text"
+          placeholder="Enter email or username"
+          v-model="userCred.username"
+        />
+        <input
+          type="text"
+          placeholder="enter full name"
+          v-model="userCred.fullname"
+        />
+        <input
+          type="password"
+          placeholder="Enter password"
+          v-model="userCred.password"
+        />
         <button class="checkout-btn" ref="myBtn"><span>Continue</span></button>
       </form>
     </div>
@@ -46,9 +58,25 @@
 
 <script>
 export default {
+  data() {
+    return {
+      userCred: {
+        username: '',
+        fullname: '',
+        password: '',
+      },
+    };
+  },
   methods: {
-    close() {
-      this.$emit("signup", false);
+    toggleSignUp() {
+      this.$emit('toggleSignUp', false);
+    },
+    signUp() {
+      console.log(this.userCred);
+      this.$emit('signUp', this.userCred);
+      // this.userCred.username = '';
+      // this.userCred.fullname = '';
+      // this.userCred.password = '';
     },
   },
   mounted() {
@@ -56,8 +84,8 @@ export default {
       const x = e.offsetX;
       const y = e.offsetY;
 
-      e.target.style.setProperty("--x", `${x}px`);
-      e.target.style.setProperty("--y", `${y}px`);
+      e.target.style.setProperty('--x', `${x}px`);
+      e.target.style.setProperty('--y', `${y}px`);
     };
   },
 };

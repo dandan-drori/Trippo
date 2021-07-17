@@ -92,20 +92,8 @@ export default {
       this.infants = 0;
     },
   },
-  computed: {
-    computedCheckin() {
-      // let checkin = new Date(this.dates[0]);
-      // return checkin.toString().split(" ")[1] + " " + [2];
-    },
-    computedCheckout() {
-      let checkout = new Date(this.dates[1]);
-      return checkout.toString().split(" ")[1] + " " + [2];
-    },
-  },
   components: {
     DatePicker,
   },
 };
 </script>
-
-<style></style>

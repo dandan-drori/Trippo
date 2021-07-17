@@ -24,16 +24,7 @@
           <span class="material-icons">
             menu
           </span>
-          <img :src="loggedInUser.imgUrl" alt="" />
-        </div>
-        <div v-if="isProfileModalOpen" class="profile-menu" @click="closeModal">
-          <router-link :to="'/profile/' + loggedInUser._id">
-            <span>Profile</span>
-          </router-link>
-          <button @click="login">Login</button>
-          <button @click="signup">Signup</button>
-          <button @click="addStay">Host your home</button>
-          <button @click="logout">Logout</button>
+          <img :src="imgUrl" alt="" />
         </div>
       </div>
     </div>
@@ -46,21 +37,14 @@ export default {
   data() {
     return {
       airbnb: faAirbnb,
-      isProfileModalOpen: false,
     };
   },
   methods: {
-    closeModal() {
-      this.isProfileModalOpen = false;
-    },
     login() {
       this.$emit("login", true);
     },
-    signup() {
-      this.$emit("signup", true);
-    },
-    toggleProfile() {
-      this.isProfileModalOpen = !this.isProfileModalOpen;
+    toggleSignUp() {
+      this.$emit("toggleSignUp", true);
     },
     logout() {
       this.$emit("logout");
@@ -68,10 +52,21 @@ export default {
     addStay() {
       console.log("need to add this function");
     },
+    toggleProfile() {
+      this.$emit("toggleProfile");
+    },
   },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser;
+    },
+    imgUrl() {
+      const user = this.$store.getters.loggedinUser;
+      if (user && user?.imgUrl) {
+        return user.imgUrl;
+      } else {
+        return "http://res.cloudinary.com/dandan-img-cloud/image/upload/v1626521972/johtdlkck2tptcawkglt.png";
+      }
     },
   },
   components: { FontAwesomeIcon },
