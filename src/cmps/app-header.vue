@@ -24,14 +24,14 @@
           <span class="material-icons">
             menu
           </span>
-          <img :src="loggedInUser.imgUrl" alt="" />
+          <img :src="imgUrl" alt="" />
         </div>
         <div v-if="isProfileModalOpen" class="profile-menu" @click="closeModal">
-          <router-link :to="'/profile/' + loggedInUser._id">
+          <router-link :to="'/profile/' + userId">
             <span>Profile</span>
           </router-link>
           <button @click="login">Login</button>
-          <button @click="signup">Signup</button>
+          <button @click="toggleSignUp">Signup</button>
           <button @click="addStay">Host your home</button>
           <button @click="logout">Logout</button>
         </div>
@@ -40,8 +40,8 @@
   </header>
 </template>
 <script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faAirbnb } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faAirbnb } from '@fortawesome/free-brands-svg-icons';
 export default {
   data() {
     return {
@@ -54,24 +54,40 @@ export default {
       this.isProfileModalOpen = false;
     },
     login() {
-      this.$emit("login", true);
+      this.$emit('login', true);
     },
-    signup() {
-      this.$emit("signup", true);
+    toggleSignUp() {
+      this.$emit('toggleSignUp', true);
     },
     toggleProfile() {
       this.isProfileModalOpen = !this.isProfileModalOpen;
     },
     logout() {
-      this.$emit("logout");
+      this.$emit('logout');
     },
     addStay() {
-      console.log("need to add this function");
+      console.log('need to add this function');
     },
   },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser;
+    },
+    userId() {
+      const user = this.$store.getters.loggedinUser;
+      if (user && user?._id) {
+        return user._id;
+      } else {
+        return '';
+      }
+    },
+    imgUrl() {
+      const user = this.$store.getters.loggedinUser;
+      if (user && user?.imgUrl) {
+        return user.imgUrl;
+      } else {
+        return 'http://res.cloudinary.com/dandan-img-cloud/image/upload/v1626521972/johtdlkck2tptcawkglt.png';
+      }
     },
   },
   components: { FontAwesomeIcon },
