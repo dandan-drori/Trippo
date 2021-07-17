@@ -51,10 +51,11 @@ export default {
 				throw err
 			}
 		},
-		async updateUser({ commit, dispatch }, { user }) {
+		async updateUser({ commit, dispatch, getters }, { user }) {
 			try {
+				console.log(user);
 				await userService.update(user)
-				if (loggedinUser.imgUrl !== user.imgUrl) {
+				if (getters.loggedinUser.imgUrl !== user.imgUrl) {
 					user.stays.forEach(stay => {
 						stay.host.imgUrl = user.imgUrl
 						dispatch({ type: 'saveStay', stay })

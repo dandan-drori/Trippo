@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import stayList from '@/cmps/stay-list';
-import stayListFilter from '@/cmps/stay-list-filter';
+import stayList from "@/cmps/stay-list";
+import stayListFilter from "@/cmps/stay-list-filter";
 
 export default {
   components: {
@@ -26,8 +26,8 @@ export default {
   methods: {
     setFilter(filterBy) {
       console.log(filterBy);
-      this.$store.commit({ type: 'setFilter', filterBy });
-      this.$store.dispatch({ type: 'loadStays' });
+      this.$store.commit({ type: "setFilter", filterBy });
+      this.$store.dispatch({ type: "loadStays" });
     },
   },
   computed: {
@@ -42,16 +42,17 @@ export default {
     },
   },
   async created() {
+    this.$emit("scrolled", true);
     const { city } = this.$route.params;
     if (city) {
       var filterBy = this.$store.getters.filterBy;
       filterBy.city = city;
 
-      this.$store.commit({ type: 'setFilter', filterBy });
+      this.$store.commit({ type: "setFilter", filterBy });
     }
 
-    await this.$store.dispatch({ type: 'loadStays' });
-    await this.$store.dispatch({ type: 'loadUnfilteredStays' });
+    await this.$store.dispatch({ type: "loadStays" });
+    await this.$store.dispatch({ type: "loadUnfilteredStays" });
   },
 };
 </script>

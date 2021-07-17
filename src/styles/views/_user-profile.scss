@@ -1,68 +1,77 @@
 .user-profile {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
-	position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
 
-	.profile-card {
-		position: sticky;
-		top: 105px;
-		width: 25%;
-		border: 1px solid #ccc;
-		border-radius: 15px;
-		padding: 20px;
-		margin-right: 40px;
+  .profile-card {
+    position: sticky;
+    top: 105px;
+    min-width: 310px;
+    width: 25%;
+    border: 1px solid rgb(222, 222, 222);
+    border-radius: 15px;
+    padding: 1.2rem;
+    margin-right: 40px;
 
-		div:nth-of-type(1) {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
+    div:nth-of-type(1) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-			img {
-				width: 130px;
-				height: 130px;
-				border-radius: 50%;
-				object-fit: cover;
-			}
-		}
+      img {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
 
-		div:nth-of-type(2) {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
+    p {
+      font-size: 0.7rem;
+      font-weight: 500;
+      line-height: 26px;
+      color: #222;
+      text-decoration: underline;
+    }
 
-			.add-stay {
-				padding: 1rem 1.7rem;
-				border-radius: 10px;
-				font-size: 1.1rem;
-				margin-top: 2rem;
-				color: #ff385c;
-				border: 1px solid #ccc;
-				background-color: #fff;
+    div:nth-of-type(2) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-				&:hover {
-					background-color: #eee;
-				}
-			}
-		}
-	}
+      .add-stay {
+        padding: 1rem 1.7rem;
+        border-radius: 10px;
+        font-size: 0.8rem;
+        margin-top: 2rem;
+        color: #ff385c;
+        border: 1px solid #ccc;
+        background-color: #fff;
 
-	div.error {
-		color: #ff4444;
-		td:nth-of-type(6) {
-			.cell {
-				opacity: 0;
-				pointer-events: none;
-			}
-		}
-	}
+        &:hover {
+          background-color: #eee;
+        }
+      }
+    }
+  }
 
-	.data {
-		width: 77%;
-		padding-top: 100px;
+  div.error {
+    color: #ff4444;
+    td:nth-of-type(6) {
+      .cell {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
 
-		h2 {
-			margin-bottom: 1rem;
-		}
-	}
+  .data {
+    width: 77%;
+    padding-top: 100px;
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+  }
 }
