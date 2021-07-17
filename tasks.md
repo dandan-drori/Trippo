@@ -57,6 +57,7 @@
 - when updating stay - initialize amenities as checked if they are checked
 - dates in stay-details are colored blue - DANDAN + GUY
 - display nice user-msgs for _every_ error in response from the backend
+- add earnings graphs to user-profile
 
 More than 290,000 guests have stayed in San Francisco.On average they rated their stays 4.8 out of 5 stars.
 
