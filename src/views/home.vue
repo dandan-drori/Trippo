@@ -3,7 +3,10 @@
     <div class="shadow"></div>
     <div class="hero-container"></div>
     <img class="hero" src="@/assets/imgs/home-page/hero1.jpeg" />
-    <stay-filter :class="{ scrolled: this.isScrolled }" />
+    <stay-filter
+      @click.native.stop="search"
+      :class="{ scrolled: this.isScrolled, opensearch: this.searching }"
+    />
     <div class="flexible">
       <p>Not sure where to go? Perfect.</p>
       <button><span>I’m flexible</span></button>
@@ -74,14 +77,17 @@ export default {
   data() {
     return {
       isScrolled: false,
+      searching: false,
     };
   },
   name: "Home",
   created() {
     window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("click", this.bodyClick);
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
+    window.addEventListener("click", this.bodyClick);
   },
   methods: {
     handleScroll(event) {
@@ -93,6 +99,12 @@ export default {
         this.isScrolled = false;
         this.$emit("scrolled", false);
       }
+    },
+    search() {
+      this.searching = true;
+    },
+    bodyClick() {
+      this.searching = false;
     },
   },
   computed: {
@@ -108,120 +120,120 @@ export default {
 
 <style lang="scss">
 input.el-input__inner {
-	font-size: 0.9rem;
+  font-size: 0.9rem;
 }
 
 .el-input__icon {
-	display: none;
+  display: none;
 }
 
 .homepage {
-	& .block.date.home {
-		position: absolute !important;
-		bottom: 0;
-		left: 50%;
-		transform: translateX(-50%);
-		height: 2.45rem;
-		outline: none;
-		background-color: transparent;
-	}
+  & .block.date.home {
+    position: absolute !important;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2.45rem;
+    outline: none;
+    background-color: transparent;
+  }
 
-	& #date {
-		width: 66%;
-		max-width: 850px;
-		border-radius: 1.6rem;
-		left: 50% !important;
-		top: 0 !important;
-		transform: translate(-50%, 31%) !important;
-		padding: 1rem;
-		color: #000;
-		&:hover {
-			color: #000;
-		}
-		& span {
-			color: #000000;
-			height: 45px;
-			width: 45px;
-			display: flex;
-			align-items: center;
-			align-content: center;
-			justify-content: center;
-		}
-		& td div {
-			display: flex;
-			align-items: center;
-			align-content: center;
-			justify-content: center;
-			max-width: 60px;
-			height: 45px !important;
-		}
-	}
-	& .el-date-editor,
-	& .el-range-editor,
-	& .el-input__inner,
-	& .el-date-editor--daterange {
-		height: 20px;
-		justify-content: flex-start;
-		background-color: transparent;
-		border: none;
+  & #date {
+    width: 66%;
+    max-width: 850px;
+    border-radius: 1.6rem;
+    left: 50% !important;
+    top: 0 !important;
+    transform: translate(-50%, 31%) !important;
+    padding: 1rem;
+    color: #000;
+    &:hover {
+      color: #000;
+    }
+    & span {
+      color: #000000;
+      height: 45px;
+      width: 45px;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+    }
+    & td div {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      max-width: 60px;
+      height: 45px !important;
+    }
+  }
+  & .el-date-editor,
+  & .el-range-editor,
+  & .el-input__inner,
+  & .el-date-editor--daterange {
+    height: 20px;
+    justify-content: flex-start;
+    background-color: transparent;
+    border: none;
 
-		& .el-input__icon.el-range__close-icon {
-			display: none;
-		}
-	}
+    & .el-input__icon.el-range__close-icon {
+      display: none;
+    }
+  }
 
-	.el-date-editor .el-range-separator {
-		width: 68px;
-	}
+  .el-date-editor .el-range-separator {
+    width: 68px;
+  }
 
-	& input {
-		&.el-range-input {
-			width: 100px;
-			height: 20px;
-			font-size: 0.8rem;
-			line-height: 20px;
-			background-color: transparent;
-			text-align: left !important;
-		}
-	}
+  & input {
+    &.el-range-input {
+      width: 100px;
+      height: 20px;
+      font-size: 0.8rem;
+      line-height: 20px;
+      background-color: transparent;
+      text-align: left !important;
+    }
+  }
 
-	& .block.date:hover {
-		background-color: transparent;
-	}
+  & .block.date:hover {
+    background-color: transparent;
+  }
 
-	& .el-date-table td.end-date span,
-	& .el-date-table td.start-date span {
-		background-color: #222;
-		color: #fff !important;
-		font-weight: 500;
-		font-size: 0.7rem;
-	}
+  & .el-date-table td.end-date span,
+  & .el-date-table td.start-date span {
+    background-color: #222;
+    color: #fff !important;
+    font-weight: 500;
+    font-size: 0.7rem;
+  }
 
-	.el-date-table td.in-range div,
-	.el-date-table td.in-range div:hover,
-	.el-date-table.is-week-mode .el-date-table__row.current div,
-	.el-date-table.is-week-mode .el-date-table__row:hover div {
-		background-color: #eeeeee !important;
-	}
+  .el-date-table td.in-range div,
+  .el-date-table td.in-range div:hover,
+  .el-date-table.is-week-mode .el-date-table__row.current div,
+  .el-date-table.is-week-mode .el-date-table__row:hover div {
+    background-color: #eeeeee !important;
+  }
 
-	& .el-date-editor--daterange.el-input,
-	& .el-date-editor--daterange.el-input__inner,
-	& .el-date-editor--timerange.el-input,
-	& .el-date-editor--timerange.el-input__inner {
-		width: 100%;
-		border: none;
-		border-top-left-radius: 0;
-		border-top-right-radius: 0;
-		height: 20px;
-	}
+  & .el-date-editor--daterange.el-input,
+  & .el-date-editor--daterange.el-input__inner,
+  & .el-date-editor--timerange.el-input,
+  & .el-date-editor--timerange.el-input__inner {
+    width: 100%;
+    border: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    height: 20px;
+  }
 
-	& td {
-		height: 45px !important;
-		width: 45px !important;
-	}
+  & td {
+    height: 45px !important;
+    width: 45px !important;
+  }
 
-	& .popper__arrow {
-		left: 35% !important;
-	}
+  & .popper__arrow {
+    left: 35% !important;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <ul>
+    <ul class="left">
       <li>
         © 2021 Trippo, Inc.
       </li>
@@ -15,7 +15,7 @@
       </li>
     </ul>
 
-    <ul>
+    <ul class="right">
       <li class="lang">
         <span class="material-icons">
           language
@@ -26,7 +26,7 @@
       </li>
       <li class="coin">
         <span>
-          ₪
+          $
         </span>
         <small>
           ILS

@@ -54,9 +54,13 @@
   }
   button {
     color: white;
-    background-color: rgb(255, 20, 90);
+    background-color: rgb(189, 30, 89);
     font-weight: 600;
     font-size: 0.8rem;
+    &span {
+      color: white;
+      z-index: 2;
+    }
   }
 }
 
@@ -86,11 +90,24 @@
   gap: 15px;
   margin-bottom: 16px;
   button {
+    position: relative;
     border: 2px solid #b0b0b0;
     color: #b0b0b0;
+    img,
+    span {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      max-width: 20px;
+      height: 25px;
+    }
     &:hover {
       border-color: #222;
       color: #484848;
+    }
+    &:active {
+      transform: scale(1);
     }
   }
 }
@@ -100,4 +117,54 @@
   inset: 0;
   background-color: rgba($color: #000000, $alpha: 0.6);
   z-index: 5;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 0.4rem 0;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background-color: rgb(189, 30, 89);
+  color: #fafafa;
+  --x: 3px;
+  --y: 3px;
+
+  position: relative;
+  appearance: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  border: 2px rgb(255, 56, 92) solid;
+  box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.356);
+
+  span {
+    position: relative;
+    pointer-events: none;
+  }
+
+  &::before {
+    --size: 0;
+    content: "";
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: 50px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fa3259;
+    //   box-shadow: 0px 0px 400px 300px #fa325adf, 0px 0px 220px 100px #e61e4dd0,
+    //     0px 0px 250px 120px #e31c5eb7, 0px 0px 280px 240px #d70466c5,
+    //     0px 0px 350px 260px #bd1e58d5, 5px 5px 400px 300px #bd1d59;
+    box-shadow: 0px 0px 137px 135px #fa325a, 0px 0px 140px 143px #e61e4de7,
+      0px 0px 162px 206px #e31c5f, 0px 0px 80px 140px #d70466,
+      0px 0px 90px 160px #bd1e59, 5px 5px 100px 200px #bd1d59;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+  }
+  &:hover::before {
+    --size: 400px;
+  }
 }

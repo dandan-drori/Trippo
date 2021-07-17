@@ -16,18 +16,30 @@
         <input type="text" placeholder="Enter email or username" />
         <input type="text" placeholder="enter full name" />
         <input type="password" placeholder="Enter password" />
-        <button>Continue</button>
+        <button class="checkout-btn" ref="myBtn"><span>Continue</span></button>
       </form>
     </div>
     <div class="signup-divider">
       <div class="border"></div>
       <small>or</small>
     </div>
-    <div class="signup-socials">
-      <button>Continue with Facebook</button>
-      <button>Continue with Google</button>
-      <button>Continue with Apple</button>
-      <button>Continue with Phone</button>
+    <div class="login-socials">
+      <button>
+        <span class="material-icons" style="color:#4267B2;"> facebook </span
+        >Continue with Facebook
+      </button>
+      <button>
+        <img src="../assets/imgs/svgs/google.svg" alt="" />
+        Continue with Google
+      </button>
+      <button>
+        <img src="../assets/imgs/svgs/apple.png" alt="" />
+        Continue with Apple
+      </button>
+      <button>
+        <span class="material-icons" style="color:#000;"> phone_iphone </span
+        >Continue with Phone
+      </button>
     </div>
   </section>
 </template>
@@ -38,6 +50,15 @@ export default {
     close() {
       this.$emit("signup", false);
     },
+  },
+  mounted() {
+    this.$refs.myBtn.onmousemove = (e) => {
+      const x = e.offsetX;
+      const y = e.offsetY;
+
+      e.target.style.setProperty("--x", `${x}px`);
+      e.target.style.setProperty("--y", `${y}px`);
+    };
   },
 };
 </script>

@@ -13,6 +13,15 @@ footer {
     list-style: none;
     display: flex;
     gap: 12px;
+    &.left {
+      li {
+        font-size: 0.7rem;
+      }
+    }
+    &.right {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
   li {
     &.lang {

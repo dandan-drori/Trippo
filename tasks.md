@@ -48,3 +48,9 @@
 - Mongo in the cloud
 - Upload to heroku
 - Cloudinary
+
+### stay desc
+
+More than 290,000 guests have stayed in San Francisco.On average they rated their stays 4.8 out of 5 stars.
+
+More than 1,000,000 guests have stayed in New York.On average they rated their stays 4.7 out of 5 stars.

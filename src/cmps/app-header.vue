@@ -24,10 +24,15 @@
           <span class="material-icons">
             menu
           </span>
-          <img src="../assets/imgs/user_pic-50x50.png" alt="" />
+          <!-- <img src="../assets/imgs/user_pic-50x50.png" alt="" /> -->
+          <img
+            class="user-img"
+            src="../assets/imgs/userImgs/host4.jpg"
+            alt=""
+          />
         </div>
         <div v-if="isProfileModalOpen" class="profile-menu" @click="closeModal">
-          <router-link to="/profile">
+          <router-link to="/profile/u101">
             <span>Profile</span>
           </router-link>
           <button @click="login">Login</button>

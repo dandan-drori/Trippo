@@ -28,6 +28,7 @@
 }
 .categories {
   height: 100vh;
+  max-width: 90vw;
   text-align: start;
   margin: 40px 0;
   & h2 {
@@ -38,9 +39,11 @@
 }
 
 .cards-container {
+  max-width: 100vw;
   display: grid;
-  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, minmax(300px, 1fr));
   grid-template-rows: 1fr;
+  gap: 10px;
   min-height: 300px;
   overflow-x: scroll;
   &::-webkit-scrollbar {
@@ -104,6 +107,7 @@
 .wide-card {
   position: relative;
   margin-top: 3rem;
+  max-width: 100vw;
   & .desc {
     position: absolute;
     top: 50%;
@@ -138,4 +142,8 @@
     border-radius: 0.5rem;
     margin-top: 2rem;
   }
+}
+
+.user-img {
+  object-fit: cover;
 }

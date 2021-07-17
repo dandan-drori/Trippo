@@ -7,12 +7,20 @@
       </div>
       <div class="checkin-input">
         <small>Check in</small>
-        <input type="text" />
+        <span>{{ dates[0] | moment("MMM, D") }}</span>
+        <input type="text" v-model="dates[0]" />
       </div>
-      <date-picker class="date home" />
+
+      <date-picker
+        v-model="dates"
+        range
+        value-type="timestamp"
+        @change="setDates"
+      ></date-picker>
       <div class="checkout-input">
         <small>Check out</small>
-        <input type="text" />
+        <span>{{ dates[1] | moment("MMM, D") }}</span>
+        <input type="text" v-model="dates[1]" />
       </div>
       <div class="guests-input" @click="toggleGuestsModal">
         <div>
@@ -21,7 +29,8 @@
         </div>
         <div>
           <button class="search-btn">
-            <img src="../assets/imgs/search_white_24dp.svg" alt="" />
+            <p>Search</p>
+            <img src="../assets/imgs/search_white_24dp.svg" />
           </button>
         </div>
         <div class="guests-modal" v-if="isGuestsModalOpen" @click.stop>
@@ -65,10 +74,12 @@
 </template>
 
 <script>
-import datePicker from "../cmps/date-picker.vue";
+import DatePicker from "vue2-datepicker";
+import "vue2-datepicker/index.css";
 export default {
   data() {
     return {
+      dates: [Date.now(), Date.now() + 1000],
       adults: 0,
       children: 0,
       infants: 0,
@@ -87,8 +98,18 @@ export default {
       this.infants = 0;
     },
   },
+  computed: {
+    computedCheckin() {
+      // let checkin = new Date(this.dates[0]);
+      // return checkin.toString().split(" ")[1] + " " + [2];
+    },
+    computedCheckout() {
+      let checkout = new Date(this.dates[1]);
+      return checkout.toString().split(" ")[1] + " " + [2];
+    },
+  },
   components: {
-    datePicker,
+    DatePicker,
   },
 };
 </script>
