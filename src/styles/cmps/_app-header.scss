@@ -7,6 +7,7 @@ header {
   background-color: transparent;
   color: #fff;
   letter-spacing: 0.1px;
+  z-index: 5;
   &.scrolled {
     box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
     background-color: #fff;
@@ -27,10 +28,8 @@ header {
     .header-search {
       top: 5px;
       width: 300px;
-      z-index: 3;
     }
   }
-  z-index: 3;
 }
 
 .heder-container {
@@ -126,16 +125,15 @@ header {
 
 .profile-menu {
   background-color: white;
-  z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
   top: 70px;
   right: 80px;
   width: 220px;
   border-radius: 15px;
-  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   a,
   button {
@@ -150,17 +148,16 @@ header {
   span {
     color: #222;
   }
+  z-index: 10;
 }
 
 // search on header
 .header-search {
   position: relative;
   top: 75px;
-  // width: 300px;
   width: 600px;
   border-radius: 3rem;
   box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.2);
-  z-index: 2;
   transition: 0.3s;
   &:hover {
     box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.2);

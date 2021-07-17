@@ -10,13 +10,7 @@
         <span>{{ dates[0] | moment("MMM, D") }}</span>
         <input type="text" v-model="dates[0]" />
       </div>
-
-      <date-picker
-        v-model="dates"
-        range
-        value-type="timestamp"
-        @change="setDates"
-      ></date-picker>
+      <date-picker v-model="dates" range value-type="timestamp"></date-picker>
       <div class="checkout-input">
         <small>Check out</small>
         <span>{{ dates[1] | moment("MMM, D") }}</span>
@@ -98,20 +92,8 @@ export default {
       this.infants = 0;
     },
   },
-  computed: {
-    computedCheckin() {
-      // let checkin = new Date(this.dates[0]);
-      // return checkin.toString().split(" ")[1] + " " + [2];
-    },
-    computedCheckout() {
-      let checkout = new Date(this.dates[1]);
-      return checkout.toString().split(" ")[1] + " " + [2];
-    },
-  },
   components: {
     DatePicker,
   },
 };
 </script>
-
-<style></style>
