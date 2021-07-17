@@ -10,13 +10,7 @@
         <span>{{ dates[0] | moment("MMM, D") }}</span>
         <input type="text" v-model="dates[0]" />
       </div>
-
-      <date-picker
-        v-model="dates"
-        range
-        value-type="timestamp"
-        @change="setDates"
-      ></date-picker>
+      <date-picker v-model="dates" range value-type="timestamp"></date-picker>
       <div class="checkout-input">
         <small>Check out</small>
         <span>{{ dates[1] | moment("MMM, D") }}</span>
