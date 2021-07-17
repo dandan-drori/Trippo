@@ -98,28 +98,88 @@ header {
     font-weight: 500;
   }
   & .profile-btn {
+    cursor: pointer;
+    display: flex;
     background-color: #fff;
     color: #222;
     border: 1px solid rgba(204, 204, 204, 0.564);
     border-radius: 2rem;
-    &:hover {
-      box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.18);
-    }
+    width: 75px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
     & span {
       font-size: 0.9rem;
     }
-    & a {
-      width: 75px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      align-content: center;
-      justify-content: space-around;
-      & img {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-      }
+    & img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+    &:hover {
+      box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.18);
+    }
+  }
+}
+
+.profile-menu {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 70px;
+  right: 80px;
+  width: 220px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  a,
+  button {
+    padding: 12px 15px;
+    text-align: left;
+    background-color: white;
+    font-weight: 500;
+    &:hover {
+      background-color: #f3f3f3;
+    }
+  }
+  span {
+    color: #222;
+  }
+}
+
+// search on header
+.header-search {
+  position: relative;
+  width: 300px;
+  border-radius: 3rem;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+  input {
+    width: 100%;
+    height: 100%;
+    border-radius: 3rem;
+    font-size: 1rem;
+    padding: 7px 5px;
+    border: 1px solid #dadada;
+    text-indent: 10px;
+  }
+  button {
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-height: 35px;
+    max-width: 35px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    img {
+      height: 20px;
+      width: 20px;
     }
   }
 }
