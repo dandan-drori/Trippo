@@ -1,3 +1,8 @@
+.hide {
+  &.filter-container {
+    display: none;
+  }
+}
 .filter-container {
   letter-spacing: 0.8px;
   width: 100%;
@@ -11,8 +16,7 @@
   transform: translateX(-50%);
   z-index: 5;
   box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.15), 0px 3px 8px rgba(0, 0, 0, 0.1);
-  transition: 0.1s;
-
+  transition: 0.3s;
   &.opensearch {
     button {
       width: 100px;
@@ -32,13 +36,14 @@
 
   &.scrolled {
     position: fixed;
-    top: 7.5px;
-    z-index: 1;
-    width: 300px;
+    top: 0px;
+    z-index: -1;
+    width: 200px;
+    opacity: 0;
     & form {
       & div,
       input {
-        width: 50%;
+        width: 10%;
       }
     }
   }

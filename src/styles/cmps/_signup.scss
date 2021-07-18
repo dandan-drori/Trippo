@@ -137,7 +137,6 @@
   cursor: pointer;
   outline: none;
   overflow: hidden;
-  border: 2px rgb(255, 56, 92) solid;
   box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.356);
 
   span {
@@ -147,7 +146,7 @@
 
   &::before {
     --size: 0;
-    content: "";
+    content: '';
     position: absolute;
     left: var(--x);
     top: var(--y);

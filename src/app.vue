@@ -2,7 +2,7 @@
   <div class="app main-layout">
     <app-header
       @toggleProfile="toggleProfile"
-      :class="{ scrolled: isScrolled, hideSearch: isSearchShown }"
+      :class="{ scrolled: isScrolled, hide: isSearchShown }"
     />
     <router-view
       @login="login"
@@ -41,11 +41,11 @@ export default {
   data() {
     return {
       isScrolled: false,
-      isLoginOpen: false,
-      isSignupOpen: false,
       isProfileModalOpen: false,
       isSearchShown: false,
       isScreenOpen: false,
+      isLoginOpen: false,
+      isSignupOpen: false,
     };
   },
   created() {
@@ -55,8 +55,8 @@ export default {
     scrolled(value) {
       this.isScrolled = value;
     },
-    login(value) {
-      this.isLoginOpen = value;
+    login(val) {
+      this.isLoginOpen = val;
     },
     async signUp(userCred) {
       try {

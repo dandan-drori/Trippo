@@ -30,9 +30,14 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { showMsg } from '../services/event-bus.service.js';
+=======
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { showMsg } from '../services/event-bus.service.js'
+>>>>>>> 2069edb460babcfe217cbbc22ff7ba0c02ba5949
 
 export default {
 	components: { FontAwesomeIcon },

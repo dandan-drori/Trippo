@@ -7,6 +7,39 @@
 			width: 100px;
 		}
 
+<<<<<<< HEAD
+    button {
+      width: 100%;
+      padding: 0;
+      height: 30px;
+      margin: 0;
+    }
+  }
+}
+
+.actions-td {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  .actionsBtn {
+    background-color: transparent;
+    span {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.actionsModal {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 50px;
+  top: 0;
+  background-color: #fff;
+  width: 50px;
+=======
 		button {
 			width: 100%;
 			padding: 0;
@@ -50,4 +83,5 @@
 	border: 1px solid black;
 	width: 50px;
 	z-index: 3;
+>>>>>>> 2069edb460babcfe217cbbc22ff7ba0c02ba5949
 }
