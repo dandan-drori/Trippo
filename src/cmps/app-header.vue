@@ -13,6 +13,10 @@
           <img src="../assets/imgs/search_white_24dp.svg" alt="" />
         </button>
       </div>
+      <stay-filter
+        @click.native.stop="search"
+        :class="{ scrolled: this.isScrolled }"
+      />
       <div class="header-controls">
         <router-link class="host" to="/stay/profile">Become a host</router-link>
         <button class="i18n">
@@ -33,13 +37,33 @@
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faAirbnb } from '@fortawesome/free-brands-svg-icons';
+import stayFilter from '../cmps/stay-filter.vue';
 export default {
   data() {
     return {
       airbnb: faAirbnb,
+      isScrolled: false,
+      searching: false,
     };
   },
+  created() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
   methods: {
+    handleScroll(event) {
+      let scrollDiff = event.path[1].scrollY;
+      if (scrollDiff >= 1) {
+        this.isScrolled = true;
+        this.$emit('scrolled', true);
+        this.$emit('hideSearch', false);
+      } else if (scrollDiff < 1) {
+        this.isScrolled = false;
+        this.$emit('scrolled', false);
+      }
+    },
     login() {
       this.$emit('login', true);
     },
@@ -69,8 +93,6 @@ export default {
       }
     },
   },
-  components: { FontAwesomeIcon },
+  components: { FontAwesomeIcon, stayFilter },
 };
 </script>
-
-<style></style>

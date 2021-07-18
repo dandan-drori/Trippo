@@ -28,8 +28,10 @@ header {
       justify-content: center;
     }
     .header-search {
-      top: 0;
+      top: 15px;
       width: 300px;
+      height: 48px;
+      transition: 0.3s;
     }
   }
   &.hideSearch {
@@ -172,9 +174,16 @@ header {
 
 // search on header
 .header-search {
-  position: relative;
-  top: 75px;
-  width: 600px;
+  &.hide {
+    display: none;
+  }
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 80px;
+  height: 65px;
+  width: 90%;
+  max-width: 840px;
   border-radius: 3rem;
   box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.15);
   transition: 0.3s;
