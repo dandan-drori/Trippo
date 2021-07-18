@@ -30,12 +30,13 @@
 </template>
 
 <script>
-import appHeader from "./cmps/app-header.vue";
-import appFooter from "./cmps/app-footer.vue";
-import userMsg from "./cmps/user-msg.vue";
-import login from "./cmps/login.vue";
-import signup from "./cmps/signup.vue";
-import ProfileMenu from "./cmps/profile-menu.vue";
+import appHeader from './cmps/app-header.vue';
+import appFooter from './cmps/app-footer.vue';
+import userMsg from './cmps/user-msg.vue';
+import login from './cmps/login.vue';
+import signup from './cmps/signup.vue';
+import ProfileMenu from './cmps/profile-menu.vue';
+import { showMsg } from './services/event-bus.service';
 export default {
   data() {
     return {
@@ -48,7 +49,7 @@ export default {
     };
   },
   created() {
-    window.addEventListener("click", this.bodyClick);
+    window.addEventListener('click', this.bodyClick);
   },
   methods: {
     scrolled(value) {
@@ -57,9 +58,13 @@ export default {
     login(value) {
       this.isLoginOpen = value;
     },
-    signUp(userCred) {
-      console.log(userCred, "userCred");
-      this.$store.dispatch({ type: "signup", userCred });
+    async signUp(userCred) {
+      try {
+        await this.$store.dispatch({ type: 'signup', userCred });
+        showMsg('Signed up successfully!');
+      } catch (err) {
+        showMsg('Sign up failed!', 'error');
+      }
     },
     toggleSignUp(val) {
       this.isSignupOpen = val;
@@ -67,8 +72,13 @@ export default {
     toggleProfile() {
       this.isProfileModalOpen = !this.isProfileModalOpen;
     },
-    logout() {
-      this.$store.dispatch({ type: "logout" });
+    async logout() {
+      try {
+        await this.$store.dispatch({ type: 'logout' });
+        showMsg('Logged out!');
+      } catch (err) {
+        showMsg('Logout failed!', 'error');
+      }
     },
     closeModal(val) {
       this.isProfileModalOpen = val;
