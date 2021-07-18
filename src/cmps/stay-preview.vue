@@ -12,15 +12,20 @@
         <img :src="imgUrl" @click="sendToDetails(stay._id)" />
       </el-carousel-item>
     </el-carousel>
-    <!-- <img class="preview-img" :src="require(`@/assets/imgs/stays/${stay.loc.countryCode}/${stay.imgFolder}/${stay.imgUrls[0]}`)"> -->
     <div class="card-rating">
-      <p><i class="el-icon-star-on star-icon"></i>4.7</p>
+      <p>
+        <span class="material-icons star-icon"> star </span>4.7<small
+          >(12)</small
+        >
+      </p>
     </div>
-    <div class="card-location">
-      {{ stay.loc.country }} - {{ stay.propertyType }}
-    </div>
-    <div>
-      <span>{{ stay.price }}$ </span>/ night
+    <div class="card-location">{{ stay.propertyType }} &middot; {{ city }}</div>
+    <div class="card-name">{{ 'stay short name' }}</div>
+    <div class="card-price">
+      <p>
+        <span>${{ stay.price }}</span
+        >/night
+      </p>
     </div>
   </section>
 </template>
@@ -35,6 +40,19 @@ export default {
       this.$router.push(`/stay/${stayId}`);
     },
   },
+  computed: {
+    city() {
+      switch (this.stay.loc.country) {
+        case 'Netherlands':
+          return 'Amsterdam';
+        case 'France':
+          return 'Paris';
+        case 'New York':
+          return 'New York';
+      }
+    },
+  },
+  created() {},
 };
 </script>
 

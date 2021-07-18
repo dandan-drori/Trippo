@@ -1,6 +1,9 @@
 <template>
   <form class="filters">
-    <button @click.stop="togglePrice">
+    <!----------->
+    <!-- price -->
+    <!----------->
+    <button ref="priceBtn" @click.stop="togglePrice">
       {{ pricePreview }}
       <span class="material-icons">expand_more</span>
     </button>
@@ -32,7 +35,12 @@
       {{ stayTypePreview }}<span class="material-icons">expand_more</span>
     </button>
 
-    <div @click.stop class="types-modal" v-if="isTypesModalOpen">
+    <div
+      @click.stop
+      class="types-modal"
+      v-if="isTypesModalOpen"
+      :style="{ left: typesPos }"
+    >
       <div>
         <input
           v-model="filterByLocal.types"
@@ -99,8 +107,9 @@
         <button @click.stop="setFilter">Update</button>
       </div>
     </div>
-
+    <!--------------->
     <!-- amenities -->
+    <!--------------->
     <button @click.stop="toggleAmenities">
       {{ amenitiesPreview }}<span class="material-icons">expand_more</span>
     </button>
@@ -245,27 +254,6 @@ export default {
     setFilter() {
       this.$emit('filter', this.filterByLocal);
     },
-
-    // toggleType(type) {
-    //   if (this.filterBy.types.includes(type)) {
-    //     const idx = this.filterBy.types.findIndex((currType) => {
-    //       return currType === type;
-    //     });
-    //     this.filterBy.types.splice(idx, 1);
-    //   } else {
-    //     this.filterBy.types.push(type);
-    //   }
-    // },
-    // toggleAmenities(amenity) {
-    //   if (this.filterBy.amenities.includes(amenity)) {
-    //     const idx = this.filterBy.amenities.findIndex((currAmenitiy) => {
-    //       return currAmenitiy === amenity;
-    //     });
-    //     this.filterBy.amenities.splice(idx, 1);
-    //   } else {
-    //     this.filterBy.amenities.push(amenity);
-    //   }
-    // },
     clearFilter() {
       const filter = {
         price: [0, 1500],
@@ -278,15 +266,15 @@ export default {
   },
   computed: {
     stayTypeList() {
-      const types = this.unfilteredStays.map((stay) => {
+      const types = this.unfilteredStays.map(stay => {
         return stay.propertyType;
       });
       return [...new Set(types)];
     },
     stayAmenitiesList() {
       const amenities = [];
-      this.unfilteredStays.forEach((stay) => {
-        return stay.amenities.forEach((amenity) => {
+      this.unfilteredStays.forEach(stay => {
+        return stay.amenities.forEach(amenity => {
           if (amenity.txt) amenities.push(amenity.txt);
         });
       });
@@ -313,6 +301,9 @@ export default {
       } else {
         return 'Price';
       }
+    },
+    typesPos() {
+      return this.$refs.priceBtn.offsetWidth + 200;
     },
   },
 };

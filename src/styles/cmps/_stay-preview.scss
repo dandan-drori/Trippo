@@ -1,23 +1,58 @@
 .stay-card-container {
   display: flex;
   flex-direction: column;
-  // gap: 9px;
-  margin-bottom: 10px;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+  margin-bottom: 20px;
   padding: 3px;
   text-align: left;
+  line-height: 14px;
   ul {
     text-align: center;
   }
+
+  .card-rating {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    p,
+    small {
+      display: flex;
+      align-items: center;
+      letter-spacing: 1px;
+      font-size: 0.65rem;
+      font-weight: 300;
+    }
+  }
   .star-icon {
     color: #ff385c;
+    font-size: 0.9rem;
+    margin-inline-end: 3px;
+  }
+  .card-location {
+    margin-bottom: 6px;
+    font-weight: 300;
+  }
+
+  .card-name {
+    font-weight: 300;
   }
 
   .img-carousell {
     width: 100%;
   }
 
+  .card-price {
+    span {
+      font-weight: 600;
+    }
+    p {
+      margin-top: 10px;
+      font-weight: 300;
+    }
+  }
+
   img {
-    max-width: 300px;
+    max-width: 290px;
     min-height: 170px;
     object-fit: cover;
     border-radius: 6px;
