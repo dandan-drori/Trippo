@@ -9,7 +9,7 @@
     />
     <div class="flexible">
       <p>Not sure where to go? Perfect.</p>
-      <button><span>I’m flexible</span></button>
+      <button @click="goToList"><span>I’m flexible</span></button>
     </div>
     <div class="categories">
       <h2>Live anywhere</h2>
@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import stayFilter from "../cmps/stay-filter.vue";
+import stayFilter from '../cmps/stay-filter.vue';
 export default {
   data() {
     return {
@@ -80,25 +80,28 @@ export default {
       searching: false,
     };
   },
-  name: "Home",
+  name: 'Home',
   created() {
-    window.addEventListener("scroll", this.handleScroll);
-    window.addEventListener("click", this.bodyClick);
+    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('click', this.bodyClick);
   },
   destroyed() {
-    window.removeEventListener("scroll", this.handleScroll);
-    window.addEventListener("click", this.bodyClick);
+    window.removeEventListener('scroll', this.handleScroll);
+    window.addEventListener('click', this.bodyClick);
   },
   methods: {
     handleScroll(event) {
       let scrollDiff = event.path[1].scrollY;
       if (scrollDiff >= 1) {
         this.isScrolled = true;
-        this.$emit("scrolled", true);
+        this.$emit('scrolled', true);
       } else if (scrollDiff < 1) {
         this.isScrolled = false;
-        this.$emit("scrolled", false);
+        this.$emit('scrolled', false);
       }
+    },
+    goToList() {
+      this.$router.push('/stay');
     },
     search() {
       this.searching = true;
