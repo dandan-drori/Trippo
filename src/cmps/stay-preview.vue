@@ -6,7 +6,7 @@
       height="170px"
       arrow="always"
       :autoplay="false"
-      :loop="false"
+      :loop="true"
     >
       <el-carousel-item v-for="(imgUrl, idx) in stay.imgUrls" :key="idx">
         <img :src="imgUrl" @click="sendToDetails(stay._id)" />

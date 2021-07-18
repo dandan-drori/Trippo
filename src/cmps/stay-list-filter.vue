@@ -204,10 +204,10 @@ export default {
     unfilteredStays: Array,
   },
   created() {
-    window.addEventListener("click", this.closeModals);
+    window.addEventListener('click', this.closeModals);
   },
   destroyed() {
-    window.addEventListener("click", this.closeModals);
+    window.addEventListener('click', this.closeModals);
   },
   data() {
     return {
@@ -238,7 +238,7 @@ export default {
       this.isAmenitiesModalOpen = false;
     },
     setFilter() {
-      this.$emit("filter", this.filterBy);
+      this.$emit('filter', this.filterBy);
     },
 
     // toggleType(type) {
@@ -266,9 +266,9 @@ export default {
         price: [0, 9999],
         types: [],
         amenities: [],
-        city: "",
+        city: '',
       };
-      this.$emit("filter", filter);
+      this.$emit('filter', filter);
     },
   },
   computed: {
@@ -290,23 +290,23 @@ export default {
     },
     amenitiesPreview() {
       if (this.filterBy.amenities.length) {
-        return this.filterBy.amenities.join(",");
+        return this.filterBy.amenities.join(',');
       } else {
-        return "Amenities";
+        return 'Amenities';
       }
     },
     stayTypePreview() {
       if (this.filterBy.types.length) {
-        return this.filterBy.types.join(",");
+        return this.filterBy.types.join(',');
       } else {
-        return "Types";
+        return 'Types';
       }
     },
     pricePreview() {
       if (this.filterBy.price[0] !== 0 && this.filterBy.price[1] !== 0) {
         return `$${this.filterBy.price[0]} - $${this.filterBy.price[1]}`;
       } else {
-        return "Price";
+        return 'Price';
       }
     },
   },
