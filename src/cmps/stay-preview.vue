@@ -13,10 +13,14 @@
       </el-carousel-item>
     </el-carousel>
     <div class="card-rating">
-      <p><i class="el-icon-star-on star-icon"></i>4.7<small>(12)</small></p>
+      <p>
+        <span class="material-icons star-icon"> star </span>4.7<small
+          >(12)</small
+        >
+      </p>
     </div>
     <div class="card-location">
-      {{ stay.propertyType }}&middot;{{ stay.loc.country }}
+      {{ stay.propertyType }} &middot; {{ stay.loc.country }}
     </div>
     <div class="card-name">{{ 'stay short name' }}</div>
     <div class="card-price">

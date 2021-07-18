@@ -1,11 +1,10 @@
 <template>
   <section>
+    <div class="head-title">
+      <p class="head-title-visits">{{ stays.length }}+ stays</p>
+      <h1>Entire homes</h1>
+    </div>
     <section class="stay-list">
-      <div class="head-title">
-        <p class="head-title-visits">{{ stays.length }}+ stays</p>
-        <h1>Entire homes</h1>
-      </div>
-
       <section
         v-for="stay in stays"
         :key="stay._id"
@@ -18,7 +17,7 @@
 </template>
 
 <script>
-import stayPreview from "./stay-preview";
+import stayPreview from './stay-preview';
 export default {
   props: {
     stays: Array,

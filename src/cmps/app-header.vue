@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="main-layout">
     <div class="heder-container">
       <div class="logo">
         <router-link to="/">
@@ -31,8 +31,8 @@
   </header>
 </template>
 <script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faAirbnb } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faAirbnb } from '@fortawesome/free-brands-svg-icons';
 export default {
   data() {
     return {
@@ -41,19 +41,19 @@ export default {
   },
   methods: {
     login() {
-      this.$emit("login", true);
+      this.$emit('login', true);
     },
     toggleSignUp() {
-      this.$emit("toggleSignUp", true);
+      this.$emit('toggleSignUp', true);
     },
     logout() {
-      this.$emit("logout");
+      this.$emit('logout');
     },
     addStay() {
-      console.log("need to add this function");
+      console.log('need to add this function');
     },
     toggleProfile() {
-      this.$emit("toggleProfile");
+      this.$emit('toggleProfile');
     },
   },
   computed: {
@@ -65,7 +65,7 @@ export default {
       if (user && user?.imgUrl) {
         return user.imgUrl;
       } else {
-        return "http://res.cloudinary.com/dandan-img-cloud/image/upload/v1626521972/johtdlkck2tptcawkglt.png";
+        return 'http://res.cloudinary.com/dandan-img-cloud/image/upload/v1626521972/johtdlkck2tptcawkglt.png';
       }
     },
   },
