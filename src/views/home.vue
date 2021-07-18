@@ -97,6 +97,7 @@ export default {
       if (scrollDiff >= 1) {
         this.isScrolled = true;
         this.$emit("scrolled", true);
+        this.$emit("hideSearch", false);
       } else if (scrollDiff < 1) {
         this.isScrolled = false;
         this.$emit("scrolled", false);

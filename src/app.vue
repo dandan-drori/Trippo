@@ -43,7 +43,7 @@ export default {
       isLoginOpen: false,
       isSignupOpen: false,
       isProfileModalOpen: false,
-      isSearchShown: true,
+      isSearchShown: false,
       isScreenOpen: false,
     };
   },
@@ -74,7 +74,6 @@ export default {
       this.isProfileModalOpen = val;
     },
     hideSearch(val) {
-      console.log(val);
       this.isSearchShown = val;
     },
     bodyClick() {

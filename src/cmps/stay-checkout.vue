@@ -2,13 +2,13 @@
   <section class="stay-checkout">
     <section class="checkout-header">
       <p>
-        <span class="price">${{ price }}</span>
-        / night
+        <span class="price">${{ price }}</span
+        >/night
       </p>
       <p>
         <i class="el-icon-star-on"></i>
-        <span>{{ avg }}</span>
-        <span>({{ reviews.length }} reviews)</span>
+        <span>{{ avg }} </span>
+        <span> ({{ reviews.length }} reviews)</span>
       </p>
     </section>
     <section class="pickers">
@@ -26,16 +26,18 @@
       </div>
       <div class="guests">
         <p>Guests:</p>
-        <button :class="{ show: guestsCount > 1 }" @click="decGuests">
-          -
-        </button>
-        <span class="guestsCount">{{ guestsCount }}</span>
-        <button
-          :class="{ show: guestsCount < accommodates }"
-          @click="incGuests"
-        >
-          +
-        </button>
+        <div class="control">
+          <button :class="{ show: guestsCount > 1 }" @click="decGuests">
+            -
+          </button>
+          <span class="guestsCount">{{ guestsCount }}</span>
+          <button
+            :class="{ show: guestsCount < accommodates }"
+            @click="incGuests"
+          >
+            +
+          </button>
+        </div>
       </div>
     </section>
     <button ref="myBtn" class="checkout-btn" @click="checkout">
@@ -159,6 +161,14 @@ export default {
         guests: this.guestsCount,
         total: this.computedPrice.total,
       });
+      this.isLoading = true;
+      this.$refs.myBtn.disabled = true;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 2000);
+      setTimeout(() => {
+        this.$refs.myBtn.disabled = false;
+      }, 10000);
     },
   },
   mounted() {
@@ -177,6 +187,14 @@ export default {
 .el-range-editor.is-active,
 .el-range-editor.is-active:hover {
   border-color: #ccc;
+}
+
+.el-date-editor .el-range__icon {
+  display: none;
+}
+
+.el-date-editor .el-range__icon {
+  display: none !important;
 }
 
 .el-date-range-picker .el-picker-panel__body {
@@ -202,17 +220,9 @@ export default {
   color: #222 !important;
 }
 
-/* .stay-details {
-  .el-picker-panel.el-date-range-picker.el-popper {
-    width: 50%;
-    border-radius: 20px;
-    margin-right: 70px;
-    transform: scale(1.2) !important;
-    top: 869px !important;
-    left: initial !important;
-    right: 20px !important;
-  }
-} */
+.el-date-editor.el-range-editor.el-input__inner.el-date-editor--daterange {
+  justify-content: space-between !important;
+}
 
 .el-date-editor--daterange.el-input,
 .el-date-editor--daterange.el-input__inner,
