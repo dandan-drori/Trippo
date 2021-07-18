@@ -9,7 +9,7 @@
     />
     <div class="flexible">
       <p>Not sure where to go? Perfect.</p>
-      <button><span>I’m flexible</span></button>
+      <button @click="goToList"><span>I’m flexible</span></button>
     </div>
     <div class="categories">
       <h2>Live anywhere</h2>
@@ -101,6 +101,9 @@ export default {
         this.isScrolled = false;
         this.$emit("scrolled", false);
       }
+    },
+    goToList() {
+      this.$router.push("/stay");
     },
     search() {
       this.searching = true;

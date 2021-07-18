@@ -110,6 +110,7 @@ export default {
       const sum = this.reviews.reduce((acc, review) => {
         return acc + review.rate;
       }, 0);
+      if (sum === 0) return 0;
       return (sum / this.reviews.length).toFixed(1);
     },
     checkoutBtnTxt() {

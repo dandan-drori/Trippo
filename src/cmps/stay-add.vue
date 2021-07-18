@@ -140,12 +140,12 @@
 </template>
 
 <script>
-import { stayService } from "../services/stay-service.js";
-import { uploadImg } from "../services/img-upload.service.js";
-import { ValidationObserver } from "vee-validate";
-import { ValidationProvider, extend } from "vee-validate";
-import * as rules from "vee-validate/dist/rules";
-import imgUpload from "@/cmps/stay-img-upload";
+import { stayService } from '../services/stay-service.js';
+import { uploadImg } from '../services/img-upload.service.js';
+import { ValidationObserver } from 'vee-validate';
+import { ValidationProvider, extend } from 'vee-validate';
+import * as rules from 'vee-validate/dist/rules';
+import imgUpload from '@/cmps/stay-img-upload';
 Object.keys(rules).forEach((rule) => {
   extend(rule, rules[rule]);
 });
@@ -167,7 +167,7 @@ export default {
   },
   methods: {
     saveStaysImg(imgUrl) {
-      console.log("onSaveImg -> imgUrl", imgUrl);
+      console.log('onSaveImg -> imgUrl', imgUrl);
       this.stayUrls.push(imgUrl);
       console.log(this.stayUrls);
     },
@@ -180,45 +180,45 @@ export default {
 
       if (this.errors.length) return;
       this.stayToAdd.imgUrls = this.stayUrls;
-      this.$store.dispatch({ type: "saveStay", stay: this.stayToAdd });
-      this.$emit("close", false);
+      this.$store.dispatch({ type: 'saveStay', stay: this.stayToAdd });
+      this.$emit('close', false);
     },
     closeAdd() {
-      this.$emit("close", false);
+      this.$emit('close', false);
     },
     checkErrors() {
       if (this.stayToAdd.price <= 0) {
-        let err = "Above 0 please in price field";
+        let err = 'Above 0 please in price field';
         if (!this.errors.includes(err)) {
           this.errors.push(err);
         }
       } else {
         const idx = this.errors.findIndex(
-          (e) => e === "Above 0 please in price field"
+          (e) => e === 'Above 0 please in price field'
         );
-        console.log("check");
+        console.log('check');
         this.errors.splice(idx, 1);
       }
 
       if (this.stayToAdd.accommodates <= 0) {
-        let err = "Above 0 please in guests field";
+        let err = 'Above 0 please in guests field';
         if (!this.errors.includes(err)) {
-          console.log("check");
+          console.log('check');
           this.errors.push(err);
         }
       } else {
         const idx = this.errors.findIndex(
-          (e) => e === "Above 0 please in guests field"
+          (e) => e === 'Above 0 please in guests field'
         );
         this.errors.splice(idx, 1);
       }
       if (!this.stayToAdd.name) {
-        let err = "Please fill stay name";
+        let err = 'Please fill stay name';
         if (!this.errors.includes(err)) {
           this.errors.push(err);
         }
       } else {
-        const idx = this.errors.findIndex((e) => e === "Please fill stay name");
+        const idx = this.errors.findIndex((e) => e === 'Please fill stay name');
         this.errors.splice(idx, 1);
       }
     },
@@ -229,19 +229,19 @@ export default {
     },
     nameError() {
       return {
-        error: this.errors.includes("Please fill stay name"),
+        error: this.errors.includes('Please fill stay name'),
       };
     },
     priceError() {
       return {
-        error: this.errors.includes("Above 0 please in price field"),
-        "add-price": true,
+        error: this.errors.includes('Above 0 please in price field'),
+        'add-price': true,
       };
     },
     accError() {
       return {
-        error: this.errors.includes("Above 0 please in guests field"),
-        "add-price": true,
+        error: this.errors.includes('Above 0 please in guests field'),
+        'add-price': true,
       };
     },
   },

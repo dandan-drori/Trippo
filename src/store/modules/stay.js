@@ -6,7 +6,7 @@ export default {
 		stays: [],
 		unfilteredStays: [],
 		filterBy: {
-			price: [0, 9999],
+			price: [0, 1500],
 			types: [],
 			amenities: [],
 			city: '',
@@ -44,6 +44,9 @@ export default {
 		setFilter(state, { filterBy }) {
 			state.filterBy = filterBy
 		},
+		addReview(state, { stay, review }) {
+			stay.reviews.unshift(review)
+		},
 	},
 	actions: {
 		async loadStays({ commit, state }) {
@@ -61,7 +64,7 @@ export default {
 		async loadUnfilteredStays({ commit }) {
 			try {
 				const unfilteredStays = await stayService.query({
-					price: [0, 9999],
+					price: [0, 1500],
 					types: [],
 					amenities: [],
 					city: '',
@@ -168,6 +171,11 @@ export default {
 				console.log('Prefix', Prefix)
 				throw err
 			}
+		},
+		async addReview({ commit }, { stay, review }) {
+			const stayCopy = JSON.parse(JSON.stringify(stay))
+			stayCopy.reviews.unshift(review)
+			return await stayService.save(stayCopy)
 		},
 	},
 }

@@ -4,11 +4,20 @@
       @toggleProfile="toggleProfile"
       :class="{ scrolled: isScrolled, hideSearch: isSearchShown }"
     />
-    <router-view @login="login" @scrolled="scrolled" @hideSearch="hideSearch" />
+    <router-view
+      @login="login"
+      @scrolled="scrolled"
+      @screen="toggleScreen"
+      :isScreenOpen="isScreenOpen"
+      @hideSearch="hideSearch"
+    />
     <app-footer />
     <login @login="login" v-if="isLoginOpen" />
     <signup @signUp="signUp" v-if="isSignupOpen" @toggleSignUp="toggleSignUp" />
-    <div v-if="isLoginOpen || isSignupOpen" class="screen"></div>
+    <div
+      v-if="isLoginOpen || isSignupOpen || isScreenOpen"
+      class="screen"
+    ></div>
     <profile-menu
       @login="login"
       @toggleSignUp="toggleSignUp"
@@ -16,7 +25,7 @@
       @closeModal="closeModal"
       :isProfileModalOpen="isProfileModalOpen"
     />
-    <!-- <user-msg /> -->
+    <user-msg />
   </div>
 </template>
 
@@ -35,11 +44,11 @@ export default {
       isSignupOpen: false,
       isProfileModalOpen: false,
       isSearchShown: true,
+      isScreenOpen: false,
     };
   },
   created() {
     window.addEventListener("click", this.bodyClick);
-    this.isScolled = false;
   },
   methods: {
     scrolled(value) {
@@ -72,6 +81,10 @@ export default {
       this.isLoginOpen = false;
       this.isSignupOpen = false;
       this.isProfileModalOpen = false;
+      this.isScreenOpen = false;
+    },
+    toggleScreen(val) {
+      this.isScreenOpen = val;
     },
   },
   components: {
