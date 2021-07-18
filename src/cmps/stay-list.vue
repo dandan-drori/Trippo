@@ -2,7 +2,7 @@
   <section>
     <div class="head-title">
       <p class="head-title-visits">{{ stays.length }}+ stays</p>
-      <h1>Entire homes</h1>
+      <h1>{{ place }}</h1>
     </div>
     <section class="stay-list">
       <section
@@ -23,10 +23,24 @@ export default {
     stays: Array,
   },
   data() {
-    return {};
+    return {
+      currCity: '',
+    };
   },
-  computed: {},
-  created() {},
+  computed: {
+    place() {
+      if (this.currCity) {
+        return `Places in ${this.currCity}`;
+      } else {
+        return `Entire places`;
+      }
+    },
+  },
+  created() {
+    // const { city } = this.$route.params;
+    // console.log(this.$route.params.city);
+    this.currCity = this.$route.params.city;
+  },
 
   components: {
     stayPreview,

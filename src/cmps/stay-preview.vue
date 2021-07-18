@@ -16,9 +16,7 @@
     <div class="card-rating">
       <p><i class="el-icon-star-on star-icon"></i>4.7</p>
     </div>
-    <div class="card-location">
-      {{ stay.loc.country }} - {{ stay.propertyType }}
-    </div>
+    <div class="card-location">{{ city }} - {{ stay.propertyType }}</div>
     <div>
       <span>{{ stay.price }}$ </span>/ night
     </div>
@@ -35,6 +33,19 @@ export default {
       this.$router.push(`/stay/${stayId}`);
     },
   },
+  computed: {
+    city() {
+      switch (this.stay.loc.country) {
+        case 'Netherlands':
+          return 'Amsterdam';
+        case 'France':
+          return 'Paris';
+        case 'New York':
+          return 'New York';
+      }
+    },
+  },
+  created() {},
 };
 </script>
 
