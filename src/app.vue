@@ -36,6 +36,7 @@ import userMsg from "./cmps/user-msg.vue";
 import login from "./cmps/login.vue";
 import signup from "./cmps/signup.vue";
 import ProfileMenu from "./cmps/profile-menu.vue";
+import { showMsg } from "./services/event-bus.service";
 export default {
   data() {
     return {
