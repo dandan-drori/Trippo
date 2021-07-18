@@ -174,7 +174,8 @@ export default {
 		async addReview({ commit }, { stay, review }) {
 			const stayCopy = JSON.parse(JSON.stringify(stay))
 			stayCopy.reviews.unshift(review)
-			return await stayService.save(stayCopy)
+			await stayService.save(stayCopy)
+			return stayCopy
 		},
 	},
 }
