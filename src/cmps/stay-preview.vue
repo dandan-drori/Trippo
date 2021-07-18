@@ -19,9 +19,7 @@
         >
       </p>
     </div>
-    <div class="card-location">
-      {{ stay.propertyType }} &middot; {{ stay.loc.country }}
-    </div>
+    <div class="card-location">{{ stay.propertyType }} &middot; {{ city }}</div>
     <div class="card-name">{{ 'stay short name' }}</div>
     <div class="card-price">
       <p>
@@ -42,6 +40,19 @@ export default {
       this.$router.push(`/stay/${stayId}`);
     },
   },
+  computed: {
+    city() {
+      switch (this.stay.loc.country) {
+        case 'Netherlands':
+          return 'Amsterdam';
+        case 'France':
+          return 'Paris';
+        case 'New York':
+          return 'New York';
+      }
+    },
+  },
+  created() {},
 };
 </script>
 
