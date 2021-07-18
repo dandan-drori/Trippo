@@ -65,4 +65,7 @@
 
 .msg-container {
   height: 100%;
+  span {
+    word-wrap: break-word;
+  }
 }

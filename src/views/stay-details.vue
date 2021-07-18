@@ -232,9 +232,18 @@ export default {
     toggleReview() {
       this.$emit("screen", !this.isScreenOpen);
     },
-    onAddReview(review) {
-      this.$store.dispatch({ type: "addReview", stay: this.stay, review });
-      this.toggleReview();
+    async onAddReview(review) {
+      try {
+        await this.$store.dispatch({
+          type: "addReview",
+          stay: this.stay,
+          review,
+        });
+        this.toggleReview();
+        showMsg("Review added successfully");
+      } catch {
+        showMsg("There was a problem posting the review", "error");
+      }
     },
   },
   async created() {
