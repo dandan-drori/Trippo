@@ -39,7 +39,12 @@
       </div>
     </section>
     <button ref="myBtn" class="checkout-btn" @click="checkout">
-      <span>{{ checkoutBtnTxt }}</span>
+      <vue-loaders-ball-clip-rotate-multiple
+        color="white"
+        v-if="isLoading"
+        style="height:23px; top:-7px;"
+      />
+      <span v-else>{{ checkoutBtnTxt }}</span>
     </button>
     <section v-if="dates" class="reservation-data">
       <div class="charges-data">
@@ -66,6 +71,7 @@ export default {
   props: { reviews: Array, price: Number, accommodates: Number },
   data() {
     return {
+      isLoading: false,
       shortcuts: [
         {
           text: "Last week",

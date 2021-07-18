@@ -29,7 +29,7 @@
           $
         </span>
         <small>
-          ILS
+          USD
         </small>
       </li>
       <li>
@@ -65,7 +65,3 @@ export default {
   },
 };
 </script>
-
-// box-shadow: 0px 0px 0px 8px #fa3259, 0px 0px 0px 16px #e61e4d, 0px 0px 0px
-24px // #e31c5f, 0px 0px 0px 31px #d70466, 0px 0px 0px 39px #bd1e59, 5px 5px
-50px -8px // #bd1d59;

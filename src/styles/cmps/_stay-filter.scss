@@ -104,7 +104,6 @@
 .mx-datepicker-range {
   position: absolute !important;
   padding: 0 !important;
-  // border: 1px solid black;
   top: 30px;
   left: 50%;
   transform: translateX(-60%);
@@ -120,10 +119,79 @@
   }
 }
 
+.mx-range-wrapper {
+  justify-content: space-evenly;
+}
+
+.mx-calendar + .mx-calendar {
+  border: none !important;
+}
+
+.mx-calendar {
+  width: 43% !important;
+}
+.mx-calendar-header {
+  button {
+    color: #222 !important;
+  }
+}
+
 .mx-datepicker-main.mx-datepicker-popup {
   top: 153px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
+  width: 90%;
+  height: 393px !important;
+  max-width: 850px;
+  border-radius: 20px;
+  padding: 0.8rem 1.6rem !important;
+  th {
+    color: #222 !important;
+  }
+  tr {
+    margin-bottom: 1px !important;
+  }
+}
+
+td {
+  &.cell {
+    background-color: #fff !important;
+    color: black !important;
+    &.active {
+      border-radius: 50%;
+      background-color: #222 !important;
+      color: #fff !important;
+      // & > div::before {
+      //   content: "";
+      //   width: 47px;
+      //   height: 45px;
+      //   position: absolute;
+      //   margin-top: 3px;
+      //   margin-left: 4px;
+      //   z-index: -1;
+      //   background-color: #ededed !important;
+      // }
+    }
+    &.in-range {
+      background-color: #ededed !important;
+      width: 120% !important;
+    }
+    & > div {
+      padding: 11px 0;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42.9px !important;
+      height: 42.9px !important;
+      margin-bottom: 3px !important;
+      margin-right: 3px !important;
+      &:hover {
+        border-radius: 50%;
+        box-shadow: 0 0 0 1.2px #222;
+      }
+    }
+  }
 }
 
 // guest

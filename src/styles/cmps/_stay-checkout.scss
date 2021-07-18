@@ -2,6 +2,7 @@
   position: sticky;
   top: 100px;
   margin-bottom: 20px;
+  margin-inline-start: 30px;
   width: 370px;
   padding: 10px 30px;
   border-radius: 15px;
@@ -89,11 +90,14 @@
 
   .checkout-btn {
     width: 100%;
-    padding: 0.4rem 0;
+    padding: 0.7rem 0;
     font-size: 1.5rem;
-    margin-bottom: 15px;
     border-radius: 10px;
     background-color: rgb(189, 30, 89);
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
     color: #fafafa;
     --x: 3px;
     --y: 3px;

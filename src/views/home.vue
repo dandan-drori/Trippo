@@ -84,6 +84,8 @@ export default {
   created() {
     window.addEventListener("scroll", this.handleScroll);
     window.addEventListener("click", this.bodyClick);
+    this.isScrolled = false;
+    this.$emit("hideSearch", false);
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);

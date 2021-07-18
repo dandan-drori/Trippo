@@ -30,6 +30,11 @@ header {
       width: 300px;
     }
   }
+  &.hideSearch {
+    .header-search {
+      display: none;
+    }
+  }
 }
 
 .heder-container {
@@ -83,11 +88,23 @@ header {
   display: flex;
   align-items: center;
   align-content: center;
-  gap: 20px;
+  gap: 5px;
+  & .host {
+    padding: 10px 9px;
+    border-radius: 3rem;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
   & .i18n {
     color: #fff;
     background-color: transparent;
-    height: 1rem;
+    padding: 9px 10px;
+    height: 40px;
+    border-radius: 3rem;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
     & span {
       font-size: 1rem;
     }
@@ -103,12 +120,13 @@ header {
     color: #222;
     border: 1px solid rgba(204, 204, 204, 0.564);
     border-radius: 2rem;
-    width: 75px;
+    min-width: 75px;
     height: 40px;
     display: flex;
     align-items: center;
     align-content: center;
     justify-content: space-around;
+    margin-inline-start: 5px;
     & span {
       font-size: 0.9rem;
     }

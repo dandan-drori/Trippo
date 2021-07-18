@@ -11,7 +11,7 @@
         :key="stay._id"
         class="stay-preveiw-container"
       >
-        <stay-preview :stay="stay"> </stay-preview>
+        <stay-preview @click.stop :stay="stay"> </stay-preview>
       </section>
     </section>
   </section>

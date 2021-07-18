@@ -28,8 +28,12 @@
     <stay-add v-if="isModalOpen" @close="closeModal" :stay="stay" />
     <section class="data" v-else>
       <section class="statistics">
-        <p>Assets you own: {{ loggedInUser.stays.length }}</p>
-        <p>Orders: {{ loggedInUser.orders.length }}</p>
+        <p>
+          Assets you own: <span>{{ loggedInUser.stays.length }}</span>
+        </p>
+        <p>
+          Orders: <span>{{ loggedInUser.orders.length }}</span>
+        </p>
       </section>
       <section class="orders-table">
         <h2>Orders:</h2>
@@ -134,8 +138,6 @@ export default {
             .split(",")[0];
           return newOrder;
         }
-        // }
-        // }
       });
       return orders.filter((o) => o);
     },
@@ -148,6 +150,10 @@ export default {
   },
   created() {
     this.$emit("scrolled", true);
+    this.$emit("hideSearch", true);
+  },
+  destroyed() {
+    this.$emit("hideSearch", false);
   },
 };
 </script>

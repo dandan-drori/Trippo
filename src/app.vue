@@ -2,9 +2,9 @@
   <div class="app main-layout">
     <app-header
       @toggleProfile="toggleProfile"
-      :class="{ scrolled: isScrolled }"
+      :class="{ scrolled: isScrolled, hideSearch: isSearchShown }"
     />
-    <router-view @login="login" @scrolled="scrolled" />
+    <router-view @login="login" @scrolled="scrolled" @hideSearch="hideSearch" />
     <app-footer />
     <login @login="login" v-if="isLoginOpen" />
     <signup @signUp="signUp" v-if="isSignupOpen" @toggleSignUp="toggleSignUp" />
@@ -34,10 +34,12 @@ export default {
       isLoginOpen: false,
       isSignupOpen: false,
       isProfileModalOpen: false,
+      isSearchShown: true,
     };
   },
   created() {
     window.addEventListener("click", this.bodyClick);
+    this.isScolled = false;
   },
   methods: {
     scrolled(value) {
@@ -61,6 +63,10 @@ export default {
     },
     closeModal(val) {
       this.isProfileModalOpen = val;
+    },
+    hideSearch(val) {
+      console.log(val);
+      this.isSearchShown = val;
     },
     bodyClick() {
       this.isLoginOpen = false;

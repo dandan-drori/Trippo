@@ -24,6 +24,7 @@
 		"vee-validate": "^3.4.10",
 		"vue": "^2.6.11",
 		"vue-chartjs": "^3.5.1",
+		"vue-loaders": "^4.1.4",
 		"vue-moment": "^4.1.0",
 		"vue-router": "^3.2.0",
 		"vue2-datepicker": "^3.9.1",

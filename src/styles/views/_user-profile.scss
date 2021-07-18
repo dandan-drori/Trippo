@@ -71,7 +71,25 @@
     padding-top: 100px;
 
     h2 {
-      margin-bottom: 1rem;
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
+    & > section {
+      border-bottom: 1px solid rgba(50, 50, 50, 0.1);
+      margin-bottom: 20px;
+      padding: 10px;
+    }
+  }
+
+  .statistics {
+    display: flex;
+    gap: 20px;
+    p {
+      font-size: 0.8rem;
+      span {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
     }
   }
 }
