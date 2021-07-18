@@ -1,5 +1,5 @@
 <template>
-  <div class="user-msg" v-if="!alive" :class="alertClass">
+  <div class="user-msg" v-if="alive" :class="alertClass">
     <div class="msg-color"></div>
     <div class="msg-icon">
       <span class="material-icons">
@@ -9,7 +9,7 @@
     <div class="msg-container">
       <span>{{ msg.txt }}</span>
     </div>
-    <button>
+    <button @click.stop="killMsg">
       <span class="material-icons">
         close
       </span>
@@ -36,17 +36,22 @@ export default {
       msg: null,
     };
   },
+  methods: {
+    killMsg() {
+      this.alive = false;
+    },
+  },
   computed: {
     alertClass() {
       if (!this.msg) return;
       return `alert-${this.msg.type}`;
     },
     alertIcon() {
-      if (this.msg.type === "eror") {
-        return "error";
+      if (this.msg.type === "error") {
+        return "cancel";
       }
       if (this.msg.type === "warning") {
-        return "cancel";
+        return "error";
       } else return "check_circle_outline";
     },
   },

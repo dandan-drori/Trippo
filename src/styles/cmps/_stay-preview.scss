@@ -34,4 +34,9 @@
 .el-carousel__button {
   height: 8px;
   width: 7px;
+  z-index: 5;
+}
+
+.el-carousel__arrow {
+  z-index: 3;
 }

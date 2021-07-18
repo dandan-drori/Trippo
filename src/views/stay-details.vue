@@ -223,9 +223,17 @@ export default {
 			this.$emit('screen', !this.isScreenOpen)
 		},
 		async onAddReview(review) {
-			const newStay = await this.$store.dispatch({ type: 'addReview', stay: this.stay, review })
-			this.stay = newStay
-			this.toggleReview()
+			try {
+				await this.$store.dispatch({
+					type: 'addReview',
+					stay: this.stay,
+					review,
+				})
+				this.toggleReview()
+				showMsg('Review added successfully')
+			} catch {
+				showMsg('There was a problem posting the review', 'error')
+			}
 		},
 	},
 	async created() {

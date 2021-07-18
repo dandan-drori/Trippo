@@ -146,6 +146,7 @@ import { ValidationObserver } from 'vee-validate';
 import { ValidationProvider, extend } from 'vee-validate';
 import * as rules from 'vee-validate/dist/rules';
 import imgUpload from '@/cmps/stay-img-upload';
+import { showMsg } from '../services/event-bus.service.js';
 Object.keys(rules).forEach((rule) => {
   extend(rule, rules[rule]);
 });
@@ -171,7 +172,7 @@ export default {
       this.stayUrls.push(imgUrl);
       console.log(this.stayUrls);
     },
-    saveStay() {
+    async saveStay() {
       this.stayToAdd.host = {
         _id: this.loggedInUser._id,
         fullname: this.loggedInUser.fullname,
@@ -180,7 +181,13 @@ export default {
 
       if (this.errors.length) return;
       this.stayToAdd.imgUrls = this.stayUrls;
-      this.$store.dispatch({ type: 'saveStay', stay: this.stayToAdd });
+      try {
+        await this.$store.dispatch({ type: 'saveStay', stay: this.stayToAdd });
+        showMsg('Stay added!');
+      } catch (err) {
+        showMsg('Stay add failed', 'error');
+      }
+
       this.$emit('close', false);
     },
     closeAdd() {

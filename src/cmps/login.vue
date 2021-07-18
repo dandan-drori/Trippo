@@ -52,27 +52,30 @@
 </template>
 
 <script>
+import { showMsg } from '../services/event-bus.service.js';
 export default {
   data() {
     return {
       userCred: {
-        username: "",
-        password: "",
+        username: '',
+        password: '',
       },
     };
   },
   methods: {
     async login() {
       try {
-        await this.$store.dispatch({ type: "login", userCred: this.userCred });
+        await this.$store.dispatch({ type: 'login', userCred: this.userCred });
+        showMsg('Logged in successfully');
         this.close();
       } catch (err) {
-        console.log("err", err);
+        showMsg('Logged in failed', 'error');
+        console.log('err', err);
         // TODO: alert user that his credentials are incorrect
       }
     },
     close() {
-      this.$emit("login", false);
+      this.$emit('login', false);
     },
   },
   mounted() {
@@ -80,8 +83,8 @@ export default {
       const x = e.offsetX;
       const y = e.offsetY;
 
-      e.target.style.setProperty("--x", `${x}px`);
-      e.target.style.setProperty("--y", `${y}px`);
+      e.target.style.setProperty('--x', `${x}px`);
+      e.target.style.setProperty('--y', `${y}px`);
     };
   },
 };

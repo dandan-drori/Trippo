@@ -55,7 +55,7 @@ import stayAdd from '@/cmps/stay-add'
 import profileTable from '@/cmps/profile-table'
 import ProfileStayTable from '../cmps/profile-stay-table.vue'
 import { uploadImg } from '@/services/img-upload.service.js'
-
+import { showMsg } from '../services/event-bus.service.js'
 export default {
 	components: { profileFilter, stayAdd, profileTable, ProfileStayTable },
 	data() {
