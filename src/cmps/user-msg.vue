@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import { eventBusService, SHOW_MSG } from "../services/event-bus.service.js";
+import { eventBusService, SHOW_MSG } from '../services/event-bus.service.js';
 export default {
   created() {
-    eventBusService.$on(SHOW_MSG, (msg) => {
+    eventBusService.$on(SHOW_MSG, msg => {
       this.msg = msg;
       var delay = msg.delay || 2000;
       this.alive = true;
@@ -47,23 +47,13 @@ export default {
       return `alert-${this.msg.type}`;
     },
     alertIcon() {
-      if (this.msg.type === "error") {
-        return "cancel";
+      if (this.msg.type === 'error') {
+        return 'cancel';
       }
-      if (this.msg.type === "warning") {
-        return "error";
-      } else return "check_circle_outline";
+      if (this.msg.type === 'warning') {
+        return 'error';
+      } else return 'check_circle_outline';
     },
   },
 };
 </script>
-
-// yellow // #f0a92e //
-<span class="material-icons">
-// error
-// </span>
-
-// red // #ff4040 //
-<span class="material-icons">
-// cancel
-// </span>

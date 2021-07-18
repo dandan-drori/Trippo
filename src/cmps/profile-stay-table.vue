@@ -51,6 +51,7 @@ export default {
         this.$store.dispatch({ type: 'removeStay', stayId: stay._id });
         showMsg('Stay removed successfully');
       } catch (err) {
+        setTimeout;
         showMsg('Stay remove failed', 'error');
       }
     },

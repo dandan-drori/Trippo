@@ -76,7 +76,7 @@ export default {
       isLoading: false,
       shortcuts: [
         {
-          text: "Last week",
+          text: 'Last week',
           value: (() => {
             const end = new Date();
             const start = new Date();
@@ -85,7 +85,7 @@ export default {
           })(),
         },
         {
-          text: "Last month",
+          text: 'Last month',
           value: (() => {
             const end = new Date();
             const start = new Date();
@@ -94,7 +94,7 @@ export default {
           })(),
         },
         {
-          text: "Last 3 months",
+          text: 'Last 3 months',
           value: (() => {
             const end = new Date();
             const start = new Date();
@@ -103,7 +103,7 @@ export default {
           })(),
         },
       ],
-      dates: "",
+      dates: '',
       guestsCount: 1,
     };
   },
@@ -116,7 +116,7 @@ export default {
       return (sum / this.reviews.length).toFixed(1);
     },
     checkoutBtnTxt() {
-      return this.dates ? "Reserve" : "Check availabilty";
+      return this.dates ? 'Reserve' : 'Check availabilty';
     },
     computedPrice() {
       const checkin = this.dates[0].getTime();
@@ -126,9 +126,9 @@ export default {
       const service = this.price / 10;
       const total = accomodation + service;
 
-      var formatter = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
+      var formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
       });
@@ -156,7 +156,7 @@ export default {
         this.$refs.myDatePicker.focus();
         return;
       }
-      this.$emit("checkout", {
+      this.$emit('checkout', {
         dates: this.dates,
         guests: this.guestsCount,
         total: this.computedPrice.total,
@@ -172,12 +172,12 @@ export default {
     },
   },
   mounted() {
-    this.$refs.myBtn.onmousemove = (e) => {
+    this.$refs.myBtn.onmousemove = e => {
       const x = e.offsetX;
       const y = e.offsetY;
 
-      e.target.style.setProperty("--x", `${x}px`);
-      e.target.style.setProperty("--y", `${y}px`);
+      e.target.style.setProperty('--x', `${x}px`);
+      e.target.style.setProperty('--y', `${y}px`);
     };
   },
 };
