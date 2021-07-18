@@ -1,17 +1,13 @@
 <template>
 	<section class="review-preview">
 		<section class="user">
-			<img src="@/assets/imgs/userImgs/host2.jpg" />
+			<img :src="review.by.imgUrl" />
 			<div>
 				<h2>{{ review.by.fullname }}</h2>
 				<p>{{ review.at | moment('from') }}</p>
 			</div>
-			<i class="el-icon-star-on"></i>
-			<p>
-				{{ review.rate }}
-			</p>
 		</section>
-		<p>{{ review.txt }}</p>
+		<p class="txt">{{ review.txt }}</p>
 	</section>
 </template>
 

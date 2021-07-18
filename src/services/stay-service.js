@@ -1,5 +1,3 @@
-import { storageService } from './async-storage-service.js'
-import { utilService } from './util-service.js'
 import { httpService } from './http.service.js'
 
 export const gStays = [
@@ -598,14 +596,12 @@ export const stayService = {
 	remove,
 	save,
 	getEmptyStay,
-	addReview,
 }
 
 const BASE_URL = 'stay/'
 
 async function query(filterBy) {
 	return await httpService.get(BASE_URL, { params: filterBy })
-	// var staysInStorage = await storageService.query(STAY_KEY)
 
 	// if (!staysInStorage || !staysInStorage.length) {
 	// 	utilService.saveToStorage(STAY_KEY, gStays)
@@ -644,21 +640,11 @@ async function query(filterBy) {
 
 async function getById(stayId) {
 	return await httpService.get(`${BASE_URL}${stayId}`)
-	// return storageService.get(STAY_KEY, stayId)
 }
 
 async function remove(stayId) {
 	return await httpService.delete(`${BASE_URL}${stayId}`)
-	// return storageService.remove(STAY_KEY, stayId)
 }
-
-// function save(stay) {
-// 	if (stay._id) {
-// 		// return storageService.put(STAY_KEY, stay)
-// 	} else {
-// 		return storageService.post(STAY_KEY, stay)
-// 	}
-// }
 
 async function save(stay) {
 	return stay._id
@@ -666,46 +652,17 @@ async function save(stay) {
 		: await httpService.post(BASE_URL, stay)
 }
 
-async function addReview(stayId, review) {
-	// if (!review) {
-	// 	review = {
-	// 		fullName: 'stays Reader',
-	// 		rating: 5,
-	// 		readAt: new Date().toLocaleString(),
-	// 		review: 'The stay was very good!',
-	// 	}
-	// } else {
-	// 	review = {
-	// 		fullName: review.fullName || 'stays Reader',
-	// 		rating: 5,
-	// 		readAt: review.readAt || new Date().toLocaleString(),
-	// 		review: review.review || 'The stay was very good!',
-	// 	}
-	// }
-	// storageService.get(STAY_KEY, stayId).then(stay => {
-	// 	stay.reviews.push(review)
-	// 	storageService.put(STAY_KEY, stay)
-	// })
-	const stay = await getById(stayId)
-	stay.reviews.push(review)
-	return await httpService.put(`${BASE_URL}${stayId}`, stay)
-}
-
 function getEmptyStay() {
 	return {
-		// imgFolder: 2,
 		name: '',
-		// imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
 		price: 0,
 		summary: '',
-		imgFolder: 1,
-		imgUrls: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
+		imgUrls: [],
 		propertyType: '',
 		accommodates: 0,
 		amenities: [],
 		loc: {
 			country: '',
-
 			address: '',
 		},
 		reviews: [],

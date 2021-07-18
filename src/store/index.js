@@ -7,6 +7,7 @@ import order from './modules/order.js'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+	// strict: true,
 	modules: {
 		stay,
 		user,

@@ -21,6 +21,9 @@ export default {
 		addOrder(state, { order }) {
 			state.orders.push(order)
 		},
+		addOrderToUser(state, { user, order }) {
+			user.orders.push(order)
+		},
 	},
 	actions: {
 		async loadOrders({ commit }) {
@@ -49,11 +52,11 @@ export default {
 				commit({ type, order: savedOrder })
 				const orderCopy = JSON.parse(JSON.stringify(savedOrder))
 				delete orderCopy.buyer
-				user.orders.push(orderCopy)
+				commit({ type: 'addOrderToUser', user, order: orderCopy })
 				await userService.update(user, false)
 				const host = await userService.getById(savedOrder.host._id)
 				delete savedOrder.host
-				host.orders.push(savedOrder)
+				commit({ type: 'addOrderToUser', user: host, order: savedOrder })
 				await userService.update(host, true)
 				return savedOrder
 			} catch (err) {

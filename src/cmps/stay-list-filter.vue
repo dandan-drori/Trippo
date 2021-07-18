@@ -104,7 +104,7 @@ export default {
 		},
 		clearFilter() {
 			const filter = {
-				price: [0, 9999],
+				price: [0, 1500],
 				types: [],
 				amenities: [],
 				city: '',
