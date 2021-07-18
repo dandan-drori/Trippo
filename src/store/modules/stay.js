@@ -96,16 +96,19 @@ export default {
 					stay.loc.countryCode = 'NY'
 					stay.loc.lat = 40.73061
 					stay.loc.lng = -73.935242
+					stay.loc.address = 'New York, New York'
 					break
 				case 'Netherlands':
 					stay.loc.countryCode = 'NL'
 					stay.loc.lat = 48.8566
 					stay.loc.lng = 2.3522
+					stay.loc.address = 'Amsterdam, Netherlands'
 					break
 				case 'France':
 					stay.loc.countryCode = 'FR'
 					stay.loc.lat = 52.377956
 					stay.loc.lng = 4.739298
+					stay.loc.address = 'Paris, France'
 					break
 			}
 			stay.amenities = stay.amenities.map(amenity => {

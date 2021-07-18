@@ -121,7 +121,7 @@ export default {
 		},
 		computedOrders() {
 			const orders = this.loggedInUser.orders.map(order => {
-				if (!order || !order.status) return {}
+				if (!order || !order.status) return
 				// for (let i = 0; i < this.loggedInUser.stays.length; i++) {
 				// if (order.stay._id === this.loggedInUser.stays[i]._id) {
 				const regex = new RegExp(this.filterBy.name, 'i')
