@@ -1,9 +1,5 @@
 <template>
   <section>
-    <div class="head-title">
-      <p class="head-title-visits">{{ stays.length }}+ stays</p>
-      <h1>{{ place }}</h1>
-    </div>
     <section class="stay-list">
       <section
         v-for="stay in stays"

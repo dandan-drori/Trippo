@@ -10,13 +10,20 @@
       <div>{{ stay.name }}</div>
       <div>{{ stay.country }}</div>
       <div>{{ formattedPrice(stay.price) }}</div>
-      <div>
-        <button class="edit-btn" @click="onEditStay(stay)">
-          <font-awesome-icon :icon="pencil" />
+      <div class="actions-td">
+        <button @click.stop="toggleActionsModal" class="actionsBtn">
+          <span class="material-icons">
+            more_horiz
+          </span>
         </button>
-        <button class="delete-btn" @click="onRemoveStay(stay)">
-          <font-awesome-icon :icon="trash" />
-        </button>
+        <div class="actionsModal" v-if="isActionsModalOpen">
+          <button class="edit-btn" @click="onEditStay(stay)">
+            Edit
+          </button>
+          <button class="delete-btn" @click="onRemoveStay(stay)">
+            Delete
+          </button>
+        </div>
       </div>
     </li>
   </ul>
@@ -32,8 +39,7 @@ export default {
   props: { stays: Array },
   data() {
     return {
-      pencil: faPencilAlt,
-      trash: faTrash,
+      isActionsModalOpen: false,
     };
   },
   methods: {
@@ -57,6 +63,9 @@ export default {
     },
     onEditStay(stay) {
       this.$emit('edit-stay', stay);
+    },
+    toggleActionsModal() {
+      this.isActionsModalOpen = !this.isActionsModalOpen;
     },
   },
 };
