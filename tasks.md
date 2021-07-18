@@ -11,8 +11,6 @@
 ### FRONTEND
 
 - stay-details - add share with facebook and wishlist features - DANDAN
-- prevent user resubmission of checkout while waiting for the server response - DANDAN
-- add loader instead of "loading..." text
 - connect user-msg to checkout, logout, become a host button
 - fix calender in homepage - GUY
 - when updating stay - initialize amenities as checked if they are checked

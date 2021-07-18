@@ -10,11 +10,15 @@
       </el-slider>
       <div class="price-container">
         <input
-          v-model="filterBy.price[0]"
+          v-model="filterByLocal.price[0]"
           class="from-price"
           placeholder="From"
         />
-        <input v-model="filterBy.price[1]" class="to-price" placeholder="To" />
+        <input
+          v-model="filterByLocal.price[1]"
+          class="to-price"
+          placeholder="To"
+        />
       </div>
       <div class="button-container">
         <button @click.stop="clearFilter">Clear</button>
@@ -31,7 +35,7 @@
     <div @click.stop class="types-modal" v-if="isTypesModalOpen">
       <div>
         <input
-          v-model="filterBy.types"
+          v-model="filterByLocal.types"
           type="checkbox"
           value="Apartment"
           id="Apartment"
@@ -44,7 +48,7 @@
       </div>
       <div>
         <input
-          v-model="filterBy.types"
+          v-model="filterByLocal.types"
           type="checkbox"
           value="Vila"
           id="Vila"
@@ -56,7 +60,7 @@
       </div>
       <div>
         <input
-          v-model="filterBy.types"
+          v-model="filterByLocal.types"
           type="checkbox"
           value="Hotel"
           id="Hotel"
@@ -68,7 +72,7 @@
       </div>
       <div>
         <input
-          v-model="filterBy.types"
+          v-model="filterByLocal.types"
           type="checkbox"
           value="House"
           id="House"
@@ -80,7 +84,7 @@
       </div>
       <div>
         <input
-          v-model="filterBy.types"
+          v-model="filterByLocal.types"
           type="checkbox"
           value="Loft"
           id="Loft"
@@ -104,7 +108,7 @@
     <div @click.stop class="amenities-modal" v-if="isAmenitiesModalOpen">
       <div>
         <input
-          v-model="filterBy.amenities"
+          v-model="filterByLocal.amenities"
           type="checkbox"
           value="TV"
           id="TV"
@@ -116,7 +120,7 @@
       </div>
       <div>
         <input
-          v-model="filterBy.amenities"
+          v-model="filterByLocal.amenities"
           type="checkbox"
           value="Wifi"
           id="Wifi"
@@ -128,7 +132,7 @@
       </div>
       <div>
         <input
-          v-model="filterBy.amenities"
+          v-model="filterByLocal.amenities"
           type="checkbox"
           value="Shower"
           id="Shower"
@@ -140,7 +144,7 @@
       </div>
       <div>
         <input
-          v-model="filterBy.amenities"
+          v-model="filterByLocal.amenities"
           type="checkbox"
           value="Kitchen"
           id="Kitchen"
@@ -152,7 +156,7 @@
       </div>
       <div>
         <input
-          v-model="filterBy.amenities"
+          v-model="filterByLocal.amenities"
           type="checkbox"
           value="Pets allowed"
           id="Pets"
@@ -164,7 +168,7 @@
       </div>
       <div>
         <input
-          v-model="filterBy.amenities"
+          v-model="filterByLocal.amenities"
           type="checkbox"
           value="Air conditioning"
           id="Air"
@@ -176,7 +180,7 @@
       </div>
       <div>
         <input
-          v-model="filterBy.amenities"
+          v-model="filterByLocal.amenities"
           type="checkbox"
           value="Smoking allowed"
           id="Smoking"
@@ -214,6 +218,7 @@ export default {
       isPriceModalOpen: false,
       isTypesModalOpen: false,
       isAmenitiesModalOpen: false,
+      filterByLocal: this.filterBy || {},
     };
   },
   methods: {
@@ -238,7 +243,7 @@ export default {
       this.isAmenitiesModalOpen = false;
     },
     setFilter() {
-      this.$emit('filter', this.filterBy);
+      this.$emit('filter', this.filterByLocal);
     },
 
     // toggleType(type) {
@@ -263,7 +268,7 @@ export default {
     // },
     clearFilter() {
       const filter = {
-        price: [0, 9999],
+        price: [0, 1500],
         types: [],
         amenities: [],
         city: '',
