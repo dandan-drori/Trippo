@@ -13,7 +13,7 @@
 				About us
 			</li>
 			<li>
-				<router-link :to="'/profile/' + loggedInUser._id">
+				<router-link :to="'/profile/' + userId">
 					Profile
 				</router-link>
 			</li>
@@ -61,8 +61,10 @@ export default {
 		}
 	},
 	computed: {
-		loggedInUser() {
-			return this.$store.getters.loggedinUser
+		userId() {
+			const user = this.$store.getters.loggedinUser
+			if (user) return user._id
+			return ''
 		},
 	},
 	components: {
