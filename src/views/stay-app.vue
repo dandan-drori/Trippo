@@ -54,6 +54,17 @@ export default {
 		await this.$store.dispatch({ type: 'loadUnfilteredStays' })
 		await this.$store.dispatch({ type: 'loadStays' })
 	},
+	destroyed() {
+		this.$store.commit({
+			type: 'setFilter',
+			filterBy: {
+				price: [0, 1500],
+				types: [],
+				amenities: [],
+				city: '',
+			},
+		})
+	},
 }
 </script>
 

@@ -601,7 +601,7 @@ export const stayService = {
 const BASE_URL = 'stay/'
 
 async function query(filterBy) {
-	return await httpService.get(BASE_URL, { params: filterBy })
+	return await httpService.get(BASE_URL, filterBy)
 
 	// if (!staysInStorage || !staysInStorage.length) {
 	// 	utilService.saveToStorage(STAY_KEY, gStays)
