@@ -1,13 +1,13 @@
 <template>
   <div class="user-msg" v-if="alive" :class="alertClass">
-    <div class="msg-color"></div>
+    <!-- <div class="msg-color"></div>
     <div class="msg-icon">
       <span class="material-icons">
         {{ alertIcon }}
-      </span>
-    </div>
+      </span> 
+    </div> -->
     <div class="msg-container">
-      <span>{{ msg.txt }}</span>
+      <p>{{ msg.txt }}</p>
     </div>
     <button @click.stop="killMsg">
       <span class="material-icons">

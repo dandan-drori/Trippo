@@ -1,8 +1,8 @@
 @mixin layout-columns($Width: 960px) {
   grid-template-columns:
-    minmax(2rem, 1fr)
+    minmax(40px, 1fr)
     minmax(auto, $Width)
-    minmax(2rem, 1fr);
+    minmax(40px, 1fr);
 }
 
 .main-layout {

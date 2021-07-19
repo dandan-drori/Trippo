@@ -3,9 +3,11 @@
     <div class="profile-header">
       <nav>
         <ul>
-          <li @click="openProfile">Profile</li>
-          <li @click="openDashboard">Dashboard</li>
-          <li @click="openInbox">inbox</li>
+          <li @click="openProfile" :class="{ acitve: profileOpen }">Profile</li>
+          <li @click="openDashboard" :class="{ acitve: dashboardOpen }">
+            Dashboard
+          </li>
+          <li @click="openInbox" :class="{ acitve: inboxOpen }">inbox</li>
         </ul>
       </nav>
     </div>

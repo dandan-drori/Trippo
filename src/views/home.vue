@@ -68,6 +68,7 @@
 </template>
 
 <script>
+import { showMsg } from '../services/event-bus.service';
 export default {
   data() {
     return {

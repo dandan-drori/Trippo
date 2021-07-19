@@ -8,7 +8,11 @@
         </router-link>
       </div>
       <div class="header-search">
-        <input type="text" placeholder="Search" v-model="filterBy.city" />
+        <input
+          type="text"
+          placeholder="Start your search"
+          v-model="filterBy.city"
+        />
         <button class="search-btn" @click="setFilter">
           <img src="@/assets/imgs/search_white_24dp.svg" alt="" />
         </button>
@@ -22,6 +26,9 @@
           </span>
         </button>
         <div @click.stop="toggleProfile" class="profile-btn">
+          <div class="user-notifications-count" v-if="notification">
+            <small>1</small>
+          </div>
           <span class="material-icons">
             menu
           </span>
@@ -39,6 +46,7 @@ export default {
   data() {
     return {
       airbnb: faAirbnb,
+      notification: 0,
       isScrolled: false,
       searching: false,
       filterBy: {

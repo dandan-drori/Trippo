@@ -15,6 +15,10 @@
       border: none;
       font-weight: 500;
       cursor: pointer;
+      padding: 0 5px;
+      &.acitve {
+        box-shadow: 0 2px 0 0 #ff385c;
+      }
     }
   }
 }

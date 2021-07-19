@@ -47,7 +47,9 @@
   left: 50px;
   top: 0;
   background-color: #fff;
-  border: 1px solid black;
+  box-shadow: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 0 0 1px rgba (0, 0, 0, 0.08);
   width: 50px;
   z-index: 3;
 }
