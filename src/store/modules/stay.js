@@ -1,5 +1,10 @@
 import { stayService } from '@/services/stay-service.js'
-import { geocodeService } from '@/services/geocode-service.js'
+// import { geocodeService } from '@/services/geocode-service.js'
+import {
+	socketService,
+	SOCKET_EVENT_REVIEW_ADDED,
+	SOCKET_EMIT_STAY_WATCH,
+} from '@/services/socket.service.js'
 
 export default {
 	state: {
@@ -11,6 +16,7 @@ export default {
 			amenities: [],
 			city: '',
 		},
+		watchedStay: null,
 	},
 	getters: {
 		stays(state) {
@@ -21,6 +27,9 @@ export default {
 		},
 		unfilteredStays(state) {
 			return state.unfilteredStays
+		},
+		watchedStay(state) {
+			return state.watchedStay
 		},
 	},
 	mutations: {
@@ -46,6 +55,9 @@ export default {
 		},
 		addReview(state, { stay, review }) {
 			stay.reviews.unshift(review)
+		},
+		setWatchedStay(state, { stay }) {
+			state.watchedStay = stay
 		},
 	},
 	actions: {
@@ -91,56 +103,62 @@ export default {
 			}
 		},
 		async saveStay({ commit, dispatch, rootGetters }, { stay }) {
-			switch (stay.loc.country) {
-				case 'New York':
-					stay.loc.countryCode = 'NY'
-					stay.loc.lat = 40.73061
-					stay.loc.lng = -73.935242
-					stay.loc.address = 'New York, New York'
-					break
-				case 'Netherlands':
-					stay.loc.countryCode = 'NL'
-					stay.loc.lat = 48.8566
-					stay.loc.lng = 2.3522
-					stay.loc.address = 'Amsterdam, Netherlands'
-					break
-				case 'France':
-					stay.loc.countryCode = 'FR'
-					stay.loc.lat = 52.377956
-					stay.loc.lng = 4.739298
-					stay.loc.address = 'Paris, France'
-					break
-			}
+			stay.loc = {
+				'New York': {
+					countryCode: 'NY',
+					lat: 40.73061,
+					lng: -73.935242,
+					address: 'New York, New York',
+				},
+				Netherlands: {
+					countryCode: 'NL',
+					lat: 48.8566,
+					lng: 2.3522,
+					address: 'Amsterdam, Netherlands',
+				},
+				France: {
+					countryCode: 'FR',
+					lat: 52.377956,
+					lng: 4.739298,
+					address: 'Paris, France',
+				},
+			}[stay.loc.country]
+
 			stay.amenities = stay.amenities.map(amenity => {
-				switch (amenity) {
-					case 'TV':
-						return {
-							txt: 'TV',
-							icon: 'el-icon-monitor',
-						}
-					case 'Wifi':
-						return {
-							txt: 'Wifi',
-							icon: 'wifi',
-							fa: true,
-						}
-					case 'Kitchen':
-						return { txt: 'Kitchen', icon: 'el-icon-knife-fork' }
-
-					case 'Pets allowed':
-						return { txt: 'Pets allowed', icon: 'paw', fa: true }
-
-					case 'Shower':
-						return { txt: 'Shower', icon: 'shower', fa: true }
-					case 'Air conditioning':
-						return {
-							txt: 'Air conditioning',
-							icon: 'snowflake',
-							fa: true,
-						}
-					case 'Smoking allowed':
-						return { txt: 'Smoking allowed', icon: 'el-icon-smoking' }
-				}
+				return {
+					TV: {
+						txt: 'TV',
+						icon: 'el-icon-monitor',
+					},
+					Wifi: {
+						txt: 'Wifi',
+						icon: 'wifi',
+						fa: true,
+					},
+					Kitchen: {
+						txt: 'Kitchen',
+						icon: 'el-icon-knife-fork',
+					},
+					'Pets allowed': {
+						txt: 'Pets allowed',
+						icon: 'paw',
+						fa: true,
+					},
+					shower: {
+						txt: 'Shower',
+						icon: 'shower',
+						fa: true,
+					},
+					'Air conditioning': {
+						txt: 'Air conditioning',
+						icon: 'snowflake',
+						fa: true,
+					},
+					'Smoking allowed': {
+						txt: 'Smoking allowed',
+						icon: 'el-icon-smoking',
+					},
+				}[amenity]
 			})
 
 			try {
@@ -177,8 +195,24 @@ export default {
 		async addReview({ commit }, { stay, review }) {
 			const stayCopy = JSON.parse(JSON.stringify(stay))
 			stayCopy.reviews.unshift(review)
+			socketService.emit(SOCKET_EVENT_REVIEW_ADDED, review)
 			await stayService.save(stayCopy)
 			return stayCopy
+		},
+		async loadAndWatchStay({ commit }, { stayId }) {
+			try {
+				const stay = await stayService.getById(stayId)
+				commit({ type: 'setWatchedStay', stay })
+				socketService.emit(SOCKET_EMIT_STAY_WATCH, stayId)
+				socketService.off(SOCKET_EVENT_REVIEW_ADDED)
+				socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
+					commit({ type: 'addReview', stay, review })
+					commit({ type: 'setWatchedStay', stay })
+				})
+			} catch (err) {
+				console.log('toyStore: Error in loadAndWatchToy', err)
+				throw err
+			}
 		},
 	},
 }

@@ -1,27 +1,68 @@
-.review-ratings {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
-
-	div {
-		background-color: lightgreen;
+.reviews-ratings-container {
+	.review-header {
 		display: flex;
+		justify-content: flex-start;
 		align-items: center;
-		justify-content: space-between;
-		width: 30%;
-		padding: 0.3rem 0;
+		font-size: 1.6rem;
+		line-height: 1;
 		margin-bottom: 1rem;
+		gap: 5px;
+		font-weight: 500;
 
-		.bar {
-			width: 100px;
-			height: 100%;
-			margin: 0;
-			padding: 0;
+		p,
+		span {
+			font-size: 1.3rem;
+			font-weight: 500;
+		}
 
-			.progress {
-				border-radius: 10px;
-				background-color: #ff385c;
+		span.material-icons {
+			font-size: 1.2rem;
+			color: #ff385c;
+		}
+	}
+
+	.review-ratings {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+
+		div {
+			width: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 1rem;
+
+			p {
+				font-weight: 300;
+			}
+
+			.bar {
+				width: 130px;
+				margin: 0;
+				display: flex;
+				align-items: center;
+				background-color: #ddd;
+				border-radius: 3rem;
+
+				.progress {
+					border-radius: 3rem;
+					background-color: #ff385c;
+					margin: 0;
+					padding: 0.19rem 0;
+				}
+			}
+
+			section {
+				display: flex;
+				align-items: center;
+
+				span {
+					line-height: 6px;
+					margin-inline-start: 20px;
+					margin-inline-end: 100px;
+				}
 			}
 		}
 	}

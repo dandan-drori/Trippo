@@ -84,7 +84,7 @@
 					@checkout="checkout"
 				/>
 			</section>
-			<review-ratings />
+			<review-ratings :reviews="stay.reviews" />
 			<el-button v-if="loggedInUser" @click.stop="toggleReview">Add Review</el-button>
 			<review-add v-if="isScreenOpen" @add-review="onAddReview" @toggle-review="toggleReview" />
 			<review-list v-if="stay.reviews.length" :reviews="stay.reviews" />
@@ -168,7 +168,7 @@ export default {
 	},
 	data() {
 		return {
-			stay: null,
+			// stay: null,
 			isChatOpen: false,
 			icons: {
 				wifi: faWifi,
@@ -205,6 +205,9 @@ export default {
 		loggedInUser() {
 			return this.$store.getters.loggedinUser
 		},
+		stay() {
+			return this.$store.getters.watchedStay
+		},
 	},
 	methods: {
 		async checkout({ dates, total, guests }) {
@@ -239,7 +242,7 @@ export default {
 					stay: this.stay,
 					review,
 				})
-				this.stay = newStay
+				// this.stay = newStay
 				this.toggleReview()
 				showMsg('Review added successfully')
 			} catch {
@@ -250,10 +253,11 @@ export default {
 	async created() {
 		try {
 			this.$emit('scrolled', true)
-			this.$store.dispatch({ type: 'loadOrders' })
+			// this.$store.dispatch({ type: 'loadOrders' })
 			const { stayId } = this.$route.params
-			const stay = await stayService.getById(stayId)
-			this.stay = stay
+			await this.$store.dispatch({ type: 'loadAndWatchStay', stayId })
+			// const stay = await stayService.getById(stayId)
+			// this.stay = stay
 		} catch (err) {
 			console.log('Cannot get stay with id:', stayId)
 		}
