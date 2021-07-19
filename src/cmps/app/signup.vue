@@ -1,7 +1,7 @@
 <template>
-  <section class="signup-modal">
+  <section @click.stop class="signup-modal">
     <div class="signup-header">
-      <button @click="toggleSignUp">
+      <button @click.stop="toggleSignUp">
         <span class="material-icons">
           close
         </span>

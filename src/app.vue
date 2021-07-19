@@ -109,5 +109,6 @@ export default {
     signup,
     profileMenu,
   },
+  // test push comment
 };
 </script>
