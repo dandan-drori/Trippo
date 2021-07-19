@@ -33,9 +33,25 @@ header {
       height: 48px;
       transition: 0.3s;
     }
+    .filter-container {
+      position: fixed;
+      top: 0px;
+      z-index: -1;
+      width: 200px;
+      opacity: 0;
+      & form {
+        & div,
+        input {
+          width: 10%;
+        }
+      }
+    }
   }
-  &.hideSearch {
+  &.hide {
     .header-search {
+      display: none;
+    }
+    .filter-container {
       display: none;
     }
   }
@@ -174,9 +190,6 @@ header {
 
 // search on header
 .header-search {
-  &.hide {
-    display: none;
-  }
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

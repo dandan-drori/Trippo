@@ -48,18 +48,16 @@ export default {
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
-  },
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll);
+    this.$on('toggleScroll');
   },
   methods: {
     handleScroll(event) {
       let scrollDiff = event.path[1].scrollY;
-      if (scrollDiff >= 1) {
+      if (scrollDiff > 0) {
         this.isScrolled = true;
         this.$emit('scrolled', true);
         this.$emit('hideSearch', false);
-      } else if (scrollDiff < 1) {
+      } else if (!scrollDiff) {
         this.isScrolled = false;
         this.$emit('scrolled', false);
       }
@@ -78,6 +76,9 @@ export default {
     },
     toggleProfile() {
       this.$emit('toggleProfile');
+    },
+    toggleScroll(val) {
+      this.isScrolled = val;
     },
   },
   computed: {

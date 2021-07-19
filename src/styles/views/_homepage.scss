@@ -64,6 +64,8 @@
 
 .categories {
   position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   max-width: 1600px;
   text-align: start;
   margin: 40px 0;
@@ -75,12 +77,11 @@
 }
 
 .cards-container {
-  max-width: 1600px;
   display: grid;
   grid-template-columns: repeat(4, minmax(300px, 1fr));
-  grid-template-rows: 1fr;
+  grid-template-rows: 300px;
   gap: 10px;
-  min-height: 300px;
+  min-height: 310px;
   overflow-x: scroll;
   &::-webkit-scrollbar {
     display: none;

@@ -2,7 +2,10 @@
   <div class="app main-layout">
     <app-header
       @toggleProfile="toggleProfile"
-      :class="{ scrolled: isScrolled, hide: isSearchShown }"
+      :class="{
+        scrolled: isScrolled,
+        hide: isSearchShown,
+      }"
     />
     <router-view
       @login="login"
@@ -12,8 +15,6 @@
       @hideSearch="hideSearch"
     />
     <app-footer />
-    <login @login="login" v-if="isLoginOpen" />
-    <signup @signUp="signUp" v-if="isSignupOpen" @toggleSignUp="toggleSignUp" />
     <div
       v-if="isLoginOpen || isSignupOpen || isScreenOpen"
       class="screen"
@@ -25,6 +26,8 @@
       @closeModal="closeModal"
       :isProfileModalOpen="isProfileModalOpen"
     />
+    <login @login="login" v-if="isLoginOpen" />
+    <signup @signUp="signUp" v-if="isSignupOpen" @toggleSignUp="toggleSignUp" />
     <user-msg />
   </div>
 </template>
@@ -46,14 +49,15 @@ export default {
       isScreenOpen: false,
       isLoginOpen: false,
       isSignupOpen: false,
+      headerClicked: true,
     };
   },
   created() {
     window.addEventListener('click', this.bodyClick);
   },
   methods: {
-    scrolled(value) {
-      this.isScrolled = value;
+    scrolled(val) {
+      this.isScrolled = val;
     },
     login(val) {
       this.isLoginOpen = val;
@@ -75,6 +79,7 @@ export default {
     async logout() {
       try {
         await this.$store.dispatch({ type: 'logout' });
+        this.$router.push('/');
         showMsg('Logged out!');
       } catch (err) {
         showMsg('Logout failed!', 'error');
