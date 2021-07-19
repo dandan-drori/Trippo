@@ -37,12 +37,17 @@
 				</section>
 			</section>
 			<section class="images">
-				<img :src="stay.imgUrls[0]" />
+				<img :src="stay.imgUrls[0]" v-if="stay.imgUrls[0]" />
+				<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="" />
 				<section class="secondary">
-					<img :src="stay.imgUrls[1]" />
-					<img :src="stay.imgUrls[2]" />
-					<img :src="stay.imgUrls[3]" />
-					<img :src="stay.imgUrls[4]" />
+					<img :src="stay.imgUrls[1]" v-if="stay.imgUrls[1]" />
+					<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="" />
+					<img :src="stay.imgUrls[2]" v-if="stay.imgUrls[2]" />
+					<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="" />
+					<img :src="stay.imgUrls[3]" v-if="stay.imgUrls[3]" />
+					<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="" />
+					<img :src="stay.imgUrls[4]" v-if="stay.imgUrls[4]" />
+					<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="" />
 				</section>
 			</section>
 			<section class="flex-container">
@@ -79,6 +84,7 @@
 					@checkout="checkout"
 				/>
 			</section>
+			<review-ratings />
 			<el-button v-if="loggedInUser" @click.stop="toggleReview">Add Review</el-button>
 			<review-add v-if="isScreenOpen" @add-review="onAddReview" @toggle-review="toggleReview" />
 			<review-list v-if="stay.reviews.length" :reviews="stay.reviews" />
@@ -146,6 +152,7 @@ import stayMap from '../cmps/stay-map'
 import chat from '../cmps/chat'
 import stayCheckout from '../cmps/stay-checkout'
 import reviewAdd from '../cmps/review-add'
+import reviewRatings from '../cmps/review-ratings'
 import { showMsg } from '../services/event-bus.service.js'
 
 export default {
@@ -157,6 +164,7 @@ export default {
 		stayCheckout,
 		chat,
 		reviewAdd,
+		reviewRatings,
 	},
 	data() {
 		return {

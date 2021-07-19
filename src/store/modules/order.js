@@ -56,8 +56,7 @@ export default {
 				await userService.update(user, false)
 				const host = await userService.getById(savedOrder.host._id)
 				delete savedOrder.host
-				// commit({ type: 'addOrderToUser', user: host, order: savedOrder })
-				host.orders.push(order)
+				commit({ type: 'addOrderToUser', user: host, order: savedOrder })
 				await userService.update(host, true)
 				return savedOrder
 			} catch (err) {
