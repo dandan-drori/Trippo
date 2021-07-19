@@ -75,6 +75,7 @@ async function remove(userId) {
 	return await httpService.delete(`${BASE_URL}${userId}`)
 }
 async function update(user, isHost) {
+	console.log('user', user)
 	if (user && !isHost) _saveLocalUser(user)
 	return await httpService.put(`${BASE_URL}${user._id}`, user)
 }
@@ -105,6 +106,7 @@ function getLoggedInUser() {
 }
 
 function _saveLocalUser(user) {
+	console.log('user', user)
 	sessionStorage.setItem('loggedinUser', JSON.stringify(user))
 	return user
 }

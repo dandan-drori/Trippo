@@ -1,5 +1,11 @@
 import { orderService } from '@/services/order-service.js'
 import { userService } from '@/services/user-service.js'
+import {
+	socketService,
+	SOCKET_EVENT_ORDER_UPDATED,
+	SOCKET_EMIT_ORDER_WATCH,
+	SOCKET_EVENT_USER_UPDATED,
+} from '@/services/socket.service.js'
 
 export default {
 	state: {
@@ -36,7 +42,7 @@ export default {
 				throw err
 			}
 		},
-		async saveOrder({ commit, rootGetters }, { order, stay }) {
+		async saveOrder({ commit, dispatch, rootGetters }, { order, stay }) {
 			try {
 				const type = order._id ? 'updateOrder' : 'addOrder'
 				const user = rootGetters.loggedinUser
@@ -49,11 +55,10 @@ export default {
 				order.stay = miniStay
 				order.host = stay.host
 				const savedOrder = await orderService.save(order)
+				await dispatch({ type: 'watchOrder', savedOrder })
 				commit({ type, order: savedOrder })
-				const orderCopy = JSON.parse(JSON.stringify(savedOrder))
-				delete orderCopy.buyer
-				commit({ type: 'addOrderToUser', user, order: orderCopy })
 				await userService.update(user, false)
+				socketService.emit(SOCKET_EVENT_USER_UPDATED, savedOrder)
 				const host = await userService.getById(savedOrder.host._id)
 				delete savedOrder.host
 				commit({ type: 'addOrderToUser', user: host, order: savedOrder })
@@ -68,6 +73,7 @@ export default {
 			try {
 				order.status = newStatus
 				await orderService.save(order)
+				socketService.emit(SOCKET_EVENT_ORDER_UPDATED, order)
 				commit({ type: 'updateOrder', order })
 				const user = rootGetters.loggedinUser
 				const idx = user.orders.findIndex(o => o._id === order._id)
@@ -83,6 +89,16 @@ export default {
 				console.log('Failed to save order', err)
 				throw err
 			}
+		},
+		watchOrder({ commit, rootGetters }, { order }) {
+			console.log('before update', rootGetters.loggedinUser)
+			socketService.emit(SOCKET_EMIT_ORDER_WATCH, order)
+			socketService.off(SOCKET_EVENT_ORDER_UPDATED)
+			socketService.on(SOCKET_EVENT_ORDER_UPDATED, order => {
+				console.log('after update', rootGetters.loggedinUser)
+				commit({ type: 'updateOrder', order })
+				showMsg(`your order status was updated to ${order.status}`)
+			})
 		},
 	},
 }

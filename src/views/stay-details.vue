@@ -242,7 +242,7 @@ export default {
 					stay: this.stay,
 					review,
 				})
-				// this.stay = newStay
+				this.$store.commit({ type: 'setWatchedStay', stay: newStay })
 				this.toggleReview()
 				showMsg('Review added successfully')
 			} catch {

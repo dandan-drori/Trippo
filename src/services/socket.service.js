@@ -1,12 +1,12 @@
 import io from 'socket.io-client'
 import { httpService } from './http.service.js'
 
-export const SOCKET_EMIT_ORDER_WATCH = 'order-watch'
-export const SOCKET_EVENT_ORDER_UPDATED = 'order-updated'
+export const SOCKET_EMIT_USER_WATCH = 'user-watch'
+export const SOCKET_EVENT_USER_UPDATED = 'user-updated'
 export const SOCKET_EMIT_STAY_WATCH = 'stay-watch'
 export const SOCKET_EVENT_REVIEW_ADDED = 'review-added'
-export const SOCKET_EMIT_STAYS_WATCH = 'stays-watch'
-export const SOCKET_EVENT_STAYS_UPDATED = 'stays-updated'
+export const SOCKET_EMIT_ORDER_WATCH = 'order-watch'
+export const SOCKET_EVENT_ORDER_UPDATED = 'order-updated'
 
 const baseUrl = process.env.NODE_ENV === 'production' ? '' : '//localhost:3030'
 export const socketService = createSocketService()

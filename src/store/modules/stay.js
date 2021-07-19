@@ -1,5 +1,5 @@
 import { stayService } from '@/services/stay-service.js'
-// import { geocodeService } from '@/services/geocode-service.js'
+import { showMsg } from '@/services/event-bus.service.js'
 import {
 	socketService,
 	SOCKET_EVENT_REVIEW_ADDED,
@@ -208,6 +208,7 @@ export default {
 				socketService.on(SOCKET_EVENT_REVIEW_ADDED, review => {
 					commit({ type: 'addReview', stay, review })
 					commit({ type: 'setWatchedStay', stay })
+					showMsg(`a new review was added by ${review.by.fullname}`)
 				})
 			} catch (err) {
 				console.log('toyStore: Error in loadAndWatchToy', err)
