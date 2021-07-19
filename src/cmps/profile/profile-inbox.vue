@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2>Placeholder</h2>
+    <h2>Inbox</h2>
   </section>
 </template>
 

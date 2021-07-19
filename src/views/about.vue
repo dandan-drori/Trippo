@@ -1,6 +1,20 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <section>
+    <h2>Placeholder</h2>
+  </section>
 </template>
-<script></script>
+
+<script>
+export default {
+  components: {},
+  props: {},
+  data() {
+    return {};
+  },
+  computed: {},
+  methods: {},
+  created() {
+    this.$emit('scrolled', true);
+  },
+};
+</script>

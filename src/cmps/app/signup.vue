@@ -1,22 +1,27 @@
 <template>
-  <section class="login-modal" @click.stop>
-    <div class="login-header">
-      <button @click="close">
+  <section class="signup-modal">
+    <div class="signup-header">
+      <button @click="toggleSignUp">
         <span class="material-icons">
           close
         </span>
       </button>
-      <p>Log in</p>
+      <p>Sign up</p>
     </div>
-    <div class="login-input">
+    <div class="signup-input">
       <div class="input-txt">
         <h2>Welcome to Trippo</h2>
       </div>
-      <form action="" @submit.prevent="login">
+      <form @submit.prevent="signUp">
         <input
           type="text"
           placeholder="Enter email or username"
           v-model="userCred.username"
+        />
+        <input
+          type="text"
+          placeholder="enter full name"
+          v-model="userCred.fullname"
         />
         <input
           type="password"
@@ -26,7 +31,7 @@
         <button class="checkout-btn" ref="myBtn"><span>Continue</span></button>
       </form>
     </div>
-    <div class="login-divider">
+    <div class="signup-divider">
       <div class="border"></div>
       <small>or</small>
     </div>
@@ -36,11 +41,11 @@
         >Continue with Facebook
       </button>
       <button>
-        <img src="../assets/imgs/svgs/google.svg" alt="" />
+        <img src="../../assets/imgs/svgs/google.svg" alt="" />
         Continue with Google
       </button>
       <button>
-        <img src="../assets/imgs/svgs/apple.png" alt="" />
+        <img src="../../assets/imgs/svgs/apple.png" alt="" />
         Continue with Apple
       </button>
       <button>
@@ -52,34 +57,30 @@
 </template>
 
 <script>
-import { showMsg } from '../services/event-bus.service.js';
 export default {
   data() {
     return {
       userCred: {
         username: '',
+        fullname: '',
         password: '',
       },
     };
   },
   methods: {
-    async login() {
-      try {
-        await this.$store.dispatch({ type: 'login', userCred: this.userCred });
-        showMsg('Logged in successfully');
-        this.close();
-      } catch (err) {
-        showMsg('Logged in failed', 'error');
-        console.log('err', err);
-        // TODO: alert user that his credentials are incorrect
-      }
+    toggleSignUp() {
+      this.$emit('toggleSignUp', false);
     },
-    close() {
-      this.$emit('login', false);
+    signUp() {
+      console.log(this.userCred);
+      this.$emit('signUp', this.userCred);
+      // this.userCred.username = '';
+      // this.userCred.fullname = '';
+      // this.userCred.password = '';
     },
   },
   mounted() {
-    this.$refs.myBtn.onmousemove = (e) => {
+    this.$refs.myBtn.onmousemove = e => {
       const x = e.offsetX;
       const y = e.offsetY;
 

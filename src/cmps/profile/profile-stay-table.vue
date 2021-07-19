@@ -31,7 +31,7 @@
 
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { showMsg } from '../services/event-bus.service.js';
+import { showMsg } from '@/services/event-bus.service.js';
 
 export default {
   components: { FontAwesomeIcon },

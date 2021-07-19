@@ -68,7 +68,6 @@
 </template>
 
 <script>
-import stayFilter from '../cmps/stay-filter.vue';
 export default {
   data() {
     return {
@@ -111,9 +110,6 @@ export default {
     filterBy() {
       return this.$store.getters.filterBy;
     },
-  },
-  components: {
-    stayFilter,
   },
 };
 </script>
