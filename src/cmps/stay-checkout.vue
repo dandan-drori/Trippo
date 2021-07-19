@@ -172,7 +172,7 @@ export default {
     },
   },
   mounted() {
-    this.$refs.myBtn.onmousemove = e => {
+    this.$refs.myBtn.onmousemove = (e) => {
       const x = e.offsetX;
       const y = e.offsetY;
 
@@ -211,13 +211,14 @@ export default {
   color: #222 !important;
 }
 
-.el-date-table td.available.today span {
-  color: #222 !important;
-}
-
 .el-date-editor .el-range-separator {
   padding-top: 15px;
   color: #222 !important;
+}
+
+.el-range-editor.is-active,
+.el-range-editor.is-active:hover {
+  border-color: #ccc;
 }
 
 .el-date-editor.el-range-editor.el-input__inner.el-date-editor--daterange {

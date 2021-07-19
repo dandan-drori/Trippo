@@ -1,12 +1,4 @@
-# Airb&b
-
-## Libraries
-
-### Not Installed
-
 ## Tasks
-
-- display nice user-msgs for _every_ error in response from the backend
 
 ### 19.07.21
 
@@ -27,6 +19,7 @@
 - fix stay-table actions pop-up
 - About page
 - pwa - app will work offline
+- mobile design (mostly stay-details and user-profile)
 - BONUS - I18N
 - BONUS - use google maps api to convert address to latlng - ITP
 - BONUS - push notifications
