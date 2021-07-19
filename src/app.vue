@@ -33,13 +33,13 @@
 </template>
 
 <script>
-import appHeader from './cmps/app-header.vue';
-import appFooter from './cmps/app-footer.vue';
-import userMsg from './cmps/user-msg.vue';
-import login from './cmps/login.vue';
-import signup from './cmps/signup.vue';
-import ProfileMenu from './cmps/profile-menu.vue';
-import { showMsg } from './services/event-bus.service';
+import appHeader from './cmps/app/app-header.vue';
+import appFooter from './cmps/app/app-footer.vue';
+import userMsg from './cmps/app/user-msg.vue';
+import login from './cmps/app/login.vue';
+import signup from './cmps/app/signup.vue';
+import profileMenu from './cmps/profile/profile-menu.vue';
+import { showMsg } from '@/services/event-bus.service';
 export default {
   data() {
     return {
@@ -107,7 +107,7 @@ export default {
     userMsg,
     login,
     signup,
-    ProfileMenu,
+    profileMenu,
   },
 };
 </script>

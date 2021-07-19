@@ -140,14 +140,13 @@
 </template>
 
 <script>
-import { stayService } from '../services/stay-service.js';
-import { uploadImg } from '../services/img-upload.service.js';
+import { stayService } from '@/services/stay-service.js';
 import { ValidationObserver } from 'vee-validate';
 import { ValidationProvider, extend } from 'vee-validate';
 import * as rules from 'vee-validate/dist/rules';
-import imgUpload from '@/cmps/stay-img-upload';
-import { showMsg } from '../services/event-bus.service.js';
-Object.keys(rules).forEach((rule) => {
+import imgUpload from '@/cmps/profile/stay-img-upload';
+import { showMsg } from '@/services/event-bus.service.js';
+Object.keys(rules).forEach(rule => {
   extend(rule, rules[rule]);
 });
 export default {
@@ -201,7 +200,7 @@ export default {
         }
       } else {
         const idx = this.errors.findIndex(
-          (e) => e === 'Above 0 please in price field'
+          e => e === 'Above 0 please in price field'
         );
         console.log('check');
         this.errors.splice(idx, 1);
@@ -215,7 +214,7 @@ export default {
         }
       } else {
         const idx = this.errors.findIndex(
-          (e) => e === 'Above 0 please in guests field'
+          e => e === 'Above 0 please in guests field'
         );
         this.errors.splice(idx, 1);
       }
@@ -225,7 +224,7 @@ export default {
           this.errors.push(err);
         }
       } else {
-        const idx = this.errors.findIndex((e) => e === 'Please fill stay name');
+        const idx = this.errors.findIndex(e => e === 'Please fill stay name');
         this.errors.splice(idx, 1);
       }
     },

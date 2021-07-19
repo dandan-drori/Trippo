@@ -148,6 +148,7 @@
 <script>
 import { stayService } from '@/services/stay-service.js';
 import { orderService } from '@/services/order-service.js';
+import { showMsg } from '@/services/event-bus.service.js';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
   faWifi,
@@ -157,13 +158,12 @@ import {
   faUserShield,
   faShieldAlt,
 } from '@fortawesome/free-solid-svg-icons';
-import reviewList from '../cmps/review-list';
-import stayMap from '../cmps/stay-map';
-import chat from '../cmps/chat';
-import stayCheckout from '../cmps/stay-checkout';
-import reviewAdd from '../cmps/review-add';
-import reviewRatings from '../cmps/review-ratings';
-import { showMsg } from '../services/event-bus.service.js';
+import reviewList from '@/cmps/details/review-list';
+import stayMap from '@/cmps/details/stay-map';
+import chat from '@/cmps/details/chat';
+import stayCheckout from '@/cmps/details/stay-checkout';
+import reviewAdd from '@/cmps/details/review-add';
+import reviewRatings from '@/cmps/details/review-ratings';
 
 export default {
   props: { isScreenOpen: Boolean },

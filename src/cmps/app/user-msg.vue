@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { eventBusService, SHOW_MSG } from '../services/event-bus.service.js';
+import { eventBusService, SHOW_MSG } from '@/services/event-bus.service.js';
 export default {
   created() {
     eventBusService.$on(SHOW_MSG, msg => {
