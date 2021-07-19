@@ -2,7 +2,7 @@
   <section>
     <div class="chat-header">
       <div class="name">
-        <p>Host name</p>
+        <p>{{ stay.host.fullname }}</p>
       </div>
       <div class="chat-controls">
         <button>_</button>
@@ -17,10 +17,26 @@
 </template>
 
 <script>
+import { socketService } from '@/services/socket-service';
+
 export default {
+  props: {
+    stay: Object,
+  },
+  data() {
+    return {
+      msg: { from: this.$store.getters.loggedinUser.username, txt: '' },
+      msgs: [],
+    };
+  },
   methods: {
     toggleChat() {
-      this.$emit("close", false);
+      this.$emit('close', false);
+    },
+  },
+  computed: {
+    loggedinUserName() {
+      return this.$store.getters.loggedinUser.username;
     },
   },
 };
