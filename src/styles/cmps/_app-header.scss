@@ -8,13 +8,6 @@ header {
 	color: #fff;
 	letter-spacing: 0.1px;
 	z-index: 5;
-
-	.i18n {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
 	&.scrolled {
 		box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
 		background-color: #fff;
@@ -40,9 +33,25 @@ header {
 			height: 48px;
 			transition: 0.3s;
 		}
+		.filter-container {
+			position: fixed;
+			top: 0px;
+			z-index: -1;
+			width: 200px;
+			opacity: 0;
+			& form {
+				& div,
+				input {
+					width: 10%;
+				}
+			}
+		}
 	}
-	&.hideSearch {
+	&.hide {
 		.header-search {
+			display: none;
+		}
+		.filter-container {
 			display: none;
 		}
 	}

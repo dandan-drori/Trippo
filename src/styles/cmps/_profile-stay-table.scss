@@ -1,53 +1,53 @@
 .profile-stay-table {
-	li {
-		div:first-of-type {
-			width: 220px;
-		}
-		div:nth-of-type(2) {
-			width: 100px;
-		}
+  li {
+    div:first-of-type {
+      width: 220px;
+    }
+    div:nth-of-type(2) {
+      width: 100px;
+    }
 
-		button {
-			width: 100%;
-			padding: 0;
-			height: 30px;
-			margin: 0;
-		}
-		.edit-btn.delete-btn {
-			margin-left: 0;
-		}
+    button {
+      width: 100%;
+      padding: 0;
+      height: 30px;
+      margin: 0;
+    }
+    .edit-btn.delete-btn {
+      margin-left: 0;
+    }
 
-		.edit-btn:hover {
-			background-color: rgba(48, 184, 202, 0.63);
-		}
+    .edit-btn:hover {
+      background-color: rgba(48, 184, 202, 0.63);
+    }
 
-		.delete-btn:hover {
-			background-color: rgba(255, 0, 0, 0.555);
-		}
-	}
+    .delete-btn:hover {
+      background-color: rgba(255, 0, 0, 0.555);
+    }
+  }
 }
 
 .actions-td {
-	position: relative;
-	display: flex;
-	align-items: center;
-	padding: 0;
-	.actionsBtn {
-		background-color: transparent;
-		span {
-			font-size: 1.5rem;
-		}
-	}
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  .actionsBtn {
+    background-color: transparent;
+    span {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 .actionsModal {
-	display: flex;
-	flex-direction: column;
-	position: absolute;
-	left: 50px;
-	top: 0;
-	background-color: #fff;
-	border: 1px solid black;
-	width: 50px;
-	z-index: 3;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 50px;
+  top: 0;
+  background-color: #fff;
+  border: 1px solid black;
+  width: 50px;
+  z-index: 3;
 }
