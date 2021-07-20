@@ -1,10 +1,11 @@
 import { orderService } from '@/services/order-service.js';
-import { userService } from '@/services/user-service.js';
+import { showMsg } from '@/services/event-bus.service.js';
 import {
   socketService,
   SOCKET_EVENT_ORDER_UPDATED,
   SOCKET_EMIT_ORDER_WATCH,
-  SOCKET_EVENT_USER_UPDATED,
+  SOCKET_EMIT_ORDER_ADDED_WATCH,
+  SOCKET_EVENT_ORDER_ADDED,
 } from '@/services/socket.service.js';
 
 export default {
@@ -27,9 +28,6 @@ export default {
     addOrder(state, { order }) {
       state.orders.push(order);
     },
-    addOrderToUser(state, { user, order }) {
-      user.orders.push(order);
-    },
   },
   actions: {
     async loadOrders({ commit }) {
@@ -45,7 +43,6 @@ export default {
     async saveOrder({ commit, dispatch, rootGetters }, { order, stay }) {
       try {
         const type = order._id ? 'updateOrder' : 'addOrder';
-        const user = rootGetters.loggedinUser;
         const miniStay = {
           _id: stay._id,
           name: stay.name,
@@ -54,49 +51,48 @@ export default {
         };
         order.stay = miniStay;
         order.host = stay.host;
+        order.buyer = rootGetters.loggedinUser;
         const savedOrder = await orderService.save(order);
-        await dispatch({ type: 'watchOrder', order: savedOrder });
+        await dispatch({ type: 'watchOrderAdded', orderId: savedOrder._id });
         commit({ type, order: savedOrder });
-        await userService.update(user, false);
-        socketService.emit(SOCKET_EVENT_USER_UPDATED, savedOrder);
-        const host = await userService.getById(savedOrder.host._id);
-        delete savedOrder.host;
-        commit({ type: 'addOrderToUser', user: host, order: savedOrder });
-        await userService.update(host, true);
+        socketService.emit(SOCKET_EVENT_ORDER_ADDED);
+        await dispatch({ type: 'watchOrder', order: savedOrder });
         return savedOrder;
       } catch (err) {
         console.log('Failed to save order', err);
         throw err;
       }
     },
-    async updateOrderStatus({ commit, rootGetters }, { order, newStatus }) {
+    async updateOrderStatus({ commit }, { order, newStatus }) {
       try {
         order.status = newStatus;
-        await orderService.save(order);
-        socketService.emit(SOCKET_EVENT_ORDER_UPDATED, order);
-        commit({ type: 'updateOrder', order: order });
-        const user = rootGetters.loggedinUser;
-        const idx = user.orders.findIndex((o) => o._id === order._id);
-        user.orders.splice(idx, 1, order);
-        await userService.update(user, true);
-        const buyer = await userService.getById(order.buyer._id);
-        const orderCopy = JSON.parse(JSON.stringify(order));
-        delete orderCopy.buyer;
-        buyer.orders.splice(idx, 1, orderCopy);
-        await userService.update(buyer, false);
+        const savedOrder = await orderService.save(order);
+        commit({ type: 'updateOrder', order: savedOrder });
+        socketService.emit(SOCKET_EVENT_ORDER_UPDATED);
         return order;
       } catch (err) {
         console.log('Failed to save order', err);
         throw err;
       }
     },
-    watchOrder({ commit, rootGetters }, { order }) {
-      console.log('before update', rootGetters.loggedinUser);
-      socketService.emit(SOCKET_EMIT_ORDER_WATCH, order);
+    async watchOrderAdded({ commit, rootGetters, getters }, { orderId }) {
+      socketService.emit(SOCKET_EMIT_ORDER_ADDED_WATCH, orderId);
+      socketService.off(SOCKET_EVENT_ORDER_ADDED);
+      socketService.on(SOCKET_EVENT_ORDER_ADDED, async () => {
+        const order = getters.orders[getters.orders.length - 1];
+        if (order.buyer._id === rootGetters.loggedinUser._id) {
+          // commit({ type: 'addOrder', order })
+          await dispatch({ type: 'loadOrders' });
+          showMsg(`new order from ${order.buyer.fullname}`);
+        }
+      });
+    },
+    async watchOrder({ commit }, { order }) {
+      socketService.emit(SOCKET_EMIT_ORDER_WATCH, order._id);
       socketService.off(SOCKET_EVENT_ORDER_UPDATED);
-      socketService.on(SOCKET_EVENT_ORDER_UPDATED, (order) => {
-        console.log('after update', rootGetters.loggedinUser);
-        commit({ type: 'updateOrder', order });
+      socketService.on(SOCKET_EVENT_ORDER_UPDATED, async () => {
+        // commit({ type: 'updateOrder', order })
+        await dispatch({ type: 'loadOrders' });
         showMsg(`your order status was updated to ${order.status}`);
       });
     },
