@@ -15,8 +15,7 @@
 - add stay main image in order-table - DANDAN
 - stay-details - add share with facebook and wishlist features - DANDAN
 - when updating stay - initialize amenities as checked if they are checked
-- prevent user from ordering his own stay (change reserve to "go to profile")
-- fix stay-table actions pop-up
+- transform stay-details into stay-edit with the same appearance but with inputs
 - About page
 - pwa - app will work offline
 - mobile design (mostly stay-details and user-profile)
