@@ -2,7 +2,6 @@
   <div class="block date">
     <el-date-picker
       style="color:#000;"
-      @input="x"
       v-model="dateRange"
       type="daterange"
       range-separator=""
@@ -18,13 +17,8 @@ export default {
   data() {
     return {
       pickerOptions: {},
-      dateRange: "",
+      dateRange: '',
     };
-  },
-  methods: {
-    x() {
-      console.log(this.dateRange);
-    },
   },
 };
 </script>
