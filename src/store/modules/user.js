@@ -1,10 +1,4 @@
 import { userService } from '@/services/user-service.js'
-import {
-	socketService,
-	SOCKET_EVENT_USER_UPDATED,
-	SOCKET_EMIT_USER_WATCH,
-} from '@/services/socket.service.js'
-import { showMsg } from '@/services/event-bus.service.js'
 
 export default {
 	state: {
@@ -26,15 +20,11 @@ export default {
 		removeUser(state, { userId }) {
 			state.users = state.users.filter(u => u._id !== userId)
 		},
-		updateUserOrders(state, { order }) {
-			state.loggedinUser.orders.push(order)
-		},
 	},
 	actions: {
 		async login({ commit, dispatch }, { userCred }) {
 			try {
 				const user = await userService.login(userCred)
-				dispatch({ type: 'watchUser' })
 				commit({ type: 'setLoggedinUser', user })
 				return user
 			} catch (err) {
@@ -61,14 +51,15 @@ export default {
 				throw err
 			}
 		},
-		async updateUser({ commit, dispatch, getters }, { user }) {
+		async updateUser({ commit, dispatch, getters, rootGetters }, { user }) {
 			try {
-				console.log(user)
 				await userService.update(user)
 				if (getters.loggedinUser.imgUrl !== user.imgUrl) {
-					user.stays.forEach(stay => {
-						stay.host.imgUrl = user.imgUrl
-						dispatch({ type: 'saveStay', stay })
+					rootGetters.stays.forEach(stay => {
+						if (getters.loggedinUser._id === stay.host._id) {
+							stay.host.imgUrl = user.imgUrl
+							dispatch({ type: 'saveStay', stay })
+						}
 					})
 				}
 				commit({ type: 'setLoggedinUser', user })
@@ -76,14 +67,6 @@ export default {
 				console.log('userStore: Error updating user', err)
 				throw err
 			}
-		},
-		watchUser({ commit, getters }) {
-			socketService.emit(SOCKET_EMIT_USER_WATCH, getters.loggedinUser)
-			socketService.off(SOCKET_EVENT_USER_UPDATED)
-			socketService.on(SOCKET_EVENT_USER_UPDATED, order => {
-				commit({ type: 'updateUserOrders', order })
-				showMsg(`new order from ${order.buyer.fullname}`)
-			})
 		},
 	},
 }
