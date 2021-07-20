@@ -8,11 +8,14 @@ import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/styles.scss'
 import locale from 'element-ui/lib/locale/lang/en'
-import 'vue-loaders/dist/vue-loaders.css';
-import VueLoaders from 'vue-loaders';
+import 'vue-loaders/dist/vue-loaders.css'
+import VueLoaders from 'vue-loaders'
+import VueSocialSharing from 'vue-social-sharing'
+
+Vue.use(VueSocialSharing)
 Vue.config.lang = 'en'
 Vue.use(Element, { locale })
-Vue.use(VueLoaders);
+Vue.use(VueLoaders)
 Vue.config.productionTip = false
 Vue.use(Element)
 Vue.use(require('vue-moment'))

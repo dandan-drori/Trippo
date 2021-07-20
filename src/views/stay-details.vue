@@ -17,7 +17,30 @@
         <section class="actions">
           <div class="share">
             <i class="el-icon-upload2"></i>
-            <button><span>Share</span></button>
+            <ShareNetwork
+              network="whatsapp"
+              url="https://www.google.com/"
+              title="Say hi to Trippo! A brand new, easy to use booking website."
+              :description="
+                `Check out this awesome ${stay.propertyType} in ${stay.loc.address} i found on Trippo!`
+              "
+              hashtags="Trippo"
+            >
+              Share on Whatsapp
+            </ShareNetwork>
+            <ShareNetwork
+              network="facebook"
+              :url="'http://127.0.0.1:8080/#/stay/' + stay._id"
+              title="Say hi to Trippo! A brand new, easy to use booking website."
+              :description="
+                `Check out this awesome ${stay.propertyType} in ${stay.loc.address} i found on Trippo!`
+              "
+              quote="This site is amazing for booking trips"
+              hashtags="Trippo"
+            >
+              Share on Facebook
+            </ShareNetwork>
+            <!-- <button><span>Share</span></button> -->
           </div>
           <div class="save">
             <svg
@@ -107,12 +130,12 @@
           <section class="host-info-header">
             <img :src="stay.host.imgUrl" alt="" />
             <div>
-              <h2 class="host-name">Hosted by {{ stay.host.fullname }}</h2>
+              <h2>Hosted by {{ stay.host.fullname }}</h2>
               <p>Joined in December 2014</p>
             </div>
           </section>
           <section class="badges">
-            <p class="star"><i class="el-icon-star-on"></i>23 Reviews</p>
+            <p><i class="el-icon-star-on"></i>23 Reviews</p>
             <p>
               <font-awesome-icon :icon="icons.userShield" />
               Identity verified
