@@ -17,7 +17,30 @@
 				<section class="actions">
 					<div class="share">
 						<i class="el-icon-upload2"></i>
-						<button><span>Share</span></button>
+						<ShareNetwork
+							network="whatsapp"
+							url="https://www.google.com/"
+							title="Say hi to Trippo! A brand new, easy to use booking website."
+							:description="
+								`Check out this awesome ${stay.propertyType} in ${stay.loc.address} i found on Trippo!`
+							"
+							hashtags="Trippo"
+						>
+							Share on Whatsapp
+						</ShareNetwork>
+						<ShareNetwork
+							network="facebook"
+							:url="'http://127.0.0.1:8080/#/stay/' + stay._id"
+							title="Say hi to Trippo! A brand new, easy to use booking website."
+							:description="
+								`Check out this awesome ${stay.propertyType} in ${stay.loc.address} i found on Trippo!`
+							"
+							quote="This site is amazing for booking trips"
+							hashtags="Trippo"
+						>
+							Share on Facebook
+						</ShareNetwork>
+						<!-- <button><span>Share</span></button> -->
 					</div>
 					<div class="save">
 						<svg
