@@ -4,6 +4,9 @@
       <div class="head-title">
         <p class="head-title-visits">{{ stays.length }}+ stays</p>
         <h1>{{ place }}</h1>
+        <div class="head-banner" v-if="currCity">
+          <img :src="require('@/assets/imgs/chalice.gif')" />
+        </div>
       </div>
       <stay-list-filter
         v-if="stays && unfilteredStays"
@@ -19,8 +22,8 @@
 </template>
 
 <script>
-import stayList from '@/cmps/list/stay-list';
-import stayListFilter from '@/cmps/list/stay-list-filter';
+import stayList from '@/cmps/list/stay-list'
+import stayListFilter from '@/cmps/list/stay-list-filter'
 
 export default {
   components: {
@@ -90,5 +93,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

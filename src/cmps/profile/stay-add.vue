@@ -86,43 +86,43 @@
               label="TV"
               name="TV"
               value="TV,el-icon-monitor"
-              :checked="stayToAdd.amenities[0]"
+              :checked="!!stayToAdd.amenities[0]"
             ></el-checkbox>
             <el-checkbox
               label="Wifi"
               name="Wifi"
               :value="{ txt: 'Wifi', icon: 'wifi', fa: true }"
-              :checked="stayToAdd.amenities[1]"
+              :checked="!!stayToAdd.amenities[1]"
             ></el-checkbox>
             <el-checkbox
               label="Kitchen"
               name="Kitchen"
               :value="{ txt: 'Kitchen', icon: 'el-icon-knife-fork' }"
-              :checked="stayToAdd.amenities[2]"
+              :checked="!!stayToAdd.amenities[2]"
             ></el-checkbox>
             <el-checkbox
               label="Pets allowed"
               name="Pets"
               :value="{ txt: 'Pets allowed', icon: 'paw', fa: true }"
-              :checked="stayToAdd.amenities[3]"
+              :checked="!!stayToAdd.amenities[3]"
             ></el-checkbox>
             <el-checkbox
               label="Shower"
               name="Shower"
               :value="{ txt: 'Shower', icon: 'shower', fa: true }"
-              :checked="stayToAdd.amenities[4]"
+              :checked="!!stayToAdd.amenities[4]"
             ></el-checkbox>
             <el-checkbox
               label="Air conditioning"
               name="Air conditioning"
               :value="{ txt: 'Air conditioning', icon: 'snowflake', fa: true }"
-              :checked="stayToAdd.amenities[5]"
+              :checked="!!stayToAdd.amenities[5]"
             ></el-checkbox>
             <el-checkbox
               label="Smoking allowed"
               name="Smoking allowed"
               :value="{ txt: 'Smoking allowed', icon: 'el-icon-smoking' }"
-              :checked="stayToAdd.amenities[6]"
+              :checked="!!stayToAdd.amenities[6]"
             ></el-checkbox>
           </el-checkbox-group>
         </el-form-item>

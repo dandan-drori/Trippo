@@ -105,7 +105,6 @@ function getLoggedInUser() {
 }
 
 function _saveLocalUser(user) {
-	console.log('user', user)
 	sessionStorage.setItem('loggedinUser', JSON.stringify(user))
 	return user
 }

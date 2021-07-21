@@ -171,7 +171,6 @@ export default {
 		async addReview({ commit }, { stay, review }) {
 			const stayCopy = JSON.parse(JSON.stringify(stay))
 			stayCopy.reviews.unshift(review)
-			socketService.emit(SOCKET_EVENT_REVIEW_ADDED, review)
 			await stayService.save(stayCopy)
 			return stayCopy
 		},

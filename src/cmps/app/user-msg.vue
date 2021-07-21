@@ -23,7 +23,7 @@ export default {
 	created() {
 		eventBusService.$on(SHOW_MSG, msg => {
 			this.msg = msg
-			var delay = msg.delay || 2000
+			var delay = msg.delay || 2500
 			this.alive = true
 			setTimeout(() => {
 				this.alive = false

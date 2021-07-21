@@ -26,6 +26,8 @@ export default {
 			try {
 				const user = await userService.login(userCred)
 				commit({ type: 'setLoggedinUser', user })
+				await dispatch({ type: 'watchOrderAdded' })
+				await dispatch({ type: 'watchOrder', userId: user._id })
 				return user
 			} catch (err) {
 				console.log('userStore: Error in login', err)
