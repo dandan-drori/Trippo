@@ -14,9 +14,7 @@ import barChart from './bar-chart.vue'
 export default {
   components: { lineChart, barChart },
   props: { orders: Array },
-  created() {
-    console.log(this.orders)
-  },
+  created() {},
   computed: {},
   methods: {},
 }

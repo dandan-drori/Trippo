@@ -96,6 +96,7 @@ export default {
       profileOpen: true,
       dashboardOpen: false,
       inboxOpen: false,
+      isLoading: false,
       filterBy: {
         name: '',
         status: '',
