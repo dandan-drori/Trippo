@@ -1,5 +1,5 @@
 <template>
-  <section class="stay-card-container">
+  <section class="stay-card-container" @click="sendToDetails(stay._id)">
     <el-carousel
       v-if="stay.imgUrls.length"
       class="img-carousell"
@@ -10,7 +10,7 @@
       :loop="true"
     >
       <el-carousel-item v-for="(imgUrl, idx) in stay.imgUrls" :key="idx">
-        <img :src="imgUrl" @click="sendToDetails(stay._id)" />
+        <img :src="imgUrl" />
       </el-carousel-item>
     </el-carousel>
     <img v-else :src="require('@/assets/imgs/no_img.jpeg')" />
