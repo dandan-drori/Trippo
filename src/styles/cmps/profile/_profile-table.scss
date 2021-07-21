@@ -6,15 +6,11 @@ ul {
 
 li {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	border-bottom: 1px solid rgba(50, 50, 50, 0.1);
 	color: #555;
-	font-size: 0.9rem;
-
-	&:last-of-type {
-		border: none;
-	}
+	font-size: 1rem;
+	padding: 7px 0;
 
 	&.table-header {
 		padding-bottom: 10px;
@@ -23,20 +19,18 @@ li {
 	}
 
 	div {
-		width: 16.6%;
+		width: 20%;
 
 		&:nth-of-type(1) {
 			display: flex;
 			align-items: center;
-			width: 25%;
 
 			img {
 				height: 50px;
 				width: 50px;
 				border-radius: 50%;
 				object-fit: cover;
-				margin: 5px 0;
-				margin-right: 5%;
+				margin-right: 7px;
 			}
 		}
 
@@ -66,8 +60,17 @@ li {
 		background-color: #e8ffdc;
 	}
 
+	div {
+		padding: 1px 15px;
+	}
+
 	div.success {
-		color: #67f02c;
+		color: #fff;
+		background-color: #168c16;
+		border-radius: 3em;
+		text-align: center;
+		padding: 1px 15px;
+		width: auto;
 	}
 
 	button.success {
