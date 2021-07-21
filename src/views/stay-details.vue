@@ -141,21 +141,20 @@
       </section>
     </section>
     <div class="loaderTest" v-else>Loading...</div>
-    <chat v-if="isChatOpen" class="chat" @close="toggleChat" :stay="stay" />
+    <chat
+      v-if="isChatOpen"
+      class="chat"
+      @close="toggleChat"
+      :stay="stay"
+      :msgHistory="stay.chatMsgs"
+    />
   </section>
 </template>
 
 <script>
-<<<<<<< HEAD
-import { orderService } from '@/services/order-service.js'
-import { showMsg } from '@/services/event-bus.service.js'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-=======
-import { stayService } from '@/services/stay-service.js';
 import { orderService } from '@/services/order-service.js';
 import { showMsg } from '@/services/event-bus.service.js';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
->>>>>>> b9593fedf12b50b5cfe27fac3f123ef0cbc46a0a
 import {
   faWifi,
   faPaw,
@@ -247,7 +246,7 @@ export default {
       }
     },
     toggleShare() {
-      this.$emit('toggleShare', true)
+      this.$emit('toggleShare', true);
     },
     toggleChat() {
       this.isChatOpen = !this.isChatOpen;

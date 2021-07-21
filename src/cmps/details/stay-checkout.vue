@@ -242,4 +242,21 @@ export default {
   color: #fff !important;
   font-weight: 500;
 }
+
+td.today span {
+  color: #222 !important;
+  font-weight: 700;
+}
+
+.el-range-editor.is-active,
+.el-range-editor.is-active:hover {
+  border-color: #ccc !important;
+}
+
+.el-date-table td.in-range div,
+.el-date-table td.in-range div:hover,
+.el-date-table.is-week-mode .el-date-table__row.current div,
+.el-date-table.is-week-mode .el-date-table__row:hover div {
+  background-color: #f1f1f1 !important;
+}
 </style>
