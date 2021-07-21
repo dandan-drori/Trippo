@@ -131,7 +131,13 @@
 			</section>
 		</section>
 		<div class="loaderTest" v-else>Loading...</div>
-		<chat v-if="isChatOpen" class="chat" @close="toggleChat" :stay="stay" />
+		<chat
+			v-if="isChatOpen"
+			class="chat"
+			@close="toggleChat"
+			:stay="stay"
+			:msgHistory="stay.chatMsgs"
+		/>
 	</section>
 </template>
 
