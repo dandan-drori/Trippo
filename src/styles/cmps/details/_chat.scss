@@ -42,6 +42,15 @@
   height: 100%;
   margin-top: 5px;
   padding-inline-start: 5px;
+  display: flex;
+  flex-direction: column;
+
+  li:nth-child(even) {
+    justify-content: flex-end;
+  }
+  li:nth-child(odd) {
+    justify-content: flex-start;
+  }
 }
 
 .chat-footer {

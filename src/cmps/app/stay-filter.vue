@@ -17,19 +17,22 @@
         </datalist>
         <div v-else class="no-data">No Data</div>
       </div>
+      <span class="seperator">|</span>
       <div class="checkin-input">
         <small>Check in</small>
         <span>{{ dates[0] | moment('MMM, D') }}</span>
         <input type="text" v-model="dates[0]" />
       </div>
       <date-picker v-model="dates" range value-type="timestamp"></date-picker>
+      <span class="seperator">|</span>
       <div class="checkout-input">
         <small>Check out</small>
         <span>{{ dates[1] | moment('MMM, D') }}</span>
         <input type="text" v-model="dates[1]" />
       </div>
+      <span class="seperator">|</span>
       <div class="guests-input" @click="toggleGuestsModal">
-        <div>
+        <div class="Guests-container">
           <small>Guests</small>
           <input type="text" placeholder="Add guests" />
         </div>
