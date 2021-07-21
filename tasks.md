@@ -4,11 +4,13 @@
 
 ## 21.07.21
 
-- add earnings graphs to user-profile - GUY + DANDAN
+- designing earnings graphs to user-profile - GUY + DANDAN
 - create a custom chat-msg component like whatsapp's - GUY
 - use long-text in reviews - DANDAN
 - finish wishlist - GUY
 - ITP - start transforming stay-edit
+- profile-menu is position fixed so it doesnt show on the page if youre scrolled down
+- check msg-history in chat component
 
 * stay-details - wishlist feature
 * transform stay-details into stay-edit with the same appearance but with inputs
