@@ -28,8 +28,7 @@
       :isProfileModalOpen="isProfileModalOpen"
     />
     <login @login="login" v-if="isLoginOpen" />
-    <signup @signUp="signUp" v-if="isSignupOpen" @toggleSignUp="toggleSignUp" />
-    <share-modal @toggleShare="toggleShare" :class="{ share: isShareShown }" />
+    <signup v-if="isSignupOpen" @toggleSignUp="toggleSignUp" />
     <user-msg />
   </div>
 </template>
@@ -65,14 +64,6 @@ export default {
     },
     login(val) {
       this.isLoginOpen = val
-    },
-    async signUp(userCred) {
-      try {
-        await this.$store.dispatch({ type: 'signup', userCred })
-        showMsg('Signed up successfully!')
-      } catch (err) {
-        showMsg('Sign up failed!', 'error')
-      }
     },
     toggleSignUp(val) {
       this.isSignupOpen = val

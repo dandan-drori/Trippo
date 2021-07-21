@@ -1,5 +1,5 @@
 <template>
-  <section class="add-container" v-if="isAddOpen && stayToAdd">
+  <section class="add-container" v-if="isAddOpen && stayToAdd && !isLoading">
     <ValidationObserver v-slot="{ invalid }">
       <el-form ref="form" :model="stayToAdd">
         <el-form-item label="Property name">
@@ -86,43 +86,43 @@
               label="TV"
               name="TV"
               value="TV,el-icon-monitor"
-              :checked="stayToAdd.amenities[0]"
+              :checked="!!stayToAdd.amenities[0]"
             ></el-checkbox>
             <el-checkbox
               label="Wifi"
               name="Wifi"
               :value="{ txt: 'Wifi', icon: 'wifi', fa: true }"
-              :checked="stayToAdd.amenities[1]"
+              :checked="!!stayToAdd.amenities[1]"
             ></el-checkbox>
             <el-checkbox
               label="Kitchen"
               name="Kitchen"
               :value="{ txt: 'Kitchen', icon: 'el-icon-knife-fork' }"
-              :checked="stayToAdd.amenities[2]"
+              :checked="!!stayToAdd.amenities[2]"
             ></el-checkbox>
             <el-checkbox
               label="Pets allowed"
               name="Pets"
               :value="{ txt: 'Pets allowed', icon: 'paw', fa: true }"
-              :checked="stayToAdd.amenities[3]"
+              :checked="!!stayToAdd.amenities[3]"
             ></el-checkbox>
             <el-checkbox
               label="Shower"
               name="Shower"
               :value="{ txt: 'Shower', icon: 'shower', fa: true }"
-              :checked="stayToAdd.amenities[4]"
+              :checked="!!stayToAdd.amenities[4]"
             ></el-checkbox>
             <el-checkbox
               label="Air conditioning"
               name="Air conditioning"
               :value="{ txt: 'Air conditioning', icon: 'snowflake', fa: true }"
-              :checked="stayToAdd.amenities[5]"
+              :checked="!!stayToAdd.amenities[5]"
             ></el-checkbox>
             <el-checkbox
               label="Smoking allowed"
               name="Smoking allowed"
               :value="{ txt: 'Smoking allowed', icon: 'el-icon-smoking' }"
-              :checked="stayToAdd.amenities[6]"
+              :checked="!!stayToAdd.amenities[6]"
             ></el-checkbox>
           </el-checkbox-group>
         </el-form-item>
@@ -144,6 +144,7 @@
       </el-form>
     </ValidationObserver>
   </section>
+  <section v-else>Loading...</section>
 </template>
 
 <script>
@@ -188,7 +189,10 @@ export default {
       if (this.errors.length) return;
       this.stayToAdd.imgUrls = this.stayUrls;
       try {
+        this.isLoading = true;
         await this.$store.dispatch({ type: 'saveStay', stay: this.stayToAdd });
+        this.isLoading = false;
+
         showMsg('Stay added!');
       } catch (err) {
         showMsg('Stay add failed', 'error');
@@ -260,7 +264,9 @@ export default {
   },
   async created() {
     if (this.stay?._id) {
+      this.isLoading = true;
       this.stayToAdd = await stayService.getById(this.stay._id);
+      this.isLoading = false;
       // console.log(this.stayToAdd.amenities, 'stay say');
     } else {
       this.stayToAdd = stayService.getEmptyStay();

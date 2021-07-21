@@ -8,14 +8,24 @@
         </router-link>
       </div>
       <div class="header-search">
-        <input
-          type="text"
-          placeholder="Start your search"
-          v-model="filterBy.city"
-        />
-        <button class="search-btn" @click="setFilter">
-          <img src="@/assets/imgs/search_white_24dp.svg" alt="" />
-        </button>
+        <form action="" @submit.prevent>
+          <input
+            type="text"
+            list="city-options"
+            placeholder="Start your search"
+            v-model="filterBy.city"
+          />
+          <datalist id="city-options" v-if="correctCitySearched">
+            <option>Amsterdam</option>
+            <option>London</option>
+            <option>New York</option>
+            <option>Paris</option>
+          </datalist>
+          <div v-else class="no-data">No Data</div>
+          <button class="search-btn" @click="setFilter">
+            <img src="@/assets/imgs/search_white_24dp.svg" alt="" />
+          </button>
+        </form>
       </div>
       <stay-filter :class="{ scrolled: this.isScrolled }" />
       <div class="header-controls">
@@ -111,6 +121,11 @@ export default {
       } else {
         return 'http://res.cloudinary.com/dandan-img-cloud/image/upload/v1626521972/johtdlkck2tptcawkglt.png'
       }
+    },
+    correctCitySearched() {
+      const regex = new RegExp(this.filterBy.city, 'i')
+      const cities = ['Amsterdam', 'London', 'New York', 'Paris']
+      return cities.some(city => regex.test(city))
     },
   },
   watch: {

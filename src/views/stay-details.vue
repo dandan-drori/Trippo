@@ -140,15 +140,22 @@
         </div>
       </section>
     </section>
-    <h2 v-else>Loading...</h2>
+    <div class="loaderTest" v-else>Loading...</div>
     <chat v-if="isChatOpen" class="chat" @close="toggleChat" :stay="stay" />
   </section>
 </template>
 
 <script>
+<<<<<<< HEAD
 import { orderService } from '@/services/order-service.js'
 import { showMsg } from '@/services/event-bus.service.js'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+=======
+import { stayService } from '@/services/stay-service.js';
+import { orderService } from '@/services/order-service.js';
+import { showMsg } from '@/services/event-bus.service.js';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+>>>>>>> b9593fedf12b50b5cfe27fac3f123ef0cbc46a0a
 import {
   faWifi,
   faPaw,
@@ -156,13 +163,13 @@ import {
   faSnowflake,
   faUserShield,
   faShieldAlt,
-} from '@fortawesome/free-solid-svg-icons'
-import reviewList from '@/cmps/details/review-list'
-import stayMap from '@/cmps/details/stay-map'
-import chat from '@/cmps/details/chat'
-import stayCheckout from '@/cmps/details/stay-checkout'
-import reviewAdd from '@/cmps/details/review-add'
-import reviewRatings from '@/cmps/details/review-ratings'
+} from '@fortawesome/free-solid-svg-icons';
+import reviewList from '@/cmps/details/review-list';
+import stayMap from '@/cmps/details/stay-map';
+import chat from '@/cmps/details/chat';
+import stayCheckout from '@/cmps/details/stay-checkout';
+import reviewAdd from '@/cmps/details/review-add';
+import reviewRatings from '@/cmps/details/review-ratings';
 
 export default {
   props: { isScreenOpen: Boolean },
@@ -187,65 +194,66 @@ export default {
         userShield: faUserShield,
         shieldAlt: faShieldAlt,
       },
-    }
+      isLoading: true,
+    };
   },
   computed: {
     address() {
       return this.stay.loc.countryCode === 'NY'
         ? this.stay.loc.address + 'United States'
-        : this.stay.loc.address
+        : this.stay.loc.address;
     },
     reviewsLength() {
-      return this.stay.reviews.length
+      return this.stay.reviews.length;
     },
     infoHeader() {
-      return this.stay.propertyType + ' host by ' + this.stay.host.fullname
+      return this.stay.propertyType + ' host by ' + this.stay.host.fullname;
     },
     beds() {
       return this.stay.accommodates === 1
         ? this.stay.accommodates + ' bed'
-        : this.stay.accommodates + ' beds'
+        : this.stay.accommodates + ' beds';
     },
     baths() {
       return this.stay.accommodates === 1
         ? this.stay.accommodates + ' bath'
-        : this.stay.accommodates + ' baths'
+        : this.stay.accommodates + ' baths';
     },
     loggedInUser() {
-      return this.$store.getters.loggedinUser
+      return this.$store.getters.loggedinUser;
     },
     stay() {
-      return this.$store.getters.watchedStay
+      return this.$store.getters.watchedStay;
     },
   },
   methods: {
     async checkout({ dates, total, guests }) {
-      const orderToSave = orderService.getEmptyOrder()
-      orderToSave.startDate = dates[0].getTime()
-      orderToSave.endDate = dates[1].getTime()
-      orderToSave.total = total
-      orderToSave.guests = guests
+      const orderToSave = orderService.getEmptyOrder();
+      orderToSave.startDate = dates[0].getTime();
+      orderToSave.endDate = dates[1].getTime();
+      orderToSave.total = total;
+      orderToSave.guests = guests;
       try {
         await this.$store.dispatch({
           type: 'saveOrder',
           order: orderToSave,
           stay: this.stay,
-        })
+        });
         setTimeout(() => {
-          showMsg('order sent')
-        }, 2000)
+          showMsg('order sent');
+        }, 2000);
       } catch (err) {
-        showMsg('order failed', 'error')
+        showMsg('order failed', 'error');
       }
     },
     toggleShare() {
       this.$emit('toggleShare', true)
     },
     toggleChat() {
-      this.isChatOpen = !this.isChatOpen
+      this.isChatOpen = !this.isChatOpen;
     },
     toggleReview() {
-      this.$emit('screen', !this.isScreenOpen)
+      this.$emit('screen', !this.isScreenOpen);
     },
     async onAddReview(review) {
       try {
@@ -253,26 +261,26 @@ export default {
           type: 'addReview',
           stay: this.stay,
           review,
-        })
-        this.$store.commit({ type: 'setWatchedStay', stay: newStay })
-        this.toggleReview()
-        showMsg('Review added successfully')
+        });
+        this.$store.commit({ type: 'setWatchedStay', stay: newStay });
+        this.toggleReview();
+        showMsg('Review added successfully');
       } catch {
-        showMsg('There was a problem posting the review', 'error')
+        showMsg('There was a problem posting the review', 'error');
       }
     },
   },
   async created() {
     try {
-      this.$emit('scrolled', true)
+      this.$emit('scrolled', true);
       // this.$store.dispatch({ type: 'loadOrders' })
-      const { stayId } = this.$route.params
-      await this.$store.dispatch({ type: 'loadAndWatchStay', stayId })
+      const { stayId } = this.$route.params;
+      await this.$store.dispatch({ type: 'loadAndWatchStay', stayId });
       // const stay = await stayService.getById(stayId)
       // this.stay = stay
     } catch (err) {
-      console.log('Cannot get stay with id:', stayId)
+      console.log('Cannot get stay with id:', stayId);
     }
   },
-}
+};
 </script>

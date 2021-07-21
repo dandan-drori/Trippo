@@ -5,9 +5,17 @@
         <small>Location</small>
         <input
           type="text"
+          list="city-options"
           placeholder="Where are you going"
           v-model="filterBy.city"
         />
+        <datalist id="city-options" v-if="correctCitySearched">
+          <option>Amsterdam</option>
+          <option>London</option>
+          <option>New York</option>
+          <option>Paris</option>
+        </datalist>
+        <div v-else class="no-data">No Data</div>
       </div>
       <div class="checkin-input">
         <small>Check in</small>
@@ -89,6 +97,13 @@ export default {
         city: '',
       },
     }
+  },
+  computed: {
+    correctCitySearched() {
+      const regex = new RegExp(this.filterBy.city, 'i')
+      const cities = ['Amsterdam', 'London', 'New York', 'Paris']
+      return cities.some(city => regex.test(city))
+    },
   },
   methods: {
     toggleGuestsModal() {

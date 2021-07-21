@@ -10,18 +10,26 @@
 
 ### FRONTEND
 
-- add createdAt in order-table - DANDAN
-- add user image in order-table - DANDAN
-- add stay main image in order-table - DANDAN
-- stay-details - add share with facebook and wishlist features - DANDAN
-- when updating stay - initialize amenities as checked if they are checked
-- transform stay-details into stay-edit with the same appearance but with inputs
-- About page
-- pwa - app will work offline
-- mobile design (mostly stay-details and user-profile)
-- BONUS - I18N
-- BONUS - use google maps api to convert address to latlng - ITP
-- BONUS - push notifications
+## 21.07.21
+
+- prepare questions for asi - about mobile design best practices and other things
+- finish loaders
+- finish wishlist
+- finish chat (socket part)
+- re-test order sockets, especially update status
+- ITP - start transforming stay-edit
+
+* add loaders to each loading page and action - DANIEL (functionality) GUY (design)
+* stay-details - wishlist feature
+* sockets - ONLY CHAT!!!!
+* transform stay-details into stay-edit with the same appearance but with inputs
+* pwa - app will work offline
+* mobile design (mostly stay-details and user-profile)
+* About page
+
+* BONUS - use google maps api to convert address to latlng - ITP
+* BONUS - I18N
+* BONUS - push notifications
 
 ### BACKEND
 

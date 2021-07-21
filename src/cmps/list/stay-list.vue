@@ -1,6 +1,6 @@
 <template>
   <section>
-    <section class="stay-list">
+    <section class="stay-list" v-if="stays.length">
       <section
         v-for="stay in stays"
         :key="stay._id"
@@ -9,6 +9,7 @@
         <stay-preview @click.stop :stay="stay"> </stay-preview>
       </section>
     </section>
+    <section v-else>No Available places</section>
   </section>
 </template>
 

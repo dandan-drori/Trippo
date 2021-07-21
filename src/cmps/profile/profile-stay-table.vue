@@ -1,32 +1,35 @@
 <template>
-  <ul class="profile-stay-table">
-    <li class="table-header">
-      <div>Name</div>
-      <div>Country</div>
-      <div>Price / Night</div>
-      <div>Actions</div>
-    </li>
-    <li v-for="(stay, idx) in stays" :key="stay._id" class="table-row">
-      <div>{{ stay.name }}</div>
-      <div>{{ stay.country }}</div>
-      <div>{{ formattedPrice(stay.price) }}</div>
-      <div class="actions-td">
-        <button @click.stop="toggleActionsModal(idx)" class="actionsBtn">
-          <span class="material-icons">
-            more_horiz
-          </span>
-        </button>
-        <div class="actionsModal" v-if="isActionsModalOpen && num === idx">
-          <button class="edit-btn" @click="onEditStay(stay)">
-            Edit
+  <section v-if="!isLoading">
+    <ul class="profile-stay-table">
+      <li class="table-header">
+        <div>Name</div>
+        <div>Country</div>
+        <div>Price / Night</div>
+        <div>Actions</div>
+      </li>
+      <li v-for="(stay, idx) in stays" :key="stay._id" class="table-row">
+        <div>{{ stay.name }}</div>
+        <div>{{ stay.country }}</div>
+        <div>{{ formattedPrice(stay.price) }}</div>
+        <div class="actions-td">
+          <button @click.stop="toggleActionsModal(idx)" class="actionsBtn">
+            <span class="material-icons">
+              more_horiz
+            </span>
           </button>
-          <button class="delete-btn" @click="onRemoveStay(stay)">
-            Delete
-          </button>
+          <div class="actionsModal" v-if="isActionsModalOpen && num === idx">
+            <button class="edit-btn" @click="onEditStay(stay)">
+              Edit
+            </button>
+            <button class="delete-btn" @click="onRemoveStay(stay)">
+              Delete
+            </button>
+          </div>
         </div>
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </section>
+  <section v-else>Loading...</section>
 </template>
 
 <script>
@@ -40,6 +43,7 @@ export default {
     return {
       isActionsModalOpen: false,
       num: -2,
+      isLoading: false,
     };
   },
   methods: {
@@ -54,7 +58,10 @@ export default {
     },
     async onRemoveStay(stay) {
       try {
+        this.isLoading = true;
         this.$store.dispatch({ type: 'removeStay', stayId: stay._id });
+        this.isLoading = false;
+
         showMsg('Stay removed successfully');
       } catch (err) {
         setTimeout;

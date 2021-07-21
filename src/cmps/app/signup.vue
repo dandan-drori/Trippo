@@ -28,7 +28,14 @@
           placeholder="Enter password"
           v-model="userCred.password"
         />
-        <button class="checkout-btn" ref="myBtn"><span>Continue</span></button>
+        <button class="checkout-btn" ref="myBtn">
+          <vue-loaders-ball-clip-rotate-multiple
+            color="white"
+            v-if="isLoading"
+            style="height:23px; top:-7px;"
+          />
+          <span v-else>Continue</span>
+        </button>
       </form>
     </div>
     <div class="signup-divider">
@@ -57,6 +64,7 @@
 </template>
 
 <script>
+import { showMsg } from '@/services/event-bus.service';
 export default {
   data() {
     return {
@@ -65,22 +73,37 @@ export default {
         fullname: '',
         password: '',
       },
+      isLoading: false,
     };
   },
   methods: {
     toggleSignUp() {
       this.$emit('toggleSignUp', false);
     },
-    signUp() {
-      console.log(this.userCred);
-      this.$emit('signUp', this.userCred);
-      // this.userCred.username = '';
-      // this.userCred.fullname = '';
-      // this.userCred.password = '';
+    // signUp() {
+    //   console.log(this.userCred);
+    //   this.$emit('signUp', this.userCred);
+    //   // this.userCred.username = '';
+    //   // this.userCred.fullname = '';
+    //   // this.userCred.password = '';
+    // },
+    async signUp() {
+      try {
+        this.isLoading = true;
+        await this.$store.dispatch({
+          type: 'signup',
+          userCred: this.userCred,
+        });
+        this.isLoading = false;
+        this.toggleSignUp();
+        showMsg('Signed up successfully!');
+      } catch (err) {
+        showMsg('Sign up failed!', 'error');
+      }
     },
   },
   mounted() {
-    this.$refs.myBtn.onmousemove = e => {
+    this.$refs.myBtn.onmousemove = (e) => {
       const x = e.offsetX;
       const y = e.offsetY;
 
