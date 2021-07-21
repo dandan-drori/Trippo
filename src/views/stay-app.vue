@@ -1,5 +1,5 @@
 <template>
-  <section v-if="stay">
+  <section v-if="stays">
     <section class="explore">
       <div class="head-title">
         <p class="head-title-visits">{{ stays.length }}+ stays</p>
