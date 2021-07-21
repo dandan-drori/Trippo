@@ -1,33 +1,40 @@
 <template>
 	<ul>
 		<li class="table-header">
-			<div>Guest</div>
+			<div v-if="showActions">Guest</div>
 			<div>Stay</div>
 			<div>{{ sentOrRecieved }}</div>
 			<div>Check-In</div>
 			<div>Check-Out</div>
 			<div>Status</div>
-			<div v-if="showActions">Actions</div>
 		</li>
 		<li v-for="order in orders" :key="order._id" class="table-row">
-			<div>
+			<div v-if="showActions">
 				<img :src="order.buyer.imgUrl" />
 				{{ longText(buyer(order)) }}
 			</div>
 			<div>{{ longText(order.stay.name) }}</div>
 			<div>{{ order.createdAt | moment('from') }}</div>
-			<div>{{ order.startDate | moment('MMMM Do YYYY') }}</div>
-			<div>{{ order.endDate | moment('MMMM Do YYYY') }}</div>
+			<div>{{ order.startDate | moment('MM/DD/YY') }}</div>
+			<div>{{ order.endDate | moment('MM/DD/YY') }}</div>
 			<div
 				:class="{
 					warning: order.status === 'pending',
 					error: order.status === 'rejected',
 					success: order.status === 'approved',
 				}"
+				v-if="!showActions"
 			>
 				{{ order.status }}
 			</div>
-			<div v-if="showActions">
+			<div
+				v-if="showActions"
+				:class="{
+					warning: order.status === 'pending',
+					error: order.status === 'rejected',
+					success: order.status === 'approved',
+				}"
+			>
 				<button
 					:class="{
 						approve: true,

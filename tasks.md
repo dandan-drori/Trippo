@@ -7,8 +7,6 @@
 - add earnings graphs to user-profile - GUY + DANDAN
 - create a custom chat-msg component like whatsapp's - GUY
 - use long-text in reviews - DANDAN
-- prepare questions for asi - about mobile design best practices and other things - TOGETHER
-- brainstorm user-profile page UI & UX - ASI
 - finish wishlist - GUY
 - ITP - start transforming stay-edit
 
@@ -17,6 +15,7 @@
 * pwa - app will work offline
 * mobile design (mostly stay-details and user-profile)
 * About page
+* change design and add functionality to google map in stay-details
 
 * BONUS - push notifications
 * BONUS - use google maps api to convert address to latlng - ITP
