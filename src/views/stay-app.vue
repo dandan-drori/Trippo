@@ -1,12 +1,9 @@
 <template>
-  <section v-if="stays">
+  <section v-if="stay">
     <section class="explore">
       <div class="head-title">
         <p class="head-title-visits">{{ stays.length }}+ stays</p>
         <h1>{{ place }}</h1>
-        <div class="head-banner" v-if="currCity">
-          <img :src="require('@/assets/imgs/chalice.gif')" />
-        </div>
       </div>
       <stay-list-filter
         v-if="stays && unfilteredStays"
@@ -15,6 +12,13 @@
         @filter="setFilter"
         :unfilteredStays="unfilteredStays"
       />
+      <div class="head-banner" v-if="currCity">
+        <p>
+          More than {{ visitors }} guests have stayed in {{ currCity }}.
+          <span>On average they rated their stays 4.8 out of 5 stars.</span>
+        </p>
+        <img :src="require('@/assets/imgs/chalice.gif')" />
+      </div>
       <stay-list :stays="stays" v-if="stays" />
     </section>
   </section>
@@ -71,6 +75,12 @@ export default {
     if (city) {
       var filterBy = this.$store.getters.filterBy
       filterBy.city = city
+      this.visitors = {
+        'New York': '550,000',
+        Paris: '400,000',
+        London: '350,000',
+        Amsterdam: '200,000',
+      }[city]
 
       this.$store.commit({ type: 'setFilter', filterBy })
     }

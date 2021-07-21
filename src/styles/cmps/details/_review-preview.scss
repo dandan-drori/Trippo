@@ -1,40 +1,40 @@
 .review-preview {
-  .user {
-    display: flex;
-    align-items: center;
+	.user {
+		display: flex;
+		align-items: center;
 
-    img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
+		img {
+			width: 55px;
+			height: 55px;
+			object-fit: cover;
+			border-radius: 50%;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
 
-    div {
-      margin-right: 10px;
+		div {
+			margin-right: 10px;
 
-      h2 {
-        font-size: 1.1rem;
-        margin-top: -9px;
-      }
+			h2 {
+				font-size: 1.1rem;
+				margin-top: -9px;
+			}
 
-      p {
-        color: #777;
-        font-size: 0.7rem;
-      }
-    }
-    .review-name {
-      font-weight: 500;
-      color: #000;
-      font-size: 0.8rem;
-    }
-  }
-  p.txt {
-    font-weight: 300;
-    color: #222;
-    line-height: 1.4;
-    font-size: 0.8rem;
-  }
+			p {
+				color: #777;
+				font-size: 0.7rem;
+			}
+		}
+		.review-name {
+			font-weight: 500;
+			color: #000;
+			font-size: 0.8rem;
+		}
+	}
+	p.txt {
+		font-weight: 300;
+		color: #222;
+		line-height: 1.4;
+		font-size: 0.8rem;
+	}
 }

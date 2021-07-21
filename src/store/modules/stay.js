@@ -186,7 +186,7 @@ export default {
 					showMsg(`a new review was added by ${review.by.fullname}`)
 				})
 			} catch (err) {
-				console.log('toyStore: Error in loadAndWatchToy', err)
+				console.log('stayStore: Error in loadAndWatchStay', err)
 				throw err
 			}
 		},

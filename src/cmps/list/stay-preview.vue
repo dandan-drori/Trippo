@@ -1,6 +1,7 @@
 <template>
   <section class="stay-card-container">
     <el-carousel
+      v-if="stay.imgUrls.length"
       class="img-carousell"
       trigger="click"
       height="170px"
@@ -12,12 +13,12 @@
         <img :src="imgUrl" @click="sendToDetails(stay._id)" />
       </el-carousel-item>
     </el-carousel>
+    <img v-else :src="require('@/assets/imgs/no_img.jpeg')" />
     <div class="card-rating">
       <p>
-        <span class="material-icons star-icon"> star </span>4.7 (<small
-          >12</small
-        >
-        )
+        <span class="material-icons star-icon"> star </span
+        >{{ avgRate }} (<small> {{ stay.reviews.length }}</small
+        >)
       </p>
     </div>
     <div class="card-location">{{ stay.propertyType }} &middot; {{ city }}</div>
@@ -51,6 +52,13 @@ export default {
         case 'New York':
           return 'New York'
       }
+    },
+    avgRate() {
+      if (!this.stay.reviews.length) return 0
+      const sum = this.stay.reviews.reduce((acc, review) => {
+        return acc + review.rate
+      }, 0)
+      return (sum / this.stay.reviews.length).toFixed(1)
     },
   },
   created() {},
