@@ -1,18 +1,23 @@
 <template>
 	<ul>
 		<li class="table-header">
-			<div>Stay</div>
 			<div>Guest</div>
+			<div>Stay</div>
+			<div>{{ sentOrRecieved }}</div>
 			<div>Check-In</div>
 			<div>Check-Out</div>
 			<div>Status</div>
 			<div v-if="showActions">Actions</div>
 		</li>
-		<li v-for="order in localOrders" :key="order._id" class="table-row">
-			<div>{{ order.stay.name }}</div>
-			<div>{{ buyer(order) }}</div>
-			<div>{{ order.startDate }}</div>
-			<div>{{ order.endDate }}</div>
+		<li v-for="order in orders" :key="order._id" class="table-row">
+			<div>
+				<img :src="order.buyer.imgUrl" />
+				{{ longText(buyer(order)) }}
+			</div>
+			<div>{{ longText(order.stay.name) }}</div>
+			<div>{{ order.createdAt | moment('from') }}</div>
+			<div>{{ order.startDate | moment('MMMM Do YYYY') }}</div>
+			<div>{{ order.endDate | moment('MMMM Do YYYY') }}</div>
 			<div
 				:class="{
 					warning: order.status === 'pending',
@@ -70,36 +75,37 @@ export default {
 		loggedInUser() {
 			return this.$store.getters.loggedinUser
 		},
+		sentOrRecieved() {
+			if (this.loggedInUser._id === this.orders[0].buyer._id) {
+				return 'Sent At'
+			}
+			return 'Recieved At'
+		},
 	},
 	methods: {
 		async changeOrderStatus(order, newStatus) {
 			try {
+				order.status = newStatus
+				const stay = this.stays.find(s => s._id === order.stay._id)
 				await this.$store.dispatch({
-					type: 'updateOrderStatus',
+					type: 'saveOrder',
 					order,
-					newStatus,
+					stay,
 				})
 				showMsg('order status updated')
 			} catch (err) {
 				showMsg('Order edit failed')
 			}
 		},
-
 		buyer(order) {
 			if (order?.buyer) {
 				return order.buyer.fullname
 			}
 			return this.loggedInUser.fullname
 		},
-	},
-	watch: {
-		orders() {
-			return {
-				handler(newVal) {
-					this.localOrders = newVal
-				},
-				deep: true,
-			}
+		longText(txt) {
+			if (txt.length < 10) return txt
+			return txt.substring(0, 10) + '...'
 		},
 	},
 }
