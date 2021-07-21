@@ -1,52 +1,5 @@
 import { httpService } from './http.service.js'
 
-const gUsers = [
-	{
-		_id: 'u101',
-		fullname: 'User 1',
-		imgUrl: 'host4.jpg',
-		username: 'user1',
-		password: 'secret',
-		orders: [
-			{
-				_id: 'o1225',
-				_hostId: 'u102',
-				createdAt: 9898989,
-				totalPrice: 160,
-				startDate: 162818371828,
-				endDate: 162829321938,
-				status: 'rejected',
-			},
-			{
-				_id: 'o1227',
-				_hostId: 'u102',
-				createdAt: 9898989,
-				totalPrice: 160,
-				startDate: 162818371828,
-				endDate: 162829321938,
-				status: 'approved',
-			},
-			{
-				_id: 'o1226',
-				_hostId: 'u102',
-				createdAt: 9898989,
-				totalPrice: 160,
-				startDate: 162818371828,
-				endDate: 162829321938,
-				status: 'pending',
-			},
-		],
-		stays: [
-			{
-				_id: '10001247',
-				name: 'Furnished Studio in Manhattan',
-				price: 363.0,
-				country: 'New York',
-			},
-		],
-	},
-]
-
 export const userService = {
 	login,
 	logout,
@@ -60,8 +13,6 @@ export const userService = {
 }
 
 window.userService = userService
-
-// userService.signup({ fullname: 'guest', username: 'guest', password: '123' })
 
 const BASE_URL = 'user/'
 

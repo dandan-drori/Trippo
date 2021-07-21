@@ -60,7 +60,7 @@
 						<el-checkbox
 							label="TV"
 							name="TV"
-							value="TV,el-icon-monitor"
+							:value="{ txt: 'TV', icon: 'el-icon-monitor' }"
 							:checked="!!stayToAdd.amenities[0]"
 						></el-checkbox>
 						<el-checkbox
@@ -80,12 +80,6 @@
 							name="Pets"
 							:value="{ txt: 'Pets allowed', icon: 'paw', fa: true }"
 							:checked="!!stayToAdd.amenities[3]"
-						></el-checkbox>
-						<el-checkbox
-							label="Shower"
-							name="Shower"
-							:value="{ txt: 'Shower', icon: 'shower', fa: true }"
-							:checked="!!stayToAdd.amenities[4]"
 						></el-checkbox>
 						<el-checkbox
 							label="Air conditioning"
@@ -226,7 +220,7 @@ export default {
 		},
 	},
 	async created() {
-		if (this.stay?._id) {
+		if (this.stay && this.stay._id) {
 			this.isLoading = true
 			this.stayToAdd = await stayService.getById(this.stay._id)
 			this.isLoading = false

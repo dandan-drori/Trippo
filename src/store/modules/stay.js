@@ -138,11 +138,6 @@ export default {
 						icon: 'paw',
 						fa: true,
 					},
-					shower: {
-						txt: 'Shower',
-						icon: 'shower',
-						fa: true,
-					},
 					'Air conditioning': {
 						txt: 'Air conditioning',
 						icon: 'snowflake',

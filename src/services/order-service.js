@@ -1,28 +1,5 @@
 import { httpService } from './http.service.js'
 
-const gOrders = [
-	{
-		_id: 'o1225',
-		_hostId: 'u102',
-		createdAt: 9898989,
-		buyer: {
-			_id: 'u101',
-			fullname: 'User 1',
-			imgUrl: 'imgs/user1.jpg',
-		},
-		totalPrice: 160,
-		startDate: 162818371828,
-		endDate: 162829321938,
-		guests: 3,
-		stay: {
-			_id: 'h102',
-			name: 'House Of Uncle My',
-			price: 80.0,
-		},
-		status: 'pending',
-	},
-]
-
 export const orderService = {
 	query,
 	getById,
