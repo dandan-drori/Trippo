@@ -9,12 +9,15 @@
 </template>
 
 <script>
-import lineChart from './line-chart.vue';
-import barChart from './bar-chart.vue';
+import lineChart from './line-chart.vue'
+import barChart from './bar-chart.vue'
 export default {
   components: { lineChart, barChart },
-  props: {},
+  props: { orders: Array },
+  created() {
+    console.log(this.orders)
+  },
   computed: {},
   methods: {},
-};
+}
 </script>

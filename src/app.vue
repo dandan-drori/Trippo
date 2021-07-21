@@ -14,12 +14,20 @@
       :isScreenOpen="isScreenOpen"
       @hideSearch="hideSearch"
       @toggleShare="toggleShare"
+      @toggleLoading="toggleLoading"
     />
     <app-footer />
     <div
-      v-if="isLoginOpen || isSignupOpen || isScreenOpen || isShareShown"
+      v-if="
+        isLoginOpen || isSignupOpen || isScreenOpen || isShareShown || isLoading
+      "
       class="screen"
     ></div>
+    <vue-loaders-ball-pulse-sync
+      color="transparent"
+      class="main-loader"
+      v-if="isLoading"
+    />
     <profile-menu
       @login="login"
       @toggleSignUp="toggleSignUp"
@@ -29,6 +37,11 @@
     />
     <login @login="login" v-if="isLoginOpen" />
     <signup v-if="isSignupOpen" @toggleSignUp="toggleSignUp" />
+    <share-modal
+      v-if="isShareShown"
+      @toggleShare="toggleShare"
+      :class="{ share: isShareShown }"
+    />
     <user-msg />
   </div>
 </template>
@@ -53,6 +66,7 @@ export default {
       isSignupOpen: false,
       headerClicked: true,
       isShareShown: false,
+      isLoading: false,
     }
   },
   created() {
@@ -97,6 +111,9 @@ export default {
     },
     toggleShare(val) {
       this.isShareShown = val
+    },
+    toggleLoading(val) {
+      this.isLoading = val
     },
   },
   components: {

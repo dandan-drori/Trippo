@@ -189,7 +189,9 @@
     margin-bottom: 40px;
     padding-bottom: 40px;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 75px;
     p {
       font-size: 0.8rem;
       font-weight: 300;
@@ -237,24 +239,23 @@
         align-items: center;
         margin-inline-start: -5px;
         margin-top: 10px;
-        i {
-          font-size: 1.4rem;
-        }
       }
 
       p {
         margin-right: 30px;
-      }
-
-      i,
-      svg {
-        margin-right: 10px;
-        color: #ff385c;
-      }
-
-      i {
-        font-size: 1.6rem;
-        margin-top: -2px;
+        display: flex;
+        span {
+          font-size: 1.2rem;
+          margin-right: 10px;
+          color: #ff385c;
+        }
+        svg {
+          margin-right: 10px;
+          height: 24px;
+          width: 24px;
+          color: #ff385c;
+          margin-inline-start: 4px;
+        }
       }
     }
 
@@ -272,9 +273,9 @@
         display: block;
         border: 1px solid #333;
         border-radius: 12px;
-        padding: 0.8rem 1.6rem;
+        padding: 0.65rem 1.3rem;
         margin-bottom: 30px;
-        font-size: 1.1rem;
+        font-size: 0.75rem;
         font-weight: 500;
         background-color: #fefefe;
 
@@ -288,10 +289,11 @@
       display: flex;
       align-items: center;
 
+      img,
       svg {
         margin-right: 20px;
-        font-size: 1.6rem;
-        max-width: 20px;
+        width: 25px;
+        height: 25px;
       }
 
       small {

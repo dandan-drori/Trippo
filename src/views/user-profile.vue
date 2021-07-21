@@ -1,5 +1,5 @@
 <template>
-  <section class="user-profile-container">
+  <section v-if="loggedInUser" class="user-profile-container">
     <div class="profile-header">
       <nav>
         <ul>
@@ -11,7 +11,7 @@
         </ul>
       </nav>
     </div>
-    <profile-dashboard v-if="dashboardOpen" />
+    <profile-dashboard v-if="dashboardOpen" :orders="recievedOrders" />
     <profile-inbox v-if="inboxOpen" />
     <section class="user-profile" v-if="loggedInUser && profileOpen">
       <section class="profile-card">
@@ -73,13 +73,13 @@
 </template>
 
 <script>
-import { uploadImg } from '@/services/img-upload.service.js';
-import profileFilter from '@/cmps/profile/profile-filter';
-import stayAdd from '@/cmps/profile/stay-add';
-import profileTable from '@/cmps/profile/profile-table';
-import ProfileStayTable from '@/cmps//profile/profile-stay-table';
-import profileDashboard from '@/cmps/profile/profile-dashboard';
-import profileInbox from '@/cmps/profile/profile-inbox';
+import { uploadImg } from '@/services/img-upload.service.js'
+import profileFilter from '@/cmps/profile/profile-filter'
+import stayAdd from '@/cmps/profile/stay-add'
+import profileTable from '@/cmps/profile/profile-table'
+import ProfileStayTable from '@/cmps//profile/profile-stay-table'
+import profileDashboard from '@/cmps/profile/profile-dashboard'
+import profileInbox from '@/cmps/profile/profile-inbox'
 
 export default {
   components: {
@@ -104,141 +104,141 @@ export default {
         name: '',
         country: '',
       },
-      isLoading: false,
       imgUrl: '',
       stay: null,
-      isProfileLoading: true,
-    };
+    }
   },
   methods: {
     tableRowClassName({ row, rowIndex }) {
       if (row.status === 'pending') {
-        return 'warning-row';
+        return 'warning-row'
       } else if (row.status === 'rejected') {
-        return 'error-row';
+        return 'error-row'
       } else if (row.status === 'approved') {
-        return 'success-row';
+        return 'success-row'
       }
-      return '';
+      return ''
     },
     setFilter(filterBy) {
-      this.filterBy = filterBy;
+      this.filterBy = filterBy
     },
     setStaysFilter(filterBy) {
-      this.staysFilterBy = filterBy;
+      this.staysFilterBy = filterBy
     },
     openModal() {
-      this.isModalOpen = true;
+      this.isModalOpen = true
     },
     closeModal(val) {
-      this.stay = null;
-      this.isModalOpen = val;
+      this.stay = null
+      this.isModalOpen = val
     },
 
     async onUploadImg(ev) {
-      this.isLoading = true;
-      const res = await uploadImg(ev);
-      this.loggedInUser.imgUrl = res.url;
-      this.$store.dispatch({ type: 'updateUser', user: this.loggedInUser });
-      this.isLoading = false;
+      this.isLoading = true
+      const res = await uploadImg(ev)
+      this.loggedInUser.imgUrl = res.url
+      this.$store.dispatch({ type: 'updateUser', user: this.loggedInUser })
+      this.isLoading = false
     },
     editStay(stay) {
-      this.stay = stay;
-      this.openModal();
+      this.stay = stay
+      this.openModal()
     },
     openProfile() {
-      this.profileOpen = true;
-      this.dashboardOpen = false;
-      this.inboxOpen = false;
+      this.profileOpen = true
+      this.dashboardOpen = false
+      this.inboxOpen = false
     },
     openDashboard() {
-      this.dashboardOpen = true;
-      this.profileOpen = false;
-      this.inboxOpen = false;
+      this.dashboardOpen = true
+      this.profileOpen = false
+      this.inboxOpen = false
     },
     openInbox() {
-      this.inboxOpen = true;
-      this.profileOpen = false;
-      this.dashboardOpen = false;
+      this.inboxOpen = true
+      this.profileOpen = false
+      this.dashboardOpen = false
     },
   },
   computed: {
     loggedInUser() {
-      return this.$store.getters.loggedinUser;
+      return this.$store.getters.loggedinUser
     },
     sentOrdersLength() {
-      if (!this.$store.getters.orders.length) return 0;
+      if (!this.$store.getters.orders.length) return 0
       return this.$store.getters.orders.reduce((acc, order) => {
-        return this.loggedInUser._id === order.buyer._id ? acc + 1 : acc;
-      }, 0);
+        return this.loggedInUser._id === order.buyer._id ? acc + 1 : acc
+      }, 0)
     },
     recievedOrdersLength() {
-      if (!this.$store.getters.orders.length) return 0;
+      if (!this.$store.getters.orders.length) return 0
       return this.$store.getters.orders.reduce((acc, order) => {
-        return this.loggedInUser._id === order.host._id ? acc + 1 : acc;
-      }, 0);
+        return this.loggedInUser._id === order.host._id ? acc + 1 : acc
+      }, 0)
     },
     staysLength() {
-      if (!this.$store.getters.orders.length) return 0;
+      if (!this.$store.getters.orders.length) return 0
       return this.$store.getters.stays.reduce((acc, stay) => {
-        return this.loggedInUser._id === stay.host._id ? acc + 1 : acc;
-      }, 0);
+        return this.loggedInUser._id === stay.host._id ? acc + 1 : acc
+      }, 0)
     },
 
     // get orders where you are the buyer
     sentOrders() {
-      const orders = this.$store.getters.orders.map((order) => {
+      const orders = this.$store.getters.orders.map(order => {
         if (order.buyer._id === this.loggedInUser._id) {
-          const regex = new RegExp(this.filterBy.name, 'i');
+          const regex = new RegExp(this.filterBy.name, 'i')
           if (
             order.status.includes(this.filterBy.status) &&
             regex.test(order.stay.name)
           ) {
-            return order;
+            return order
           }
         }
-      });
-      return orders.filter((o) => o);
+      })
+      return orders.filter(o => o)
     },
     // get orders where you are the host
     recievedOrders() {
-      const orders = this.$store.getters.orders.map((order) => {
+      const orders = this.$store.getters.orders.map(order => {
         if (
           order.host._id === this.loggedInUser._id &&
           this.loggedInUser._id !== order.buyer._id
         ) {
-          const regex = new RegExp(this.filterBy.name, 'i');
+          const regex = new RegExp(this.filterBy.name, 'i')
           if (
             order.status.includes(this.filterBy.status) &&
             regex.test(order.stay.name)
           ) {
-            return order;
+            return order
           }
         }
-      });
-      return orders.filter((o) => o);
+      })
+      return orders.filter(o => o)
     },
     allStays() {
-      return this.$store.getters.stays;
+      return this.$store.getters.stays
     },
     computedStays() {
-      return this.allStays.filter((stay) => {
-        const regex = new RegExp(this.staysFilterBy.name, 'i');
+      return this.allStays.filter(stay => {
+        const regex = new RegExp(this.staysFilterBy.name, 'i')
         return (
           (this.loggedInUser._id === stay.host._id && regex.test(stay.name)) ||
           regex.test(stay.country)
-        );
-      });
+        )
+      })
     },
   },
   async created() {
-    this.$emit('scrolled', true);
-    this.$emit('hideSearch', true);
-    await this.$store.dispatch({ type: 'loadStays' });
-    await this.$store.dispatch({ type: 'loadOrders' });
+    this.$emit('toggleLoading', true)
+    this.$emit('scrolled', true)
+    this.$emit('hideSearch', true)
+    await this.$store.dispatch({ type: 'loadStays' })
+    await this.$store.dispatch({ type: 'loadOrders' })
+    this.$emit('toggleLoading', false)
   },
   destroyed() {
-    this.$emit('hideSearch', false);
+    this.$emit('hideSearch', false)
   },
-};
+}
 </script>

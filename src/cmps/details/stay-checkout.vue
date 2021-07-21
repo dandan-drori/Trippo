@@ -78,109 +78,109 @@ export default {
         {
           text: 'Last week',
           value: (() => {
-            const end = new Date();
-            const start = new Date();
-            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-            return [start, end];
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+            return [start, end]
           })(),
         },
         {
           text: 'Last month',
           value: (() => {
-            const end = new Date();
-            const start = new Date();
-            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-            return [start, end];
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+            return [start, end]
           })(),
         },
         {
           text: 'Last 3 months',
           value: (() => {
-            const end = new Date();
-            const start = new Date();
-            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-            return [start, end];
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
+            return [start, end]
           })(),
         },
       ],
       dates: '',
       guestsCount: 1,
-    };
+    }
   },
   computed: {
     avg() {
       const sum = this.reviews.reduce((acc, review) => {
-        return acc + review.rate;
-      }, 0);
-      if (sum === 0) return 0;
-      return (sum / this.reviews.length).toFixed(1);
+        return acc + review.rate
+      }, 0)
+      if (sum === 0) return 0
+      return (sum / this.reviews.length).toFixed(1)
     },
     checkoutBtnTxt() {
-      return this.dates ? 'Reserve' : 'Check availabilty';
+      return this.dates ? 'Reserve' : 'Check availabilty'
     },
     computedPrice() {
-      const checkin = this.dates[0].getTime();
-      const checkout = this.dates[1].getTime();
-      const days = (checkout - checkin) / 1000 / 60 / 60 / 24;
-      const accomodation = this.price * days;
-      const service = this.price / 10;
-      const total = accomodation + service;
+      const checkin = this.dates[0].getTime()
+      const checkout = this.dates[1].getTime()
+      const days = (checkout - checkin) / 1000 / 60 / 60 / 24
+      const accomodation = this.price * days
+      const service = this.price / 10
+      const total = accomodation + service
 
       var formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
-      });
+      })
 
       return {
         accomodation: formatter.format(accomodation),
         service: formatter.format(service),
         total: formatter.format(total),
-      };
+      }
     },
   },
   methods: {
     decGuests() {
       if (this.guestsCount > 1) {
-        this.guestsCount--;
+        this.guestsCount--
       }
     },
     incGuests() {
       if (this.guestsCount < this.accommodates) {
-        this.guestsCount++;
+        this.guestsCount++
       }
     },
     checkout() {
       if (!this.dates) {
-        this.$refs.myDatePicker.focus();
-        return;
+        this.$refs.myDatePicker.focus()
+        return
       }
       this.$emit('checkout', {
         dates: this.dates,
         guests: this.guestsCount,
         total: this.computedPrice.total,
-      });
-      this.isLoading = true;
-      this.$refs.myBtn.disabled = true;
+      })
+      this.isLoading = true
+      this.$refs.myBtn.disabled = true
       setTimeout(() => {
-        this.isLoading = false;
-      }, 2000);
+        this.isLoading = false
+      }, 2000)
       setTimeout(() => {
-        this.$refs.myBtn.disabled = false;
-      }, 10000);
+        this.$refs.myBtn.disabled = false
+      }, 10000)
     },
   },
   mounted() {
-    this.$refs.myBtn.onmousemove = (e) => {
-      const x = e.offsetX;
-      const y = e.offsetY;
+    this.$refs.myBtn.onmousemove = e => {
+      const x = e.offsetX
+      const y = e.offsetY
 
-      e.target.style.setProperty('--x', `${x}px`);
-      e.target.style.setProperty('--y', `${y}px`);
-    };
+      e.target.style.setProperty('--x', `${x}px`)
+      e.target.style.setProperty('--y', `${y}px`)
+    }
   },
-};
+}
 </script>
 
 <style>
