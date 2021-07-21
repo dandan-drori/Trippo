@@ -1,17 +1,20 @@
 <template>
-  <section class="explore">
-    <div class="head-title">
-      <p class="head-title-visits">{{ stays.length }}+ stays</p>
-      <h1>{{ place }}</h1>
-    </div>
-    <stay-list-filter
-      v-if="stays && unfilteredStays"
-      :filterBy="filterBy"
-      :stays="stays"
-      @filter="setFilter"
-      :unfilteredStays="unfilteredStays"
-    />
-    <stay-list :stays="stays" v-if="stays" />
+  <section>
+    <section class="explore" v-if="!isLoading">
+      <div class="head-title">
+        <p class="head-title-visits">{{ stays.length }}+ stays</p>
+        <h1>{{ place }}</h1>
+      </div>
+      <stay-list-filter
+        v-if="stays && unfilteredStays"
+        :filterBy="filterBy"
+        :stays="stays"
+        @filter="setFilter"
+        :unfilteredStays="unfilteredStays"
+      />
+      <stay-list :stays="stays" v-if="stays" />
+    </section>
+    <h2 v-else>Loading</h2>
   </section>
 </template>
 
@@ -27,13 +30,17 @@ export default {
   data() {
     return {
       currCity: '',
+      isLoading: false,
+      isCleared: false,
     };
   },
   methods: {
     setFilter(filterBy) {
-      console.log(filterBy);
       this.$store.commit({ type: 'setFilter', filterBy });
+      this.isLoading = true;
       this.$store.dispatch({ type: 'loadStays' });
+      this.isLoading = false;
+      this.isCleared = true;
     },
   },
   computed: {
@@ -47,7 +54,7 @@ export default {
       return this.$store.getters.unfilteredStays;
     },
     place() {
-      if (this.currCity) {
+      if (this.currCity && !this.isCleared) {
         return `Places in ${this.currCity}`;
       } else {
         return `Entire places`;
@@ -55,6 +62,7 @@ export default {
     },
   },
   async created() {
+    this.isLoading = true;
     this.$emit('scrolled', true);
     const { city } = this.$route.params;
     this.currCity = city;
@@ -67,6 +75,7 @@ export default {
 
     await this.$store.dispatch({ type: 'loadUnfilteredStays' });
     await this.$store.dispatch({ type: 'loadStays' });
+    this.isLoading = false;
   },
   destroyed() {
     this.$store.commit({

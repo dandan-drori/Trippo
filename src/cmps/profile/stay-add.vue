@@ -1,5 +1,5 @@
 <template>
-  <section class="add-container" v-if="isAddOpen && stayToAdd">
+  <section class="add-container" v-if="isAddOpen && stayToAdd && !isLoading">
     <ValidationObserver v-slot="{ invalid }">
       <el-form ref="form" :model="stayToAdd">
         <el-form-item label="Property name">
@@ -144,6 +144,7 @@
       </el-form>
     </ValidationObserver>
   </section>
+  <section v-else>Loading...</section>
 </template>
 
 <script>
@@ -188,7 +189,10 @@ export default {
       if (this.errors.length) return;
       this.stayToAdd.imgUrls = this.stayUrls;
       try {
+        this.isLoading = true;
         await this.$store.dispatch({ type: 'saveStay', stay: this.stayToAdd });
+        this.isLoading = false;
+
         showMsg('Stay added!');
       } catch (err) {
         showMsg('Stay add failed', 'error');
@@ -260,7 +264,9 @@ export default {
   },
   async created() {
     if (this.stay?._id) {
+      this.isLoading = true;
       this.stayToAdd = await stayService.getById(this.stay._id);
+      this.isLoading = false;
       // console.log(this.stayToAdd.amenities, 'stay say');
     } else {
       this.stayToAdd = stayService.getEmptyStay();
