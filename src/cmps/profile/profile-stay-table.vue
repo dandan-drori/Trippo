@@ -16,25 +16,28 @@
             <span class="material-icons">
               more_horiz
             </span>
+            <div
+              @click.stop
+              class="actionsModal"
+              v-if="isActionsModalOpen && num === idx"
+            >
+              <button class="edit-btn" @click="onEditStay(stay)">
+                Edit
+              </button>
+              <button class="delete-btn" @click="onRemoveStay(stay)">
+                Delete
+              </button>
+            </div>
           </button>
-          <div class="actionsModal" v-if="isActionsModalOpen && num === idx">
-            <button class="edit-btn" @click="onEditStay(stay)">
-              Edit
-            </button>
-            <button class="delete-btn" @click="onRemoveStay(stay)">
-              Delete
-            </button>
-          </div>
         </div>
       </li>
     </ul>
   </section>
-  <section v-else>Loading...</section>
 </template>
 
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { showMsg } from '@/services/event-bus.service.js';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { showMsg } from '@/services/event-bus.service.js'
 
 export default {
   components: { FontAwesomeIcon },
@@ -44,7 +47,10 @@ export default {
       isActionsModalOpen: false,
       num: -2,
       isLoading: false,
-    };
+    }
+  },
+  created() {
+    window.addEventListener('click', this.bodyClick)
   },
   methods: {
     formattedPrice(price) {
@@ -53,30 +59,33 @@ export default {
         currency: 'USD',
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
-      });
-      return formatter.format(price);
+      })
+      return formatter.format(price)
     },
     async onRemoveStay(stay) {
       try {
-        this.isLoading = true;
-        this.$store.dispatch({ type: 'removeStay', stayId: stay._id });
-        this.isLoading = false;
+        this.isLoading = true
+        this.$store.dispatch({ type: 'removeStay', stayId: stay._id })
+        this.isLoading = false
 
-        showMsg('Stay removed successfully');
+        showMsg('Stay removed successfully')
       } catch (err) {
-        setTimeout;
-        showMsg('Stay remove failed', 'error');
+        setTimeout
+        showMsg('Stay remove failed', 'error')
       }
     },
     onEditStay(stay) {
-      this.$emit('edit-stay', stay);
+      this.$emit('edit-stay', stay)
     },
     toggleActionsModal(idx) {
-      this.num = idx;
-      this.isActionsModalOpen = !this.isActionsModalOpen;
+      this.num = idx
+      this.isActionsModalOpen = !this.isActionsModalOpen
+    },
+    bodyClick() {
+      this.isActionsModalOpen = false
     },
   },
-};
+}
 </script>
 
 <style></style>

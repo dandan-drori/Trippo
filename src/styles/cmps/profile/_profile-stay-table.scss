@@ -15,14 +15,12 @@
     }
     .edit-btn.delete-btn {
       margin-left: 0;
+      background-color: #fff;
     }
 
-    .edit-btn:hover {
-      background-color: rgba(48, 184, 202, 0.63);
-    }
-
+    .edit-btn:hover,
     .delete-btn:hover {
-      background-color: rgba(255, 0, 0, 0.555);
+      background-color: #f0f0f0;
     }
   }
 }
@@ -42,14 +40,19 @@
 
 .actionsModal {
   display: flex;
+  max-width: 100px;
   flex-direction: column;
   position: absolute;
-  left: 50px;
-  top: 0;
+  padding: 10px 0;
+  left: 0px;
+  top: 25px;
   background-color: #fff;
   box-shadow: 1px solid #ddd;
-  border-radius: 15px;
-  box-shadow: 0 0 0 1px rgba (0, 0, 0, 0.08);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 0 5px 0 rgba(0, 0, 0, 0.2);
   width: 50px;
   z-index: 3;
+  border-radius: 5px;
+  button {
+    background-color: #fff;
+  }
 }

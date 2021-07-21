@@ -50,7 +50,11 @@
         <section class="orders-table">
           <h2>Orders sent:</h2>
           <profile-filter :isStaysFilter="false" @filter="setFilter" />
-          <profile-table v-if="sentOrders.length" :orders="sentOrders" />
+          <profile-table
+            v-if="sentOrders.length"
+            :orders="sentOrders"
+            :showActions="false"
+          />
         </section>
         <section class="orders-table">
           <h2>Orders recieved:</h2>

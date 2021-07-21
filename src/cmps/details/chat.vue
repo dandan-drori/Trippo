@@ -9,13 +9,14 @@
         <button @click="toggleChat">X</button>
       </div>
     </div>
-    <div class="chat-body">Hey there!</div>
-    <p v-if="showTyping">{{ typingUsername }}:is typing...</p>
-    <ul>
-      <li v-for="(msg, idx) in msgs" :key="idx">
-        <span>{{ msg.from }}:</span>{{ msg.txt }}
-      </li>
-    </ul>
+    <div class="chat-body">
+      <ul>
+        <li v-for="(msg, idx) in msgs" :key="idx" class="msg-from">
+          <span>{{ msg.from }}:</span>{{ msg.txt }}
+        </li>
+      </ul>
+      <p v-if="showTyping">{{ typingUsername }}:is typing...</p>
+    </div>
     <div class="chat-footer">
       <form @submit.prevent="sendMsg">
         <input

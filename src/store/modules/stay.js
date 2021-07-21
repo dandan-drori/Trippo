@@ -138,7 +138,7 @@ export default {
 						icon: 'paw',
 						fa: true,
 					},
-					shower: {
+					Shower: {
 						txt: 'Shower',
 						icon: 'shower',
 						fa: true,
