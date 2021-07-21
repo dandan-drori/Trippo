@@ -1,6 +1,6 @@
 <template>
-  <section class="stay-card-container">
-    <button class="wishlist-btn" @click.stop="toggleWishlist(stay._id)">
+  <section class="stay-card-container" @click.stop="sendToDetails(stay._id)">
+    <button class="wishlist-btn">
       <span v-if="!onWishlist" class="material-icons-two-tone">
         favorite
       </span>
@@ -18,7 +18,7 @@
       :loop="true"
     >
       <el-carousel-item v-for="(imgUrl, idx) in stay.imgUrls" :key="idx">
-        <img :src="imgUrl" @click="sendToDetails(stay._id)" />
+        <img :src="imgUrl" />
       </el-carousel-item>
     </el-carousel>
     <img v-else :src="require('@/assets/imgs/no_img.jpeg')" />
