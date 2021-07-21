@@ -48,12 +48,12 @@
 					</p>
 				</section>
 				<section class="orders-table">
-					<h2>Orders sent:</h2>
+					<h2>My reservations:</h2>
 					<profile-filter :isStaysFilter="false" @filter="setFilter" />
 					<profile-table v-if="sentOrders.length" :orders="sentOrders" :showActions="false" />
 				</section>
 				<section class="orders-table">
-					<h2>Orders recieved:</h2>
+					<h2>Orders:</h2>
 					<profile-filter :isStaysFilter="false" @filter="setFilter" />
 					<profile-table
 						v-if="recievedOrders.length"
@@ -63,7 +63,7 @@
 					/>
 				</section>
 				<section class="stays-table">
-					<h2>Stays:</h2>
+					<h2>My assets:</h2>
 					<profile-filter :isStaysFilter="true" @filter="setStaysFilter" />
 					<profile-stay-table :stays="computedStays" @edit-stay="editStay" />
 				</section>

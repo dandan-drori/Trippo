@@ -93,12 +93,6 @@ export default {
       this.$gAuth
         .signIn()
         .then(GoogleUser => {
-          // on success do something
-          console.log('GoogleUser', GoogleUser)
-          console.log('getId', GoogleUser.getId())
-          console.log('basicprofile', GoogleUser.getBasicProfile().getName())
-          console.log('getBasicProfile', GoogleUser.getBasicProfile())
-          console.log('getAuthResponse', GoogleUser.getAuthResponse())
           var userInfo = {
             loginType: 'google',
             google: {
@@ -110,8 +104,14 @@ export default {
               },
             },
           }
-          this.$store.commit('setLoginUser', userInfo)
-          router.push('/home')
+          showMsg('Logged in successfully')
+          // console.log('GoogleUser', GoogleUser)
+          // console.log('getId', GoogleUser.getId())
+          // console.log('basicprofile', GoogleUser.getBasicProfile().getName())
+          // console.log('getBasicProfile', GoogleUser.getBasicProfile())
+          // console.log('getAuthResponse', GoogleUser.getAuthResponse())
+          // this.$store.commit('setLoginUser', userInfo)
+          // router.push('/')
         })
         .catch(error => {
           console.log('error', error)
@@ -145,7 +145,7 @@ export default {
             },
             this.params
           )
-          router.push('/home')
+          router.push('/')
         }
       }, this.params)
     },

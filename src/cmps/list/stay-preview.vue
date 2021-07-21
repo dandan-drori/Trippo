@@ -1,5 +1,13 @@
 <template>
-	<section class="stay-card-container">
+	<section class="stay-card-container" @click.stop="sendToDetails(stay._id)">
+		<button class="wishlist-btn">
+			<span v-if="!onWishlist" class="material-icons-two-tone">
+				favorite
+			</span>
+			<span v-else class="in-list material-icons-outlined">
+				favorite
+			</span>
+		</button>
 		<el-carousel
 			v-if="stay.imgUrls.length"
 			class="img-carousell"
@@ -10,7 +18,7 @@
 			:loop="true"
 		>
 			<el-carousel-item v-for="(imgUrl, idx) in stay.imgUrls" :key="idx">
-				<img :src="imgUrl" @click="sendToDetails(stay._id)" />
+				<img :src="imgUrl" />
 			</el-carousel-item>
 		</el-carousel>
 		<img v-else :src="require('@/assets/imgs/no_img.jpeg')" />
@@ -37,21 +45,25 @@ export default {
 	props: {
 		stay: Object,
 	},
+	data() {
+		return {
+			onWishlist: false,
+		}
+	},
 	methods: {
 		sendToDetails(stayId) {
 			this.$router.push(`/stay/${stayId}`)
 		},
+		toggleWishlist(stayId) {
+			this.onWishlist = !this.onWishlist
+			if (this.onWishlist === true) {
+				console.log('added to wish list', stayId)
+			}
+		},
 	},
 	computed: {
 		city() {
-			switch (this.stay.loc.country) {
-				case 'Netherlands':
-					return 'Amsterdam'
-				case 'France':
-					return 'Paris'
-				case 'New York':
-					return 'New York'
-			}
+			return this.stay.loc.address.split(',')[0]
 		},
 		avgRate() {
 			if (!this.stay.reviews.length) return 0
