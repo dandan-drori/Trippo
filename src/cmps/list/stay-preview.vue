@@ -1,5 +1,13 @@
 <template>
   <section class="stay-card-container">
+    <button class="wishlist-btn" @click.stop="toggleWishlist(stay._id)">
+      <span v-if="!onWishlist" class="material-icons-two-tone">
+        favorite
+      </span>
+      <span v-else class="in-list material-icons-outlined">
+        favorite
+      </span>
+    </button>
     <el-carousel
       v-if="stay.imgUrls.length"
       class="img-carousell"
@@ -37,21 +45,25 @@ export default {
   props: {
     stay: Object,
   },
+  data() {
+    return {
+      onWishlist: false,
+    }
+  },
   methods: {
     sendToDetails(stayId) {
       this.$router.push(`/stay/${stayId}`)
     },
+    toggleWishlist(stayId) {
+      this.onWishlist = !this.onWishlist
+      if (this.onWishlist === true) {
+        console.log('added to wish list', stayId)
+      }
+    },
   },
   computed: {
     city() {
-      switch (this.stay.loc.country) {
-        case 'Netherlands':
-          return 'Amsterdam'
-        case 'France':
-          return 'Paris'
-        case 'New York':
-          return 'New York'
-      }
+      return this.stay.loc.address.split(',')[0]
     },
     avgRate() {
       if (!this.stay.reviews.length) return 0

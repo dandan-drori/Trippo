@@ -21,10 +21,10 @@
               class="actionsModal"
               v-if="isActionsModalOpen && num === idx"
             >
-              <button class="edit-btn" @click="onEditStay(stay)">
+              <button class="edit-btn" @click.stop="onEditStay(stay)">
                 Edit
               </button>
-              <button class="delete-btn" @click="onRemoveStay(stay)">
+              <button class="delete-btn" @click.stop="onRemoveStay(stay)">
                 Delete
               </button>
             </div>
@@ -51,6 +51,7 @@ export default {
   },
   created() {
     window.addEventListener('click', this.bodyClick)
+    console.log(this.stays)
   },
   methods: {
     formattedPrice(price) {
