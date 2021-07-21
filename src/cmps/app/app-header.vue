@@ -39,9 +39,9 @@
   </header>
 </template>
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faAirbnb } from '@fortawesome/free-brands-svg-icons';
-import stayFilter from './stay-filter.vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faAirbnb } from '@fortawesome/free-brands-svg-icons'
+import stayFilter from './stay-filter.vue'
 export default {
   data() {
     return {
@@ -55,71 +55,71 @@ export default {
         amenities: [],
         city: '',
       },
-    };
+    }
   },
   created() {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll)
   },
   destroyed() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
     handleScroll(event) {
-      let scrollDiff = event.path[1].scrollY;
+      let scrollDiff = event.path[1].scrollY
       if (scrollDiff > 0) {
-        this.isScrolled = true;
-        this.$emit('scrolled', true);
-        this.$emit('hideSearch', false);
+        this.isScrolled = true
+        this.$emit('scrolled', true)
+        this.$emit('hideSearch', false)
       } else if (!scrollDiff) {
-        this.isScrolled = false;
-        this.$emit('scrolled', false);
+        this.isScrolled = false
+        this.$emit('scrolled', false)
       }
     },
     login() {
-      this.$emit('login', true);
+      this.$emit('login', true)
     },
     toggleSignUp() {
-      this.$emit('toggleSignUp', true);
+      this.$emit('toggleSignUp', true)
     },
     logout() {
-      this.$emit('logout');
+      this.$emit('logout')
     },
     addStay() {
-      console.log('need to add this function');
+      console.log('need to add this function')
     },
     toggleScroll(val) {
-      this.isScrolled = val;
+      this.isScrolled = val
     },
     toggleProfile() {
-      this.$emit('toggleProfile');
+      this.$emit('toggleProfile')
     },
     setFilter() {
-      this.$store.commit({ type: 'setFilter', filterBy: this.filterBy });
-      const regex = new RegExp('stay', 'i');
-      if (!regex.test(this.$route.fullPath)) this.$router.push('/stay');
-      this.$store.dispatch({ type: 'loadStays' });
+      this.$store.commit({ type: 'setFilter', filterBy: this.filterBy })
+      const regex = new RegExp('stay', 'i')
+      if (!regex.test(this.$route.fullPath)) this.$router.push('/stay')
+      this.$store.dispatch({ type: 'loadStays' })
     },
   },
   computed: {
     loggedInUser() {
-      return this.$store.getters.loggedinUser;
+      return this.$store.getters.loggedinUser
     },
     imgUrl() {
-      const user = this.$store.getters.loggedinUser;
+      const user = this.$store.getters.loggedinUser
       if (user && user?.imgUrl) {
-        return user.imgUrl;
+        return user.imgUrl
       } else {
-        return 'http://res.cloudinary.com/dandan-img-cloud/image/upload/v1626521972/johtdlkck2tptcawkglt.png';
+        return 'http://res.cloudinary.com/dandan-img-cloud/image/upload/v1626521972/johtdlkck2tptcawkglt.png'
       }
     },
   },
   watch: {
     '$route.params.city'() {
-      const { city } = this.$route.params;
-      if (city) this.filterBy.city = city;
-      else this.filterBy.city = '';
+      const { city } = this.$route.params
+      if (city) this.filterBy.city = city
+      else this.filterBy.city = ''
     },
   },
   components: { FontAwesomeIcon, stayFilter },
-};
+}
 </script>

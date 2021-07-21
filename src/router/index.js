@@ -6,6 +6,7 @@ import stayApp from '../views/stay-app.vue';
 import stayDetails from '../views/stay-details.vue';
 import stayEdit from '../views/stay-edit.vue';
 import userProfile from '../views/user-profile.vue';
+import userWishlist from '../views/user-wishlist.vue';
 
 Vue.use(VueRouter);
 
@@ -37,6 +38,10 @@ const routes = [
   {
     path: '/profile/:userId',
     component: userProfile,
+  },
+  {
+    path: '/wishlist/:userId',
+    component: userWishlist,
   },
 ];
 

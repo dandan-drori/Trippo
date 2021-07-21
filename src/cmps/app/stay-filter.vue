@@ -72,8 +72,8 @@
 </template>
 
 <script>
-import DatePicker from 'vue2-datepicker';
-import 'vue2-datepicker/index.css';
+import DatePicker from 'vue2-datepicker'
+import 'vue2-datepicker/index.css'
 export default {
   data() {
     return {
@@ -88,23 +88,23 @@ export default {
         amenities: [],
         city: '',
       },
-    };
+    }
   },
   methods: {
     toggleGuestsModal() {
-      this.isGuestsModalOpen = !this.isGuestsModalOpen;
+      this.isGuestsModalOpen = !this.isGuestsModalOpen
     },
     async search() {
-      let numOfGuests = this.adults + this.children + this.infants;
-      this.$store.commit({ type: 'setFilter', filterBy: this.filterBy });
-      this.$router.push('/stay');
-      this.adults = 0;
-      this.children = 0;
-      this.infants = 0;
+      let numOfGuests = this.adults + this.children + this.infants
+      this.$store.commit({ type: 'setFilter', filterBy: this.filterBy })
+      this.$router.push('/stay')
+      this.adults = 0
+      this.children = 0
+      this.infants = 0
     },
   },
   components: {
     DatePicker,
   },
-};
+}
 </script>

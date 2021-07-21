@@ -51,10 +51,12 @@
   }
   input {
     border: 1px solid #b0b0b0;
-    &:hover,
-    :focus {
-      border: 1px solid #222;
-    }
+  }
+  input:hover,
+  input:focus-visible,
+  input:focus {
+    border: 1px solid #222;
+    outline: none;
   }
   button {
     background-color: rgb(189, 30, 89);

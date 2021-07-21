@@ -11,7 +11,9 @@ import locale from 'element-ui/lib/locale/lang/en'
 import 'vue-loaders/dist/vue-loaders.css'
 import VueLoaders from 'vue-loaders'
 import VueSocialSharing from 'vue-social-sharing'
+import VueClipboard from 'vue-clipboard2'
 
+Vue.use(VueClipboard)
 Vue.use(VueSocialSharing)
 Vue.config.lang = 'en'
 Vue.use(Element, { locale })

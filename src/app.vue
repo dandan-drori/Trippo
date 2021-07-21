@@ -13,10 +13,11 @@
       @screen="toggleScreen"
       :isScreenOpen="isScreenOpen"
       @hideSearch="hideSearch"
+      @toggleShare="toggleShare"
     />
     <app-footer />
     <div
-      v-if="isLoginOpen || isSignupOpen || isScreenOpen"
+      v-if="isLoginOpen || isSignupOpen || isScreenOpen || isShareShown"
       class="screen"
     ></div>
     <profile-menu
@@ -28,18 +29,20 @@
     />
     <login @login="login" v-if="isLoginOpen" />
     <signup @signUp="signUp" v-if="isSignupOpen" @toggleSignUp="toggleSignUp" />
+    <share-modal @toggleShare="toggleShare" :class="{ share: isShareShown }" />
     <user-msg />
   </div>
 </template>
 
 <script>
-import appHeader from './cmps/app/app-header.vue';
-import appFooter from './cmps/app/app-footer.vue';
-import userMsg from './cmps/app/user-msg.vue';
-import login from './cmps/app/login.vue';
-import signup from './cmps/app/signup.vue';
-import profileMenu from './cmps/profile/profile-menu.vue';
-import { showMsg } from '@/services/event-bus.service';
+import appHeader from './cmps/app/app-header.vue'
+import appFooter from './cmps/app/app-footer.vue'
+import userMsg from './cmps/app/user-msg.vue'
+import login from './cmps/app/login.vue'
+import signup from './cmps/app/signup.vue'
+import shareModal from './cmps/app/share-modal.vue'
+import profileMenu from './cmps/profile/profile-menu.vue'
+import { showMsg } from '@/services/event-bus.service'
 export default {
   data() {
     return {
@@ -50,55 +53,59 @@ export default {
       isLoginOpen: false,
       isSignupOpen: false,
       headerClicked: true,
-    };
+      isShareShown: false,
+    }
   },
   created() {
-    window.addEventListener('click', this.bodyClick);
+    window.addEventListener('click', this.bodyClick)
   },
   methods: {
     scrolled(val) {
-      this.isScrolled = val;
+      this.isScrolled = val
     },
     login(val) {
-      this.isLoginOpen = val;
+      this.isLoginOpen = val
     },
     async signUp(userCred) {
       try {
-        await this.$store.dispatch({ type: 'signup', userCred });
-        showMsg('Signed up successfully!');
+        await this.$store.dispatch({ type: 'signup', userCred })
+        showMsg('Signed up successfully!')
       } catch (err) {
-        showMsg('Sign up failed!', 'error');
+        showMsg('Sign up failed!', 'error')
       }
     },
     toggleSignUp(val) {
-      this.isSignupOpen = val;
+      this.isSignupOpen = val
     },
     toggleProfile() {
-      this.isProfileModalOpen = !this.isProfileModalOpen;
+      this.isProfileModalOpen = !this.isProfileModalOpen
     },
     async logout() {
       try {
-        await this.$store.dispatch({ type: 'logout' });
-        this.$router.push('/');
-        showMsg('Logged out!');
+        await this.$store.dispatch({ type: 'logout' })
+        this.$router.push('/')
+        showMsg('Logged out!')
       } catch (err) {
-        showMsg('Logout failed!', 'error');
+        showMsg('Logout failed!', 'error')
       }
     },
     closeModal(val) {
-      this.isProfileModalOpen = val;
+      this.isProfileModalOpen = val
     },
     hideSearch(val) {
-      this.isSearchShown = val;
+      this.isSearchShown = val
     },
     bodyClick() {
-      this.isLoginOpen = false;
-      this.isSignupOpen = false;
-      this.isProfileModalOpen = false;
-      this.isScreenOpen = false;
+      this.isLoginOpen = false
+      this.isSignupOpen = false
+      this.isProfileModalOpen = false
+      this.isScreenOpen = false
     },
     toggleScreen(val) {
-      this.isScreenOpen = val;
+      this.isScreenOpen = val
+    },
+    toggleShare(val) {
+      this.isShareShown = val
     },
   },
   components: {
@@ -108,7 +115,8 @@ export default {
     login,
     signup,
     profileMenu,
+    shareModal,
   },
-  // test push comment
-};
+}
 </script>
+, ShareModal
