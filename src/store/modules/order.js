@@ -41,7 +41,6 @@ export default {
 			}
 		},
 		async saveOrder({ commit, rootGetters }, { order, stay }) {
-			console.log('order', order)
 			try {
 				const type = order._id ? 'updateOrder' : 'addOrder'
 				if (!order._id) {
