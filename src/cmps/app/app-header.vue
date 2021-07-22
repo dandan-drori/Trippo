@@ -27,6 +27,11 @@
               search
             </span>
           </button>
+          <button class="back-btn" @click="goBack">
+            <span class="material-icons-outlined">
+              arrow_back
+            </span>
+          </button>
         </form>
       </div>
       <stay-filter :class="{ scrolled: this.isScrolled }" />
@@ -86,6 +91,9 @@ export default {
         this.isScrolled = false
         this.$emit('scrolled', false)
       }
+    },
+    goBack() {
+      this.$router.back()
     },
     login() {
       this.$emit('login', true)

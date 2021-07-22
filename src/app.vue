@@ -17,7 +17,11 @@
       @toggleShare="toggleShare"
       @toggleLoading="toggleLoading"
     />
-    <!-- <mobile-nav :class="{ bottom: isOnBottom }" /> -->
+    <mobile-nav
+      :class="{ bottom: isOnBottom }"
+      @toggleProfile="toggleProfile"
+      @login="login"
+    />
     <app-footer />
     <div
       v-if="
@@ -71,25 +75,36 @@ export default {
       isShareShown: false,
       isLoading: false,
       isOnBottom: false,
+      scrolledToBottom: false,
     }
   },
   created() {
     window.addEventListener('click', this.bodyClick)
-    // window.addEventListener('scroll', this.handleScroll)
+  },
+  mounted() {
+    this.scroll()
   },
   methods: {
-    // handleScroll(event) {
-    //   // let scrollDiff = event.path[1].scrollY
-    //   // console.log(event.path[1].scrollTop)
-    //   // console.log(event)
-    //   // if (scrollDiff >= 1) {
-    //   //   this.isOnBottom = true
-    //   //   // this.$emit('bottom', true)
-    //   // } else if (scrollDiff < 1) {
-    //   //   this.isOnBottom = false
-    //   //   // this.$emit('bottom', false)
-    //   // }
-    // },
+    scroll() {
+      window.onscroll = () => {
+        let bottomOfWindow =
+          Math.max(
+            window.pageYOffset,
+            document.documentElement.scrollTop,
+            document.body.scrollTop
+          ) +
+            window.innerHeight ===
+          document.documentElement.offsetHeight
+
+        if (bottomOfWindow) {
+          this.scrolledToBottom = true
+          this.isOnBottom = true
+          // replace it with your code
+        } else {
+          this.isOnBottom = false
+        }
+      }
+    },
     scrolled(val) {
       this.isScrolled = val
     },

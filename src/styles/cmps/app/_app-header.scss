@@ -34,6 +34,9 @@ header {
       width: 300px;
       height: 48px;
       transition: 0.3s;
+      .back-btn {
+        display: block;
+      }
     }
     .filter-container {
       position: fixed;
@@ -265,6 +268,9 @@ header {
       height: 20px;
       width: 20px;
     }
+    .back-btn {
+      display: none;
+    }
   }
 }
 
@@ -300,7 +306,7 @@ header {
     .header-search {
       form {
         input {
-          text-indent: 32px;
+          text-indent: 38px;
           font-size: 0.8rem;
           font-weight: 300;
           color: #222;
@@ -309,6 +315,19 @@ header {
           left: 9px;
           background-color: #fff;
           color: #000;
+          &.back-btn {
+            width: 50px;
+            height: 50px;
+            top: 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #222;
+            border-radius: 50%;
+            span {
+              font-size: 1.2rem;
+            }
+          }
         }
       }
     }
@@ -316,6 +335,12 @@ header {
       transition: 0.5s;
       .header-search {
         width: 95%;
+      }
+      .back-btn {
+        display: flex;
+        span {
+          font-size: 1.2rem;
+        }
       }
     }
   }

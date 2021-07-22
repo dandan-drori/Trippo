@@ -7,7 +7,7 @@
       {{ pricePreview }}
     </button>
 
-    <div @click.stop class="price-modal" v-if="isPriceModalOpen">
+    <div @click.stop.prevent class="price-modal" v-if="isPriceModalOpen">
       <el-slider style="color:black" v-model="filterBy.price" range :max="1500">
       </el-slider>
       <div class="price-container">

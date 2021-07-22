@@ -173,3 +173,14 @@
     --size: 400px;
   }
 }
+
+@include for-mobile-layout {
+  .signup-modal {
+    width: 100%;
+    height: 100%;
+    border-radius: unset;
+  }
+  .signup-input {
+    margin-top: 30px;
+  }
+}

@@ -55,6 +55,22 @@
   display: flex;
   flex-direction: column;
 
+  ul {
+    margin: 0;
+    position: relative;
+  }
+  li {
+    border-bottom: none;
+    font-size: 0.7rem;
+    padding: 10px;
+    background-color: #ff385c;
+    color: #fff;
+    border-radius: 3rem;
+    max-width: 70%;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
   li:nth-child(even) {
     justify-content: flex-end;
   }

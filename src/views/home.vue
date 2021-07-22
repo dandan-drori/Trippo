@@ -2,10 +2,10 @@
   <div class="homepage">
     <div class="shadow"></div>
     <div class="hero-container"></div>
-    <img class="hero" src="@/assets/imgs/home-page/hero1.jpeg" />
+    <img class="hero" src="@/assets/imgs/home-page/hero2.jpeg" />
     <div class="flexible">
       <p>Not sure where to go? Perfect.</p>
-      <button @click="goToList"><span>Explore</span></button>
+      <button @click="goToList"><span>Explore now</span></button>
     </div>
     <h2>Live anywhere</h2>
     <div class="categories">
@@ -46,11 +46,11 @@
         <router-link :to="'/stay/q/' + 'London'">
           <div class="img">
             <img
-              src="https://images.unsplash.com/photo-1587726480710-003743795e40?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=851&q=80"
+              src="https://images.unsplash.com/photo-1542052125323-e69ad37a47c2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
               alt=""
             />
           </div>
-          <h3>London</h3>
+          <h3>Tokyo</h3>
         </router-link>
       </div>
     </div>
@@ -60,7 +60,7 @@
         <p>Wishlists curated by Airbnb.</p>
         <button>Get inspired</button>
       </div>
-      <img src="@/assets/imgs/outdoors.webp" alt="" />
+      <img src="@/assets/imgs/home-page/hero1.jpeg" alt="" />
     </div>
   </div>
 </template>

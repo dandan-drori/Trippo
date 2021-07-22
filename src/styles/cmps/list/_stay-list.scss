@@ -180,9 +180,10 @@
     gap: 3px;
     margin-bottom: 20px;
     margin-top: 10px;
-
+    justify-content: space-between;
     & > button {
-      padding: 2px 4px;
+      padding: 5px 12px;
+      font-size: 0.7rem;
     }
   }
   .stay-list {
