@@ -1,11 +1,13 @@
 #### IMPORTANT
 
+- apply fixes that asaf gave us
+- implement check-in in stay-details (stuck at bottom and opens a full-screen modal)
+- add wishlistedBy (array of user ids) to stay entity
 - mobile design (mostly stay-details and user-profile - maybe change remove most of the data from the tables and make it viewable by clicking on 3 dots that open modal with a bullet list)
-- Upload to heroku
-- pwa - homepage will open offline
 - create a custom chat-msg component like whatsapp's - GUY
-- profile-menu is position fixed so it doesnt show on the page if youre scrolled down
-- change design and add functionality to google map in stay-details
+- practice presentation of main flow
+- practice presentation of code (1 minute recording is needed)
+
 - BONUS - push notifications
 - BONUS - use google maps api to convert address to latlng - ITP
 

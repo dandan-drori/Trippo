@@ -11,7 +11,12 @@
 				</ul>
 			</nav>
 		</div>
-		<profile-dashboard v-if="dashboardOpen" :totalEarnings="totalEarnings" />
+		<profile-dashboard
+			v-if="dashboardOpen"
+			:totalEarnings="totalEarnings"
+			:stays="staysOfLoggedinUser"
+			:orders="ordersToLoggedinUser"
+		/>
 		<profile-inbox v-if="inboxOpen" />
 		<section class="user-profile" v-if="loggedInUser && profileOpen">
 			<section class="profile-card">
@@ -36,32 +41,6 @@
 			</section>
 			<stay-add v-if="isModalOpen" @close="closeModal" :stay="stay" />
 			<section class="data" v-else>
-				<section class="statistics">
-					<p>
-						Assets you own: <span>{{ staysLength }}</span>
-					</p>
-					<p>
-						Sent orders: <span>{{ sentOrdersLength }}</span>
-					</p>
-					<p>
-						Recieved orders: <span>{{ recievedOrdersLength }}</span>
-					</p>
-				</section>
-				<section class="orders-table">
-					<h2>My reservations:</h2>
-					<profile-filter :isStaysFilter="false" @filter="setFilter" />
-					<profile-table v-if="sentOrders.length" :orders="sentOrders" :showActions="false" />
-				</section>
-				<section class="orders-table">
-					<h2>Orders:</h2>
-					<profile-filter :isStaysFilter="false" @filter="setFilter" />
-					<profile-table
-						v-if="recievedOrders.length"
-						:orders="recievedOrders"
-						:stays="computedStays"
-						:showActions="true"
-					/>
-				</section>
 				<section class="stays-table">
 					<h2>My assets:</h2>
 					<profile-filter :isStaysFilter="true" @filter="setStaysFilter" />
@@ -97,10 +76,7 @@ export default {
 			dashboardOpen: false,
 			inboxOpen: false,
 			isLoading: false,
-			filterBy: {
-				name: '',
-				status: '',
-			},
+
 			staysFilterBy: {
 				name: '',
 				country: '',
@@ -165,24 +141,6 @@ export default {
 		loggedInUser() {
 			return this.$store.getters.loggedinUser
 		},
-		sentOrdersLength() {
-			if (!this.$store.getters.orders.length) return 0
-			return this.$store.getters.orders.reduce((acc, order) => {
-				return this.loggedInUser._id === order.buyer._id ? acc + 1 : acc
-			}, 0)
-		},
-		recievedOrdersLength() {
-			if (!this.$store.getters.orders.length) return 0
-			return this.$store.getters.orders.reduce((acc, order) => {
-				return this.loggedInUser._id === order.host._id ? acc + 1 : acc
-			}, 0)
-		},
-		staysLength() {
-			if (!this.$store.getters.orders.length) return 0
-			return this.$store.getters.stays.reduce((acc, stay) => {
-				return this.loggedInUser._id === stay.host._id ? acc + 1 : acc
-			}, 0)
-		},
 		totalEarnings() {
 			const totals = []
 			for (let i = 0; i < 12; i++) {
@@ -193,30 +151,6 @@ export default {
 				totals[i] = orderTotal
 			}
 			return totals
-		},
-		// get orders where you are the buyer
-		sentOrders() {
-			const orders = this.$store.getters.orders.map(order => {
-				if (order.buyer._id === this.loggedInUser._id) {
-					const regex = new RegExp(this.filterBy.name, 'i')
-					if (order.status.includes(this.filterBy.status) && regex.test(order.stay.name)) {
-						return order
-					}
-				}
-			})
-			return orders.filter(o => o)
-		},
-		// get orders where you are the host
-		recievedOrders() {
-			const orders = this.$store.getters.orders.map(order => {
-				if (order.host._id === this.loggedInUser._id && this.loggedInUser._id !== order.buyer._id) {
-					const regex = new RegExp(this.filterBy.name, 'i')
-					if (order.status.includes(this.filterBy.status) && regex.test(order.stay.name)) {
-						return order
-					}
-				}
-			})
-			return orders.filter(o => o)
 		},
 		ordersToLoggedinUser() {
 			const orders = this.$store.getters.orders.map(order => {

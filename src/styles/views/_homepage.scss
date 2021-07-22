@@ -1,203 +1,194 @@
 .shadow {
-  background: linear-gradient(
-    to bottom,
-    #0000006b 0%,
-    #ffffff00 100%,
-    #ffffff00 100%
-  );
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 120px;
-  z-index: 2;
+	background: linear-gradient(to bottom, #0000006b 0%, #ffffff00 100%, #ffffff00 100%);
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 120px;
+	z-index: 2;
 }
 
 .hero-container {
-  position: relative;
-  height: 85vh;
-  width: 100%;
+	position: relative;
+	height: 85vh;
+	width: 100%;
 }
 
 .hero {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 85vh;
-  object-fit: cover;
-  object-position: bottom;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 85vh;
+	object-fit: cover;
+	object-position: bottom;
 }
 
 .flexible {
-  position: absolute;
-  top: 44%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  & p {
-    font-weight: 500;
-    font-size: 0.9rem;
-  }
-  & button {
-    padding: 1rem 2.45rem;
-    border-radius: 3rem;
-    margin-top: 20px;
-    background-color: #fff;
-    box-shadow: 0px 6px 16px rgba($color: #000000, $alpha: 0.12);
-    & span {
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-      background: -webkit-linear-gradient(
-        0deg,
-        rgba(111, 1, 156, 1) 0%,
-        rgba(198, 1, 126, 1) 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  }
+	position: absolute;
+	top: 44%;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+	& p {
+		font-weight: 500;
+		font-size: 0.9rem;
+	}
+	& button {
+		padding: 1rem 2.45rem;
+		border-radius: 3rem;
+		margin-top: 20px;
+		background-color: #fff;
+		box-shadow: 0px 6px 16px rgba($color: #000000, $alpha: 0.12);
+		& span {
+			font-weight: 600;
+			font-size: 0.9rem;
+			letter-spacing: 0.5px;
+			background: -webkit-linear-gradient(0deg, rgba(111, 1, 156, 1) 0%, rgba(198, 1, 126, 1) 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+	}
 }
 
 h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 40px 0 20px;
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin: 40px 0 20px;
 }
 .categories {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 1200px;
-  text-align: start;
-  margin: 0 0 40px;
-  display: grid;
-  grid-auto-flow: column;
-  overflow: auto hidden;
-  scroll-snap-type: x mandatory;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  .card {
-    height: 300px;
-    width: 300px;
-  }
-  .img {
-    height: 90%;
-    width: 90%;
-    & img {
-      border-radius: 10px;
-      object-fit: cover;
-      object-position: center;
-    }
-  }
-  h3 {
-    font-weight: 500;
-    font-size: 0.9rem;
-    margin-top: 3px;
-  }
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	max-width: 1200px;
+	text-align: start;
+	margin: 0 0 40px;
+	display: grid;
+	grid-auto-flow: column;
+	overflow: auto hidden;
+	scroll-snap-type: x mandatory;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	.card {
+		height: 300px;
+		width: 300px;
+	}
+	.img {
+		height: 90%;
+		width: 90%;
+		& img {
+			border-radius: 10px;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+	h3 {
+		font-weight: 500;
+		font-size: 0.9rem;
+		margin-top: 3px;
+	}
 }
 
 .wide-card {
-  position: relative;
-  margin-top: 1rem;
-  & .desc {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-44%, -50%);
-    letter-spacing: 1px;
-    width: 100%;
-  }
-  & h3 {
-    font-size: 2.5rem;
-    font-weight: 500;
-    line-height: 52px;
-    & span {
-      display: block;
-    }
-  }
-  & p {
-    padding-top: 10px;
-    font-weight: 300;
-    font-size: 0.9rem;
-  }
-  & img {
-    border-radius: 10px;
-    max-height: 480px;
-    object-fit: cover;
-  }
-  & button {
-    background-color: #222222;
-    color: #fff;
-    font-size: 0.8rem;
-    font-weight: 500;
-    padding: 0.7rem 1.2rem;
-    border-radius: 0.5rem;
-    margin-top: 2rem;
-  }
+	position: relative;
+	margin-top: 1rem;
+	& .desc {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-44%, -50%);
+		letter-spacing: 1px;
+		width: 100%;
+	}
+	& h3 {
+		font-size: 2.5rem;
+		font-weight: 500;
+		line-height: 52px;
+		& span {
+			display: block;
+		}
+	}
+	& p {
+		padding-top: 10px;
+		font-weight: 300;
+		font-size: 0.9rem;
+	}
+	& img {
+		border-radius: 10px;
+		max-height: 480px;
+		object-fit: cover;
+	}
+	& button {
+		background-color: #222222;
+		color: #fff;
+		font-size: 0.8rem;
+		font-weight: 500;
+		padding: 0.7rem 1.2rem;
+		border-radius: 0.5rem;
+		margin-top: 2rem;
+	}
 }
 
 .user-img {
-  object-fit: cover;
+	object-fit: cover;
 }
 
 @include for-normal-layout {
-  .hero-container {
-    height: 68vh;
-  }
-  .hero {
-    height: 68vh;
-  }
+	.hero-container {
+		height: 68vh;
+	}
+	.hero {
+		height: 68vh;
+	}
 }
 
 @include for-mobile-layout {
-  .hero-container {
-    height: 73vh;
-  }
-  .hero {
-    height: 73vh;
-  }
-  .flexible {
-    top: 25%;
-    width: 100%;
-    p {
-      font-size: 7vw;
-      text-align: center;
-    }
-  }
-  .categories {
-    width: 90vw;
-  }
-  .wide-card {
-    width: 90vw;
-    img {
-      height: 440px;
-      object-position: center;
-    }
-    .desc {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      top: 25%;
-      transform: translate(-50%, -50%);
-      h3 {
-        font-size: 1.5rem;
-        text-align: center;
-        line-height: 30px;
-        font-weight: 600;
-      }
-      p {
-        font-size: 1rem;
-      }
-      button {
-        width: 60%;
-        margin-top: 20px;
-      }
-    }
-  }
+	.hero-container {
+		height: 73vh;
+	}
+	.hero {
+		height: 73vh;
+	}
+	.flexible {
+		top: 25%;
+		width: 100%;
+		p {
+			font-size: 7vw;
+			text-align: center;
+		}
+	}
+	.categories {
+		width: 90vw;
+	}
+	.wide-card {
+		width: 90vw;
+		img {
+			height: 440px;
+			object-position: center;
+		}
+		.desc {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			top: 25%;
+			transform: translate(-50%, -50%);
+			h3 {
+				font-size: 1.5rem;
+				text-align: center;
+				line-height: 30px;
+				font-weight: 600;
+			}
+			p {
+				font-size: 1rem;
+			}
+			button {
+				width: 60%;
+				margin-top: 20px;
+			}
+		}
+	}
 }
