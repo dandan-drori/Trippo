@@ -4,7 +4,9 @@
 		<button class="show-more" @click="toggleShowMore">Show Less</button>
 	</section>
 	<section class="review-list" v-else>
-		<review-preview v-for="review in cutReviews" :key="review.id" :review="review" />
+		<section class="reviews-on-mobile">
+			<review-preview v-for="review in cutReviews" :key="review.id" :review="review" />
+		</section>
 		<button class="show-more" @click="toggleShowMore">Show More</button>
 	</section>
 </template>

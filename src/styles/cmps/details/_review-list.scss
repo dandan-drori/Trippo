@@ -24,3 +24,32 @@
 		}
 	}
 }
+
+@include for-mobile-layout {
+	.review-list {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+		gap: 0px;
+		margin-top: 15px;
+		padding-bottom: 0px;
+		margin-bottom: 10px;
+
+		.reviews-on-mobile {
+			display: flex;
+			overflow-x: auto;
+			position: relative;
+			left: 50%;
+			transform: translateX(-50%);
+			max-width: 2000px;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+
+		button {
+			margin-bottom: 25px;
+			margin-top: 15px;
+		}
+	}
+}
