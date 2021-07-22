@@ -46,12 +46,19 @@
           type="checkbox"
           value="Apartment"
           id="Apartment"
+          @click="typeChecked('isApratment')"
+          class="checkbox"
         />
 
-        <label for="Apartment"
-          ><span class="material-icons"> check_box_outline_blank </span
-          >Apartment</label
-        >
+        <label for="Apartment">
+          <span class="material-icons-outlined" v-if="typesChecked.isApratment">
+            check_box
+          </span>
+          <span v-else class="material-icons-outlined">
+            check_box_outline_blank
+          </span>
+          Apartment
+        </label>
       </div>
       <div>
         <input
@@ -59,11 +66,18 @@
           type="checkbox"
           value="Vila"
           id="Vila"
+          @click="typeChecked('isVila')"
+          class="checkbox"
         />
-        <span class="material-icons">
-          check_box_outline_blank
-        </span>
-        <label for="Vila">Vila</label>
+        <label for="Vila">
+          <span class="material-icons-outlined" v-if="typesChecked.isVila">
+            check_box
+          </span>
+          <span v-else class="material-icons-outlined">
+            check_box_outline_blank
+          </span>
+          Vila
+        </label>
       </div>
       <div>
         <input
@@ -71,11 +85,18 @@
           type="checkbox"
           value="Hotel"
           id="Hotel"
+          @click="typeChecked('isHotel')"
+          class="checkbox"
         />
-        <span class="material-icons">
-          check_box_outline_blank
-        </span>
-        <label for="Hotel">Hotel</label>
+        <label for="Hotel">
+          <span class="material-icons-outlined" v-if="typesChecked.isHotel">
+            check_box
+          </span>
+          <span v-else class="material-icons-outlined">
+            check_box_outline_blank
+          </span>
+          Hotel
+        </label>
       </div>
       <div>
         <input
@@ -83,11 +104,18 @@
           type="checkbox"
           value="House"
           id="House"
+          @click="typeChecked('isHouse')"
+          class="checkbox"
         />
-        <span class="material-icons">
-          check_box_outline_blank
-        </span>
-        <label for="House">House</label>
+        <label for="House">
+          <span class="material-icons-outlined" v-if="typesChecked.isHouse">
+            check_box
+          </span>
+          <span v-else class="material-icons-outlined">
+            check_box_outline_blank
+          </span>
+          House
+        </label>
       </div>
       <div>
         <input
@@ -95,11 +123,18 @@
           type="checkbox"
           value="Loft"
           id="Loft"
+          @click="typeChecked('isLoft')"
+          class="checkbox"
         />
-        <span class="material-icons">
-          check_box_outline_blank
-        </span>
-        <label for="Loft">Loft</label>
+        <label for="Loft">
+          <span class="material-icons-outlined" v-if="typesChecked.isLoft">
+            check_box
+          </span>
+          <span v-else class="material-icons-outlined">
+            check_box_outline_blank
+          </span>
+          Loft
+        </label>
       </div>
       <div class="button-container">
         <button @click.stop="clearFilter">Clear</button>
@@ -120,11 +155,18 @@
           type="checkbox"
           value="TV"
           id="TV"
+          @click="checked('isTv')"
+          class="checkbox"
         />
-        <span class="material-icons">
-          check_box_outline_blank
-        </span>
-        <label for="TV">TV</label>
+        <label for="TV">
+          <span class="material-icons-outlined" v-if="amenitiesChecked.isTv">
+            check_box
+          </span>
+          <span v-else class="material-icons-outlined">
+            check_box_outline_blank
+          </span>
+          TV
+        </label>
       </div>
       <div>
         <input
@@ -132,11 +174,19 @@
           type="checkbox"
           value="Wifi"
           id="Wifi"
+          @click="checked('isWifi')"
+          class="checkbox"
         />
-        <span class="material-icons">
-          check_box_outline_blank
-        </span>
-        <label for="Wifi">Wifi</label>
+
+        <label for="Wifi">
+          <span class="material-icons-outlined" v-if="amenitiesChecked.isWifi">
+            check_box
+          </span>
+          <span v-else class="material-icons-outlined">
+            check_box_outline_blank
+          </span>
+          Wifi
+        </label>
       </div>
       <div>
         <input
@@ -144,11 +194,21 @@
           type="checkbox"
           value="Kitchen"
           id="Kitchen"
+          @click="checked('isKitchen')"
+          class="checkbox"
         />
-        <span class="material-icons">
-          check_box_outline_blank
-        </span>
-        <label for="Kitchen">Kitchen</label>
+        <label for="Kitchen">
+          <span
+            class="material-icons-outlined"
+            v-if="amenitiesChecked.isKitchen"
+          >
+            check_box
+          </span>
+          <span v-else class="material-icons-outlined">
+            check_box_outline_blank
+          </span>
+          Kitchen
+        </label>
       </div>
       <div>
         <input
@@ -156,11 +216,18 @@
           type="checkbox"
           value="Pets allowed"
           id="Pets"
+          @click="checked('isPet')"
+          class="checkbox"
         />
-        <span class="material-icons">
-          check_box_outline_blank
-        </span>
-        <label for="Pets">Pets allowed</label>
+        <label for="Pets">
+          <span class="material-icons-outlined" v-if="amenitiesChecked.isPet">
+            check_box
+          </span>
+          <span v-else class="material-icons-outlined">
+            check_box_outline_blank
+          </span>
+          Pets Allowed
+        </label>
       </div>
       <div>
         <input
@@ -168,11 +235,18 @@
           type="checkbox"
           value="Air conditioning"
           id="Air"
+          @click="checked('isAir')"
+          class="checkbox"
         />
-        <span class="material-icons">
-          check_box_outline_blank
-        </span>
-        <label for="Air">Air conditioning</label>
+        <label for="Air">
+          <span class="material-icons-outlined" v-if="amenitiesChecked.isAir">
+            check_box
+          </span>
+          <span v-else class="material-icons-outlined">
+            check_box_outline_blank
+          </span>
+          Air conditioning
+        </label>
       </div>
       <div>
         <input
@@ -180,11 +254,21 @@
           type="checkbox"
           value="Smoking allowed"
           id="Smoking"
+          @click="checked('isSmoking')"
+          class="checkbox"
         />
-        <span class="material-icons">
-          check_box_outline_blank
-        </span>
-        <label for="Smoking">Smoking allowed</label>
+        <label for="Smoking">
+          <span
+            class="material-icons-outlined"
+            v-if="amenitiesChecked.isSmoking"
+          >
+            check_box
+          </span>
+          <span v-else class="material-icons-outlined">
+            check_box_outline_blank
+          </span>
+          Smoking Allowed
+        </label>
       </div>
       <div class="button-container">
         <button @click.stop="clearFilter">Clear</button>
@@ -215,9 +299,30 @@ export default {
       isTypesModalOpen: false,
       isAmenitiesModalOpen: false,
       filterByLocal: this.filterBy || {},
+      amenitiesChecked: {
+        isPet: false,
+        isSmoking: false,
+        isTv: false,
+        isAir: false,
+        isWifi: false,
+        isKitchen: false,
+      },
+      typesChecked: {
+        isHouse: false,
+        isHotel: false,
+        isVila: false,
+        isApratment: false,
+        isLoft: false,
+      },
     }
   },
   methods: {
+    checked(val) {
+      this.amenitiesChecked[val] = !this.amenitiesChecked[val]
+    },
+    typeChecked(val) {
+      this.typesChecked[val] = !this.typesChecked[val]
+    },
     togglePrice() {
       this.isPriceModalOpen = !this.isPriceModalOpen
       this.isTypesModalOpen = false
@@ -248,20 +353,26 @@ export default {
         amenities: [],
         city: '',
       }
+      for (const key in this.amenitiesChecked) {
+        this.amenitiesChecked[key] = false
+      }
+      for (const key in this.typesChecked) {
+        this.typesChecked[key] = false
+      }
       this.$emit('filter', filter)
     },
   },
   computed: {
     stayTypeList() {
-      const types = this.unfilteredStays.map(stay => {
+      const types = this.unfilteredStays.map((stay) => {
         return stay.propertyType
       })
       return [...new Set(types)]
     },
     stayAmenitiesList() {
       const amenities = []
-      this.unfilteredStays.forEach(stay => {
-        return stay.amenities.forEach(amenity => {
+      this.unfilteredStays.forEach((stay) => {
+        return stay.amenities.forEach((amenity) => {
           if (amenity.txt) amenities.push(amenity.txt)
         })
       })
@@ -295,5 +406,3 @@ export default {
   },
 }
 </script>
-
-<style></style>
