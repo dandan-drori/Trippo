@@ -8,6 +8,7 @@ header {
   color: #fff;
   letter-spacing: 0.1px;
   z-index: 5;
+
   &.scrolled {
     box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
     background-color: #fff;
@@ -229,6 +230,7 @@ header {
   }
   form {
     height: 100%;
+    display: flex;
   }
   input {
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.08),
@@ -242,6 +244,7 @@ header {
     padding: 8px 11px;
     text-indent: 10px;
     outline: none;
+    order: 1;
     &::placeholder {
       color: #000;
     }
@@ -257,6 +260,7 @@ header {
     align-content: center;
     align-items: center;
     justify-content: center;
+    color: #fff;
     img {
       height: 20px;
       width: 20px;
@@ -264,7 +268,7 @@ header {
   }
 }
 
-@media only screen and (max-width: 1060px) {
+@include for-normal-layout {
   header {
     h1 {
       display: none;
@@ -274,7 +278,8 @@ header {
     }
   }
 }
-@media only screen and (max-width: 760px) {
+
+@include for-narrow-layout {
   header {
     .logo,
     .filter-container,
@@ -285,6 +290,33 @@ header {
       top: 16px;
       width: 95%;
       height: 48px;
+    }
+  }
+}
+
+@include for-mobile-layout {
+  header {
+    transition: 0.4s ease-out;
+    .header-search {
+      form {
+        input {
+          text-indent: 32px;
+          font-size: 0.8rem;
+          font-weight: 300;
+          color: #222;
+        }
+        button {
+          left: 9px;
+          background-color: #fff;
+          color: #000;
+        }
+      }
+    }
+    &.scrolled {
+      transition: 0.5s;
+      .header-search {
+        width: 95%;
+      }
     }
   }
 }
