@@ -62,52 +62,53 @@
   }
 }
 
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 20px 0;
+}
 .categories {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
   max-width: 1200px;
   text-align: start;
-  margin: 40px 0;
-  display: flex;
-  gap: 20px;
-  overflow-x: scroll;
+  margin: 0 0 40px;
+  display: grid;
+  grid-auto-flow: column;
+  overflow: auto hidden;
+  scroll-snap-type: x mandatory;
   &::-webkit-scrollbar {
     display: none;
   }
-  & h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 20px;
+  .card {
+    height: 300px;
+    width: 300px;
+  }
+  .img {
+    height: 90%;
+    width: 90%;
+    & img {
+      border-radius: 10px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  h3 {
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-top: 3px;
   }
 }
-.card {
-  height: 300px;
-  width: 300px;
-}
 
-.img {
-  height: 90%;
-  & img {
-    border-radius: 10px;
-    object-fit: cover;
-    object-position: center;
-  }
-}
-
-h3 {
-  font-weight: 500;
-  font-size: 0.9rem;
-  margin-top: 3px;
-}
-å .wide-card {
+.wide-card {
   position: relative;
   margin-top: 1rem;
   & .desc {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-44%, -50%);
     letter-spacing: 1px;
     width: 100%;
   }
@@ -146,22 +147,21 @@ h3 {
 
 @include for-mobile-layout {
   .hero-container {
-    height: 60vh;
+    height: 73vh;
   }
   .hero {
-    height: 60vh;
+    height: 73vh;
   }
   .flexible {
     top: 25%;
     width: 100%;
     p {
-      font-size: 1.3rem;
+      font-size: 7vw;
       text-align: center;
     }
   }
   .categories {
-    .cards-container {
-    }
+    width: 90vw;
   }
   .wide-card {
     width: 90vw;
@@ -173,10 +173,12 @@ h3 {
       display: flex;
       flex-direction: column;
       align-items: center;
-      top: 30%;
+      top: 25%;
+      transform: translate(-50%, -50%);
       h3 {
         font-size: 1.5rem;
         text-align: center;
+        line-height: 30px;
         font-weight: 600;
       }
       p {
@@ -184,6 +186,7 @@ h3 {
       }
       button {
         width: 60%;
+        margin-top: 20px;
       }
     }
   }

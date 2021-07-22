@@ -10,12 +10,14 @@
     <router-view
       @login="login"
       @scrolled="scrolled"
+      @bottom="bottom"
       @screen="toggleScreen"
       :isScreenOpen="isScreenOpen"
       @hideSearch="hideSearch"
       @toggleShare="toggleShare"
       @toggleLoading="toggleLoading"
     />
+    <!-- <mobile-nav :class="{ bottom: isOnBottom }" /> -->
     <app-footer />
     <div
       v-if="
@@ -55,6 +57,7 @@ import signup from './cmps/app/signup.vue'
 import shareModal from './cmps/app/share-modal.vue'
 import profileMenu from './cmps/profile/profile-menu.vue'
 import { showMsg } from '@/services/event-bus.service'
+import mobileNav from './cmps/app/mobile-nav.vue'
 export default {
   data() {
     return {
@@ -67,14 +70,31 @@ export default {
       headerClicked: true,
       isShareShown: false,
       isLoading: false,
+      isOnBottom: false,
     }
   },
   created() {
     window.addEventListener('click', this.bodyClick)
+    // window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
+    // handleScroll(event) {
+    //   // let scrollDiff = event.path[1].scrollY
+    //   // console.log(event.path[1].scrollTop)
+    //   // console.log(event)
+    //   // if (scrollDiff >= 1) {
+    //   //   this.isOnBottom = true
+    //   //   // this.$emit('bottom', true)
+    //   // } else if (scrollDiff < 1) {
+    //   //   this.isOnBottom = false
+    //   //   // this.$emit('bottom', false)
+    //   // }
+    // },
     scrolled(val) {
       this.isScrolled = val
+    },
+    bottom(val) {
+      this.isOnbottom = val
     },
     login(val) {
       this.isLoginOpen = val
@@ -123,6 +143,7 @@ export default {
     signup,
     profileMenu,
     shareModal,
+    mobileNav,
   },
 }
 </script>

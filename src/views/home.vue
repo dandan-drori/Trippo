@@ -9,7 +9,6 @@
     </div>
     <h2>Live anywhere</h2>
     <div class="categories">
-      <!-- <div class="cards-container"> -->
       <div class="card">
         <router-link :to="'/stay/q/' + 'Paris'">
           <div class="img">
@@ -54,7 +53,6 @@
           <h3>London</h3>
         </router-link>
       </div>
-      <!-- </div> -->
     </div>
     <div class="wide-card">
       <div class="desc">
