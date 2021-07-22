@@ -30,7 +30,7 @@
       </p>
     </div>
     <div class="card-location">{{ stay.propertyType }} &middot; {{ city }}</div>
-    <div class="card-name">{{ stay.name }}</div>
+    <div class="card-name">{{ stay.name.substring(0, 30) + '...' }}</div>
     <div class="card-price">
       <p>
         <span>${{ stay.price }}</span

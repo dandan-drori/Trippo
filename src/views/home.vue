@@ -5,7 +5,7 @@
     <img class="hero" src="@/assets/imgs/home-page/hero1.jpeg" />
     <div class="flexible">
       <p>Not sure where to go? Perfect.</p>
-      <button @click="goToList"><span>I’m flexible</span></button>
+      <button @click="goToList"><span>Explore</span></button>
     </div>
     <h2>Live anywhere</h2>
     <div class="categories">
