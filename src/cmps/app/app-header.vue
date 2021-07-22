@@ -17,9 +17,9 @@
 					/>
 					<datalist id="city-options" v-if="correctCitySearched">
 						<option>Amsterdam</option>
-						<option>London</option>
 						<option>New York</option>
 						<option>Paris</option>
+						<option>Tokyo</option>
 					</datalist>
 					<div v-else class="no-data">No Data</div>
 					<button class="search-btn" @click="setFilter">
@@ -138,7 +138,7 @@ export default {
 		},
 		correctCitySearched() {
 			const regex = new RegExp(this.filterBy.city, 'i')
-			const cities = ['Amsterdam', 'London', 'New York', 'Paris']
+			const cities = ['Amsterdam', 'New York', 'Paris', 'Tokyo']
 			return cities.some(city => regex.test(city))
 		},
 	},

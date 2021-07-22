@@ -32,6 +32,7 @@
 									<el-option label="Netherlands" value="Netherlands"></el-option>
 									<el-option label="France" value="France"></el-option>
 									<el-option label="New York" value="New York"></el-option>
+									<el-option label="Japan" value="Japan"></el-option>
 								</el-select>
 								<span class="err">{{ errors[0] }}</span>
 							</ValidationProvider>
