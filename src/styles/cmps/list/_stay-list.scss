@@ -180,6 +180,10 @@
     gap: 3px;
     margin-bottom: 20px;
     margin-top: 10px;
+
+    & > button {
+      padding: 2px 4px;
+    }
   }
   .stay-list {
     grid-template-columns: minmax(228px, 446px);
@@ -191,19 +195,19 @@
   .price-modal,
   .types-modal,
   .amenities-modal {
-    top: 220px;
+    top: 32%;
   }
 
   .price-modal {
-    right: 157px;
+    right: 32%;
   }
 
   .types-modal {
-    left: 147px;
+    left: 35%;
   }
 
   .amenities-modal {
-    left: 266px;
+    left: 45%;
   }
 }
 
