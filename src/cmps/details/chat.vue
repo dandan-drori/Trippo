@@ -5,8 +5,16 @@
         <p>{{ stay.name }}</p>
       </div>
       <div class="chat-controls">
-        <button>_</button>
-        <button @click="toggleChat">X</button>
+        <button>
+          <span class="material-icons-outlined">
+            minimize
+          </span>
+        </button>
+        <button @click="toggleChat">
+          <span class="material-icons-outlined">
+            close
+          </span>
+        </button>
       </div>
     </div>
     <div class="chat-body">
@@ -25,7 +33,11 @@
           placeholder="Your message"
           @input="setIsTyping"
         />
-        <button>Send</button>
+        <button>
+          <span class="material-icons-outlined">
+            send
+          </span>
+        </button>
       </form>
     </div>
   </section>
