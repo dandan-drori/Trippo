@@ -1,6 +1,11 @@
 <template>
   <div class="app main-layout">
     <app-header
+      @login="login"
+      @toggleSignUp="toggleSignUp"
+      @logout="logout"
+      @closeModal="closeModal"
+      :isProfileModalOpen="isProfileModalOpen"
       @toggleProfile="toggleProfile"
       :class="{
         scrolled: isScrolled,
@@ -34,13 +39,7 @@
       class="main-loader"
       v-if="isLoading"
     />
-    <profile-menu
-      @login="login"
-      @toggleSignUp="toggleSignUp"
-      @logout="logout"
-      @closeModal="closeModal"
-      :isProfileModalOpen="isProfileModalOpen"
-    />
+
     <login @login="login" v-if="isLoginOpen" />
     <signup v-if="isSignupOpen" @toggleSignUp="toggleSignUp" />
     <share-modal
@@ -59,7 +58,6 @@ import userMsg from './cmps/app/user-msg.vue'
 import login from './cmps/app/login.vue'
 import signup from './cmps/app/signup.vue'
 import shareModal from './cmps/app/share-modal.vue'
-import profileMenu from './cmps/profile/profile-menu.vue'
 import { showMsg } from '@/services/event-bus.service'
 import mobileNav from './cmps/app/mobile-nav.vue'
 export default {

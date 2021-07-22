@@ -1,13 +1,21 @@
 .dashboard-container {
-  h2 {
-    font-weight: 500;
-  }
-  h3 {
-    margin-top: 20px;
-    font-weight: 400;
-  }
+	h2 {
+		font-weight: 500;
+	}
+	h3 {
+		margin-top: 20px;
+		font-weight: 400;
+	}
 
-  .chart {
-    margin-bottom: 40px;
-  }
+	.flex-container {
+		display: flex;
+
+		.statistics {
+			border: 1px solid #cccccccc;
+		}
+	}
+
+	.chart {
+		margin-bottom: 40px;
+	}
 }

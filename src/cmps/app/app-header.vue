@@ -17,9 +17,9 @@
           />
           <datalist id="city-options" v-if="correctCitySearched">
             <option>Amsterdam</option>
-            <option>London</option>
             <option>New York</option>
             <option>Paris</option>
+            <option>Tokyo</option>
           </datalist>
           <div v-else class="no-data">No Data</div>
           <button class="search-btn" @click="setFilter">
@@ -49,7 +49,14 @@
           <span class="material-icons">
             menu
           </span>
-          <img :src="imgUrl" alt="" />
+          <img :src="imgUrl" alt="your image" />
+          <profile-menu
+            @login="login"
+            @toggleSignUp="toggleSignUp"
+            @logout="logout"
+            @closeModal="closeModal"
+            :isProfileModalOpen="isProfileModalOpen"
+          />
         </div>
       </div>
     </div>
@@ -58,8 +65,10 @@
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faAirbnb } from '@fortawesome/free-brands-svg-icons'
+import profileMenu from '@/cmps/profile/profile-menu.vue'
 import stayFilter from './stay-filter.vue'
 export default {
+  props: { isProfileModalOpen: Boolean },
   data() {
     return {
       airbnb: faAirbnb,
@@ -92,29 +101,35 @@ export default {
         this.$emit('scrolled', false)
       }
     },
-    goBack() {
-      this.$router.back()
-    },
-    login() {
-      this.$emit('login', true)
-    },
-    toggleSignUp() {
-      this.$emit('toggleSignUp', true)
-    },
-    logout() {
-      this.$emit('logout')
-    },
     toggleScroll(val) {
       this.isScrolled = val
     },
     toggleProfile() {
       this.$emit('toggleProfile')
     },
+    closeModal() {
+      this.$emit('closeModal', false)
+    },
+    login() {
+      this.$emit('login', true)
+      this.$emit('closeModal', false)
+    },
+    toggleSignUp() {
+      this.$emit('toggleSignUp', true)
+      this.$emit('closeModal', false)
+    },
+    logout() {
+      this.$emit('logout')
+      this.$emit('closeModal', false)
+    },
     setFilter() {
       this.$store.commit({ type: 'setFilter', filterBy: this.filterBy })
       const regex = new RegExp('stay', 'i')
       if (!regex.test(this.$route.fullPath)) this.$router.push('/stay')
       this.$store.dispatch({ type: 'loadStays' })
+    },
+    goBack() {
+      this.$router.back()
     },
   },
   computed: {
@@ -131,7 +146,7 @@ export default {
     },
     correctCitySearched() {
       const regex = new RegExp(this.filterBy.city, 'i')
-      const cities = ['Amsterdam', 'London', 'New York', 'Paris']
+      const cities = ['Amsterdam', 'New York', 'Paris', 'Tokyo']
       return cities.some(city => regex.test(city))
     },
   },
@@ -142,6 +157,6 @@ export default {
       else this.filterBy.city = ''
     },
   },
-  components: { FontAwesomeIcon, stayFilter },
+  components: { FontAwesomeIcon, stayFilter, profileMenu },
 }
 </script>
