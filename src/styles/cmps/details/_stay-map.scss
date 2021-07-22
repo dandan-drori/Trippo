@@ -5,16 +5,26 @@
 
 	h2 {
 		margin-bottom: 30px;
-		font-size: 1.1rem;
+		font-size: 1.1rem !important;
 	}
 	p {
 		margin-bottom: 20px;
 		color: #333;
+		font-size: 0.9rem;
 	}
 }
 
 @include for-mobile-layout {
 	.stay-map {
-		max-width: 95%;
+		margin-bottom: 20px;
+		padding-bottom: 20px;
+
+		h2 {
+			margin-bottom: 3px;
+		}
+
+		.vue-map-container {
+			max-height: 500px;
+		}
 	}
 }

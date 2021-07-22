@@ -6,7 +6,7 @@
 				<p>
 					<span v-if="reviewsLength">
 						<i class="el-icon-star-on"></i>
-						5.0
+						{{ avg }}
 						<span class="details-reviews">({{ reviewsLength }} reviews)</span>
 						&middot;
 					</span>
@@ -38,7 +38,7 @@
 		<section class="images">
 			<img :src="stay.imgUrls[0]" v-if="stay.imgUrls[0]" />
 			<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="" />
-			<section class="secondary" v-if="isNotMobile">
+			<section class="secondary">
 				<img :src="stay.imgUrls[1]" v-if="stay.imgUrls[1]" />
 				<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="" />
 				<img :src="stay.imgUrls[2]" v-if="stay.imgUrls[2]" />
@@ -49,6 +49,19 @@
 				<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="" />
 			</section>
 		</section>
+		<el-carousel
+			v-if="stay.imgUrls.length"
+			class="details-carousel"
+			trigger="click"
+			arrow="always"
+			height="250px"
+			:autoplay="false"
+			:loop="true"
+		>
+			<el-carousel-item v-for="(imgUrl, idx) in stay.imgUrls" :key="idx">
+				<img :src="imgUrl" />
+			</el-carousel-item>
+		</el-carousel>
 		<section class="flex-container">
 			<section class="stay-info">
 				<section class="info-header">
@@ -101,13 +114,13 @@
 					</div>
 				</section>
 				<section class="badges">
-					<p><span class="material-icons"> star </span>23 Reviews</p>
+					<p><span class="material-icons"> star </span>{{ stay.reviews.length }}</p>
 					<p>
 						<font-awesome-icon :icon="icons.userShield" />
 						Identity verified
 					</p>
 				</section>
-				<p>
+				<p class="host-description">
 					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae mollitia repudiandae,
 					dicta rerum, consequatur molestiae quasi animi quis, repellat consequuntur in. Voluptate
 					alias
@@ -209,8 +222,12 @@ export default {
 		stay() {
 			return this.$store.getters.watchedStay
 		},
-		isNotMobile() {
-			return window.innerWidth > 450
+		avg() {
+			if (!this.stay.reviews.length) return 0
+			const sum = this.stay.reviews.reduce((acc, review) => {
+				return acc + review.rate
+			}, 0)
+			return (sum / this.stay.reviews.length).toFixed(1)
 		},
 	},
 	methods: {

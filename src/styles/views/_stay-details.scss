@@ -231,7 +231,6 @@
 
 		.badges {
 			display: flex;
-			flex-direction: column;
 			margin-bottom: 50px;
 
 			.star {
@@ -244,8 +243,11 @@
 			p {
 				margin-right: 30px;
 				display: flex;
+				align-items: center;
+				margin-bottom: 5px;
+
 				span {
-					font-size: 1.2rem;
+					font-size: 29px;
 					margin-right: 10px;
 					color: #ff385c;
 				}
@@ -314,6 +316,10 @@
 		align-items: flex-start;
 		padding: 40px;
 		padding-left: 0;
+	}
+
+	.details-carousel {
+		display: none;
 	}
 }
 
@@ -475,44 +481,48 @@
 		}
 
 		.host-info {
-			margin-bottom: 40px;
-			padding-bottom: 40px;
+			margin-bottom: 0px;
+			padding-bottom: 10px;
 			display: flex;
 			flex-direction: column;
 			flex-wrap: wrap;
 			justify-content: flex-start;
 			gap: 0px;
+
 			p {
 				font-size: 0.8rem;
 				font-weight: 300;
 				color: #000;
 			}
+
 			.left,
 			.right {
-				width: 40%;
+				width: 100%;
 			}
 			.host-info-header {
 				display: flex;
 				align-items: center;
-				margin-bottom: 30px;
+				margin-bottom: 15px;
 
 				img {
 					border-radius: 50%;
 					width: 70px;
 					height: 70px;
 					object-fit: cover;
-					margin-right: 25px;
+					margin-right: 10px;
 				}
 
 				div {
 					display: flex;
 					flex-direction: column;
-					height: 60px;
+					height: 50px;
 					justify-content: space-between;
 				}
+
 				.host-name {
 					font-size: 1.1rem;
 				}
+
 				p {
 					font-size: 0.75rem;
 					color: #717171;
@@ -520,33 +530,8 @@
 			}
 
 			.badges {
-				display: flex;
 				flex-direction: column;
-				margin-bottom: 50px;
-
-				.star {
-					display: flex;
-					align-items: center;
-					margin-inline-start: -5px;
-					margin-top: 10px;
-				}
-
-				p {
-					margin-right: 30px;
-					display: flex;
-					span {
-						font-size: 1.2rem;
-						margin-right: 10px;
-						color: #ff385c;
-					}
-					svg {
-						margin-right: 10px;
-						height: 24px;
-						width: 24px;
-						color: #ff385c;
-						margin-inline-start: 4px;
-					}
-				}
+				margin-bottom: 20px;
 			}
 
 			.host-details {
@@ -556,7 +541,7 @@
 				}
 
 				p:nth-child(2) {
-					margin-bottom: 30px;
+					margin-bottom: 20px;
 				}
 
 				button {
@@ -564,7 +549,7 @@
 					border: 1px solid #333;
 					border-radius: 12px;
 					padding: 0.65rem 1.3rem;
-					margin-bottom: 30px;
+					margin-bottom: 20px;
 					font-size: 0.75rem;
 					font-weight: 500;
 					background-color: #fefefe;
@@ -604,6 +589,26 @@
 			align-items: flex-start;
 			padding: 40px;
 			padding-left: 0;
+		}
+	}
+
+	.host-description {
+		text-overflow: ellipsis;
+		margin-bottom: 10px;
+	}
+
+	.details-carousel {
+		display: block !important;
+		border-radius: 15px;
+		margin-top: 20px;
+
+		img {
+			object-fit: cover;
+		}
+
+		ul {
+			display: flex;
+			justify-content: center;
 		}
 	}
 }

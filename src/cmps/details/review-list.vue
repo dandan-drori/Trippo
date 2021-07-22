@@ -1,6 +1,8 @@
 <template>
 	<section class="review-list" v-if="isShowMore">
-		<review-preview v-for="review in reviews" :key="review.id" :review="review" />
+		<section class="reviews-on-mobile">
+			<review-preview v-for="review in reviews" :key="review.id" :review="review" />
+		</section>
 		<button class="show-more" @click="toggleShowMore">Show Less</button>
 	</section>
 	<section class="review-list" v-else>
