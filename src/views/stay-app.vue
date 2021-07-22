@@ -12,7 +12,7 @@
         @filter="setFilter"
         :unfilteredStays="unfilteredStays"
       />
-      <div class="head-banner" v-if="currCity">
+      <div class="head-banner" v-if="city">
         <p>
           More than {{ visitors }} guests have stayed in {{ currCity }}.
           <span>On average they rated their stays 4.8 out of 5 stars.</span>
@@ -64,6 +64,13 @@ export default {
         return `Places in ${this.currCity}`
       } else {
         return `Entire places`
+      }
+    },
+    city() {
+      if (this.currCity && !this.isCleared) {
+        return this.currCity
+      } else {
+        this.currCity = false
       }
     },
   },

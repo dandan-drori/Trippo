@@ -23,7 +23,9 @@
           </datalist>
           <div v-else class="no-data">No Data</div>
           <button class="search-btn" @click="setFilter">
-            <img src="@/assets/imgs/search_white_24dp.svg" alt="" />
+            <span class="material-icons-outlined">
+              search
+            </span>
           </button>
         </form>
       </div>

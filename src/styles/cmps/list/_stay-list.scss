@@ -1,178 +1,210 @@
 .stay-list {
-	padding-top: 20px;
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-	gap: 5px;
-	padding-bottom: 7px;
-	border-top: 1px solid #ebebeb;
-	min-height: 70vh;
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 5px;
+  padding-bottom: 7px;
+  border-top: 1px solid #ebebeb;
+  min-height: 70vh;
 }
 
 .filters {
-	display: flex;
-	gap: 5px;
-	margin-top: 15px;
-	margin-bottom: 30px;
+  display: flex;
+  gap: 5px;
+  margin-top: 15px;
+  margin-bottom: 30px;
 }
 
 .filters {
-	& > button {
-		background-color: rgb(255, 255, 255);
-		border: 1px solid rgb(203, 203, 203);
-		border-radius: 3rem;
-		padding: 5px 10px;
-		display: flex;
-		align-items: center;
-		align-content: center;
-		justify-content: center;
-		span {
-			color: #222;
-		}
-	}
+  & > button {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(203, 203, 203);
+    border-radius: 3rem;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    span {
+      color: #222;
+    }
+  }
 }
 
 .head-title {
-	h1 {
-		font-weight: 600;
-		font-size: 32px;
-		margin-inline-start: -1px;
-	}
+  h1 {
+    font-weight: 600;
+    font-size: 32px;
+    margin-inline-start: -1px;
+  }
 }
 
 .head-title-visits {
-	font-size: 0.7rem;
-	font-weight: 300;
+  font-size: 0.7rem;
+  font-weight: 300;
 }
 
 .head-banner {
-	display: flex;
-	flex-direction: row-reverse;
-	justify-content: flex-end;
-	align-items: center;
-	font-size: 0.8rem;
-	font-weight: 500;
-	margin-bottom: 20px;
-	margin-top: -10px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: -10px;
 
-	span {
-		font-weight: 300;
-	}
+  span {
+    font-weight: 300;
+  }
 
-	img {
-		max-width: 40px;
-	}
+  img {
+    max-width: 40px;
+  }
 }
 
 .price-modal::before,
 .types-modal::before,
 .amenities-modal::before {
-	content: '';
-	width: 0;
-	height: 0;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
-	border-bottom: 10px solid rgb(255, 255, 255);
-	position: absolute;
-	top: -5px;
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgb(255, 255, 255);
+  position: absolute;
+  top: -5px;
 }
 
 .price-modal,
 .types-modal,
 .amenities-modal {
-	font-size: 0.7rem;
-	letter-spacing: 0.6px;
-	display: flex;
-	flex-direction: column;
-	position: absolute;
-	top: 257px;
-	min-width: 200px;
-	border-radius: 6px;
-	z-index: 10000;
-	background-color: #fff;
-	-webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.276);
-	box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2);
-	padding: 10px;
+  font-size: 0.7rem;
+  letter-spacing: 0.6px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 257px;
+  min-width: 200px;
+  border-radius: 6px;
+  z-index: 10000;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.276);
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2);
+  padding: 10px;
 
-	.button-container {
-		display: flex;
-		justify-content: space-evenly;
-		& button:first-of-type {
-			color: #525252;
-			text-decoration: underline;
-			padding: 10px 15px;
-			border-radius: 10px;
-			font-weight: 600;
-			letter-spacing: 0.5px;
-			background-color: rgb(255, 255, 255);
-		}
-		& button:last-of-type {
-			color: #fff;
-			padding: 10px 15px;
-			border-radius: 10px;
-			border: 1px solid #b0b0b0;
-			font-weight: 600;
-			letter-spacing: 0.5px;
-			background-color: #222;
-		}
-	}
-	// input[type='checkbox'] {
-	//   // display: none;
-	// }
+  .button-container {
+    display: flex;
+    justify-content: space-evenly;
+    & button:first-of-type {
+      color: #525252;
+      text-decoration: underline;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      background-color: rgb(255, 255, 255);
+    }
+    & button:last-of-type {
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: 1px solid #b0b0b0;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      background-color: #222;
+    }
+  }
+  // input[type='checkbox'] {
+  //   // display: none;
+  // }
 
-	span {
-		&.material-icons {
-			cursor: pointer;
-			color: #222;
-			font-size: 0.7rem;
-			display: none;
-		}
-	}
+  span {
+    &.material-icons {
+      cursor: pointer;
+      color: #222;
+      font-size: 0.7rem;
+      display: none;
+    }
+  }
 }
 
 .head-title {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 5px;
 }
 
 .price-modal {
-	gap: 10px;
+  gap: 10px;
 
-	input {
-		height: 40px;
-		font-size: 1rem;
-		max-width: 90px;
-		text-align: center;
-		color: #222;
-		border-radius: 5px;
-		border: 1px solid #b0b0b0;
-	}
+  input {
+    height: 40px;
+    font-size: 1rem;
+    max-width: 90px;
+    text-align: center;
+    color: #222;
+    border-radius: 5px;
+    border: 1px solid #b0b0b0;
+  }
 }
 .types-modal {
-	left: 20%;
-	& > div {
-		display: flex;
-		align-items: center;
-		padding: 5px 0;
-		gap: 10px;
-	}
+  left: 20%;
+  & > div {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    gap: 10px;
+  }
 }
 .amenities-modal {
-	left: 30%;
-	& > div {
-		display: flex;
-		align-items: center;
-		padding: 5px 0;
-		gap: 10px;
-	}
+  left: 30%;
+  & > div {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    gap: 10px;
+  }
 }
 
 .el-slider__bar {
-	background-color: #b0b0b0;
+  background-color: #b0b0b0;
 }
 .el-slider__button {
-	border: 2px solid #dddddd;
+  border: 2px solid #dddddd;
+}
+
+@include for-mobile-layout {
+  .filters {
+    gap: 3px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+  .stay-list {
+    grid-template-columns: minmax(228px, 446px);
+
+    .el-carousel__container {
+      height: 244px !important;
+    }
+  }
+  .price-modal,
+  .types-modal,
+  .amenities-modal {
+    top: 220px;
+  }
+
+  .price-modal {
+    right: 157px;
+  }
+
+  .types-modal {
+    left: 147px;
+  }
+
+  .amenities-modal {
+    left: 266px;
+  }
 }
 
 // .el-dropdown-menu__item {

@@ -66,57 +66,50 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 1600px;
+  max-width: 1200px;
   text-align: start;
   margin: 40px 0;
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   & h2 {
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 20px;
   }
 }
+.card {
+  height: 300px;
+  width: 300px;
+}
 
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(300px, 1fr));
-  grid-template-rows: 300px;
-  gap: 10px;
-  min-height: 310px;
-  overflow-x: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  &.card {
-    width: 100%;
-    height: 100%;
-  }
-
-  .img {
-    height: 90%;
-    width: 90%;
-    & img {
-      border-radius: 10px;
-      object-fit: cover;
-      object-position: center;
-    }
-  }
-
-  & h3 {
-    font-weight: 500;
-    font-size: 0.9rem;
+.img {
+  height: 90%;
+  & img {
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
   }
 }
 
-.wide-card {
+h3 {
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: 3px;
+}
+å .wide-card {
   position: relative;
-  margin-top: 3rem;
+  margin-top: 1rem;
   & .desc {
     position: absolute;
     top: 50%;
-    left: 10%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     letter-spacing: 1px;
+    width: 100%;
   }
   & h3 {
     font-size: 2.5rem;
@@ -149,4 +142,49 @@
 
 .user-img {
   object-fit: cover;
+}
+
+@include for-mobile-layout {
+  .hero-container {
+    height: 60vh;
+  }
+  .hero {
+    height: 60vh;
+  }
+  .flexible {
+    top: 25%;
+    width: 100%;
+    p {
+      font-size: 1.3rem;
+      text-align: center;
+    }
+  }
+  .categories {
+    .cards-container {
+    }
+  }
+  .wide-card {
+    width: 90vw;
+    img {
+      height: 440px;
+      object-position: center;
+    }
+    .desc {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      top: 30%;
+      h3 {
+        font-size: 1.5rem;
+        text-align: center;
+        font-weight: 600;
+      }
+      p {
+        font-size: 1rem;
+      }
+      button {
+        width: 60%;
+      }
+    }
+  }
 }
