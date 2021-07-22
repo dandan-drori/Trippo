@@ -91,3 +91,9 @@
 .el-carousel__arrow {
   z-index: 3;
 }
+
+@include for-mobile-layout {
+  .stay-card-container img {
+    height: 100%;
+  }
+}
