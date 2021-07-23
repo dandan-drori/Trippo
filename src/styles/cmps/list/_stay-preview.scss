@@ -95,6 +95,10 @@
   z-index: 3;
 }
 
+.isWished {
+  background-color: red;
+}
+
 @include for-mobile-layout {
   .stay-card-container img {
     height: 100%;

@@ -1,10 +1,18 @@
 <template>
   <section class="stay-card-container" @click.stop="sendToDetails(stay._id)">
     <button class="wishlist-btn">
-      <span v-if="!onWishlist" class="material-icons-two-tone">
+      <span
+        v-if="!onWishlist"
+        class="material-icons-two-tone"
+        @click.stop="toggleWishlist(stay._id)"
+      >
         favorite
       </span>
-      <span v-else class="in-list material-icons-outlined">
+      <span
+        @click.stop="toggleWishlist(stay._id)"
+        v-else
+        class="in-list material-icons-outlined"
+      >
         favorite
       </span>
     </button>
@@ -42,6 +50,7 @@
 </template>
 
 <script>
+import { showMsg } from '@/services/event-bus.service.js'
 export default {
   props: {
     stay: Object,
@@ -57,8 +66,11 @@ export default {
     },
     toggleWishlist(stayId) {
       this.onWishlist = !this.onWishlist
-      if (this.onWishlist === true) {
-        console.log('added to wish list', stayId)
+      this.$store.dispatch({ type: 'toggleWishlistItem', stayId })
+      if (this.onWishlist) {
+        showMsg('Added to wishlist')
+      } else {
+        showMsg('Removed from wishlist')
       }
     },
   },
@@ -72,6 +84,19 @@ export default {
         return acc + review.rate
       }, 0)
       return (sum / this.stay.reviews.length).toFixed(1)
+    },
+    isWishedClass() {
+      const idx = this.stay.wishlistedBy.findIndex(
+        (userId) => userId === this.$store.getters.loggedinUser._id
+      )
+      if (idx === -1) {
+        return {
+          isWished: false,
+        }
+      }
+      return {
+        isWished: true,
+      }
     },
   },
   created() {},

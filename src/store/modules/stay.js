@@ -16,6 +16,7 @@ export default {
       amenities: [],
       city: '',
     },
+
     watchedStay: null,
   },
   getters: {
@@ -190,6 +191,24 @@ export default {
         })
       } catch (err) {
         console.log('stayStore: Error in loadAndWatchStay', err)
+        throw err
+      }
+    },
+    async toggleWishlistItem({ commit, rootGetters }, { stayId }) {
+      try {
+        const stay = await stayService.getById(stayId)
+        const idx = stay.wishlistedBy.findIndex(
+          (userId) => userId === rootGetters.loggedinUser._id
+        )
+        if (idx === -1) {
+          stay.wishlistedBy.push(rootGetters.loggedinUser._id)
+        } else {
+          stay.wishlistedBy.splice(idx, 1)
+        }
+        await stayService.save(stay)
+        commit({ type: 'updateStay', stay })
+      } catch (err) {
+        console.log('stayStore: Error in toggling wishList', err)
         throw err
       }
     },
