@@ -364,15 +364,15 @@ export default {
   },
   computed: {
     stayTypeList() {
-      const types = this.unfilteredStays.map((stay) => {
+      const types = this.unfilteredStays.map(stay => {
         return stay.propertyType
       })
       return [...new Set(types)]
     },
     stayAmenitiesList() {
       const amenities = []
-      this.unfilteredStays.forEach((stay) => {
-        return stay.amenities.forEach((amenity) => {
+      this.unfilteredStays.forEach(stay => {
+        return stay.amenities.forEach(amenity => {
           if (amenity.txt) amenities.push(amenity.txt)
         })
       })
