@@ -23,7 +23,6 @@ export default {
     this.$emit('scrolled', true)
     this.$emit('hideSearch', true)
     await this.$store.dispatch({ type: 'loadStays' })
-    console.log(this.stays)
   },
 }
 </script>

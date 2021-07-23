@@ -303,6 +303,9 @@ header {
 @include for-mobile-layout {
   header {
     transition: 0.4s ease-out;
+    &.remove {
+      display: none;
+    }
     .header-search {
       form {
         input {
