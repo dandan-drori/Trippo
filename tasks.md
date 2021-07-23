@@ -3,7 +3,7 @@
 - apply fixes that asaf gave us
 - implement check-in in stay-details (stuck at bottom and opens a full-screen modal)
 - add wishlistedBy (array of user ids) to stay entity
-- mobile design (mostly stay-details and user-profile - maybe change remove most of the data from the tables and make it viewable by clicking on 3 dots that open modal with a bullet list)
+- mobile design (mostly stay-details, and stay-edit)
 - create a custom chat-msg component like whatsapp's - GUY
 - practice presentation of main flow
 - practice presentation of code (1 minute recording is needed)

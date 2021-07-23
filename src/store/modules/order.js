@@ -36,7 +36,6 @@ export default {
 				commit({ type: 'setOrders', orders })
 				return orders
 			} catch (err) {
-				console.log('Failed to load orders', err)
 				throw err
 			}
 		},
@@ -59,7 +58,6 @@ export default {
 				commit({ type, order: savedOrder })
 				return savedOrder
 			} catch (err) {
-				console.log('Failed to save order', err)
 				throw err
 			}
 		},

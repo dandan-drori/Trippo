@@ -11,7 +11,7 @@
         />
         <datalist id="city-options" v-if="correctCitySearched">
           <option>Amsterdam</option>
-          <option>London</option>
+          <option>Tokyo</option>
           <option>New York</option>
           <option>Paris</option>
         </datalist>
@@ -104,8 +104,8 @@ export default {
   computed: {
     correctCitySearched() {
       const regex = new RegExp(this.filterBy.city, 'i')
-      const cities = ['Amsterdam', 'London', 'New York', 'Paris']
-      return cities.some(city => regex.test(city))
+      const cities = ['Amsterdam', 'Tokyo', 'New York', 'Paris']
+      return cities.some((city) => regex.test(city))
     },
   },
   methods: {

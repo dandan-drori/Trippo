@@ -3,7 +3,7 @@
 		<h2>Add a review</h2>
 		<textarea
 			name="review"
-			cols="38"
+			:cols="textareaCols"
 			rows="10"
 			v-model="review.txt"
 			placeholder="How was your stay?"
@@ -48,6 +48,9 @@ export default {
 	computed: {
 		loggedInUser() {
 			return this.$store.getters.loggedinUser
+		},
+		textareaCols() {
+			return window.innerWidth > 450 ? '38' : '23'
 		},
 	},
 }

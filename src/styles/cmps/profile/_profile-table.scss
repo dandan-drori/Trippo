@@ -1,92 +1,101 @@
 ul {
-  list-style: none;
-  width: 100%;
-  margin: 10px 0;
+	list-style: none;
+	width: 100%;
+	margin: 10px 0;
 }
 
 li {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid rgba(50, 50, 50, 0.1);
-  color: #555;
-  font-size: 1rem;
-  padding: 7px 0;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid rgba(50, 50, 50, 0.1);
+	color: #555;
+	font-size: 1rem;
+	padding: 7px 0;
 
-  &.table-header {
-    padding-bottom: 10px;
-    font-weight: bold;
-    color: #aaa;
-    div {
-      font-size: 0.9rem;
-    }
-  }
+	&.table-header {
+		padding-bottom: 10px;
+		font-weight: bold;
+		color: #aaa;
+		div {
+			font-size: 0.9rem;
+		}
+	}
 
-  div {
-    width: 20%;
+	div {
+		width: 20%;
 
-    &:nth-of-type(1) {
-      display: flex;
-      align-items: center;
+		&.orders {
+			width: 16.66%;
+		}
 
-      img {
-        height: 50px;
-        width: 50px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: 7px;
-      }
-    }
+		&:nth-of-type(1) {
+			display: flex;
+			align-items: center;
 
-    &:nth-of-type(6) {
-      padding: 10px 0;
-    }
-  }
+			img {
+				height: 50px;
+				width: 50px;
+				border-radius: 50%;
+				object-fit: cover;
+				margin-right: 7px;
+			}
+		}
+	}
 
-  div.warning {
-    font-weight: 600;
-  }
+	div.warning {
+		font-weight: 600;
+	}
 
-  button,
-  button {
-    padding: 0.5rem 0.7rem;
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    margin-left: 0.5rem;
-  }
+	button,
+	button {
+		padding: 0.5rem 0.7rem;
+		width: 40px;
+		height: 40px;
+		border-radius: 5px;
+		margin-left: 0.5rem;
+	}
 
-  button.reject:hover {
-    background-color: #ffdddd;
-  }
+	button.reject:hover {
+		background-color: #ffdddd;
+	}
 
-  button.approve:hover {
-    background-color: #e8ffdc;
-  }
+	button.approve:hover {
+		background-color: #e8ffdc;
+	}
 
-  div {
-    padding: 1px 15px;
-  }
+	div {
+		padding: 1px 15px;
+	}
 
-  div.success {
-    color: #fff;
-    background-color: #168c16;
-    border-radius: 3em;
-    text-align: center;
-    padding: 1px 15px;
-    width: auto;
-  }
+	div.success {
+		color: #fff;
+		background-color: #168c16;
+		border-radius: 3em;
+		text-align: center;
+		// padding: 1px 15px;
+		width: 107px;
+	}
 
-  button.success {
-    opacity: 0;
-    pointer-events: none;
-  }
+	div.error {
+		color: #fff;
+		background-color: #db1b1b;
+		border-radius: 3em;
+		text-align: center;
+		// padding: 1px 15px;
+		width: 107px;
+	}
 
-  button.error {
-    opacity: 0;
-    pointer-events: none;
-  }
+	button.success {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	button.error {
+		opacity: 0;
+		pointer-events: none;
+	}
 }
 
 .isHidden {
-  display: none;
+	display: none;
 }
