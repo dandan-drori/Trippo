@@ -94,6 +94,7 @@ export default {
             window.innerHeight ===
           document.documentElement.offsetHeight
 
+<<<<<<< HEAD
         if (bottomOfWindow) {
           this.scrolledToBottom = true
           this.isOnBottom = true
@@ -157,5 +158,70 @@ export default {
     shareModal,
     mobileNav,
   },
+=======
+				if (bottomOfWindow) {
+					this.scrolledToBottom = true
+					this.isOnBottom = true
+					// replace it with your code
+				} else {
+					this.isOnBottom = false
+				}
+			}
+		},
+		scrolled(val) {
+			this.isScrolled = val
+		},
+		bottom(val) {
+			this.isOnbottom = val
+		},
+		login(val) {
+			this.isLoginOpen = val
+		},
+		toggleSignUp(val) {
+			this.isSignupOpen = val
+		},
+		toggleProfile() {
+			this.isProfileModalOpen = !this.isProfileModalOpen
+		},
+		async logout() {
+			try {
+				await this.$store.dispatch({ type: 'logout' })
+				showMsg('Logged out!')
+			} catch (err) {
+				showMsg('Logout failed!', 'error')
+			}
+		},
+		closeModal(val) {
+			this.isProfileModalOpen = val
+		},
+		hideSearch(val) {
+			this.isSearchShown = val
+		},
+		bodyClick() {
+			this.isLoginOpen = false
+			this.isSignupOpen = false
+			this.isProfileModalOpen = false
+			this.isScreenOpen = false
+		},
+		toggleScreen(val) {
+			this.isScreenOpen = val
+		},
+		toggleShare(val) {
+			this.isShareShown = val
+		},
+		toggleLoading(val) {
+			this.isLoading = val
+		},
+	},
+	components: {
+		appHeader,
+		appFooter,
+		userMsg,
+		login,
+		signup,
+		shareModal,
+		mobileNav,
+	},
+>>>>>>> 27275c6116e01c79fe55e9f431ca841f10192749
 }
 </script>
