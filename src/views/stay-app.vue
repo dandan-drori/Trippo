@@ -85,7 +85,7 @@ export default {
       this.visitors = {
         'New York': '550,000',
         Paris: '400,000',
-        London: '350,000',
+        Tokyo: '350,000',
         Amsterdam: '200,000',
       }[city]
 
