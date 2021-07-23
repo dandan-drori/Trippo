@@ -1,5 +1,9 @@
 .stay-details {
   padding-top: 100px;
+  .details-mobile-footer,
+  .details-mobile-header {
+    display: none;
+  }
   h2 {
     font-weight: 500;
     font-size: 1.3rem;
