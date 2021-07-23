@@ -40,11 +40,11 @@
 
 		.reviews-on-mobile {
 			display: flex;
-			overflow-x: auto;
+			overflow-x: scroll;
 			position: relative;
 			left: 50%;
 			transform: translateX(-50%);
-			max-width: 2000px;
+			max-width: 90vw;
 
 			&::-webkit-scrollbar {
 				display: none;

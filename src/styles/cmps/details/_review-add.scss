@@ -34,3 +34,10 @@
 		margin-top: 1rem;
 	}
 }
+
+@include for-mobile-layout {
+	.review-add {
+		max-width: 350px;
+		padding: 1rem 2rem;
+	}
+}
