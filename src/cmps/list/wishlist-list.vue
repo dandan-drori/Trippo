@@ -2,12 +2,12 @@
   <section>
     <section class="stay-list" v-if="stays.length">
       <section
-        v-for="stay in stays"
+        v-for="stay in matchingStays"
         :key="stay._id"
         class="stay-preveiw-container"
       >
         <!-- <wishlist-preview @click.stop :stay="stay"></wishlist-preview> -->
-        <!-- <stay-preview @click.stop :stay="stay"></stay-preview> -->
+        <stay-preview @click.stop :stay="stay"></stay-preview>
       </section>
     </section>
     <section v-else>No Available places</section>
@@ -23,7 +23,13 @@ export default {
   data() {
     return {}
   },
-  computed: {},
+  computed: {
+    matchingStays() {
+      return this.stays.filter((stay) =>
+        stay.wishlistedBy.includes(this.$store.getters.loggedinUser._id)
+      )
+    },
+  },
   methods: {},
   created() {
     // console.log(this.stays)
