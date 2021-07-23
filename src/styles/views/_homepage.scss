@@ -159,11 +159,17 @@ h2 {
 }
 
 @include for-mobile-layout {
+  .homepage {
+    h2 {
+      margin: 15px 0;
+      font-size: 1.1rem;
+    }
+  }
   .hero-container {
-    height: 73vh;
+    height: 75vh;
   }
   .hero {
-    height: 73vh;
+    height: 75vh;
   }
   .flexible {
     top: 30%;

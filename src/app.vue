@@ -10,6 +10,7 @@
       :class="{
         scrolled: isScrolled,
         hide: isSearchShown,
+        remove: removeHeader,
       }"
     />
     <router-view
@@ -21,6 +22,7 @@
       @hideSearch="hideSearch"
       @toggleShare="toggleShare"
       @toggleLoading="toggleLoading"
+      @remove="removeHeader"
     />
     <mobile-nav
       :class="{ bottom: isOnBottom }"
@@ -74,6 +76,7 @@ export default {
       isLoading: false,
       isOnBottom: false,
       scrolledToBottom: false,
+      removeHeader: false,
     }
   },
   created() {
@@ -146,6 +149,10 @@ export default {
     },
     toggleLoading(val) {
       this.isLoading = val
+    },
+    removeHeader() {
+      console.log('remove')
+      this.removeHeader = !this.removeHeader
     },
   },
   components: {
