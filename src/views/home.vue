@@ -43,7 +43,7 @@
         </router-link>
       </div>
       <div class="card">
-        <router-link :to="'/stay/q/' + 'London'">
+        <router-link :to="'/stay/q/' + 'Tokyo'">
           <div class="img">
             <img
               src="https://images.unsplash.com/photo-1542052125323-e69ad37a47c2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"

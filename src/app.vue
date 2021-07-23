@@ -154,7 +154,6 @@ export default {
     userMsg,
     login,
     signup,
-    profileMenu,
     shareModal,
     mobileNav,
   },

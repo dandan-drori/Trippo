@@ -24,9 +24,10 @@
     <img v-else :src="require('@/assets/imgs/no_img.jpeg')" />
     <div class="card-rating">
       <p>
-        <span class="material-icons star-icon"> star </span
-        >{{ avgRate }} (<small> {{ stay.reviews.length }}</small
-        >)
+        <span class="material-icons star-icon"> star </span>{{ avgRate }}
+        <small>
+          <span class="card-rate">({{ stay.reviews.length }})</span></small
+        >
       </p>
     </div>
     <div class="card-location">{{ stay.propertyType }} &middot; {{ city }}</div>

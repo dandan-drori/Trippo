@@ -37,6 +37,7 @@
       <stay-filter :class="{ scrolled: this.isScrolled }" />
       <div class="header-controls">
         <router-link class="host" to="/stay/profile">Become a host</router-link>
+        <router-link class="host" to="/stay">Explore</router-link>
         <button class="i18n">
           <span class="material-icons">
             language
@@ -147,7 +148,7 @@ export default {
     correctCitySearched() {
       const regex = new RegExp(this.filterBy.city, 'i')
       const cities = ['Amsterdam', 'New York', 'Paris', 'Tokyo']
-      return cities.some(city => regex.test(city))
+      return cities.some((city) => regex.test(city))
     },
   },
   watch: {

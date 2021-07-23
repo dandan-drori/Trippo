@@ -3,13 +3,13 @@
     <ul class="profile-stay-table">
       <li class="table-header">
         <div>Name</div>
-        <div>Country</div>
+        <div>City</div>
         <div>Price / Night</div>
         <div>Actions</div>
       </li>
       <li v-for="(stay, idx) in stays" :key="stay._id" class="table-row">
         <div>{{ stay.name }}</div>
-        <div>{{ stay.country }}</div>
+        <div>{{ stay.loc.address.split(',')[0] }}</div>
         <div>{{ formattedPrice(stay.price) }}</div>
         <div class="actions-td">
           <button @click.stop="toggleActionsModal(idx)" class="actionsBtn">
