@@ -97,7 +97,7 @@ export default {
     loginWithGoogle() {
       this.$gAuth
         .signIn()
-        .then(GoogleUser => {
+        .then((GoogleUser) => {
           var userInfo = {
             loginType: 'google',
             google: {
@@ -109,26 +109,13 @@ export default {
               },
             },
           }
-          //   this.userCred.username = GoogleUser.Ys.It
-          //   this.userCred.fullname = GoogleUser.getBasicProfile().getName()
-          //   this.userCred.password = GoogleUser.Ys.xS
-          //   this.userCred.imgUrl = GoogleUser.Ys.gJ
-          //   console.log(this.userCred)
-          //   console.log('GoogleUser', GoogleUser)
-          //   console.log('getId', GoogleUser.getId())
-          //   console.log('basicprofile', GoogleUser.getBasicProfile().getName())
-          //   console.log('getBasicProfile', GoogleUser.getBasicProfile())
-          //   console.log('getAuthResponse', GoogleUser.getAuthResponse())
-          //   console.log(userInfo)
-          //   this.$store.dispatch({ type: 'signup', userCred: this.userCred })
-          //   router.push('/')
         })
-        .catch(error => {
+        .catch((error) => {
           console.log('error', error)
         })
     },
     loginWithFacebook() {
-      window.FB.login(response => {
+      window.FB.login((response) => {
         if (response && response.authResponse) {
           console.log('response', response)
           var userInfo = {
@@ -140,7 +127,7 @@ export default {
           this.$store.commit('setLoginUser', userInfo)
           window.FB.api(
             `/${response.authResponse.userID}`,
-            userResponse => {
+            (userResponse) => {
               if (userResponse) {
                 console.log(userResponse)
                 var userInfo = {
@@ -161,7 +148,7 @@ export default {
     },
   },
   mounted() {
-    this.$refs.myBtn.onmousemove = e => {
+    this.$refs.myBtn.onmousemove = (e) => {
       const x = e.offsetX
       const y = e.offsetY
 

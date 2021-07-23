@@ -162,8 +162,6 @@ export default {
       try {
         const type = stay._id ? 'updateStay' : 'addStay'
 
-        // const latlng = await geocodeService.getGeocode(encodeURI(stay.loc.country))
-
         const savedStay = await stayService.save(stay)
         commit({ type, stay: savedStay })
         return savedStay

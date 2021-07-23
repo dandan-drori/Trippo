@@ -92,7 +92,7 @@ export default {
     loginWithGoogle() {
       this.$gAuth
         .signIn()
-        .then(GoogleUser => {
+        .then((GoogleUser) => {
           var userInfo = {
             loginType: 'google',
             google: {
@@ -105,20 +105,13 @@ export default {
             },
           }
           showMsg('Logged in successfully')
-          // console.log('GoogleUser', GoogleUser)
-          // console.log('getId', GoogleUser.getId())
-          // console.log('basicprofile', GoogleUser.getBasicProfile().getName())
-          // console.log('getBasicProfile', GoogleUser.getBasicProfile())
-          // console.log('getAuthResponse', GoogleUser.getAuthResponse())
-          // this.$store.commit('setLoginUser', userInfo)
-          // router.push('/')
         })
-        .catch(error => {
+        .catch((error) => {
           console.log('error', error)
         })
     },
     loginWithFacebook() {
-      window.FB.login(response => {
+      window.FB.login((response) => {
         if (response && response.authResponse) {
           console.log('response', response)
           var userInfo = {
@@ -130,7 +123,7 @@ export default {
           this.$store.commit('setLoginUser', userInfo)
           window.FB.api(
             `/${response.authResponse.userID}`,
-            userResponse => {
+            (userResponse) => {
               if (userResponse) {
                 console.log(userResponse)
                 var userInfo = {
@@ -160,7 +153,7 @@ export default {
   },
   mounted() {
     this.$refs.usernameInputRef.focus()
-    this.$refs.myBtn.onmousemove = e => {
+    this.$refs.myBtn.onmousemove = (e) => {
       const x = e.offsetX
       const y = e.offsetY
 

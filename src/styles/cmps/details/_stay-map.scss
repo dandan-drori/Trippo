@@ -15,6 +15,12 @@
 }
 
 @include for-mobile-layout {
+  .vue-map,
+  .vue-map-container {
+    max-height: 250px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
   .stay-map {
     margin-bottom: 20px;
     padding-bottom: 20px;
@@ -24,7 +30,7 @@
     }
 
     .vue-map-container {
-      max-height: 500px;
+      max-height: 250px;
     }
   }
 }

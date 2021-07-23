@@ -1,5 +1,41 @@
 <template>
 	<section v-if="stay" class="stay-details">
+		<div class="details-mobile-header">
+			<div class="left">
+				<span class="material-icons">
+					chevron_left
+				</span>
+				Back
+			</div>
+			<div class="right">
+				<div class="share">
+					<button @click.stop="toggleShare">
+						<i class="el-icon-upload2"></i>
+					</button>
+				</div>
+				<div class="save">
+					<button @click.stop="toggleWishlist">
+						<span class="material-icons">
+							favorite_border
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="details-mobile-footer">
+			<div class="left">
+				<p class="price">$66 <span>/ night</span></p>
+				<p class="review">
+					<span class="material-icons">
+						star
+					</span>
+					5.0 (<span>4 reviews</span>)
+				</p>
+			</div>
+			<div class="right">
+				<button>Check availability</button>
+			</div>
+		</div>
 		<section class="header">
 			<section class="details">
 				<div class="stay-header-top">
@@ -23,18 +59,9 @@
 							<button @click.stop="toggleShare"><span>Share</span></button>
 						</div>
 						<div class="save">
-							<svg
-								viewBox="0 0 32 32"
-								xmlns="http://www.w3.org/2000/svg"
-								aria-hidden="true"
-								role="presentation"
-								focusable="false"
-								style="display: block; fill: none; height: 16px; width: 15px; stroke: currentcolor; stroke-width: 3; overflow: visible;"
-							>
-								<path
-									d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"
-								></path>
-							</svg>
+							<span class="material-icons">
+								favorite_border
+							</span>
 							<button><span>Save</span></button>
 						</div>
 					</div>
@@ -44,16 +71,16 @@
 		</section>
 		<section class="images">
 			<img :src="stay.imgUrls[0]" v-if="stay.imgUrls[0]" />
-			<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="indoors" />
+			<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="" />
 			<section class="secondary">
 				<img :src="stay.imgUrls[1]" v-if="stay.imgUrls[1]" />
-				<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="indoors" />
+				<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="" />
 				<img :src="stay.imgUrls[2]" v-if="stay.imgUrls[2]" />
-				<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="indoors" />
+				<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="" />
 				<img :src="stay.imgUrls[3]" v-if="stay.imgUrls[3]" />
-				<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="indoors" />
+				<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="" />
 				<img :src="stay.imgUrls[4]" v-if="stay.imgUrls[4]" />
-				<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="indoors" />
+				<img v-else :src="require('@/assets/imgs/no_img.jpeg')" alt="" />
 			</section>
 		</section>
 		<el-carousel
@@ -209,10 +236,9 @@ export default {
 			return this.stay.reviews.length
 		},
 		infoHeader() {
-			return this.stay.propertyType + ' host by ' + this.stay.host.fullname
+			return this.stay.propertyType + ' hosted by ' + this.stay.host.fullname
 		},
 		beds() {
-			// return this.stay.accommodates + ()? 's' ? ''
 			return this.stay.accommodates === 1
 				? this.stay.accommodates + ' bed'
 				: this.stay.accommodates + ' beds'
@@ -281,6 +307,7 @@ export default {
 		},
 	},
 	async created() {
+		this.$emit('remove')
 		this.$emit('toggleLoading', true)
 		try {
 			this.$emit('scrolled', true)
