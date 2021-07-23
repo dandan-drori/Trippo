@@ -227,7 +227,6 @@ export default {
       return this.stay.propertyType + ' host by ' + this.stay.host.fullname
     },
     beds() {
-      // return this.stay.accommodates + ()? 's' ? ''
       return this.stay.accommodates === 1
         ? this.stay.accommodates + ' bed'
         : this.stay.accommodates + ' beds'

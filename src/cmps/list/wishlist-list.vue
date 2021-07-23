@@ -15,24 +15,17 @@
 </template>
 
 <script>
-import wishlistPreview from '@/cmps/list/wishlist-preview'
 import stayPreview from '@/cmps/list/stay-preview'
 export default {
   components: { stayPreview },
   props: { stays: Array },
-  data() {
-    return {}
-  },
+
   computed: {
     matchingStays() {
       return this.stays.filter((stay) =>
         stay.wishlistedBy.includes(this.$store.getters.loggedinUser._id)
       )
     },
-  },
-  methods: {},
-  created() {
-    // console.log(this.stays)
   },
 }
 </script>

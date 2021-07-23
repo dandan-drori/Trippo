@@ -75,9 +75,7 @@ export default {
         msg: this.msg,
         stayId: this.stay._id,
       })
-      // TODO: next line not needed after connecting to backend
-      //   this.addMsg(this.msg);
-      // setTimeout(()=>this.addMsg({from: 'Dummy', txt: 'Yey'}), 2000)
+
       this.msg = { from: this.$store.getters.loggedinUser.username, txt: '' }
     },
     setIsTyping() {

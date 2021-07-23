@@ -1,8 +1,9 @@
 #### IMPORTANT
 
-- apply fixes that asaf gave us
+<!-- - apply fixes that asaf gave us -->
+
 - implement check-in in stay-details (stuck at bottom and opens a full-screen modal)
-- add wishlistedBy (array of user ids) to stay entity
+  <!-- - add wishlistedBy (array of user ids) to stay entity -->
 - mobile design (mostly stay-details, and stay-edit)
 - create a custom chat-msg component like whatsapp's - GUY
 - practice presentation of main flow
