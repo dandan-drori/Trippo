@@ -68,6 +68,23 @@
     }
   }
 }
+.move-signup-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  small {
+    font-size: 0.7rem;
+    button {
+      background-color: #fff;
+      width: unset;
+      height: 100%;
+      padding: 0;
+      font-size: unset;
+      margin: 5px 0;
+      border-radius: 0;
+    }
+  }
+}
 
 .login-divider {
   text-align: center;
@@ -180,23 +197,6 @@
     border-radius: unset;
     h2 {
       margin-top: 10px;
-    }
-    .move-signup-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      small {
-        font-size: 0.7rem;
-        button {
-          background-color: #fff;
-          width: unset;
-          height: 100%;
-          padding: 0;
-          font-size: unset;
-          margin: 5px 0;
-          border-radius: 0;
-        }
-      }
     }
   }
 }
