@@ -1,7 +1,6 @@
 #### IMPORTANT
 
 - add color to meta-head
-- cancel timeout in checkout
 - widecard in homepage (olympics)
 - create a custom chat-msg component like whatsapp's - GUY
 - fix stay-list-filter (checkboxes)

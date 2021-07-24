@@ -76,7 +76,7 @@ export default {
       isLoading: false,
       isOnBottom: false,
       scrolledToBottom: false,
-      removeHeader: false,
+      isHeaderRemoved: false,
     }
   },
   created() {
@@ -113,6 +113,7 @@ export default {
       this.isOnbottom = val
     },
     login(val) {
+      console.log(val)
       this.isLoginOpen = val
     },
     toggleSignUp(val) {
@@ -152,7 +153,7 @@ export default {
     },
     removeHeader() {
       console.log('remove')
-      this.removeHeader = !this.removeHeader
+      this.isHeaderRemoved = !this.isHeaderRemoved
     },
   },
   components: {
