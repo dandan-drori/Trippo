@@ -4,7 +4,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000;
+  z-index: 10000;
   width: 570px;
   border-radius: 15px;
   input,
@@ -159,9 +159,6 @@
     height: 30px;
     border-radius: 50%;
     background-color: #fa3259;
-    //   box-shadow: 0px 0px 400px 300px #fa325adf, 0px 0px 220px 100px #e61e4dd0,
-    //     0px 0px 250px 120px #e31c5eb7, 0px 0px 280px 240px #d70466c5,
-    //     0px 0px 350px 260px #bd1e58d5, 5px 5px 400px 300px #bd1d59;
     box-shadow: 0px 0px 137px 135px #fa325a, 0px 0px 140px 143px #e61e4de7,
       0px 0px 162px 206px #e31c5f, 0px 0px 80px 140px #d70466,
       0px 0px 90px 160px #bd1e59, 5px 5px 100px 200px #bd1d59;
@@ -176,13 +173,30 @@
 @include for-mobile-layout {
   .login-modal {
     width: 100%;
-    height: calc(100% - 64px);
+    height: 100%;
     top: 0;
     left: 0;
     transform: translateY(0);
     border-radius: unset;
-  }
-  .login-input {
-    margin-top: 30px;
+    h2 {
+      margin-top: 10px;
+    }
+    .move-signup-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      small {
+        font-size: 0.7rem;
+        button {
+          background-color: #fff;
+          width: unset;
+          height: 100%;
+          padding: 0;
+          font-size: unset;
+          margin: 5px 0;
+          border-radius: 0;
+        }
+      }
+    }
   }
 }

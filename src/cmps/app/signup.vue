@@ -37,6 +37,12 @@
           <span v-else>Continue</span>
         </button>
       </form>
+      <div class="move-login-button">
+        <small
+          >Already have a user? click here to
+          <button @click.stop="moveToLogin">login</button></small
+        >
+      </div>
     </div>
     <div class="signup-divider">
       <div class="border"></div>
@@ -50,14 +56,6 @@
       <button @click.stop="loginWithGoogle">
         <img src="@/assets/imgs/svgs/google.svg" alt="" />
         Continue with Google
-      </button>
-      <button>
-        <img src="../../assets/imgs/svgs/apple.png" alt="" />
-        Continue with Apple
-      </button>
-      <button>
-        <span class="material-icons" style="color:#000;"> phone_iphone </span
-        >Continue with Phone
       </button>
     </div>
   </section>
@@ -97,7 +95,7 @@ export default {
     loginWithGoogle() {
       this.$gAuth
         .signIn()
-        .then((GoogleUser) => {
+        .then(GoogleUser => {
           var userInfo = {
             loginType: 'google',
             google: {
@@ -110,12 +108,12 @@ export default {
             },
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.log('error', error)
         })
     },
     loginWithFacebook() {
-      window.FB.login((response) => {
+      window.FB.login(response => {
         if (response && response.authResponse) {
           console.log('response', response)
           var userInfo = {
@@ -127,7 +125,7 @@ export default {
           this.$store.commit('setLoginUser', userInfo)
           window.FB.api(
             `/${response.authResponse.userID}`,
-            (userResponse) => {
+            userResponse => {
               if (userResponse) {
                 console.log(userResponse)
                 var userInfo = {
@@ -146,9 +144,12 @@ export default {
         }
       }, this.params)
     },
+    moveToLogin() {
+      this.$emit('moveToLogin', true)
+    },
   },
   mounted() {
-    this.$refs.myBtn.onmousemove = (e) => {
+    this.$refs.myBtn.onmousemove = e => {
       const x = e.offsetX
       const y = e.offsetY
 

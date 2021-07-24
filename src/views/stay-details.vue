@@ -1,7 +1,7 @@
 <template>
 	<section v-if="stay" class="stay-details">
 		<div class="details-mobile-header">
-			<div class="left">
+			<div class="left" @click.stop="goBack">
 				<span class="material-icons">
 					chevron_left
 				</span>
@@ -33,7 +33,7 @@
 				</p>
 			</div>
 			<div class="right">
-				<button>Check availability</button>
+				<button>{{ orderStatus }}</button>
 			</div>
 		</div>
 		<section class="header">
@@ -181,6 +181,7 @@
 			:stay="stay"
 			:msgHistory="stay.chatMsgs"
 		/>
+		<mobile-checkout v-if="isMobileCheckoutOpen" />
 	</section>
 </template>
 
@@ -201,6 +202,7 @@ import chat from '@/cmps/details/chat'
 import stayCheckout from '@/cmps/details/stay-checkout'
 import reviewAdd from '@/cmps/details/review-add'
 import reviewRatings from '@/cmps/details/review-ratings'
+import mobileCheckout from '@/cmps/details/mobile-checkout.vue'
 
 export default {
 	props: { isScreenOpen: Boolean },
@@ -212,6 +214,7 @@ export default {
 		chat,
 		reviewAdd,
 		reviewRatings,
+		mobileCheckout,
 	},
 	data() {
 		return {
@@ -224,6 +227,8 @@ export default {
 				shieldAlt: faShieldAlt,
 			},
 			isLoading: true,
+			isReadyToReserve: false,
+			isMobileCheckoutOpen: false,
 		}
 	},
 	computed: {
@@ -261,6 +266,13 @@ export default {
 			}, 0)
 			return (sum / this.stay.reviews.length).toFixed(1)
 		},
+		orderStatus() {
+			if (this.isReadyToReserve) {
+				return 'Reserve'
+			} else {
+				return 'Check availability'
+			}
+		},
 	},
 	methods: {
 		async checkout({ dates, total, guests }) {
@@ -271,7 +283,7 @@ export default {
 			orderToSave.guests = guests
 
 			if (!this.loggedInUser) {
-				this.$emit('login', true)
+				this.$emit('toggleLogin', true)
 				return
 			}
 
@@ -292,13 +304,16 @@ export default {
 		},
 		toggleChat() {
 			if (!this.loggedInUser) {
-				this.$emit('login', true)
+				this.$emit('toggleLogin', true)
 				return
 			}
 			this.isChatOpen = !this.isChatOpen
 		},
 		toggleReview() {
 			this.$emit('screen', !this.isScreenOpen)
+		},
+		goBack() {
+			this.$router.back()
 		},
 		async onAddReview(review) {
 			try {
@@ -316,7 +331,7 @@ export default {
 		},
 	},
 	async created() {
-		this.$emit('remove')
+		this.$emit('remove', true)
 		this.$emit('toggleLoading', true)
 		try {
 			this.$emit('scrolled', true)
@@ -326,6 +341,9 @@ export default {
 		} catch (err) {
 			console.log('Cannot get stay with id:', stayId)
 		}
+	},
+	destroyed() {
+		this.$emit('remove', false)
 	},
 }
 </script>

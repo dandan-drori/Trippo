@@ -1,7 +1,7 @@
 <template>
 	<div class="app main-layout">
 		<app-header
-			@login="login"
+			@toggleLogin="toggleLogin"
 			@toggleSignUp="toggleSignUp"
 			@logout="logout"
 			@closeModal="closeModal"
@@ -10,11 +10,11 @@
 			:class="{
 				scrolled: isScrolled,
 				hide: isSearchShown,
-				remove: removeHeader,
+				remove: isHeaderRemoved,
 			}"
 		/>
 		<router-view
-			@login="login"
+			@toggleLogin="toggleLogin"
 			@scrolled="scrolled"
 			@bottom="bottom"
 			@screen="toggleScreen"
@@ -22,9 +22,13 @@
 			@hideSearch="hideSearch"
 			@toggleShare="toggleShare"
 			@toggleLoading="toggleLoading"
-			@remove="removeHeader"
+			@remove="hideHeader"
 		/>
-		<mobile-nav :class="{ bottom: isOnBottom }" @toggleProfile="toggleProfile" @login="login" />
+		<mobile-nav
+			:class="{ bottom: isOnBottom }"
+			@toggleProfile="toggleProfile"
+			@toggleLogin="toggleLogin"
+		/>
 		<app-footer />
 		<div
 			v-if="isLoginOpen || isSignupOpen || isScreenOpen || isShareShown || isLoading"
@@ -32,8 +36,8 @@
 		></div>
 		<vue-loaders-ball-pulse-sync color="transparent" class="main-loader" v-if="isLoading" />
 
-		<login @login="login" v-if="isLoginOpen" />
-		<signup v-if="isSignupOpen" @toggleSignUp="toggleSignUp" />
+		<login @toggleLogin="toggleLogin" @moveToSignup="toggleSignUp" v-if="isLoginOpen" />
+		<signup v-if="isSignupOpen" @toggleSignUp="toggleSignUp" @moveToLogin="toggleLogin" />
 		<share-modal v-if="isShareShown" @toggleShare="toggleShare" :class="{ share: isShareShown }" />
 		<user-msg />
 	</div>
@@ -75,18 +79,11 @@ export default {
 		scroll() {
 			window.onscroll = () => {
 				let bottomOfWindow =
-					Math.max(
-						window.pageYOffset,
-						document.documentElement.scrollTop,
-						document.body.scrollTop
-					) +
-						window.innerHeight ===
+					Math.max(window.pageYOffset, document.documentElement.scrollTop) + window.innerHeight ===
 					document.documentElement.offsetHeight
-
 				if (bottomOfWindow) {
 					this.scrolledToBottom = true
 					this.isOnBottom = true
-					// replace it with your code
 				} else {
 					this.isOnBottom = false
 				}
@@ -98,11 +95,13 @@ export default {
 		bottom(val) {
 			this.isOnbottom = val
 		},
-		login(val) {
+		toggleLogin(val) {
 			this.isLoginOpen = val
+			this.isSignupOpen = false
 		},
 		toggleSignUp(val) {
 			this.isSignupOpen = val
+			this.isLoginOpen = false
 		},
 		toggleProfile() {
 			this.isProfileModalOpen = !this.isProfileModalOpen
@@ -139,8 +138,8 @@ export default {
 		toggleLoading(val) {
 			this.isLoading = val
 		},
-		removeHeader() {
-			this.isHeaderRemoved = !this.isHeaderRemoved
+		hideHeader(val) {
+			this.isHeaderRemoved = val
 		},
 	},
 	components: {

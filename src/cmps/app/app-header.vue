@@ -52,7 +52,7 @@
 					</span>
 					<img :src="imgUrl" alt="your image" />
 					<profile-menu
-						@login="login"
+						@toggleLogin="toggleLogin"
 						@toggleSignUp="toggleSignUp"
 						@logout="logout"
 						@closeModal="closeModal"
@@ -111,8 +111,8 @@ export default {
 		closeModal() {
 			this.$emit('closeModal', false)
 		},
-		login() {
-			this.$emit('login', true)
+		toggleLogin() {
+			this.$emit('toggleLogin', true)
 			this.$emit('closeModal', false)
 		},
 		toggleSignUp() {
@@ -134,7 +134,7 @@ export default {
 		},
 		toBecomeHost() {
 			if (!this.loggedInUser) {
-				this.$emit('login', true)
+				this.$emit('toggleLogin', true)
 				return
 			}
 			this.$router.push(`/profile/${this.loggedInUser._id}/add-stay`)
