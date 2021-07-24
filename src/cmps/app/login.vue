@@ -33,6 +33,12 @@
           <span v-else>{{ loginBtnTxt }}</span>
         </button>
       </form>
+      <div class="move-signup-button">
+        <small
+          >Dont have a user? click here to
+          <button @click.stop="moveToSignUp">sign up</button></small
+        >
+      </div>
     </div>
     <div class="login-divider">
       <div class="border"></div>
@@ -46,14 +52,6 @@
       <button @click.stop="loginWithGoogle">
         <img src="@/assets/imgs/svgs/google.svg" alt="" />
         Continue with Google
-      </button>
-      <button>
-        <img src="@/assets/imgs/svgs/apple.png" alt="" />
-        Continue with Apple
-      </button>
-      <button>
-        <span class="material-icons" style="color:#000;"> phone_iphone </span
-        >Continue with Phone
       </button>
     </div>
   </section>
@@ -92,7 +90,7 @@ export default {
     loginWithGoogle() {
       this.$gAuth
         .signIn()
-        .then((GoogleUser) => {
+        .then(GoogleUser => {
           var userInfo = {
             loginType: 'google',
             google: {
@@ -106,12 +104,12 @@ export default {
           }
           showMsg('Logged in successfully')
         })
-        .catch((error) => {
+        .catch(error => {
           console.log('error', error)
         })
     },
     loginWithFacebook() {
-      window.FB.login((response) => {
+      window.FB.login(response => {
         if (response && response.authResponse) {
           console.log('response', response)
           var userInfo = {
@@ -123,7 +121,7 @@ export default {
           this.$store.commit('setLoginUser', userInfo)
           window.FB.api(
             `/${response.authResponse.userID}`,
-            (userResponse) => {
+            userResponse => {
               if (userResponse) {
                 console.log(userResponse)
                 var userInfo = {
@@ -143,7 +141,11 @@ export default {
       }, this.params)
     },
     close() {
-      this.$emit('login', false)
+      this.$emit('bottom', false)
+      this.$emit('toggleLogin', false)
+    },
+    moveToSignUp() {
+      this.$emit('moveToSignup', true)
     },
   },
   computed: {
@@ -153,7 +155,7 @@ export default {
   },
   mounted() {
     this.$refs.usernameInputRef.focus()
-    this.$refs.myBtn.onmousemove = (e) => {
+    this.$refs.myBtn.onmousemove = e => {
       const x = e.offsetX
       const y = e.offsetY
 

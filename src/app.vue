@@ -1,7 +1,7 @@
 <template>
   <div class="app main-layout">
     <app-header
-      @login="login"
+      @toggleLogin="toggleLogin"
       @toggleSignUp="toggleSignUp"
       @logout="logout"
       @closeModal="closeModal"
@@ -14,7 +14,7 @@
       }"
     />
     <router-view
-      @login="login"
+      @toggleLogin="toggleLogin"
       @scrolled="scrolled"
       @bottom="bottom"
       @screen="toggleScreen"
@@ -27,7 +27,7 @@
     <mobile-nav
       :class="{ bottom: isOnBottom }"
       @toggleProfile="toggleProfile"
-      @login="login"
+      @toggleLogin="toggleLogin"
     />
     <app-footer />
     <div
@@ -42,8 +42,16 @@
       v-if="isLoading"
     />
 
-    <login @login="login" v-if="isLoginOpen" />
-    <signup v-if="isSignupOpen" @toggleSignUp="toggleSignUp" />
+    <login
+      @toggleLogin="toggleLogin"
+      @moveToSignup="toggleSignUp"
+      v-if="isLoginOpen"
+    />
+    <signup
+      v-if="isSignupOpen"
+      @toggleSignUp="toggleSignUp"
+      @moveToLogin="toggleLogin"
+    />
     <share-modal
       v-if="isShareShown"
       @toggleShare="toggleShare"
@@ -89,18 +97,12 @@ export default {
     scroll() {
       window.onscroll = () => {
         let bottomOfWindow =
-          Math.max(
-            window.pageYOffset,
-            document.documentElement.scrollTop,
-            document.body.scrollTop
-          ) +
+          Math.max(window.pageYOffset, document.documentElement.scrollTop) +
             window.innerHeight ===
           document.documentElement.offsetHeight
-
         if (bottomOfWindow) {
           this.scrolledToBottom = true
           this.isOnBottom = true
-          // replace it with your code
         } else {
           this.isOnBottom = false
         }
@@ -112,12 +114,13 @@ export default {
     bottom(val) {
       this.isOnbottom = val
     },
-    login(val) {
-      console.log(val)
+    toggleLogin(val) {
       this.isLoginOpen = val
+      this.isSignupOpen = false
     },
     toggleSignUp(val) {
       this.isSignupOpen = val
+      this.isLoginOpen = false
     },
     toggleProfile() {
       this.isProfileModalOpen = !this.isProfileModalOpen

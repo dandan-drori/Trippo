@@ -1,7 +1,8 @@
 <template>
-  <section class="user-wishlist-container" v-if="stays">
+  <section class="user-wishlist-container">
     <h2>Wishlist</h2>
-    <wishlist :stays="stays" />
+    <wishlist v-if="stays" :stays="stays" />
+    <h2 v-if="!loggedinUser || !stays">No items in your wishlist yet</h2>
   </section>
 </template>
 
@@ -11,7 +12,9 @@ export default {
   components: { wishlist },
   props: {},
   data() {
-    return {}
+    return {
+      loggedinUser: null,
+    }
   },
   computed: {
     stays() {
@@ -23,6 +26,8 @@ export default {
     this.$emit('scrolled', true)
     this.$emit('hideSearch', true)
     await this.$store.dispatch({ type: 'loadStays' })
+    this.loggedinUser = this.$store.getters.loggedinUser
+    console.log(this.$store.getters.loggedinUser)
   },
 }
 </script>

@@ -9,7 +9,7 @@
       </li>
       <li>
         <span @click.stop="goToWishlist" class="material-icons-outlined">
-          favorite_border </span
+          favorite_border</span
         >Wishlist
       </li>
       <li @click.stop="openProfile">
@@ -43,7 +43,8 @@ export default {
   methods: {
     openProfile() {
       if (!this.userId) {
-        this.$emit('login', true)
+        this.$emit('bottom', true)
+        this.$emit('toggleLogin', true)
       } else {
         this.$router.push('/profile/' + this.userId)
       }

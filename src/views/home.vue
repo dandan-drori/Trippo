@@ -56,9 +56,11 @@
     </div>
     <div class="wide-card">
       <div class="desc">
-        <h3>The Greatest <span>Outdoors</span></h3>
-        <p>Wishlists curated by Airbnb.</p>
-        <button>Get inspired</button>
+        <h3>The Olympic<span>Experience</span></h3>
+        <p>Find stays near the olympic village</p>
+        <button>
+          <router-link :to="'/stay/q/' + 'Tokyo'">Explore now</router-link>
+        </button>
       </div>
       <img src="@/assets/imgs/home-page/hero1.jpeg" alt="" />
     </div>
