@@ -26,7 +26,6 @@
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.1",
     "vue-clipboard2": "^0.3.1",
-    "vue-datetime": "^1.0.0-beta.14",
     "vue-loaders": "^4.1.4",
     "vue-moment": "^4.1.0",
     "vue-router": "^3.2.0",

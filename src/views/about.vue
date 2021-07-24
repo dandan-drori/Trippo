@@ -6,11 +6,8 @@
 				<img :src="card.imgUrl" alt="profile" />
 				<h3>{{ card.heading }}</h3>
 				<div class="social">
-					<a :href="card.github" target="_blank">
-						<FontAwesomeIcon :icon="github" />
-					</a>
-					<a :href="card.linkedin" target="_blank">
-						<FontAwesomeIcon :icon="linkedin" />
+					<a v-for="social in socials" :key="social" :href="card[social]" target="_blank">
+						<FontAwesomeIcon :icon="icons[social]" />
 					</a>
 				</div>
 			</article>
@@ -18,12 +15,9 @@
 		<section class="stack">
 			<h2>Our tech stack</h2>
 			<ul>
-				<li>Vue.js</li>
-				<li>SCSS</li>
-				<li>Node.js</li>
-				<li>Express</li>
-				<li>MongoDB</li>
-        <li>Web Sockets</li>
+				<li v-for="logo in logos" :key="logo">
+					<img :src="require(`@/assets/imgs/techstack/${logo}.png`)" :alt="logo" />
+				</li>
 			</ul>
 		</section>
 	</section>
@@ -34,11 +28,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 export default {
 	components: { FontAwesomeIcon },
-	props: {},
 	data() {
 		return {
-			github: faGithub,
-			linkedin: faLinkedin,
+			icons: {
+				github: faGithub,
+				linkedin: faLinkedin,
+			},
 			cards: [
 				{
 					imgUrl:
@@ -62,10 +57,10 @@ export default {
 					linkedin: 'https://www.linkedin.com/in/dandan-drori-9b2496122/',
 				},
 			],
+			logos: ['vue', 'scss', 'node', 'express', 'mongo', 'sockets'],
+			socials: ['github', 'linkedin'],
 		}
 	},
-	computed: {},
-	methods: {},
 	created() {
 		this.$emit('scrolled', true)
 	},
