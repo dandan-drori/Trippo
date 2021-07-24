@@ -22,7 +22,7 @@
       @hideSearch="hideSearch"
       @toggleShare="toggleShare"
       @toggleLoading="toggleLoading"
-      @remove="removeHeader"
+      @remove="hideHeader"
     />
     <mobile-nav
       :class="{ bottom: isOnBottom }"
@@ -150,9 +150,8 @@ export default {
     toggleLoading(val) {
       this.isLoading = val
     },
-    removeHeader() {
-      console.log('remove')
-      this.removeHeader = !this.removeHeader
+    hideHeader(val) {
+      this.removeHeader = val
     },
   },
   components: {

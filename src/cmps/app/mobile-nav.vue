@@ -1,10 +1,10 @@
 <template>
   <section class="mobile-nav">
     <ul>
-      <li @click.stop="goToList">
+      <li @click.stop="goToHome">
         <span class="material-icons-outlined"> home </span>Home
       </li>
-      <li @click.stop="goToHome">
+      <li @click.stop="goToList">
         <span class="material-icons-outlined"> search </span>Explore
       </li>
       <li>
