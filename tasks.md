@@ -1,5 +1,4 @@
-- fix stay-list-filter (checkboxes)
-- About page
+- use guests modal from home-filter inside checkout cmp
 
 - practice presentation of main flow
 - practice presentation of code (1 minute recording is needed)
