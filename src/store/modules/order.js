@@ -72,9 +72,9 @@ export default {
 			})
 		},
 		async watchOrder({ commit }, { userId }) {
-			socketService.emit(SOCKET_EMIT_ORDER_WATCH, userId)
-			socketService.off(SOCKET_EVENT_ORDER_UPDATED)
-			socketService.on(SOCKET_EVENT_ORDER_UPDATED, async order => {
+			socketService.emit('order-watch', userId)
+			socketService.off('order-updated')
+			socketService.on('order-updated', async order => {
 				if (order.buyer._id === userId) {
 					commit({ type: 'updateOrder', order })
 					showMsg(`your order status was updated to ${order.status}`)

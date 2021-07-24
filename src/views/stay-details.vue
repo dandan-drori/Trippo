@@ -178,7 +178,7 @@
         <section class="host-details">
           <p>Response rate: 86%</p>
           <p>Response time: within an hour</p>
-          <button @click="toggleChat">Contact host</button>
+          <button @click.stop="toggleChat">Contact host</button>
           <div class="details-alert">
             <img src="@/assets/imgs/svgs/shield.svg" />
             <small>
@@ -284,15 +284,20 @@ export default {
       orderToSave.endDate = dates[1].getTime()
       orderToSave.total = total
       orderToSave.guests = guests
+
+      if (!this.loggedInUser) {
+        this.$emit('login', true)
+        return
+      }
+
       try {
         await this.$store.dispatch({
           type: 'saveOrder',
           order: orderToSave,
           stay: this.stay,
         })
-        setTimeout(() => {
-          showMsg('order sent')
-        }, 2000)
+
+        showMsg('order sent')
       } catch (err) {
         showMsg('order failed', 'error')
       }
@@ -301,6 +306,10 @@ export default {
       this.$emit('toggleShare', true)
     },
     toggleChat() {
+      if (!this.loggedInUser) {
+        this.$emit('login', true)
+        return
+      }
       this.isChatOpen = !this.isChatOpen
     },
     toggleReview() {

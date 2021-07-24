@@ -10,7 +10,7 @@
       :class="{
         scrolled: isScrolled,
         hide: isSearchShown,
-        remove: removeHeader,
+        remove: isHeaderRemoved,
       }"
     />
     <router-view
@@ -76,7 +76,7 @@ export default {
       isLoading: false,
       isOnBottom: false,
       scrolledToBottom: false,
-      removeHeader: false,
+      isHeaderRemoved: false,
     }
   },
   created() {
@@ -113,6 +113,7 @@ export default {
       this.isOnbottom = val
     },
     login(val) {
+      console.log(val)
       this.isLoginOpen = val
     },
     toggleSignUp(val) {
@@ -151,7 +152,7 @@ export default {
       this.isLoading = val
     },
     hideHeader(val) {
-      this.removeHeader = val
+      this.isHeaderRemoved = val
     },
   },
   components: {

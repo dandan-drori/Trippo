@@ -40,7 +40,7 @@
         </div>
       </div>
     </section>
-    <button ref="myBtn" class="checkout-btn" @click="checkout">
+    <button ref="myBtn" class="checkout-btn" @click.stop="checkout">
       <vue-loaders-ball-clip-rotate-multiple
         color="white"
         v-if="isLoading"
@@ -166,14 +166,14 @@ export default {
       this.$refs.myBtn.disabled = true
       setTimeout(() => {
         this.isLoading = false
-      }, 2000)
+      }, 1000)
       setTimeout(() => {
         this.$refs.myBtn.disabled = false
       }, 10000)
     },
   },
   mounted() {
-    this.$refs.myBtn.onmousemove = e => {
+    this.$refs.myBtn.onmousemove = (e) => {
       const x = e.offsetX
       const y = e.offsetY
 
