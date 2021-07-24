@@ -34,7 +34,6 @@
 						@click.stop="typeChecked('isApratment')"
 						class="checkbox"
 					/>
-
 					<label for="Apartment">
 						<span class="material-icons-outlined" v-if="typesChecked.isApratment">
 							check_box
@@ -140,9 +139,10 @@
 						type="checkbox"
 						value="TV"
 						id="TV"
+						@click="checked('isTv')"
 						class="checkbox"
 					/>
-					<label for="TV" @click.stop="checked('isTv')">
+					<label for="TV">
 						<span class="material-icons-outlined" v-if="amenitiesChecked.isTv">
 							check_box
 						</span>

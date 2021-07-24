@@ -36,7 +36,7 @@
 			</div>
 			<stay-filter :class="{ scrolled: this.isScrolled }" />
 			<div class="header-controls">
-				<router-link class="host" to="/stay/profile">Become a host</router-link>
+				<a class="host" @click.stop="toBecomeHost">Become a host</a>
 				<router-link class="host" to="/stay">Explore</router-link>
 				<button class="i18n">
 					<span class="material-icons">
@@ -131,6 +131,13 @@ export default {
 		},
 		goBack() {
 			this.$router.back()
+		},
+		toBecomeHost() {
+			if (!this.loggedInUser) {
+				this.$emit('login', true)
+				return
+			}
+			this.$router.push(`/profile/${this.loggedInUser._id}/add-stay`)
 		},
 	},
 	computed: {
