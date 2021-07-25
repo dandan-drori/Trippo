@@ -112,6 +112,7 @@ export default {
 				if (this.$route.fullPath.includes('profile')) {
 					this.$router.push('/')
 				}
+				this.$store.commit({ type: 'clearNotifications' })
 				showMsg('Logged out!')
 			} catch (err) {
 				showMsg('Logout failed!', 'error')

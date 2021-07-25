@@ -179,6 +179,7 @@ export default {
 		},
 	},
 	async created() {
+		window.scrollTo(0, 0)
 		this.$emit('toggleLoading', true)
 		this.$emit('scrolled', true)
 		this.$emit('hideSearch', true)

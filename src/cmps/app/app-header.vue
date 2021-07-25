@@ -45,7 +45,7 @@
 				</button>
 				<div @click.stop="toggleProfile" class="profile-btn">
 					<div class="user-notifications-count" v-if="notification">
-						<small>1</small>
+						<small>{{ notification }}</small>
 					</div>
 					<span class="material-icons">
 						menu
@@ -73,7 +73,6 @@ export default {
 	data() {
 		return {
 			airbnb: faAirbnb,
-			notification: 0,
 			isScrolled: false,
 			searching: false,
 			filterBy: {
@@ -156,6 +155,9 @@ export default {
 			const regex = new RegExp(this.filterBy.city, 'i')
 			const cities = ['Amsterdam', 'New York', 'Paris', 'Tokyo']
 			return cities.some(city => regex.test(city))
+		},
+		notification() {
+			return this.$store.getters.notificationsCount
 		},
 	},
 	watch: {

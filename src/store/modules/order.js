@@ -2,8 +2,6 @@ import { orderService } from '@/services/order-service.js'
 import { showMsg } from '@/services/event-bus.service.js'
 import {
 	socketService,
-	SOCKET_EVENT_ORDER_UPDATED,
-	SOCKET_EMIT_ORDER_WATCH,
 	SOCKET_EMIT_ORDER_ADDED_WATCH,
 	SOCKET_EVENT_ORDER_ADDED,
 } from '@/services/socket.service.js'
@@ -11,10 +9,14 @@ import {
 export default {
 	state: {
 		orders: [],
+		notificationsCount: 0,
 	},
 	getters: {
 		orders(state) {
 			return state.orders
+		},
+		notificationsCount(state) {
+			return state.notificationsCount
 		},
 	},
 	mutations: {
@@ -27,6 +29,12 @@ export default {
 		},
 		addOrder(state, { order }) {
 			state.orders.push(order)
+		},
+		changeNotifications(state, { diff }) {
+			state.notificationsCount += diff
+		},
+		clearNotifications(state) {
+			state.notificationsCount = 0
 		},
 	},
 	actions: {
@@ -53,6 +61,9 @@ export default {
 					order.host = stay.host
 					order.buyer = rootGetters.loggedinUser
 				} else {
+					if (order.host._id === rootGetters.loggedinUser._id) {
+						commit({ type: 'changeNotifications', diff: -1 })
+					}
 				}
 				const savedOrder = await orderService.save(order)
 				commit({ type, order: savedOrder })
@@ -67,6 +78,7 @@ export default {
 			socketService.on(SOCKET_EVENT_ORDER_ADDED, order => {
 				if (order.host._id === rootGetters.loggedinUser._id) {
 					commit({ type: 'addOrder', order })
+					commit({ type: 'changeNotifications', diff: 1 })
 					showMsg(`new order from ${order.buyer.fullname}`)
 				}
 			})
