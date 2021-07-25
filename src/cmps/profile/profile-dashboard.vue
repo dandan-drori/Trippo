@@ -40,11 +40,6 @@
 			</section>
 		</section>
 		<section class="orders-table">
-			<h2>My reservations:</h2>
-			<profile-filter :isStaysFilter="false" @filter="setFilter" />
-			<profile-table v-if="sentOrders.length" :orders="sentOrders" :showActions="false" />
-		</section>
-		<section class="orders-table">
 			<h2>Orders:</h2>
 			<profile-filter :isStaysFilter="false" @filter="setFilter" />
 			<profile-table
@@ -53,6 +48,11 @@
 				:stays="stays"
 				:showActions="true"
 			/>
+		</section>
+		<section class="orders-table">
+			<h2>My reservations:</h2>
+			<profile-filter :isStaysFilter="false" @filter="setFilter" />
+			<profile-table v-if="sentOrders.length" :orders="sentOrders" :showActions="false" />
 		</section>
 	</section>
 </template>

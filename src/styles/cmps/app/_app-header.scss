@@ -145,7 +145,6 @@ header {
 		border-radius: 2rem;
 		min-width: 75px;
 		height: 40px;
-		display: flex;
 		align-items: center;
 		align-content: center;
 		justify-content: space-around;
@@ -164,10 +163,10 @@ header {
 		}
 	}
 	.user-notifications-count {
+		position: absolute;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		position: absolute;
 		top: 0;
 		right: 0;
 		height: 15px;
@@ -181,8 +180,11 @@ header {
 			align-items: center;
 			color: #fff;
 			font-size: 0.6rem;
-			font-weight: 700;
+			font-weight: 600;
 			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -45%);
 		}
 	}
 }
@@ -275,6 +277,22 @@ header {
 		}
 	}
 }
+@media only screen and (max-width: 1060px) {
+	.header-search {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	header {
+		h1,
+		.host,
+		.i18n {
+			display: none;
+			span {
+				display: none;
+			}
+		}
+	}
+}
 
 @include for-normal-layout {
 	header {
@@ -283,20 +301,22 @@ header {
 		}
 		.header-search {
 			left: 50%;
+			transform: translateX(-50%);
 		}
 	}
 }
 
 @include for-narrow-layout {
 	header {
-		.logo,
 		.filter-container,
-		.header-controls {
+		.profile-btn,
+		.header-controls,
+		.logo {
 			display: none;
 		}
 		.header-search {
 			top: 16px;
-			width: 95%;
+			width: 90%;
 			height: 48px;
 		}
 	}
@@ -305,6 +325,9 @@ header {
 @include for-mobile-layout {
 	header {
 		transition: 0.4s ease-out;
+		h1 {
+			display: none;
+		}
 		&.remove {
 			display: none;
 		}

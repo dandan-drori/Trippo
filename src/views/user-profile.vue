@@ -7,7 +7,7 @@
 					<li @click="openDashboard" :class="{ acitve: dashboardOpen }">
 						Dashboard
 					</li>
-					<li @click="openInbox" :class="{ acitve: inboxOpen }">inbox</li>
+					<!-- <li @click="openInbox" :class="{ acitve: inboxOpen }">inbox</li> -->
 				</ul>
 			</nav>
 		</div>
