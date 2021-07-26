@@ -105,7 +105,6 @@ header {
 }
 
 .header-controls {
-<<<<<<< HEAD
   display: flex;
   align-items: center;
   align-content: center;
@@ -200,90 +199,6 @@ header {
       transform: translate(-50%, -50%);
     }
   }
-=======
-	display: flex;
-	align-items: center;
-	align-content: center;
-	gap: 5px;
-	& .host {
-		padding: 10px 9px;
-		border-radius: 3rem;
-		&:hover {
-			background-color: rgba(255, 255, 255, 0.2);
-		}
-	}
-	& .i18n {
-		display: flex;
-		align-items: center;
-		color: #fff;
-		background-color: transparent;
-		padding: 9px 10px;
-		height: 40px;
-		border-radius: 3rem;
-		&:hover {
-			background-color: rgba(255, 255, 255, 0.2);
-		}
-		& span {
-			font-size: 1rem;
-		}
-	}
-	& a {
-		font-size: 0.7rem;
-		font-weight: 500;
-	}
-	& .profile-btn {
-		position: relative;
-		cursor: pointer;
-		display: flex;
-		background-color: #fff;
-		color: #222;
-		border: 1px solid rgba(204, 204, 204, 0.564);
-		border-radius: 2rem;
-		min-width: 75px;
-		height: 40px;
-		align-items: center;
-		align-content: center;
-		justify-content: space-around;
-		margin-inline-start: 5px;
-		& span {
-			font-size: 0.9rem;
-		}
-		& img {
-			width: 30px;
-			height: 30px;
-			border-radius: 50%;
-			object-fit: cover;
-		}
-		&:hover {
-			box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.18);
-		}
-	}
-	.user-notifications-count {
-		position: absolute;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		top: 0;
-		right: 0;
-		height: 15px;
-		width: 15px;
-		box-shadow: 0px 0px 0px 1.5px rgba(255, 255, 255, 1);
-		background-color: #ff385c;
-		border-radius: 50%;
-		small {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			color: #fff;
-			font-size: 0.6rem;
-			font-weight: 600;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-32%, -46.5%);
-		}
-	}
->>>>>>> 16cc6fe403e2b073e3d85413b0b51fe296638f94
 }
 
 .profile-menu {
