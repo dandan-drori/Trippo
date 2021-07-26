@@ -112,3 +112,9 @@ li {
 .isHidden {
   display: none;
 }
+
+@include for-mobile-layout {
+  .stays-table {
+    padding: 0;
+  }
+}

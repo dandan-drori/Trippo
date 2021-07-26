@@ -56,3 +56,33 @@
     background-color: #fff;
   }
 }
+
+@include for-mobile-layout {
+  .stays-table {
+    width: 100%;
+  }
+  .profile-stay-table {
+    width: 94%;
+    .table-header {
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      & > div {
+        width: 20%;
+        font-size: 0.7rem;
+      }
+      .name {
+        width: 20%;
+      }
+      .city {
+        width: 20%;
+      }
+      .price {
+        width: fit-content;
+      }
+    }
+    .table-row {
+      font-size: 0.7rem;
+    }
+  }
+}
