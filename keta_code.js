@@ -12,6 +12,7 @@ socketService.emitToUser({
 	data: updatedOrder,
 	userId: updatedOrder.buyer._id,
 })
+
 // order store - frontend
 socketService.on('order-updated', async order => {
 	if (order.buyer._id === userId) {
