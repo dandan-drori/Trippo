@@ -24,12 +24,12 @@
 		</div>
 		<div class="details-mobile-footer">
 			<div class="left">
-				<p class="price">$66 <span>/ night</span></p>
+				<p class="price">${{ stay.price }} <span>/ night</span></p>
 				<p class="review">
 					<span class="material-icons">
 						star
 					</span>
-					5.0 (<span>4 reviews</span>)
+					{{ avg }} (<span>{{ reviewsLength }} reviews</span>)
 				</p>
 			</div>
 			<div class="right">
