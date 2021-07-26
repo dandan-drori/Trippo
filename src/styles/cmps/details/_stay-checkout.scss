@@ -68,21 +68,24 @@
     margin-bottom: 20px;
 
     .guests {
+      position: relative;
       display: flex;
-      align-items: center;
-      justify-content: space-around;
+      flex-direction: column;
       border: 1px solid #ccc;
       border-top: none;
       padding: 10px;
+      padding-inline-start: 26px;
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
+      cursor: pointer;
       border-color: #b0b0b0;
       p {
-        font-size: 0.9rem;
+        font-size: 0.6rem;
+        font-weight: 500;
       }
       span {
-        width: 7px;
         font-size: 1rem;
+        font-size: 0.65rem;
         font-weight: 400;
       }
 
@@ -115,6 +118,17 @@
           border: 1px solid #333;
           color: #333;
         }
+      }
+    }
+    .arrow {
+      position: absolute;
+      right: 25px;
+      top: 50%;
+      color: #202020;
+      transform: translateY(-50%) rotate(90deg);
+      font-size: 1rem !important;
+      &.flip {
+        transform: translateY(-50%) rotate(-90deg);
       }
     }
   }
@@ -180,7 +194,7 @@
 
     small {
       color: #555;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
       font-size: 14px;
     }
 
@@ -199,12 +213,12 @@
           margin-bottom: 10px;
           color: #333;
           text-decoration: underline;
-          font-size: 1rem;
+          font-size: 0.7rem;
         }
 
         p:nth-child(2) {
           color: #333;
-          font-size: 1rem;
+          font-size: 0.7rem;
         }
 
         &:nth-child(3) {
@@ -220,11 +234,11 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: 10px 0;
+      padding: 5px 0;
 
       p {
         font-weight: 500;
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
     }
   }
@@ -250,6 +264,43 @@
 .el-date-table td.end-date span,
 .el-date-table td.start-date span {
   background-color: #222;
+}
+
+.guests-modal {
+  &.guest-details {
+    .adult {
+      display: flex;
+      align-items: center;
+      &.el-input-number {
+        display: flex;
+        align-items: center;
+      }
+    }
+    .type {
+      border-bottom: none;
+      position: relative;
+    }
+    .counter {
+      position: absolute;
+      right: 35px;
+      font-size: 1.1rem;
+      z-index: 11;
+    }
+    border-radius: 8px;
+    top: 194px;
+    width: 322px;
+    right: 24px;
+    z-index: 10;
+    input {
+      border: none;
+    }
+    p {
+      font-weight: 500;
+    }
+    span {
+      font-weight: 400;
+    }
+  }
 }
 
 @include for-mobile-layout {
