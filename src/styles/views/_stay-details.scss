@@ -39,6 +39,8 @@
 
       .details-reviews {
         color: rgb(113, 113, 113);
+        text-decoration: underline;
+        font-size: 0.7rem;
       }
 
       .details-location {
@@ -745,7 +747,7 @@
     .header {
       padding: 1.2rem 0;
       border-bottom: 1px solid #ddd;
-      max-height: 120px;
+      padding-bottom: 0;
       .stay-header-bottom {
         .details-reviews {
           text-decoration: underline;

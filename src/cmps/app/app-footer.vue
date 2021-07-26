@@ -39,13 +39,19 @@
         </small>
       </li>
       <li>
-        <font-awesome-icon class="icon" :icon="facebook" />
+        <router-link to="/about">
+          <font-awesome-icon class="icon" :icon="facebook" />
+        </router-link>
       </li>
       <li>
-        <font-awesome-icon class="icon" :icon="twitter" />
+        <router-link to="/about">
+          <font-awesome-icon class="icon" :icon="twitter" />
+        </router-link>
       </li>
       <li>
-        <font-awesome-icon class="icon" :icon="instagram" />
+        <router-link to="/about">
+          <font-awesome-icon class="icon" :icon="instagram" />
+        </router-link>
       </li>
     </ul>
   </footer>

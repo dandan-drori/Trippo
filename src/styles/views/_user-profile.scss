@@ -32,15 +32,11 @@
   gap: 40px;
   .profile-card {
     margin-top: 10px;
-    // position: sticky;
-    // top: 105px;
     min-width: 310px;
     width: 25%;
     border: 1px solid rgb(222, 222, 222);
     border-radius: 15px;
     padding: 1.2rem;
-    // margin-right: 40px;
-
     .img-upload-container {
       label {
         display: flex;
@@ -90,6 +86,17 @@
         &:hover {
           background-color: #eee;
         }
+
+        &.logout {
+          display: none;
+        }
+        @include for-mobile-layout {
+          &.logout {
+            display: block;
+            margin-top: 10px;
+            padding: 0.7rem 1.4rem;
+          }
+        }
       }
     }
   }
@@ -105,8 +112,10 @@
   }
 
   .data {
-    min-width: 800px;
-
+    width: 65%;
+    @include for-mobile-layout {
+      width: 93vw;
+    }
     h2 {
       font-weight: 500;
       font-size: 1.2rem;
@@ -126,6 +135,35 @@
       span {
         font-weight: 600;
         font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@include for-mobile-layout {
+  .user-profile-container {
+    margin-top: 80px;
+  }
+  .user-profile {
+    gap: 0;
+    .profile-card {
+      width: 95%;
+      div:nth-of-type(1) {
+        img {
+          width: 190px;
+          height: 190px;
+        }
+        p {
+          font-size: 1rem;
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+  .profile-header {
+    ul {
+      li.acitve {
+        box-shadow: 0 3px 0px -1px #ff385c;
       }
     }
   }

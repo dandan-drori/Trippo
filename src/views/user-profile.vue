@@ -7,7 +7,6 @@
           <li @click="openDashboard" :class="{ acitve: dashboardOpen }">
             Dashboard
           </li>
-          <!-- <li @click="openInbox" :class="{ acitve: inboxOpen }">inbox</li> -->
         </ul>
       </nav>
     </div>
@@ -36,7 +35,8 @@
           </section>
         </div>
         <div>
-          <button class="add-stay" @click="openModal">Add New Stay</button>
+          <button class="add-stay" @click.stop="openModal">Add New Stay</button>
+          <button class="add-stay logout" @click.stop="logout">Log out</button>
         </div>
       </section>
       <stay-add v-if="isModalOpen" @close="closeModal" :stay="stay" />
@@ -136,6 +136,9 @@ export default {
       this.profileOpen = false
       this.dashboardOpen = false
     },
+    logout() {
+      this.$emit('logout')
+    },
   },
   computed: {
     loggedInUser() {
@@ -185,7 +188,7 @@ export default {
     window.scrollTo(0, 0)
     this.$emit('toggleLoading', true)
     this.$emit('scrolled', true)
-    this.$emit('hideSearch', true)
+    // this.$emit('hideSearch', true)
 
     if (this.$route.params && this.$route.params.becomeHost) {
       this.openModal()

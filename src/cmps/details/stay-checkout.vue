@@ -47,7 +47,7 @@
             class="adult"
             v-model="adults"
             :min="0"
-            :max="100"
+            :max="accommodates"
           ></el-input-number>
         </div>
         <div class="type">
@@ -60,7 +60,7 @@
           <el-input-number
             v-model="children"
             :min="0"
-            :max="100"
+            :max="accommodates"
           ></el-input-number>
         </div>
         <div class="type">
@@ -109,6 +109,12 @@
 <script>
 export default {
   props: { reviews: Array, price: Number, accommodates: Number },
+  created() {
+    window.addEventListener('click', this.bodyClick)
+  },
+  destroyed() {
+    window.addEventListener('click', this.bodyClick)
+  },
   data() {
     return {
       isLoading: false,
@@ -217,6 +223,9 @@ export default {
     },
     toggleGuestModal() {
       this.isGuestsModalOpen = !this.isGuestsModalOpen
+    },
+    bodyClick() {
+      this.isGuestsModalOpen = false
     },
   },
   mounted() {
